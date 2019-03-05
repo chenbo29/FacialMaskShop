@@ -19,13 +19,13 @@ class SaasModel extends Model {
         // 数据库类型
         'type'        => 'mysql',
         // 服务器地址
-        'hostname'    => '120.79.57.160',
+        'hostname'    => '112.74.177.40',
         // 数据库名
-        'database'    => 'saas_a',
+        'database'    => 'facialMaskShop',
         // 数据库用户名
-        'username'    => 'root',
+        'username'    => 'basestore',
         // 数据库密码
-        'password'    => 'tpshop.demo@99soubao.COM',
+        'password'    => 'basestore',
         // 数据库编码默认采用utf8
         'charset'     => 'utf8',
         // 数据库表前缀

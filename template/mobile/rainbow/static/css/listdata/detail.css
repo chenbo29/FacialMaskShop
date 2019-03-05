@@ -1,0 +1,234 @@
+.detailsWrapL {
+	width: 7.5rem;
+	height: auto;
+}
+/*轮播图*/
+.rotarySowingWrapL {
+	width: 7.5rem;
+	height: 7.97rem;
+	/*overflow: hidden;*/
+	background: lawngreen; /**/
+}
+/*图*/
+.sowingMapImgL {
+	width: 100%;
+	height: 7.97rem;
+}
+/*轮播图 -分页器的点*/
+.swiper-pagination-bullet {
+	width: .08rem;
+	height: .08rem;
+	border-radius: 50%;
+	opacity: 1;
+	background: #fff;
+}
+/*轮播图 active*/
+.swiper-pagination-bullet-active {
+	background: #999;
+}
+/*内容*/
+.contentL {
+	width: 7.5rem;
+	height: auto;
+}
+.timeBoxL {
+	width: 7.5rem;
+	height: .91rem;
+	background: lawngreen; /*0*/
+}
+.timeBoxTitleL {
+	float: left;
+	padding-left: .5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 1.9rem;
+	height: 100%;
+	font: .24rem/.91rem "微软雅黑";
+	letter-spacing: .02rem;
+	color: #e82f5c;
+}
+.timeBoxTimeL {
+	float: left;
+	width: 5.1rem;
+	height: 100%;
+	font: .21rem/.91rem "微软雅黑";
+	letter-spacing: .02rem;
+	color: #ea466b;
+	text-align: right;
+	
+}
+.commTitleL {
+	padding-left: .5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	height: .71rem;
+	font: .29rem/.71rem "微软雅黑";
+	letter-spacing: .01rem;
+	color: #000;
+	background: palegoldenrod; /*0*/
+}
+/*价格，运费*/
+.priceFreightBoxL {
+	position: relative;
+	width: 100%;
+	height: 1.07rem;
+	background: navajowhite; /*0*/
+}
+.priceBoxL {
+	padding-left: .5rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	height: .49rem;
+	background-color: #ff5722;
+}
+.priceBoxLeftL {
+	float: left;
+	display: table;
+	padding: 0 .2rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: auto; 
+	height: 100%;
+	font: .23rem/.49rem "微软雅黑";
+	letter-spacing: .01rem;
+	color: #fff;
+	background-color: #ff5722; 
+}
+.priceBoxRightL {
+	float: left;
+	display: table;
+	padding: 0 .19rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: auto; 
+	/*总:height: .49rem;*/
+	height: .45rem;
+	font: .23rem/.45rem "微软雅黑";
+	letter-spacing: .01rem;
+	color: #999;
+	text-decoration: line-through;
+	border: .02rem solid #ff5722;
+	background-color: #fff; 
+}
+.freightBoxL {
+	padding-left: .5rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: .58rem;
+	font: .18rem/.58rem "微软雅黑";
+	color: #a1a1a1;
+	letter-spacing: .01rem;
+}
+.alreadyL {
+	display: table;
+	position: absolute;
+	top: .29rem;
+	right: .5rem;
+	z-index: 1;
+	font: .22rem/.22rem "微软雅黑";
+	color: #666;
+}
+.commentBoxL {
+	width: 7.5rem;
+	height: 1rem;
+	background: darkkhaki; /*0*/
+}
+.commentBoxLeftL {
+	float: left;
+	padding-left: .5rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 3rem;
+	height: 1rem;
+	font: .24rem/1rem "微软雅黑";
+	color: #333;
+	background: darkcyan; /*0*/
+}
+.praiseText {
+	font: .18rem/1rem "微软雅黑";
+	color: #e82f5c;
+}
+.commentBoxRightL {
+	float: left;
+	padding-right: .5rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 4.5rem;
+	height: 1rem;
+	background: orange; /*0*/
+}
+.commentNumL {
+	position: relative;
+	float: right;
+	display: table;
+	padding-right: .3rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: auto;
+	font: .18rem/1rem "微软雅黑";
+	letter-spacing: .01rem;
+	color: #999;
+}
+.getIntoIcon_lb {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto 0;
+	z-index: 1;
+	width: .13rem;
+	height: .22rem;
+}
+.commentBoxUserL {
+	padding: 0 .5rem .33rem .5rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	background: khaki; /**/
+}
+.comBUserTermL {
+	width: 6.5rem;
+	height: 2.77rem;
+	background: #00ABF1; /**/
+}
+.comBUserTermTopL {
+	padding-top: .2rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: .7rem;
+	font: .24rem/.24rem "微软雅黑";
+	color: #333;
+	letter-spacing: .01rem;
+	background: red; /**/
+}
+.comBUserTermTopLeftL {
+	float: left;
+	width: 5rem;
+}
+.comBUserTermTopRightL {
+	float: right;
+	width: 1.5rem;
+	color: #999;
+}
+.starsIconL {
+	width: .15rem;
+	height: .14rem;
+	vertical-align: middle;
+}

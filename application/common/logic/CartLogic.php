@@ -739,7 +739,7 @@ class CartLogic extends Model
         $cart = new Cart();
         $cart->save(['user_id' => $this->user_id], ['session_id' => $this->session_id, 'user_id' => 0]);
         // 查找购物车两件完全相同的商品
-        $cart_id_arr = $cart->field('id')->where(['user_id' => $this->user_id])->group('goods_id,spec_key')->having('count(goods_id) > 1')->select();
+        $cart_id_arr = $cart->field('id')->where(['user_id' => $this->user_id])->group('goods_id,spec_key,id')->having('count(goods_id) > 1')->select();
         if (!empty($cart_id_arr)) {
             $cart_id_arr = get_arr_column($cart_id_arr, 'id');
             M('cart')->delete($cart_id_arr); // 删除购物车完全相同的商品

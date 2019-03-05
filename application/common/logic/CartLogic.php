@@ -746,7 +746,7 @@ class CartLogic extends Model
         }
     }
 
-    /**
+    /** 
      * 更改购物车的商品数量
      * @param $cart_id |购物车id
      * @param $goods_num |商品数量

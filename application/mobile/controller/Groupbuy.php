@@ -23,7 +23,7 @@ class Groupbuy extends MobileBase
     /**
      * 拼团 列表
      */
-    public function list()
+    public function listdata()
     {
        
         return $this->fetch();

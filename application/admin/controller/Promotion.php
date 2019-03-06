@@ -602,7 +602,9 @@ class Promotion extends Base
         return $this->fetch($tpl);
     }
 
-    //限时抢购
+    /*
+    * 秒杀管理
+    */
     public function flash_sale()
     {
         $condition = array();
@@ -611,13 +613,17 @@ class Promotion extends Base
         $Page = new Page($count, 10);
         $show = $Page->show();
         $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+
+        // $price = Db::name('spec_goods_price')->where("item_id",$prom_list["item_id"])->select();
+        // print_r($prom_list["0"]["item_id"]);
+
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
         $this->assign('pager', $Page);
         return $this->fetch();
     }
 
-    public function flash_sale_info()
+    public function spike_list_info()
     {
         if (IS_POST) {
             $data = I('post.');
@@ -739,13 +745,13 @@ class Promotion extends Base
         $this->assign("URL_Home", "");
     }
 	
-	//秒杀管理表
+	//竞拍
 	public function auction_list(){
 		
 		return $this->fetch();
 	}
-	//秒杀管理操作
-	public function Spike_list_info(){
+	//竞拍管理操作
+	public function auction_list_info(){
 		
 		return $this->fetch();
 	}

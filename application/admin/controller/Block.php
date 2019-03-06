@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -21,25 +21,25 @@ class Block extends Base{
 
 	public function index(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");  
+exit("请联系智丰网络客服购买高级版支持此功能");  
 	}
 
 	//自定义页面列表页
 	public function pageList(){
             header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");    
+exit("请联系智丰网络客服购买高级版支持此功能");    
 	}
 
 	public function ajaxGoodsList(){
             header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
 
     //商品列表板块参数设置
     public function goods_list_block(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     //新闻列表 浏览
@@ -138,13 +138,13 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
 	*/
 	public function add_data(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
 	}
 
 	//设置首页
 	public function set_index(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
 	}
 
 	//删除页面
@@ -164,14 +164,14 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
 	//获取秒杀活动数据
 	public function get_flash(){
             header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
 	}
 
 
     //添加行业模板及风格入口页
     public function template_class(){
 		header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
     function filter_data($list){
         $data = [];
@@ -247,13 +247,13 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
     //我的模板展示(用户)
     public function templateList(){
 		header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     //行业模板展示(系统模板)
     public function templateList2(){
 		header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     public function get_style(){

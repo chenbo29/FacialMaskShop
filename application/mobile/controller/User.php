@@ -84,6 +84,35 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+
+	public function personal()
+    {
+        return $this->fetch();
+    }
+    
+    
+    public function p_details()
+    {
+        return $this->fetch();
+    }
+    
+    public function modify()
+    {
+        return $this->fetch();
+    }
+    
+     public function edit_personal()
+    {
+        return $this->fetch();
+    }
+      public function lj_address()
+    {
+        return $this->fetch();
+    }
+      public function edit_Consignee()
+    {
+        return $this->fetch();
+    }
     public function logout()
     {
         session_unset();

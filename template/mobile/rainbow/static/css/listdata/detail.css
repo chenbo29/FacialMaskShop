@@ -1,5 +1,6 @@
 /*最外边框*/
 .wrapL {
+	position: relative;
 	padding-bottom: .94rem;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -7,6 +8,57 @@
 	width: 7.5rem;
 	height: auto;
 }
+/*返回，分享*/
+.returnshareWrapL {
+	position: absolute;
+	top: .26rem;
+	left: 0;
+	z-index: 10;
+	padding: 0 .26rem 0 .3rem;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	height: .5rem;
+}
+.returnBox {
+	float: left;
+	position: relative;
+	width: .64rem;
+	height: .5rem;
+}
+.returnBoxIcon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	width: .18rem;
+	height: .3rem;
+}
+/*分享*/
+.shareBox {
+	float: right;
+	position: relative;
+	width: .87rem;
+	height: 100%;
+}
+.shareBoxImg {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	width: .28rem;
+	height: .3rem;
+}
+
 /*轮播图*/
 .rotarySowingWrapL {
 	width: 7.5rem;
@@ -197,7 +249,7 @@
 	height: auto;
 }
 .comBUserTermTopL {
-	padding-left: .5rem;
+	padding: 0 .5rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -209,12 +261,13 @@
 }
 .comBUserTermTopLeftL {
 	float: left;
-	width: 5rem;
+	width: 4.5rem;
 }
 .comBUserTermTopRightL {
 	float: right;
-	width: 1.5rem;
+	width: 2rem;
 	color: #999;
+	text-align: right;
 }
 .starsIconL {
 	width: .15rem;
@@ -222,7 +275,7 @@
 	vertical-align: middle;
 }
 .comBUTermTextL {
-	padding: 0 1rem 0 .5rem;
+	padding: .2rem 1rem 0 .5rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -310,7 +363,6 @@
 .spellListTermIconL {
 	position: absolute;
 	top: 0;
-	right: 0;
 	bottom: 0;
 	left: 0;
 	margin: auto 0;
@@ -423,4 +475,265 @@
 .purchasePublicText {
 	text-align: center;
 	font: .29rem/.29rem "微软雅黑";
+}
+/*拼团(弹窗) box*/
+.assembleAlertBox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	width: 5.75rem;
+	height: 7.63rem;
+	background-color: #fff;
+}
+.assembHeadBox {
+	position: relative;
+	padding-top: .45rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: .92rem;
+	color: #333;
+	font: .29rem/.29rem "微软雅黑";
+	text-align: center;
+	letter-spacing: .02rem;
+}
+.asHeadCIconBox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	width: .6rem;
+	height: .6rem;
+	background-color: #fff;
+}
+.asHeadCIconBoxIcon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	width: .2rem;
+	height: .2rem;
+}
+/**项**/
+.assembleAlertTermL {
+	width: 100%;
+	height: 1rem;
+}
+.assembleAlertTermLeftL {
+	float: left;
+	position: relative;
+	padding-left: .94rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	/*width: 3rem;*/
+	width: 2.5rem;
+	height: 1rem;
+	font: .18rem/.8rem "微软雅黑";
+	color: #333;
+}
+.assembleAlertTermIconL {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: .15rem;
+	z-index: 1;
+	margin: auto 0;
+	width: .7rem;
+	height: .7rem;
+}
+.assembleAlertTermRightL {
+	float: left;
+	position: relative;
+	padding: .2rem 1.38rem 0 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 3.05rem;
+	height: 100%;
+	font: .18rem/.3rem "微软雅黑";
+	color: #333;
+	text-align: right;
+	letter-spacing: .01rem;
+}
+
+.pellListTermBut {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto 0;
+	z-index: 1;
+	width: 1.2rem;
+	height: .5rem;
+	color: #fff;
+	font: .18rem/.5rem "微软雅黑";
+	text-align: center;
+	border-radius: .09rem;
+	letter-spacing: .01rem;
+	background-color: #ff5722;
+}
+/*提示*/
+.tipsBoxL {
+	width: 100%;
+	height: .71rem;
+	font: .23rem/.71rem "微软雅黑";
+	text-align: center;
+	letter-spacing: .02rem;
+}
+/*底部弹框*/
+.choiceStyleBox {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: auto;
+	background-color: #fff;
+}
+.choiceStyleTopBox {
+	position: relative;
+	padding: .17rem 0 0 1.7rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: 1.34rem;
+	color: #e82f5c;
+	font: .17rem/.3rem "微软雅黑";
+	letter-spacing: .01rem;
+}
+.choiceStyleComImgL {
+	display: block;
+	position: absolute;
+	top: -0.4rem;
+	left: .39rem;
+	z-index: 1;
+	width: 1.2rem;
+	height: 1.2rem;
+}
+.tispTextL {
+	color: #333;
+}
+/*关闭按钮*/
+.choiceStyleIconBox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	width: .65rem;
+	height: .65rem;
+}
+.choiceSIconBoxIcon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: auto;
+	width: .2rem;
+	height: .2rem;
+}
+/*title*/
+.optionPromptTitle {
+	padding-left: .39rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: .22rem;
+	font: .22rem/.22rem "微软雅黑";
+	color: #333;
+	letter-spacing: .02rem;
+}
+
+.chooseStyleBox {
+	padding: 0 0 .4rem .1rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: auto;
+}
+.chooseStyleBoxTerm {
+	float: left;
+	margin: .4rem .3rem 0 .3rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 1.22rem;
+	height: .52rem;
+	border: .01rem solid #ccc;
+	font: .2rem/.52rem "微软雅黑";
+	color: #666;
+	letter-spacing: .01rem;
+	text-align: center;
+}
+/*选择样式 active*/
+.chooseActive {
+	border: .01rem solid #e82f5c;
+	color: #e82f5c;
+}
+/*number*/
+.commNumberL {
+	padding: 0 .26rem 0 .4rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	height: .76rem;
+	
+}
+.commNumberTitleL {
+	float: left;
+	width: 2rem;
+	height: 100%;
+	font: .21rem/.76rem "微软雅黑";
+	letter-spacing: .02rem;
+	color: #333;
+}
+.commNumberAdd, .commNumberReduce {
+	float: right;
+	position: relative;
+	width: .42rem;
+	height: .76rem;
+}
+.commNumberAddImg {
+	display: block;
+	width: .16rem;
+	height: .16rem;
+}
+.commNumberRedImg {
+	display: block;
+	width: .16rem;
+	height: .02rem
+}
+.commNumberNum {
+	float: right;
+	width: .67rem;
+	height: .76rem;
+	text-align: center;
+	font: .18rem/.76rem "微软雅黑";
+}
+/*确定*/
+.chooseConfirmL {
+	margin-top: .1rem;
+	width: 100%;
+	height: .94rem;
+	text-align: center;
+	color: #fff;
+	letter-spacing: .02rem;
+	background-color: #f84a34; 
+	font: .29rem/.94rem "微软雅黑";
 }

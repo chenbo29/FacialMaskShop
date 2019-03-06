@@ -2058,7 +2058,8 @@ input:-ms-input-placeholder {
 	position:relative;
 	width:100%;
 	height:6.63467rem;
-	background-color:#ff8400
+	background-color:#ff8400;
+	overflow-x: auto;
 }
 .myhearder .person {
 	position:absolute;
@@ -3112,6 +3113,26 @@ input:-ms-input-placeholder {
 	position:relative;
 	top:.256rem;
 	z-index:9
+}
+.zjy_goods{
+	display: flex;
+	overflow-x: auto;
+}
+.zjy_goods .zjy_goods_item{
+	flex: 1;
+	font-size: .5rem;
+}
+.zjy_goods .zjy_goods_item .zjy_goods_item_p{
+	width: 100%;
+}
+.zjy_goods .zjy_goods_item img{
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius:50% ;
+}
+.zjy_goods .zjy_goods_item .zjy_xinde{
+	color: #ff0000;
+	border: 1px solid #ff0000;
 }
 .killbg {
 	border-top:1px solid #f8f8f8;

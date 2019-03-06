@@ -12,31 +12,26 @@
 		<script src="__STATIC__/js/public/rem.js"></script>
         <!--public-->
         <link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
+        <!--公共头部-->
+        <link rel="stylesheet" href="__STATIC__/css/listdata/public.css" />
 		<link rel="stylesheet" href="__STATIC__/css/listdata/listdata.css" />
 	</head>
 	<body>
 		<!--最大边框-->
 		<div class="lb_assembleWrap">
 			<!--头部 wrap
-				data-num="1" 或  不写; => 返回上一页。
-				data-num="跳转路径"; => 返回上一页。
+				returnFun()=>data-num="1" 或  不写; => 返回上一页。data-num="跳转路径"; => 返回上一页。
 			-->
 			<div class="headWrap_lb">
-				<p class="returnBut_lb" data-num="1" onclick="lbHeadFun()">
+				<p class="returnBut_lb" data-num="1" onclick="returnFun()">
 					<img class="returnIcon_lb" src="__STATIC__/images/public_lb/returnImg_lb.png"/>
 				</p>
-				<!--Tab-->
-				<div class="headTab_lb">
-					<!--页面跳转=>pageJump("路径",点击style（Tab的效果）【从0开始】)-->
-					<div class="headTabTerm_lb" onclick="tanPageJump('路径url',0)">
-						竞拍
-					</div>
-					<div class="headTabTerm_lb activeTab_lb" onclick="tanPageJump('路径url',1)">
-						拼团
-					</div>
-					<div class="headTabTerm_lb" onclick="tanPageJump('路径url',2)">
-						秒杀
-					</div>
+				<!--Tab, data-tab="1"=>从零开始-->
+				<div class="headTab_lb" data-tab="1">
+					<!--页面跳转=>pageJump("路径")-->
+					<p class="headTabTerm_lb" onclick="pageJump('路径url')">竞拍</p>
+					<p class="headTabTerm_lb" onclick="pageJump('路径url')">拼团</p>
+					<p class="headTabTerm_lb" onclick="pageJump('路径url')">秒杀</p>
 				</div>
 			</div>
 			<!--商品 列表-->
@@ -87,6 +82,7 @@
 		
 		<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
 		<script src="__STATIC__/js/public/public_lb.js"></script>
+		<script src="__STATIC__/js/listdata/listdata.js"></script>
 		
 	</body>
 </html>

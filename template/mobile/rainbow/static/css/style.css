@@ -3114,16 +3114,35 @@ input:-ms-input-placeholder {
 	top:.256rem;
 	z-index:9
 }
+
+.zjy_shopIngo{
+	overflow-x: auto;
+	
+}
 .zjy_goods{
 	display: flex;
 	overflow-x: auto;
+	
 }
 .zjy_goods .zjy_goods_item{
 	flex: 1;
+	float: left;
 	font-size: .5rem;
+	margin: 0 80px;
+}
+.zjy_goods_item_span{
+	position: relative;
+	top: -1rem;
+	left: 2rem;
+}
+.zjy_goods_item_img{
+	width: 5rem !important;
+	height: 5rem !important;
+	display: inline-block;
+	border-radius: 0 !important;
 }
 .zjy_goods .zjy_goods_item .zjy_goods_item_p{
-	width: 100%;
+	width: 218%;
 }
 .zjy_goods .zjy_goods_item img{
 	width: 1.5rem;

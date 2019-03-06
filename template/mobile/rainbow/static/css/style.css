@@ -1044,15 +1044,17 @@ footer .flool3 p {
 }
 .classreturn .content .return {
 	position:absolute;
-	left:.42667rem
+	left:.42667rem;
+	margin-left:0.25rem;
 }
 .classreturn .content .return a {
 	overflow:hidden;
 	display:block
 }
 .classreturn .content .return a img {
-	width:.46933rem;
-	height:.78933rem
+	width: 0.6933rem;
+	height: 1.08933rem;
+	margin-top:-0.15rem;
 }
 .classreturn .content .search {
 	font-size:.59733rem
@@ -1066,22 +1068,25 @@ footer .flool3 p {
 }
 .classreturn .content .search .sear-input input {
 	border:0;
-	width:100%;
-	height:1.23733rem;
+	width:94%;
+	height:1.57733rem;
 	color:#666666;
 	outline:none;
 	padding:0 .512rem;
 	font-size:.59733rem;
 	display:inherit;
 	background-color:#f1f1f1;
-	border-radius:0.64rem;
+	border-radius: 0.25rem;
+    margin-left: 0.4rem;
+    margin-top: -.3rem;
 }
 .bornone{
 	border-bottom:none;
 }
 .classreturn .content .menu {
 	position:absolute;
-	right:.42667rem
+	right:.42667rem;
+	/* margin-top:-.15rem; */
 }
 .classreturn .content .menu a {
 	/* display:block */
@@ -1089,7 +1094,7 @@ footer .flool3 p {
 	font-weight: bold;
 }
 .classreturn .content .menu img {
-	width:.85333rem
+	width: 1.085333rem;
 }
 .tpnavf {
 	display:none
@@ -2364,7 +2369,10 @@ input:-ms-input-placeholder {
 	padding:.21333rem .34133rem;
 	font-size:.59733rem;
 	font-weight:normal;
-	color:#555555
+	color:#646464;
+	background: #eee;
+    border: none;
+    border-radius: 0.25rem;
 }
 .mask-filter-div {
 	display:none;
@@ -6076,39 +6084,58 @@ span.mp_mp {
 .search_pl .search2 .le_inp {
 	float:left
 }
+
+.search2{
+	justify-items: center;
+	margin-left: 1rem;
+}
 .search_pl .search2 .le_inp input {
-	height:1.87733rem;
-	width:11.648rem;
+	height:1.57733rem;
+    width: 9.68rem;
 	outline:none;
 	font-size:.64rem;
-	border:1px solid #DEDEDE;
+	/* border:1px solid #DEDEDE; */
+	border: none;
 	padding:0 .21333rem;
-	color:#666666
+	color:#666666;
+	background: #f2f2f2;
+	border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
 }
 .search_pl .search2 .ri_ss {
 	float:left;
-	height:1.87733rem;
-	width:3.072rem;
-	background-color:#f23030;
+	 height: 1.57733rem;
+	 width: 1.5072rem;
+	 margin-left: 0.5rem;
+	background-color:#f2f2f2;
 	text-align:center;
-	line-height:1.87733rem
+	line-height: 1.57733rem;
+	border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    margin-top: 0.05rem;
 }
 .search_pl .search2 .ri_ss img {
-	width:.93867rem;
-	height:.93867rem
+	width:.73867rem;
+	height:.73867rem
 }
 .near-le-ri {
-	padding:.85333rem 0 .42667rem 0
+	padding:1.65333rem 0 .42667rem 0
 }
 .near-le-ri span {
 	float:left;
-	font-size:.68267rem
+	font-size:.68267rem;
+	margin-left:0.25rem;
+	font-weight: bold;
 }
 .near-le-ri img {
 	float:right;
 	width:.72533rem;
 	height:.72533rem;
 	cursor:pointer
+}
+.lsw_seach a{
+	font-size:0.7rem;
+	margin-top:0.1rem;
 }
 .se_shien {
 	position:inherit;
@@ -6155,7 +6182,8 @@ span.mp_mp {
 	background-size:1.70667rem;
 	width:.85333rem;
 	height:.85333rem;
-	top:.55467rem
+	top:.55467rem;
+	margin-left:-1rem;
 }
 .search_list_dump ul li .listorimg.orimg {
 	background-position-x:-.85333rem
@@ -6253,7 +6281,8 @@ span.mp_mp {
 	margin-top:.21333rem
 }
 .whiback {
-	background-color:white
+	background-color:white;
+	margin-top:0.8rem;
 }
 .popcover {
 	overflow:hidden;

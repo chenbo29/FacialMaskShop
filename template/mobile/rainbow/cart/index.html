@@ -112,7 +112,7 @@
                                         <!--<span class="<if condition="$cart[selected] eq 1">check_t</if>">-->
                                         <span onClick="checkGoods(this)" <if condition="$cart[selected] eq 1" >class="che check_t"<else/>class="che"</if>>
                                         <i class="dapei_icon_s">
-                                        <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" <if condition="$cart[selected] eq 1">checked="checked"</if>>
+                                        <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" <if condition="$cart[selected] eq 1">checked="checked"</if>> 
                                         </i>
                                         </span>
                              <!--<i>-->
@@ -299,9 +299,138 @@
             <div class="shadow" style="display:none;"></div>
 
             <!-- 地址栏 -->
+            <div class="dz_box" style="display:none;">
+                <div class="user-location">
+                    <div class="location-gobak">
+                        <img src="__STATIC__/images/fanhui.png" alt="">
+                    </div>
+                    <div class="location-title">新建地址</div>
+                </div>
+                <div class="location-userName location-list">
+				   <div class="userName-input input-info">
+                       <input type="text" name="uname" placeholder="收货人姓名 （请使用真实姓名）"/>
+                   </div>
+                </div>
+                <div class="location-userName location-list">
+                    <div class="userName-input input-info">
+                        <input type="text" name="phone" placeholder="手机号码"/>
+                    </div>
+                 </div>
+                 <div class="location-userName location-list">
+                    <div class="userName-input input-info">
+                        <input type="text" name="region" placeholder="所在地区"/>
+                    </div>
+                 </div>
+                 <div class="location-userName location-list">
+                    <div class="userName-input input-info">
+                        <input type="text" name="street" placeholder="街道丶小区门牌等详细的地址"/>
+                    </div>
+                 </div>
+                 <div class="loaction-tacitly">
+                     <div class="tacitly-opt">
+                         <i class="select"></i>
+                     </div>
+                     <div class="tacitly-explain">
+                          设为默认地址
+                     </div>
+                 </div>
+                 <div class="loactionAdd-btn">
+                     <button class="btn-add">添加地址</button>
+                 </div>
+			</div>
             
-
             <!--提交栏-e-->
+            <div class="put-box" style="display:none;">
+              <div class="put_mode">
+                  <div class="put-title">前选择支付方式 </div>
+                  <div class="put-close">
+                      <img src="__STATIC__/images/close-area.png" alt="">
+                  </div>
+              </div>
+               <div class="put-info put-list">
+                   <div class="put-time put-item">
+                       请在0小时30分钟内完成支付&nbsp金额
+                       <span class="r-red">&nbsp￥1476.00</span>
+                       元
+                   </div>
+               </div>
+               <div class="put-bankCard put-list selects active">
+                <div class="put-card put-item">
+                    <span class="put-name card">银行卡快捷支付</span>
+                    <span class="put-select" >
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>                 
+                </div>
+            </div>
+              <div class="put-NeteasePay put-list selects">
+                <div class="put-Netease put-item">
+                    <span class="put-name Netease">网易支付</span>
+                    <span class="put-select" style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-Alipay put-list selects">
+                <div class="put-Alibb put-item">
+                    <span class="put-name Alibb">支付宝</span>
+                    <span class="put-select" style="display: none"> 
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-WeChat put-list selects">
+                <div class="put-tecn put-item">
+                    <span class="put-name tecn">微信支付</span>
+                    <span class="put-select" style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-remaining put-list selects ">
+                <div class="put-balance put-item">
+                    <span class="put-name balance">余额</span>
+                    <span class="put-select " style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="loactionAdd-btn">
+                <button class="btn-add">提交订单</button>
+            </div>
+            </div>
+            <script type="text/javascript">
+              $(function(){
+                /* 地址默认选中样式*/
+                $(".tacitly-opt").click(function(){
+                    if(!$(this).children().hasClass("active")){
+                        $(this).children().addClass("active").removeClass("select")
+                    }else{
+                        $(this).children().removeClass("active").addClass("select")
+                    }
+                })
+                /*支付方式*/
+               $(".selects").click(function(){
+                   if(!$(this).hasClass("active")){
+                    $(this).addClass("active")
+                           .siblings()
+                           .removeClass("active")
+                    $(this).children().children(":last-child").show()
+                    if($(this).children().children(":last-child").is(":visible")){
+                        $(this).siblings().children().children(".put-select").hide()
+                    }
+                   }else{
+                    $(this).removeClass("active")
+                    $(this).children().children(":last-child").hide()
+                   }
+               })
+
+            /*关闭支付方式*/
+            $(".put-close,.shadow").click(function(){
+                    $(".put-box").hide()
+            })
+              })
+            
+            </script>
             <script type="text/javascript">
                 $(document).ready(function(){
                     initDecrement();

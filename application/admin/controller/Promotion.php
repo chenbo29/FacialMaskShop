@@ -740,7 +740,7 @@ class Promotion extends Base
     }
 	
 	//秒杀管理表
-	public function Spike_list(){
+	public function auction_list(){
 		
 		return $this->fetch();
 	}

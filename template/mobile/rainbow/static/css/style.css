@@ -1566,6 +1566,10 @@ footer .flool3 p {
 	margin-left: -1.8rem;
 	text-indent: 2px !important;
 }
+.left{
+	position: relative;
+    left:0 !important;
+}
 #verify_code_img{
 	position: relative;
 }

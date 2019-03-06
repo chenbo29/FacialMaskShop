@@ -1,4 +1,4 @@
-﻿
+
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize *//*! normalize.css v3.0.0 | HTML5 Display Definitions | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
 	display:block
@@ -296,6 +296,182 @@ span,img {
 	background: rgba(0,0,0,0.5)
 }
 
+/* 用户上拉地址栏 */
+.dz_box{
+	height: 15.6rem;
+	background-color:#ffffff;
+	width: 16rem;
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+	border-radius: 0.472rem 0.472rem 0 0;
+}
+
+.user-location,.put_mode{
+	width:100%;
+	height:1.88rem;
+	border-bottom: .01rem solid #f4f4f4;
+	display: flex;
+    flex-wrap:nowrap;
+	text-align: center;
+}
+
+.user-location .location-gobak,.put_mode .put-close{
+	width:1.8rem;
+	height: 1.8rem;
+}
+
+.user-location .location-gobak>img,.put_mode .put-close>img{
+	width: 0.36rem;
+	height:.52rem;
+    margin:.64rem .6rem .72rem .6rem;
+}
+
+.location-title,.put-box .put-title{
+	width: 100%;
+	font-size:.85rem;
+	padding-right:1.8rem;
+	line-height: 1.88rem;
+}
+
+.dz_box .location-list{
+	width:100%;
+	height:2.44rem;
+}
+
+.location-list .input-info{
+   padding:.64rem .44rem 0rem .44rem;
+}
+
+.location-list .input-info>input{
+	height:1.8rem;
+	width:100%;
+	border-radius: 0.3rem;
+	background-color:#f2f2f2;
+	font-size:.5rem;
+	padding-left:.56rem;
+	border:0;
+}
+
+.loaction-tacitly{
+	height:2.12rem;
+	width:100%;
+	display: flex;
+    flex-wrap:nowrap;
+	text-align: center;
+}
+
+.loaction-tacitly .tacitly-opt,.loaction-tacitly .tacitly-explain{
+	-webkit-align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+	justify-content: center;
+}
+
+.loaction-tacitly .tacitly-opt{
+	width:1.84rem;
+}
+
+.loaction-tacitly .tacitly-opt .select{
+  width:.76rem;
+  height:.76rem;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.loaction-tacitly .tacitly-opt .active{
+	background-image: url("../images/check.png");
+	width:.76rem;
+	height:.76rem;
+	background-size: 238%;
+	background-position: 36px 0;
+  }
+
+.loaction-tacitly .tacitly-explain{
+	font-size:.6rem;
+}
+
+.loactionAdd-btn{
+	width:100%;
+	height:2rem;
+}
+
+.loactionAdd-btn .btn-add{
+	width:100%;
+	height:2rem;
+	border:0;
+	background-color:#ff5a27;
+	font-size:.7rem;
+	color:#ffffff;
+	line-height: 2rem;
+}
+/* 用户上拉地址栏结束*/
+
+/* 用户支付方式 */
+.put-box{
+	height: 14.76rem;
+	background-color:#ffffff;
+    width: 16rem;
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    border-radius: 0.472rem 0.472rem 0 0;
+}
+
+.put-box .put-title{
+ padding-left:1.8rem;
+ padding-right:0;
+}
+
+.put_mode .put-close>img {
+    width: 0.60rem;
+	height: .60rem;
+}
+
+.put-list{
+	height: 1.84rem;
+	width:100%;
+	line-height: 1.84rem;
+}
+
+.put-list .put-item{
+  padding-left:.6rem;
+  color:#0f0f0f;
+  font-size: .6rem;
+  position: relative;
+}
+
+.put-list .put-time{
+	color:#666666;
+	font-size:.6rem;
+}
+
+.put-list .put-item .r-red{
+	color:#ef5353;
+}
+
+.put-select{
+	height: 0.68rem;
+	width:0.68rem;
+	position: absolute;
+	right:0;
+	right:1.52rem;
+}
+
+.put-select>img{
+	height: 0.68rem;
+	width:0.68rem;
+}
+
+.put-box .selects.active{
+	background-color:#f4f4f4;
+}
+/* 支付方式 */
 .g5 {
 	background:#f3f5f7
 }

@@ -118,7 +118,7 @@ function getRegionName($regionId){
     $data = M('region')->where(array('id'=>$regionId))->field('name')->find();
     return $data['name'];
 }
-
+//获取左边菜单数组
 function getMenuArr(){
 	$menuArr = include APP_PATH.'admin/conf/menu.php';
 	if(IS_SAAS == 1){

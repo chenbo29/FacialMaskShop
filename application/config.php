@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -378,7 +378,7 @@ return [
     'finally_pay_time'=>1*24*3600,
     'WX_PAY2' => 1,
 
-    /**假设这个访问地址是 www.tpshop.cn/home/goods/goodsInfo/id/1.html 
+    /**假设这个访问地址是 www.zhifengwangluo.com/home/goods/goodsInfo/id/1.html 
      *就保存名字为 home_goods_goodsinfo_1.html     
      *配置成这样, 指定 模块 控制器 方法名 参数名      
      */

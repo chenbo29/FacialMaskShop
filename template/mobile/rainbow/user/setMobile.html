@@ -1,54 +1,44 @@
 <include file="public/header" title="手机号" body=""/>
-<include file="public/header_nav" title="手机号"  href="{:U('Mobile/User/userinfo')}"/>
-<style>
-   /* .fetchcode{
-        background-color: #ec5151;
-        border-radius: 0.128rem;
-        color: white;
-        padding: 0.55467rem 0.21333rem;
-        vertical-align: middle;
-        font-size: 0.59733rem;
-    }
-    #fetchcode{
-        background:#898995;
-        border-radius: 0.128rem;
-        color: white;
-        padding: 0.55467rem 0.21333rem;
-        vertical-align: middle;
-        font-size: 0.59733rem;
-    }*/
-</style>
-		<div class="loginsingup-input">
+
+<div class="zjy_login zjy_bgHide">
+	<div class="zjy_head">
+		<h3><a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>智丰商城账户修改</h3>	
+	</div>
+	<div class="loginsingup-input">
             <form action="{:U('Mobile/User/setMobile')}" method="post" onsubmit="return submitverify(this)">
-                <div class="reset-pwd-title">修改绑定手机号码</div>
 				<div class="lsu">
-                    <input type="hidden" name="source" value="{$Request.param.source}"/>
+            		<span class="ico ico-username"></span>
+                    <input type="hidden"  name="source" value="{$Request.param.source}" placeholder="请输入账号或手机号"/>
 					<span class="ico ico-telephone"></span>
                     <if condition="$user.mobile && $status neq 1">
-                        <input type="text" name="mobile" value="{$user.mobile}" id="tel" readonly/>
-                        <input type="hidden" name="status" value="1"/>
+                        <input type="text"  name="mobile" value="{$user.mobile}" id="tel" readonly/>
+                        <input type="hidden"  name="status" value="1"/>
                     <else/>
-                        <input type="text" name="mobile"  id="tel" onBlur="checkMobilePhone(this.value);" maxlength="11"/>
+                        <input type="text"  name="mobile"  id="tel" onBlur="checkMobilePhone(this.value);" maxlength="11"/>
                         <input type="hidden" name="validate" value="1"/>
-                        <input type="hidden" name="status" value="0"/>
+                        <input type="hidden"  name="status" value="0"/>
                     </if>
 				</div>
-                <div class="v-identity m-t-40">
-                    <span class="v-til">验证码 :</span>
+                <div class="lsu v-identity m-t-40">
                     <div class="v-cont-wrap">
-                        <input type="text" name="mobile_code" id="mobile_code" value="" placeholder="请输入验证码">
-                        <a class="m_phone" href="javascript:void(0);" rel="mobile" id="fcode" onclick="sendcode(this)">获取验证码</a>
+                        <input  class="text_indent" type="text" name="mobile_code" id="mobile_code" value="" placeholder="请输入验证码">
+                        <!--<a class="m_phone" href="javascript:void(0);" rel="mobile" id="fcode" onclick="sendcode(this)">获取验证码</a>-->
                     </div>
+                </div>
+                <div class="zjy_lut_foot">
+                    <input type="text" placeholder="其它方式验证"/>
+                    <button>联系客服</button>
                 </div>
 				<div class="lsu-submit">
                     <if condition="$user.mobile && $status neq 1">
-                        <input type="submit" name=""  value="下一步" />
+                        <input type="submit" name=""  value="提交" />
                     <else/>
                         <input type="submit" name="" id="" value="确认修改" />
                     </if>
 				</div>
 			</form>
 		</div>
+</div>
 <script>
     //手机验证
     function checkMobilePhone(mobile){

@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -118,7 +118,7 @@ function getRegionName($regionId){
     $data = M('region')->where(array('id'=>$regionId))->field('name')->find();
     return $data['name'];
 }
-
+//获取左边菜单数组
 function getMenuArr(){
 	$menuArr = include APP_PATH.'admin/conf/menu.php';
 	if(IS_SAAS == 1){

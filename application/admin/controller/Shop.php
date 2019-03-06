@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -26,7 +26,7 @@ class Shop extends Base
     public function index()
     {
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     /**
@@ -59,12 +59,12 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
 
     public function add(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     public function save(){
         header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     /**

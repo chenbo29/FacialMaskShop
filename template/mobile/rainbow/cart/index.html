@@ -249,10 +249,58 @@
                         </div>
                     </div>
                     <div class="fr">
-                        <a href="javascript:void(0);" onclick="cart_submit();">去结算</a>
+                        <a>去结算</a>
+                        <!-- <a href="javascript:void(0);" onclick="cart_submit();">去结算</a> -->
                     </div>
+                    
+
                 </div>
             </div>
+
+            <!-- 结算上拉框 style="display:none;" -->
+           <div class="fr_box" style="display:none;">
+                <div class="terde">
+                    <div>
+                        <p>收货地址</p>
+                        <p>请添加收货地址</p> 
+                        <span><img src="__STATIC__/images/Back@2x.png" alt=""></span>
+
+                    </div>
+                    <div>
+                        <p>配送</p>
+                        <p>第三方快递</p>
+                        <span><img src="__STATIC__/images/Back@2x.png" alt=""></span>                   
+
+                    </div>
+                    <div>
+                        <p>优惠券</p>
+                        <p>暂无可用</p>
+                        <span><img src="__STATIC__/images/Back@2x.png" alt=""></span>                   
+                    </div>
+                    <div>
+                        <p>红包</p>
+                        <p>暂无可用</p>
+                        <span><img src="__STATIC__/images/Back@2x.png" alt=""></span>                                     
+                    </div>
+                    <div>
+                        <p>应付金额</p>
+                        <p class="money">￥1480.00</p>                                     
+                    </div>
+                    <div class="no">
+                        <i></i>
+                        <a>本人同意并接受以下协议</a>
+                    </div>
+                </div>
+
+
+               <div class="fr_post">提交订单</div>
+            </div>
+            <!-- 结算上拉框-背影 -->
+            <div class="shadow" style="display:none;"></div>
+
+            <!-- 地址栏 -->
+            
+
             <!--提交栏-e-->
             <script type="text/javascript">
                 $(document).ready(function(){
@@ -263,7 +311,7 @@
          </notempty>
     </div>
 <!--看看热卖-start-->
-<div class="hotshop seehotsho">
+<!-- <div class="hotshop seehotsho">
     <div class="thirdlogin">
         <h4>看看热卖</h4>
     </div>
@@ -279,7 +327,7 @@
                             <span class="similar-product-text">{$good[goods_name]|getsubstr=0,20}</span>
                                 <span class="similar-product-price">
                                     ¥<span class="big-price">{$good[shop_price]}</span>
-                                    <!--<span class="small-price">.00</span>-->
+                                    <span class="small-price">.00</span>
                                 </span>
                         </div>
                     </a>
@@ -288,7 +336,7 @@
         </ul>
     </div>
     <div class="add">热卖商品实时更新，常回来看看哟~</div>
-</div>
+</div> -->
 <!--看看热卖-end-->
 <script type="text/javascript">
     $(document).ready(function(){

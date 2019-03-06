@@ -1,0 +1,9 @@
+.user-head-zp{
+	height: 2.4rem;
+	background: linear-gradient(#ff8954,#fe5203);
+}
+.user-avatar-zp img{
+	width:1rem;
+	height: 1rem;
+	border-radius: 50%;
+}

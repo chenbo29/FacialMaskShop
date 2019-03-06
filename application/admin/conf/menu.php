@@ -111,11 +111,12 @@ return	array(
 		
 	'marketing'=>array('name'=>'营销','child'=>array(
 			array('name' => '促销活动','child' => array(
-					array('name' => '抢购管理', 'act'=>'flash_sale', 'op'=>'Promotion'),
+					array('name' => '竞拍管理', 'act'=>'auction_list', 'op'=>'Promotion'),
 					array('name' => '团购管理', 'act'=>'group_buy_list', 'op'=>'Promotion'),
-					array('name' => '优惠促销', 'act'=>'prom_goods_list', 'op'=>'Promotion'),
+					array('name' => '秒杀管理', 'act'=>'flash_sale', 'op'=>'Promotion'),
+					// array('name' => '优惠促销', 'act'=>'prom_goods_list', 'op'=>'Promotion'),
 					array('name' => '订单促销', 'act'=>'prom_order_list', 'op'=>'Promotion'),
-					array('name' => '预售管理','act'=>'index', 'op'=>'PreSell'),
+					// array('name' => '预售管理','act'=>'index', 'op'=>'PreSell'),
 					array('name' => '拼团管理','act'=>'index', 'op'=>'Team'),
 					array('name' => '搭配购管理','act'=>'index', 'op'=>'Combination'),
 			)),

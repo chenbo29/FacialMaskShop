@@ -36,6 +36,17 @@ class Auction extends MobileBase
         return $this->fetch();
     }
 
+
+
+
+    /**
+     * 
+     */
+    private function get_list(){
+
+
+        return $arr;
+    }
   
     
 }

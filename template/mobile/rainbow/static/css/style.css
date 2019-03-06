@@ -25,9 +25,9 @@ body {
 /*! normalize.css v3.0.0 | Links | MIT License | git.io/normalize */a {
 	background:transparent
 }
-a:active,a:hover {
+/* a:active,a:hover {
 	outline:0
-}
+} */
 /*! normalize.css v3.0.0 | Typography | MIT License | git.io/normalize */abbr[title] {
 	border-bottom:1px dotted
 }
@@ -1084,7 +1084,9 @@ footer .flool3 p {
 	right:.42667rem
 }
 .classreturn .content .menu a {
-	display:block
+	/* display:block */
+	font-size: 0.68rem;
+	font-weight: bold;
 }
 .classreturn .content .menu img {
 	width:.85333rem

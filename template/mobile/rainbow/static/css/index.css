@@ -1,0 +1,55 @@
+/* 
+  index首页样式:
+*/
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    color: #232326;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+a {
+    background: transparent;
+}
+
+i, em {
+    font-style: normal;
+}
+
+.header-box{
+    width: 16rem;
+    height: .92rem;
+    position:fixed;
+	/* left:50%;
+	top:0;
+	margin-left:-8rem; */
+	z-index:999;
+    background-color: #f75922;
+}
+
+.headerClass{
+    width: .7rem;
+    height: .92rem;
+}
+
+.headerClass>img{
+    width: .5rem;
+    height: .4rem;
+    padding:.24rem 0 .24rem .2rem;
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -694,6 +694,7 @@ class Promotion extends Base
         $this->assign('info', $info);
         return $this->fetch();
     }
+	
 
     public function flash_sale_del()
     {
@@ -737,5 +738,16 @@ class Promotion extends Base
         $this->assign("URL_getMovie", U('Admin/Ueditor/getMovie', array('savepath' => 'promotion')));
         $this->assign("URL_Home", "");
     }
-
+	
+	//秒杀管理表
+	public function auction_list(){
+		
+		return $this->fetch();
+	}
+	//秒杀管理操作
+	public function Spike_list_info(){
+		
+		return $this->fetch();
+	}
+	
 }

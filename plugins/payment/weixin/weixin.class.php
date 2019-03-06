@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop 微信支付插件
+ * 智丰网络 微信支付插件
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -158,7 +158,7 @@ EOF;
     // 微信提现批量转账
     function transfer($data){
     header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
     
     /**
@@ -221,7 +221,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
      // 微信订单退款原路退回
     public function payment_refund($data){
     header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
 }

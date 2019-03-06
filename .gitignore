@@ -4,3 +4,4 @@
 /vendor/topthink/think-captcha/assets/bgs/*
 .vscode
 .idea
+/public/upload/goods/thumb/

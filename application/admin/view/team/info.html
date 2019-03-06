@@ -22,226 +22,223 @@
         <div class="ncap-form-default">
             <dl class="row">
                 <dt class="tit">
-                    <label><em>*</em>拼团标题</label>
+                    <label><em>*</em>拼团活动标题</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="act_name" value="{$teamActivity.act_name}" class="input-txt">
-                    <span class="err" id="err_act_name"></span>
-                    <span class="err" id="err_team_id"></span>
+                    <input type="text" name="act_name" value="" class="input-txt">
                     <p class="notic">请填写拼团标题</p>
                 </dd>
             </dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>是否开启活动</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>时间段:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="">至<input type="text" name="act_name" value="">重置时间
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>选择商品</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			    </dd>
+			</dl>
+			
             <dl class="row">
                 <dt class="tit">
-                    <label><em>*</em>发放类型</label>
+                    <label><em>*</em>团购类型</label>
                 </dt>
                 <dd class="opt ctype">
-                    <volist name="$Think.config.TEAM_TYPE" id="type">
-                        <input name="team_type" class="team_type" type="radio" value="{$key}" <if condition="$teamActivity['team_type'] eq $key">checked='checked'</if>><label>{$type}</label>
-                    </volist>
+                        <input name="team_type" class="team_type" type="radio" value="小团"><label>小团</label>
+						<input name="team_type" class="team_type" type="radio" value="大团"><label>大团</label>
+						<input name="team_type" class="team_type" type="radio" value="阶梯团"><label>阶梯团</label>
+					<p class="notic">小团：邀请可成为团友，邀请人为团长，满足人数或者购买数量才可开团。为了避免团长开团后长期不能成团，开团24小时后如果还未成团，将会自动关闭订单。 <br/>
+大团：满足团购总人数或者购买总数量即可开团。 <br/>
+阶梯团：根据不同的团购人数，决定最后的团购价格。到达截止时间拼团自动结束，且订单交易完成后，多余的钱将返还至预存款中。 
+团购活动开启后请勿随意更改团购类型，以免造成不必要的损失。 <br/>
+默认关闭，若开启，小团将在24小时后自动成团，无论团购人数或购买数量是否达到若选择了开团等级，只有达到该等级的会员才可以开团。</p>
                 </dd>
             </dl>
-            <dl class="row commission">
-                <dt class="tit">
-                    <label><em>*</em>团长佣金</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="bonus" value="{$teamActivity.bonus}"  onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
-                    <span class="err" id="err_bonus"></span>
-                    <p class="notic">拼团成功后，开团人能获得的佣金<br/>必须是0.01~1000000之间的数字(单位：元)</p>
-                </dd>
-            </dl>
-            <dl class="row luck">
-                <dt class="tit">
-                    <label><em>*</em>抽奖限量</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="stock_limit" value="{$teamActivity.stock_limit}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
-                    <span class="err" id="err_stock_limit"></span>
-                    <p class="notic">中奖人数(单位：人)</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>成团有效期</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="time_limit" value="{$teamActivity.time_limit_hours}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
-                    <span class="err" id="err_goods_num"></span>
-                    <p class="notic">开团后有效时间范围(单位：小时)</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>需要成团人数</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text"  name="needer" value="{$teamActivity.needer}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  class="input-txt">
-                    <span class="err" id="err_needer"></span>
-                    <p class="notic">需要多少人拼团才能成功(单位：人)</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>购买限制数</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="buy_limit" value="{$teamActivity.buy_limit}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  class="input-txt">
-                    <span class="err" id="err_buy_limit"></span>
-                    <p class="notic">限制购买商品个数,0为不限制(单位：个),抽奖团限购数为1</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>虚拟销售基数</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="virtual_num" value="{$teamActivity.virtual_num}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  class="input-txt">
-                    <span class="err" id="err_virtual_num"></span>
-                    <p class="notic">虚拟购买商品数(单位：个)</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>分享标题</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="share_title" value="{$teamActivity.share_title}" class="input-txt">
-                    <span class="err" id="err_share_title"></span>
-                    <p class="notic">请填写分享标题</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>分享描述</label>
-                </dt>
-                <dd class="opt">
-                    <textarea placeholder="请输入分享描述" name="share_desc" rows="6" class="tarea">{$teamActivity.share_desc}</textarea>
-                    <p class="notic">拼团描述介绍</p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>分享图片</label>
-                </dt>
-                <dd class="opt">
-                    <div class="input-file-show">
-                        <span class="show">
-                            <a id="img_a"  class="nyroModal" rel="gal" href="{$teamActivity.share_img}">
-                                <i id="img_i" class="fa fa-picture-o" onMouseOver="layer.tips('<img src={$teamActivity.share_img}>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
-                            </a>
-                        </span>
-                        <span class="type-file-box">
-                            <input type="text" id="imagetext" name="share_img" value="{$teamActivity.share_img}" class="type-file-text">
-                            <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
-                            <input class="type-file-file" onClick="GetUploadify(1,'share_img','activity','img_call_back')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
-                        </span>
-                    </div>
-                    <span class="err" id="err_share_img"></span>
-                    <p class="notic">请上传图片格式文件</p>
-                </dd>
-            </dl>
-            <div class="flexigrid">
-                <div class="hDiv">
-                    <div class="hDivBox">
-                        <table cellspacing="0" cellpadding="0">
-                            <thead>
-                            <tr>
-                                <th align="center">
-                                    <div style="text-align: center; width: 250px;" class="">规格</div>
-                                </th>
-                                <th align="center">
-                                    <div style="text-align: center; width: 50px;" class="">库存</div>
-                                </th>
-                                <th align="center">
-                                    <div style="text-align: center; width: 100px;" class="">商城价格（元）</div>
-                                </th>
-                                <th align="center">
-                                    <div style="text-align: center; width: 150px;" class="">拼团价格（元）</div>
-                                </th>
-                                <th class="handle" align="left">
-                                    <div style="text-align: center; width: 150px;">操作</div>
-                                </th>
-                                <th style="width:100%" axis="col7">
-                                    <div></div>
-                                </th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                <div class="tDiv">
-                    <div class="tDiv2">
-                        <a onclick="selectGoods()">
-                            <div class="fbutton">
-                                <div title="添加商品" class="add">
-                                    <span><i class="fa fa-plus"></i>添加商品</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="fbutton_right" style="margin-left: 5px;vertical-align: top;">
-                            <div class="fbutton_span">
-                                <input type="text" id="goods_name" name="goods_name" readonly="readonly" value="{$teamActivity.goods_name}" class="input-txt" autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="fbutton_right" style="margin-left: 5px;vertical-align: top;">
-                            <div class="fbutton_span">
-                                <span class="err" id="err_team_goods_item"></span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="tDiv2" style="margin-top: 2px;">
-                        <span class="err" id="err_combination_goods" style="font-size: 12px;height: 20px;margin-left: 400px;vertical-align:top">选择商品</span>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <div class="bDiv" style="height: auto;">
-                    <div id="flexigrid">
-                        <table>
-                            <tbody id="selected_group_goods">
-                            <volist name="teamActivity['team_goods_item']" id="goods_item" key="item_key">
-                                <tr class="bd-line">
-                                    <input name="team_goods_item[{$item_key-1}][goods_id]" value="{$goods_item.goods_id}" type="hidden"/>
-                                    <input name="team_goods_item[{$item_key-1}][item_id]" value="{$goods_item.item_id}" type="hidden"/>
-                                    <td> <div style="text-align: center; width: 250px;">{$goods_item.spec_goods_price.key_name}</div> </td>
-                                    <td>
-                                        <div style="text-align: center; width: 50px;">
-                                            <if condition="$goods_item['item_id'] eq 0">
-                                                {$teamActivity.goods.store_count}
-                                                <else/>
-                                                {$goods_item.spec_goods_price.store_count}
-                                            </if>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="text-align: center; width: 100px;">
-                                            <if condition="$goods_item['item_id'] eq 0">
-                                                {$teamActivity.goods.shop_price}
-                                                <else/>
-                                                {$goods_item.spec_goods_price.price}
-                                            </if>
-                                        </div>
-                                    </td>
-                                    <td> <div style="text-align: center; width: 150px;"><input name="team_goods_item[{$item_key-1}][team_price]" value="{$goods_item.team_price}" type="text"/></div></td>
-                                    <td class="handle">
-                                        <div style="text-align: center; width: 100px;">
-                                            <a class="btn red delete_tr" href="javascript:void(0)">删除</a>
-                                        </div>
-                                    </td>
-                                    <td style="width: 100%;">
-                                        <div>&nbsp;</div>
-                                    </td>
-                                </tr>
-                            </volist>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!--分页位置-->
-                <div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">    </ul>
-                </div>
-            </div>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>团购价:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			        <p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p>
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+				<dt class="tit">
+					<label><em>*</em>成团条件:</label>
+				</dt>
+				<dd class="opt ctype">
+						<input name="team_type" class="team_type" type="radio" value="按拼团人数"><label>按拼团人数</label>
+						<input name="team_type" class="team_type" type="radio" value="按购买数量"><label>按购买数量</label>
+					<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p>
+				</dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>拼团人数:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			        <p class="notic">满足人数即可。</p>
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>购买数量:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			        <p class="notic">满足数量即可。</p>
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>阶梯团:</label>
+			    </dt>
+			    <dd class="opt">
+			        <div class="hDiv">
+			        	<div class="hDivBox">
+			        		<table cellspacing="0" cellpadding="0">
+			        			<thead>
+			        			<tr>
+			        				<th class="sign" axis="col0">
+			        					<div style="width: 24px;"><i class="ico-check"></i></div>
+			        				</th>
+			        				<th align="left" abbr="article_title" axis="col3" class="">
+			        					<div style="text-align: left; width: 50px;" class="">层级</div>
+			        				</th>
+			        				<th align="left" abbr="ac_id" axis="col4" class="">
+			        					<div style="text-align: center; width: 100px;" class="">拼团价格</div>
+			        				</th>
+			        				<th align="left" abbr="ac_id" axis="col4" class="">
+			        					<div style="text-align: center; width: 120px;" class="">拼团人数</div>
+			        				</th>
+			        				<th align="left" axis="col1" class="handle">
+			        					<div style="text-align: center; width: 240px;">操作</div>
+			        				</th>
+			        				<th style="width:100%" axis="col7">
+			        					<div></div>
+			        				</th>
+			        			</tr>
+			        			</thead>
+			        		</table>
+			        	</div>
+			        </div>
+					
+					<div class="tDiv">
+						<div class="tDiv2">
+							<a href="{:U('Promotion/spike_list_info')}">
+								<div class="fbutton">
+									<div title="添加活动" class="add">
+										<span><i class="fa fa-plus"></i>添加活动</span>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div style="clear:both"></div>
+					</div>
+					<div class="bDiv" style="height: auto;">
+						<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
+							<table>
+								<tbody>
+								<foreach name="prom_list" item="vo" key="k" >
+									<tr>
+										<td class="sign">
+											<div style="width: 24px;"><i class="ico-check"></i></div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: left; width: 100px;"> </div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: center; width: 100px;"> </div>
+										</td>
+					
+										<td align="left" class="handle">
+											<div style="text-align: left; width: 150px; max-width:170px;">
+												<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+												<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+											</div>
+										</td>
+										<td align="" class="" style="width: 100%;">
+											<div>&nbsp;</div>
+										</td>
+									</tr>
+								</foreach>
+								</tbody>
+							</table>
+						</div>
+						<div class="iDiv" style="display: none;"></div>
+					</div>
+					<p class="notic">最多可设置10个阶梯。</p>
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>限购:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="" class="input-txt">
+			        <p class="notic">每人限制最多可购买数量。不设或设置为0则表示不限购。如果商品也设置了限购以设置的最小值为准。</p>
+			    </dd>
+			</dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>活动规则:</label>
+			    </dt>
+			    <dd class="opt">
+			        <textarea type="text" name="act_name" class="input-txt">
+					</textarea>
+			    </dd>
+			</dl>
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>商品简介:</label>
+			    </dt>
+			    <dd class="opt">
+			        <textarea type="text" name="act_name" class="input-txt">
+			        </textarea>
+					<p class="notic">简单介绍下商品。</p>
+			    </dd>
+			</dl>
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>分享标题:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" name="act_name" value="我买了【商品标题】，求凑单！！！" class="input-txt">
+					<p class="notic">团购分享标签，50个汉字以内。</p>
+			    </dd>
+			</dl>
+			
+            
             <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
         </div>
     </form>

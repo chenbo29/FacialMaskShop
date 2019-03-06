@@ -7,8 +7,8 @@
 	<div class="fixed-bar">
 		<div class="item-title">
 			<div class="subject">
-				<h3>抢购管理</h3>
-				<h5>网站系统抢购活动审核与管理</h5>
+				<h3>竞拍管理</h3>
+				<h5>网站系统竞拍活动审核与管理</h5>
 			</div>
 		</div>
 	</div>
@@ -19,14 +19,14 @@
 			<span title="收起提示" id="explanationZoom" style="display: block;"></span>
 		</div>
 		<ul>
-			<li>抢购管理, 由平台设置管理.</li>
-			<li>抢购活动开始结束时间跨度必须为两个小时，因为前台抢购活动展示是以每两个小时为一场，否则前台无法展示</li>
+			<li>竞拍管理, 由平台设置管理.</li>
+			<li>竞拍活动开始结束时间跨度必须为两个小时，因为前台竞拍活动展示是以每两个小时为一场，否则前台无法展示</li>
 		</ul>
 	</div>
 	<div class="flexigrid">
 		<div class="mDiv">
 			<div class="ftitle">
-				<h3>抢购活动列表</h3>
+				<h3>竞拍活动列表</h3>
 				<h5>(共{$pager->totalRows}条记录)</h5>
                 <div class="fbutton">
                     <a href="http://help.tp-shop.cn/Index/Help/info/cat_id/5/id/47.html" target="_blank">
@@ -47,16 +47,22 @@
 							<div style="width: 24px;"><i class="ico-check"></i></div>
 						</th>
 						<th align="left" abbr="article_title" axis="col3" class="">
-							<div style="text-align: left; width: 240px;" class="">活动名称</div>
+							<div style="text-align: left; width: 240px;" class="">商品</div>
 						</th>
 						<th align="left" abbr="article_time" axis="col6" class="">
-							<div style="text-align: left; width: 240px;" class="">活动商品</div>
+							<div style="text-align: left; width: 50px;" class="">原价</div>
 						</th>
 						<th align="left" abbr="ac_id" axis="col4" class="">
-							<div style="text-align: left; width: 50px;" class="">抢购总量</div>
+							<div style="text-align: left; width: 100px;" class="">秒杀价</div>
 						</th>
 						<th align="center" abbr="article_show" axis="col5" class="">
-							<div style="text-align: center; width: 50px;" class="">抢购价格</div>
+							<div style="text-align: center; width: 50px;" class="">秒杀数量</div>
+						</th>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">剩余数量</div>
+						</th>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">没人限购</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">开始时间</div>
@@ -65,16 +71,7 @@
 							<div style="text-align: center; width: 120px;" class="">结束时间</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">已购买</div>
-						</th>
-						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">订单数量</div>
-						</th>
-						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 50px;" class="">活动状态</div>
-						</th>
-						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 80px;" class="">是否启动</div>
 						</th>
 						<th align="left" axis="col1" class="handle">
 							<div style="text-align: center; width: 150px;">操作</div>
@@ -109,43 +106,32 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}">{$vo.title}</a></div>
+								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 240px;">{$vo.goods_name}</div>
+								<div style="text-align: left; width: 50px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.goods_num}</div>
+								<div style="text-align: center; width: 100px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.price}</div>
+								<div style="text-align: center; width: 50px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;">{$vo.start_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;">{$vo.end_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.buy_num}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.order_num}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.status_desc}</div>
+								<div style="text-align: center; width: 50px;"> </div>
 							</td>
-
-							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">
-									<if condition='$vo[is_end] eq 0'>
-										<span class="yes" onClick="changeTableVal2('flash_sale','id','{$vo.id}','is_end',this,'是','否','{$vo.status_desc}')" ><i class="fa fa-check-circle"></i>是</span>
-										<else />
-										<span class="no" onClick="changeTableVal2('flash_sale','id','{$vo.id}','is_end',this,'是','否')" ><i class="fa fa-ban"></i>否</span>
-									</if>
-								</div>
-							</td>
-
 
 							<td align="left" class="handle">
 								<div style="text-align: left; width: 150px; max-width:170px;">

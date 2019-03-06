@@ -30,6 +30,16 @@ class Member extends MobileBase
         return $this->fetch();
     }
     
+
+
+    /**
+     * 优惠券
+     */
+    public function coupon()
+    {
+       
+        return $this->fetch();
+    }
   
     
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -51,7 +51,7 @@ class Payment extends Base {
     }
    
     /**
-     * tpshop 提交支付方式
+     * 智丰网络 提交支付方式
      */
     public function getCode(){        
             //C('TOKEN_ON',false); // 关闭 TOKEN_ON

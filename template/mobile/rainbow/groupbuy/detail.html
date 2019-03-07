@@ -24,7 +24,18 @@
 
 	<body>
 		<!--最外边框-->
-		<div class="detailsWrapL">
+		<div class="wrapL">
+			<!--返回，分享-->
+			<div class="returnshareWrapL">
+				<!--返回,data-num="1" 或  不写; => 返回上一页。data-num="跳转路径"; => 返回上一页。-->
+				<p class="returnBox" data-num="1" onclick="returnFun()">
+					<img class="returnBoxIcon" src="__STATIC__/images/public_lb/returnImg666_lb.png"  alt=""/>
+				</p>
+				<!--分享-->
+				<p class="shareBox" onclick="">
+					<img class="shareBoxImg" src="__STATIC__/images/public_lb/share666_lb.png"  alt=""/>
+				</p>
+			</div>
 			<!--轮播图-->
 			<div class="rotarySowingWrapL">
 				<!--swiper的外框-->
@@ -43,8 +54,7 @@
 					 	</div>
 					 	<div class="swiper-slide">
 					  		<img class="sowingMapImgL" src="__STATIC__/images/public_lb/00001.png"  alt=""/>
-					 	</div>
-					 	
+					 	</div>					 	
 					 	<!--删-->
 					</div>
 					<!-- Add Pagination -->
@@ -75,20 +85,20 @@
 					<p class="alreadyL">已团20件</p>
 				</div>
 				<!--评论-->
-				<div class="commentBoxL">
+				<div class="commentBoxL clearfloat">
 					<p class="commentBoxLeftL">评价<span class="praiseText">&nbsp;&nbsp;好评 100％</span></p>
 					<div class="commentBoxRightL">
 						<p class="commentNumL" onclick="pageJump('路径')">
 							<span>共200+条评论</span>
-							<img class="getIntoIcon_lb" src="__STATIC__/images/public_lb/getIntoImg_lb.png"/>
+							<img class="publicGetIntoIcon_lb" src="__STATIC__/images/public_lb/getIntoImg_lb.png"/>
 						</p>
 					</div>
 					<!--清除浮动-->
 					<p class="clearfloat"></p>
-					<!--user-->
-					<div class="commentBoxUserL">
+					<!--user评价 wrap-->
+					<div class="commentBoxUserWrap">
 						<!--（循环）项-->
-						<div class="comBUserTermL">
+						<div class="comBUserTermL clearfloat">
 							<div class="comBUserTermTopL">
 								<p class="comBUserTermTopLeftL">
 									<span>皮卡丘</span>
@@ -102,16 +112,285 @@
 								</p>
 								<p class="comBUserTermTopRightL">2019-02-21</p>
 							</div>
+							<!--text-->
+							<p class="comBUTermTextL">东西收到了，衣服超级好看，特别适合我，也不掉毛凸显出了黑色的高贵跟高雅，特别适合我非常感谢店家五星好评。</p>
+							<!--图片集 box-->
+							<div class="comBUTermImgBox">
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+							</div>
 							
-							
+						
 						</div>
+						<!--000-->
+						<div class="comBUserTermL clearfloat">
+							<div class="comBUserTermTopL">
+								<p class="comBUserTermTopLeftL">
+									<span>皮卡丘</span>
+									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
+									<!--删-->
+									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
+									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
+									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
+									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
+									<!--删-->
+								</p>
+								<p class="comBUserTermTopRightL">2019-02-21</p>
+							</div>
+							<!--text-->
+							<p class="comBUTermTextL">东西收到了，衣服超级好看，特别适合我，也不掉毛凸显出了黑色的高贵跟高雅，特别适合我非常感谢店家五星好评。</p>
+							<!--图片集 box-->
+							<div class="comBUTermImgBox">
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+							</div>
+						</div>
+						<!--000-->
+						
+					</div>
+					
+				</div>
+				<!--拼单 wrap-->
+				<div class="spellListWrapL clearfloat">
+					<!--head-->
+					<div class="spellLWHeadL">
+						<span>8人在拼单，可直接参与</span>
+						<p class="spellLWHeadMore">
+							<span>查看更多</span>
+							<img class="publicGetIntoIcon_lb" src="__STATIC__/images/public_lb/getIntoImg_lb.png"/>
+						</p>
+					</div>
+					<!--拼单 box-->
+					<div class="spellListBoxL">
+						<!--（循环）项-->
+						<div class="spellListTermL">
+							<div class="spellListTermLeftL">
+								<!--绝对定位-->
+								<img class="spellListTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+								<span>握不住的他和沙</span>
+							</div>
+							<div class="spellListTermRightL">
+								还差99人拼成<br />剩余00:05:30
+								<!--拼单按钮 - 绝对定位-->
+								<p class="pellListTermBut">去拼单</p>
+							</div>
+						</div>
+						<!--000-->
+						<!--（循环）项-->
+						<div class="spellListTermL">
+							<div class="spellListTermLeftL">
+								<!--绝对定位-->
+								<img class="spellListTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+								<span>握不住的他和沙</span>
+							</div>
+							<div class="spellListTermRightL">
+								还差99人拼成<br />剩余00:05:30
+								<!--拼单按钮 - 绝对定位-->
+								<p class="pellListTermBut">去拼单</p>
+							</div>
+						</div>
+						<!--（循环）项-->
+						<div class="spellListTermL">
+							<div class="spellListTermLeftL">
+								<!--绝对定位-->
+								<img class="spellListTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+								<span>握不住的他和沙</span>
+							</div>
+							<div class="spellListTermRightL">
+								还差99人拼成<br />剩余00:05:30
+								<!--拼单按钮 - 绝对定位-->
+								<p class="pellListTermBut">去拼单</p>
+							</div>
+						</div>
+						<!--000-->
+												
+					</div>					
+				</div>								
+			</div>
+			<!--购买 - 固定定位-->
+			<div class="purchaseWrapL">
+				<!--left-->
+				<div class="purchaseWrapLeft">
+					<!--收藏 -->
+					<div class="purchaseWrapLeftTerm collectionFun">
+						<p class="purchaseWrapLeftTermTop" style="padding-top: .17rem;">
+							<!--绝对定位-->
+							<!--未收藏-->
+							<!--<img class="collectionImgL" src="__STATIC__/images/public_lb/collectionIcon_lb.png"/>-->
+							<img class="collectionImgL" src="__STATIC__/images/public_lb/collectionYes_lb.png"/>
+						</p>
+						<span>收藏</span>
+					</div>
+					<div class="purchaseWrapLeftTerm">
+						<p class="purchaseWrapLeftTermTop" style="padding-top: .11rem;">
+							<!--绝对定位-->
+							<img class="customerServiceImgL" src="__STATIC__/images/public_lb/customerServiceIcon_lb.png"/>
+						</p>
+						<span>客服</span>
 					</div>
 				</div>
-				<!---->
-				
+				<div class="purchaseWrapMiddle purchasePublicNum">
+					￥279<br />
+					<span class="purchasePublicText">单独购买</span>
+				</div>
+				<div class="purchaseWrapRight purchasePublicNum">
+					￥139<br />
+					<span class="purchasePublicText">发起拼单</span>
+				</div>
 			</div>
 			
-			
+			<!--拼团(弹窗)-->
+			<div class="publicAlertWrap assembleAlertWrap">
+				<!--box-->
+				<div class="assembleAlertBox">
+					<!---->
+					<!--<div class="spellListTermL">-->
+					<!--head-->
+					<div class="assembHeadBox">
+						<span>正在拼单</span>
+						<!--关闭按钮 icon-->
+						<p class="asHeadCIconBox" >
+							<img class="asHeadCIconBoxIcon" src="__STATIC__/images/public_lb/close666_lb.png"/>
+						</p>
+					</div>
+					<!--（循环）项-->
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<!--删-->
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<div class="assembleAlertTermL">
+						<div class="assembleAlertTermLeftL publicEllipsis">
+							<!--绝对定位-->
+							<img class="assembleAlertTermIconL" src="__STATIC__/images/public_lb/00004.png"/>
+							<span>握不住的他和沙</span>
+						</div>
+						<div class="assembleAlertTermRightL">
+							还差99人拼成<br />剩余00:05:30
+							<!--拼单按钮 - 绝对定位-->
+							<p class="pellListTermBut spellListAlertBut">去拼单</p>
+						</div>
+					</div>
+					<!--删-->
+				
+				<!--提示-->
+				<div class="tipsBoxL">
+					仅显示6个正在拼单的人
+				</div>
+						
+				</div>
+			</div>
+			<!--选择款式（弹框）-->
+			<div class="publicAlertWrap choiceStyleWrap">
+				<!--底部弹框-->
+				<div class="choiceStyleBox clearfloat">
+					<!--top-->
+					<div class="choiceStyleTopBox">
+						<!--商品img-->
+						<img class="choiceStyleComImgL" src="__STATIC__/images/public_lb/00003.png" alt="" />
+						￥297-397<br /><span class="tispTextL">请选择 :&nbsp;</span><span class="tispTextL newPromptL">款式</span>						
+						<!--（绝对）关闭按钮 icon-->
+						<p class="choiceStyleIconBox" >
+							<img class="choiceSIconBoxIcon" src="__STATIC__/images/public_lb/close666_lb.png"/>
+						</p>
+					</div>
+					<!--title-->
+					<p class="optionPromptTitle">款式</p>
+					<!--选择样式-->
+					<div class="chooseStyleBox clearfloat">
+						<!--选项
+							butStyleFun('下标');点击样式: class="chooseActive";
+						-->
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(0)">黑色</p>
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(1)">红色</p>
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(2)">蓝色</p>
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(3)">红色</p>
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(4)">白色</p>
+						<p class="chooseStyleBoxTerm" onclick="butStyleFun(5)">红色</p>
+					</div>
+					<!--number-->
+					<div class="commNumberL">
+						<!--title-->
+						<p class="commNumberTitleL">数量</p>
+						<!--加-->
+						<p class="commNumberAdd">
+							<img class="publicDrooping commNumberAddImg" src="__STATIC__/images/public_lb/addIcon333.png"/>
+						</p>
+						<!--num-->
+						<p class="commNumberNum" id="commNumber_lb">9</p>
+						<!--减-->
+						<p class="commNumberReduce">
+							<img class="publicDrooping commNumberRedImg" src="__STATIC__/images/public_lb/reduceIcon333.png"/>
+						</p>
+					</div>
+					<!--确认-->
+					<p class="chooseConfirmL">确认</p>
+				</div>
+			</div>
 		</div>
 		
 		
@@ -120,6 +399,7 @@
 		<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
 		<script src="__STATIC__/js/listdata/detail.js"></script>
 		<script src="__STATIC__/js/public/public_lb.js"></script>
+		
 	</body>
 
 </html>

@@ -11,8 +11,8 @@
     <div class="fixed-bar">
         <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
             <div class="subject">
-                <h3>竞拍管理 - 编辑竞拍</h3>
-                <h5>网站系统竞拍活动详情页</h5>
+                <h3>秒杀管理 - 编辑秒杀</h3>
+                <h5>网站系统秒杀活动详情页</h5>
             </div>
         </div>
     </div>
@@ -21,181 +21,113 @@
         <input type="hidden" name="id" value="{$info.id}">
         <input type="hidden" name="item_id" value="{$info.item_id}">
         <div class="ncap-form-default">
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>活动名称：</label>
-                </dt>
-                <dd class="opt">
-                    <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
-                    <span class="err" id="err_title"></span>
-                    <p class="notic">请填写活动名称</p>
-                </dd>
-            </dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>活动商品：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
-			        <span class="err" id="err_title"></span>
-			        <p class="notic">参加过其他活动的商品不参与拍卖，请选择不带活动标签的商品，否则后果自负！</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>活动轮次：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">轮
-			        <span class="err" id="err_title"></span>
-			        <p class="notic">活动轮次即活动商品数量。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>延时周期：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">分钟
-			        <span class="err" id="err_title"></span>
-			        <p class="notic">延时周期即延长时间，单位分钟， 一旦有买家出价，则延时周期生效。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>每轮时间：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">分钟
-			        <span class="err" id="err_title"></span>
-			        <p class="notic">每轮时间即每轮竞拍活动的出价时间。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>预展开始时间：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
-			        <span class="err" id="err_title"></span>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>活动开始时间：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
-			        <span class="err" id="err_title"></span>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>货款支付时间：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">分钟
-			        <span class="err" id="err_title"></span>
-					<p class="notic">货款支付时间即竞拍胜出后的支付货款时间，单位为分钟，胜出者未按时付款的，视为违约，将扣除保证金。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>保证金：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">元
-			        <span class="err" id="err_title"></span>
-					<p class="notic">为保证竞拍活动秩序，防止买家胡乱出价，参与竞拍必须支付保证金，且0＜保证金＜＝商品现价的20%。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>保留价：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">元
-			        <span class="err" id="err_title"></span>
-					<p class="notic">买家出价低于保留价，则视为流拍，商品仍归商家，活动结束后，买家支付的保证金系统会自动退还给买家。设置为0，则表示不设置保留价，此时只要竞拍者出价即可胜出，付款后，商家必须发货。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>起拍价：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">元
-			        <span class="err" id="err_title"></span>
-					<p class="notic">买家出价的最低价格。可以设置0元起拍，1元起拍。</p>
-			    </dd>
-			</dl>
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>加价幅度：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">元
-			        <span class="err" id="err_title"></span>
-					<p class="notic">出价时需要增加的幅度。每次出价可以增加多个。</p>
-			    </dd>
-			</dl>
-
-
-            <if condition="$info['is_edit'] eq 0">
-                <div class="bot"><a class="ncap-btn-big">确认提交</a></div>
-            <else/>
-
-            <dl class="row" txt="是否交货">
-                <dt class="tit">是否交货</dt>
-                <dd class="opt">
-                    <div class="onoff">
-                        <label for="mmt_message_switch1" class="cb-enable selected">是</label>
-                        <label for="mmt_message_switch0" class="cb-disable ">否</label>
-                        <input id="mmt_message_switch1" name="mmt_message_switch" checked="checked" value="1" type="radio">
-                        <input id="mmt_message_switch0" name="mmt_message_switch" value="0" type="radio">
-                    </div>
-                    <p class="notic"></p>
-                </dd>
-            </dl>
-            <!-- <dl class="row">
-                <dt class="tit">手机短信通知</dt>
-                <dd class="opt">
-                    <div class="onoff">
-                        <label for="mmt_short_switch1" class="cb-enable ">是</label>
-                        <label for="mmt_short_switch0" class="cb-disable selected">否</label>
-                        <input id="mmt_short_switch1" name="mmt_short_switch"  value="1" type="radio">
-                        <input id="mmt_short_switch0" name="mmt_short_switch" checked="checked" value="0" type="radio">
-                    </div>
-                    <p class="notic"></p>
-                </dd>
-            </dl>
-            <dl class="row">
-                <dt class="tit">邮件通知</dt>
-                <dd class="opt">
-                    <div class="onoff">
-                        <label for="mmt_mail_switch1" class="cb-enable ">是</label>
-                        <label for="mmt_mail_switch0" class="cb-disable selected">否</label>
-                        <input id="mmt_mail_switch1" name="mmt_mail_switch"  value="1" type="radio">
-                        <input id="mmt_mail_switch0" name="mmt_mail_switch" checked="checked" value="0" type="radio">
-                    </div>
-                    <p class="notic"></p>
-                </dd>
-            </dl> --> 
-
-                <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
-            </if>
-        </div>
+                    <dl class="row">
+                        <dt class="tit">
+                            <label><em>*</em>选择商品：</label>
+                        </dt>
+                        <dd class="opt">
+                            <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
+                            <span class="err" id="err_title"></span>
+                            <p class="notic">请选择商品。</p>
+                        </dd>
+                    </dl>
+        			
+        			<dl class="row">
+        			    <dt class="tit">
+        			        <label><em>*</em>开始时间：</label>
+        			    </dt>
+        			    <dd class="opt">
+        			        <input type="text" name="title" id="title" value="{$info.start_time}" class="input-txt">
+        			        <span class="err" id="err_title"></span>
+        			        <p class="notic">设置秒杀商品开始时间。</p>
+        			    </dd>
+        			</dl>
+        			
+        			<dl class="row">
+        			    <dt class="tit">
+        			        <label><em>*</em>结束时间：</label>
+        			    </dt>
+        			    <dd class="opt">
+        			        <input type="text" name="title" id="title" value="{$info.end_time}" class="input-txt">
+        			        <span class="err" id="err_title"></span>
+        			        <p class="notic">设置秒杀商品结束时间。</p>
+        			    </dd>
+        			</dl>
+        			
+        			<dl class="row">
+        			    <dt class="tit">
+        			        <label><em>*</em>秒杀价格：</label>
+        			    </dt>
+        			    <dd class="opt">
+        			        <input type="text" name="title" id="title" value="{$info.price}" class="input-txt">
+        			        <span class="err" id="err_title"></span>
+        			        <p class="notic">设置秒杀价格，必须低于原价。</p>
+        			    </dd>
+        			</dl>
+        			
+        			<dl class="row">
+        			    <dt class="tit">
+        			        <label><em>*</em>秒杀数量：</label>
+        			    </dt>
+        			    <dd class="opt">
+        			        <input type="text" name="title" id="title" value="{$info.goods_num}" class="input-txt">
+        			        <span class="err" id="err_title"></span>
+        			        <p class="notic">设置秒杀数量。</p>
+        			    </dd>
+        			</dl>
+        			
+        			<dl class="row">
+        			    <dt class="tit">
+        			        <label><em>*</em>每人限购：</label>
+        			    </dt>
+        			    <dd class="opt">
+        			        <input type="text" name="title" id="title" value="{$info.buy_limit}" class="input-txt">
+        			        <span class="err" id="err_title"></span>
+        					<p class="notic">设置限购数量。</p>
+        			    </dd>
+        			</dl>
+					
+					<dl class="row">
+					    <dt class="tit">
+					        <label><em>*</em>是否返佣：</label>
+					    </dt>
+					    <dd class="opt">
+					        <input type="text" name="title" id="title" value="{$info.is_commission}" class="input-txt">
+					        <span class="err" id="err_title"></span>
+					    </dd>
+					</dl>
+					<dl class="row">
+					    <dt class="tit">
+					        <label><em>*</em>允许使用优惠券：</label>
+					    </dt>
+					    <dd class="opt">
+					        <input type="text" name="title" id="title" value="{$info.is_coupon}" class="input-txt">
+					        <span class="err" id="err_title"></span>
+					    </dd>
+					</dl>
+					<dl class="row">
+					    <dt class="tit">
+					        <label><em>*</em>下架允许购买：</label>
+					    </dt>
+					    <dd class="opt">
+					        <input type="text" name="title" id="title" value="{$info.soldout_buy}" class="input-txt">
+					        <span class="err" id="err_title"></span>
+					    </dd>
+					</dl>
+					<dl class="row">
+					    <dt class="tit">
+					        <label><em>*</em>需要关注公众号：</label>
+					    </dt>
+					    <dd class="opt">
+					        <input type="text" name="title" id="title" value="{$info.public_mark}" class="input-txt">
+					        <span class="err" id="err_title"></span>
+					    </dd>
+					</dl>
+					
+        
+                        <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+                    </if>
+                </div>
     </form>
 </div>
 <script type="text/javascript">
@@ -275,5 +207,3 @@
 </script>
 </body>
 </html>
-
-

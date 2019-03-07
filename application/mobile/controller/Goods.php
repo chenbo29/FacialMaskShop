@@ -20,6 +20,7 @@ use app\common\logic\GoodsPromFactory;
 use app\common\model\Combination;
 use app\common\model\SpecGoodsPrice;
 use app\common\util\TpshopException;
+use app\common\model\GoodsCategory;
 use think\AjaxPage;
 use think\Page;
 use think\Db;
@@ -36,6 +37,55 @@ class Goods extends MobileBase
      */
     public function categoryList()
     {
+        $categoryGoods = new GoodsCategory;
+        
+        $category = $categoryGoods->where('level', 1)->where('is_show',1)->order('sort_order','asc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+        
+        $parentId = array_column($category, 'id');
+        
+        $firstLevel = $categoryGoods->where('level', 2)->where('parent_id','in',$parentId)->where('is_show',1)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+
+        $childId = array_column($firstLevel, 'id');
+
+        $secondLevel = $categoryGoods->where('level', 3)->where('is_show',1)->where('parent_id','in',$childId)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+       
+        $goods = array_map(function($secondLevel){
+            $result = array(
+                'id' = $secondLevel['id'],
+                'name' = $secondLevel['name'],
+                'moblie_name' = $secondLevel['mobile_name'],
+                'parent_id' = $secondLevel['parent_id'],
+                'parent_id_path' = $secondLevel['parent_id_path'],
+                'level' = $secondLevel['level'],
+                'image' = "<img src='".$secondLevel['image']."'/>"
+            );
+            return $result;
+        },$secondLevel);
+
+        dump($result);
+        // $firstLevel = $categoryGoods->getParentListAttr(1,['parent_id_path'=>"0_12_13_17"]);
+        // foreach ($firstLevel as $key => $value) {
+        //     $secondLevel[] = $categoryGoods->getParentListAttr(1,['parent_id_path'=>$value['parent_id_path']]);
+        // }
+
+        // $secondLevel = array_map(function($sLevel){
+        //     $sLevel['image'] = "<img src='".$sLevel['image']."'/>";
+        //     return $sLevel;
+        // },$secondLevel);
+        
+        // for ($i=0; $i < count($firstLevel); $i++) { 
+        //     for ($i=0; $i < count($secondLevel); $i++) { 
+        //         if ($secondLevel['parent_id'] == $firstLevel['id']) {
+        //             $result[] = $firstLevel[$i];
+        //         }
+        //     }
+        // }
+        
+        $this->assign('category', $category);
+        $this->assign('first_level', $firstLevel);
+        $this->assign('second_level', $secondLevel);
+        // $this->assign('img', $img);
+
         return $this->fetch();
     }
 

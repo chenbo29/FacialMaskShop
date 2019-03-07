@@ -38,3 +38,11 @@
 	color: #e82f5c;
 	border-bottom: .08rem solid #e82f5c;
 }
+/*内容*/
+.content {
+	width: 100%;
+	height: auto;
+}
+.contentTabWrap {
+	display: none;
+}

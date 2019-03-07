@@ -4,19 +4,228 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/swiper.min.js"></script>
+	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
     <title>首页</title>
     <link rel="stylesheet" href="__STATIC__/css/index.css">
 </head>
 <body>
 	<div class="wrapper">
+		<!-- 头部 -->
 	    <header class="header-box">	
 			<div class="headerClass">
 				<img src="__STATIC__/images/class1.png" alt="">
 			</div>
+			<div class="headerInput">
+				  <div class="search">
+					  <img src="__STATIC__/images/t_12.png" alt="">
+				  </div>
+				  <input type="text" class="searchInput">
+			</div>
+			<div class="searchMsg">
+				     <img src="__STATIC__/images/q3.png" alt="">
+			</div>
 		</header>
-		
-	
+		<!-- 轮播图 -->
+		<div class="swiper-box">
+           <ul class="swiper-list">
+			   <li class="swiper-item">
+				   <a href="javascript:;">
+					   <img src="__STATIC__/images/t_1.jpg" alt="">
+				   </a>
+			   </li>
+			   <!-- <li class="swiper-item">
+				<a href="javascript:;">
+					<img src="__STATIC__/images/t_2.jpg" alt="">
+				</a>
+			</li>
+			<li class="swiper-item">
+				<a href="javascript:;">
+					<img src="__STATIC__/images/t_3.jpg" alt="">
+				</a>
+			</li>
+			<li class="swiper-item">
+				<a href="javascript:;">
+					<img src="__STATIC__/images/t_4.jpg" alt="">
+				</a>
+			</li> -->
+		   </ul>
+		</div>
+		<!-- 八宫格 -->
+		<div class="gongGe">
+			 <div class="choiceness gongGeItem">
+				<a href="">
+					<img src="__STATIC__/images/t_6.png" alt="">
+					 <p class="gongGeItemTit">精选</p>
+				 </a>
+				 
+			 </div>
+			 <div class="choiceness gongGeItem">
+				<a href="">
+					<img src="__STATIC__/images/t_14.png" alt="">
+					<p class="gongGeItemTit">视频直播</p>
+				</a>
+			</div>
+			<div class="choiceness gongGeItem">
+				<a href="">
+					<img src="__STATIC__/images/t_10.png" alt="">
+					<p class="gongGeItemTit">签到</p>
+				</a>
+			</div>
+			<div class="choiceness gongGeItem">
+				<a href="">
+					<img src="__STATIC__/images/t_5.png" alt="">
+					<p class="gongGeItemTit">活动专区</p>
+				</a>
+			</div>
+			<div class="choiceness gongGeItem">
+					<a href="">
+						<img src="__STATIC__/images/t_7.png" alt="">
+						<p class="gongGeItemTit">美容专区</p>
+					</a>
+				</div>
+				<div class="choiceness gongGeItem">
+						<a href="">
+							<img src="__STATIC__/images/t_9.png" alt="">
+							<p class="gongGeItemTit">佣金排行榜</p>
+						</a>
+					</div>
+					<div class="choiceness gongGeItem">
+							<a href="">
+								<img src="__STATIC__/images/t_11.png" alt="">
+								<p class="gongGeItemTit">素材区</p>
+							</a>
+						</div>
+						<div class="choiceness gongGeItem">
+								<a href="">
+									<img src="__STATIC__/images/t_13.png" alt="">
+									<p class="gongGeItemTit">小游戏</p>
+								</a>
+							</div>
+		</div>
+			<!-- 间隔条 -->
+		<div class="interval"></div>
+		<!-- 消息头条 -->
+	    <div class="msgHeadline">
+			 <h4 class="Headline">智丰头条</h4>
+			<a href=""><p class="shopRed">雪山旗舰店入送卷了</p></a>
+			<a href=""><p class="shopMove">| 更多</p></a>
+		</div>
+			<!-- 间隔条 -->
+		<div class="interval"></div>
+		<div class="seckill-box">
+			<!-- 秒杀 -->
+			<div class="seckillMsg">
+				<h4 class="seckillTit">智丰秒杀</h4>
+				<p class="count">剩下时间</p>
+				<div class="countTime">
+					<span class="countTimeImg">
+					<img src="__STATIC__/images/t_8.png" alt="">
+				    </span>
+					 <span class="tiemNum">12</span>:
+					 <span class="tiemNum">22</span>:
+					 <span class="tiemNum">00</span>
+				</div>
+				<div class="more">
+					 <a href="">
+					<span class="moreGood">更多好货</span>
+					<span class="gomore">
+						<img src="__STATIC__/images/t_15.png" alt=""></span>
+					</a>
+				</div>
+			</div>
+			<!-- 左滑 -->
+			<div class="goodList">
+				<ul >
+					<li class="hot-single-goods">
+						<a href="">
+							<img src="__STATIC__/images/t_24.png" alt="" class="goods-img">
+							<div class="goods-pic">
+								<p class="goods-redSize">￥</p>
+								<p>358</p>
+							</div>
+						</a>
+					</li>
+					<li class="hot-single-goods">
+							<a href="">
+								<img src="__STATIC__/images/t_25.png" alt="" class="goods-img">
+								<div class="goods-pic">
+									<p class="goods-redSize">￥</p>
+									<p>3358</p>
+								</div>
+							</a>
+						</li>
+				<li class="hot-single-goods">
+						<a href="">
+							<img src="__STATIC__/images/t_26.png" alt="" class="goods-img">
+							<div class="goods-pic">
+								<p class="goods-redSize">￥</p>
+								<p>3928</p>
+							</div>
+						</a>
+					</li>
+				<li class="hot-single-goods">
+						<a href="">
+							<img src="__STATIC__/images/t_27.png" alt="" class="goods-img">
+							<div class="goods-pic">
+								<p class="goods-redSize">￥</p>
+								<p>4990</p>
+							</div>
+						</a>
+					</li>
+					<li class="hot-single-goods">
+						<a href="">
+							<img src="__STATIC__/images/t_24.png" alt="" class="goods-img">
+							<div class="goods-pic">
+								<p class="goods-redSize">￥</p>
+								<p>358</p>
+							</div>
+						</a>
+					</li>	
+				</ul>
+			</div>
+		</div>
+		<!-- 为你推荐 -->
+		<div class="recommend-box">
+			<div class="recommend-title">
+				<p class="p-title">为 / 你 / 推 / 荐</p>
+			</div>
+			<div class="recommend-list clearfix">
+               <div class="recommend-info">
+                   <div class="recommend-img">
+					  <a href=""><img src="__STATIC__/images/t_17.jpg" alt=""></a>
+				   </div>
+				   <div class="recommend-text">
+					   <div class="recommend-name">
+						   <a href="">
+							   雅鹿羽绒马甲女短款2017新款 韩版鸭绒休闲宽松韩国外套潮
+						   </a>
+					   </div>
+					   <div class="recommend-pic">
+						   <span class="pic-red">￥&nbsp399.00</span>
+						   <span class="evaluation">评价:9</span>
+					   </div>
+				   </div>
+			   </div>
+			   <div class="recommend-info">
+					<div class="recommend-img">
+					   <a href=""><img src="__STATIC__/images/t_18.jpg" alt=""></a>
+					</div>
+					<div class="recommend-text">
+						<div class="recommend-name">
+							<a href="">
+								羽绒马甲女短款 韩版鸭绒休闲宽松韩国外套潮
+							</a>
+						</div>
+						<div class="recommend-pic">
+							<span class="pic-red">￥&nbsp4540.00</span>
+							<span class="evaluation">评价:109</span>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</div>
 		<include file="public/footer_nav"/>
 	</div>
 </body>

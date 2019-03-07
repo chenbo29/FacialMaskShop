@@ -18,8 +18,8 @@
 					<span>浏览记录</span>
 				</div>
 				<div class="ds-in-bl emptyedit">
-					<a href="javascript:void(0);" onclick="clearempty();">清空</a>
-					<a href="javascript:void(0);" onclick="editalone();">编辑</a>
+					<!-- <a href="javascript:void(0);" onclick="clearempty();">清空</a> -->
+					<a href="javascript:void(0);"  onclick="editalone();">编辑</a>
 				</div>
 			</div>
 		</div>
@@ -42,33 +42,40 @@
                     </div>
                 </div>
                 <foreach name='list' item="goods">
-                <div class="orderlistshpop dejsshort p">
-                    <div class="maleri30">
-                        <div class="sc_list se_sclist">
-                            <div class="radio fl">
-                                <span class="che " data-id="{$goods.visit_id}">
-                                    <i></i>
-                                </span>
-                            </div>
-                            <div class="shopimg fl">
-                                <a href="{:U('Goods/goodsInfo',['id'=>$goods.goods_id])}">
-                                    <img src="{$goods.goods_id|goods_thum_images=200,200}">
-                                </a>
-                            </div>
-                            <div class="deleshow fr">
-                                <div class="deletes p">
-                                    <a href="{:U('Goods/goodsInfo',['id'=>$goods.goods_id])}">
-                                        <span class="similar-product-text fl">{$goods.goods_name}</span>
-                                    </a>
+                        <div class="orderlistshpop dejsshort p">
+                            <div class="maleri30 zjc_list">
+                                <div class="sc_list se_sclist">
+                                    <div class="radio fl">
+                                        <span class="che " data-id="{$goods.visit_id}">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="shopimg fl">
+                                        <a href="{:U('Goods/goodsInfo',['id'=>$goods.goods_id])}">
+                                            <img src="{$goods.goods_id|goods_thum_images=200,200}">
+                                        </a>
+                                    </div>
+                                    <div class="deleshow fr">
+                                        <div class="deletes p">
+                                            <a href="{:U('Goods/goodsInfo',['id'=>$goods.goods_id])}">
+                                                <span class="similar-product-text fl">{$goods.goods_name}</span>
+                                            </a>
+                                        </div>
+                                        <div class="prices">
+                                            <p class="sc_pri fl"><span>￥</span><span>{$goods.shop_price}</span></p>
+                                            <!-- <a href="{:U('Goods/goodsList',['id'=>$goods.cat_id])}">看相似</a> -->
+                                        </div>
+                                        <div class="zjc_pinfo lookalike">
+                                            <div>
+                                                <p>已付款<span>6</span></p>
+                                                <p>已评价<span>4</span></p>
+                                            </div>    
+                                            <a href="{:U('Goods/goodsInfo',['id'=>$goods.goods_id])}">购买</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="prices lookalike">
-                                    <p class="sc_pri fl"><span>￥</span><span>{$goods.shop_price}</span></p>
-                                    <a href="{:U('Goods/goodsList',['id'=>$goods.cat_id])}">看相似</a>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </div> 
                 </foreach>
             </foreach>
             </div>
@@ -111,6 +118,7 @@
 <script type="text/javascript">
     //编辑
     function editalone(){
+        $('.emptyedit a').html($('.emptyedit a').html()=='编辑'?"完成":"编辑")
         $('.dejsshort').toggleClass('hiradio');
         $('.a_emptyall').toggle();
     }

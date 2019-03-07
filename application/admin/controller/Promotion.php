@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -602,7 +602,9 @@ class Promotion extends Base
         return $this->fetch($tpl);
     }
 
-    //限时抢购
+    /*
+    * 秒杀管理
+    */
     public function flash_sale()
     {
         $condition = array();
@@ -610,7 +612,13 @@ class Promotion extends Base
         $count = $FlashSale->where($condition)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        // $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+
+        $prom_list = DB::name("flash_sale")
+        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+        ->limit($Page->firstRow.','.$Page->listRows)->select();
+        // dump($prom_list);
+
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
         $this->assign('pager', $Page);
@@ -621,13 +629,15 @@ class Promotion extends Base
     {
         if (IS_POST) {
             $data = I('post.');
-            $data['start_time'] = strtotime($data['start_time'].' '.$data['start_time_h'].':0:0');
-            $data['end_time'] = $data['start_time']+7200;
-            $flashSaleValidate = Loader::validate('FlashSale');
-            if (!$flashSaleValidate->batch()->check($data)) {
-                $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
-                $this->ajaxReturn($return);
-            }
+            $data['start_time'] = strtotime($data['start_time']);
+            $data['end_time'] = $data['start_time'];
+            // $flashSaleValidate = Loader::validate('FlashSale');
+            // // var_dump($flashSaleValidate);//exit;
+
+            // if ($flashSaleValidate->batch()->check($data)) {
+            //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
+            //     $this->ajaxReturn($return);
+            // }
             if (empty($data['id'])) {
                 $flashSaleInsertId = Db::name('flash_sale')->insertGetId($data);
                 if($data['item_id'] > 0){
@@ -640,25 +650,25 @@ class Promotion extends Base
                 adminLog("管理员添加抢购活动 " . $data['name']);
                 if ($flashSaleInsertId !== false) {
 
-                    if($data['mmt_message_switch'] == 1) {
-                        $goods_original_img = Db::name('goods')->where("goods_id", $data['goods_id'])->value('original_img');
-                        // 发送抢购活动通知消息
-                        $send_data = [
-                            'message_title' => $data['title'],
-                            'message_content' => $data['description'],
-                            'img_uri' => $goods_original_img,
-                            'end_time' => $data['end_time'],
-                            'mmt_code' => 'flash_sale_activity',
-                            'prom_type' => 1,
-                            'users' => [],
-                            'message_val' => [],
-                            'category' => 1,
-                            'prom_id' => $flashSaleInsertId
-                        ];
-                        $messageFactory = new MessageFactory();
-                        $messageLogic = $messageFactory->makeModule($send_data);
-                        $messageLogic->sendMessage();
-                    }
+                    // if($data['mmt_message_switch'] == 1) {
+                    //     $goods_original_img = Db::name('goods')->where("goods_id", $data['goods_id'])->value('original_img');
+                    //     // 发送抢购活动通知消息
+                    //     $send_data = [
+                    //         'message_title' => $data['title'],
+                    //         'message_content' => $data['description'],
+                    //         'img_uri' => $goods_original_img,
+                    //         'end_time' => $data['end_time'],
+                    //         'mmt_code' => 'flash_sale_activity',
+                    //         'prom_type' => 1,
+                    //         'users' => [],
+                    //         'message_val' => [],
+                    //         'category' => 1,
+                    //         'prom_id' => $flashSaleInsertId
+                    //     ];
+                    //     $messageFactory = new MessageFactory();
+                    //     $messageLogic = $messageFactory->makeModule($send_data);
+                    //     $messageLogic->sendMessage();
+                    // }
                     $this->ajaxReturn(['status' => 1, 'msg' => '添加抢购活动成功', 'result' => '']);
                 } else {
                     $this->ajaxReturn(['status' => 0, 'msg' => '添加抢购活动失败', 'result' => '']);
@@ -682,15 +692,31 @@ class Promotion extends Base
             }
         }
         $id = I('id');
-        $info['start_time_h'] = 0;
-        $now_time = strtotime(date('Y-m-d'));
-        $info['start_time'] = $now_time;
-        $info['is_edit'] = 1;
+        $now_time = date('H');
+        if ($now_time % 2 == 0) {
+            $flash_now_time = $now_time;
+        } else {
+            $flash_now_time = $now_time - 1;
+        }
+        $flash_sale_time = strtotime(date('Y-m-d') . " " . $flash_now_time . ":00:00");
+        $info['start_time'] = date("Y-m-d H:i:s", $flash_sale_time);
+        $info['end_time'] = date("Y-m-d H:i:s", $flash_sale_time + 7200);
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-            $info['start_time_h'] = date('H',$info['start_time']);
+            $info['start_time'] = date('Y-m-d H:i', $info['start_time']);
+            $info['end_time'] = date('Y-m-d H:i', $info['end_time']);
         }
+        // $info['start_time_h'] = 0;
+        // $now_time = strtotime(date('Y-m-d'));
+        // $info['start_time'] = $now_time;
+        // $info['is_edit'] = 1;
+        // if ($id > 0) {
+        //     $FlashSale = new FlashSale();
+        //     $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
+        //     $info['start_time_h'] = date('H',$info['start_time']);
+        // }
+        $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
         return $this->fetch();
     }
@@ -739,13 +765,13 @@ class Promotion extends Base
         $this->assign("URL_Home", "");
     }
 	
-	//秒杀管理表
+	//竞拍
 	public function auction_list(){
 		
 		return $this->fetch();
 	}
-	//秒杀管理操作
-	public function Spike_list_info(){
+	//竞拍管理操作
+	public function auction_list_info(){
 		
 		return $this->fetch();
 	}

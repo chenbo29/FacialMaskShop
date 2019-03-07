@@ -44,9 +44,9 @@ class FlashSale extends Validate
             return '限购数量不能超过抢购数量';
         }
         $goods = Db::name("goods")->where(['goods_id'=>$data['goods_id']])->find();
-        if($goods['is_virtual'] == 1 && $value > $goods['virtual_limit']){
-            return '限购数量不能超过虚拟商品购买上限';
-        }
+        // if($goods['is_virtual'] == 1 && $value > $goods['virtual_limit']){
+        //     return '限购数量不能超过虚拟商品购买上限';
+        // }
         return true;
     }
     /**

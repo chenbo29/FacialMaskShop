@@ -87,7 +87,7 @@ class News extends Base {
         $this->assign('cats',$cats);
         $this->assign('cat_id',$cat_id);
         $this->assign('list',$list);// 赋值数据集
-        $this->assign('pager',$pager);// 赋值分页输出        
+        $this->assign('pager',$pager);// 赋值分页输出
 		return $this->fetch('newsList');
     }
     

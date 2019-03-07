@@ -97,7 +97,7 @@ return	array(
 					array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
 					array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
 					//array('name' => '帮助管理', 'act'=>'help_list', 'op'=>'Article'),
-					array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
+					// array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 					array('name' => '会员协议', 'act'=>'agreement', 'op'=>'Article'),
 					//array('name' => '公告管理', 'act'=>'notice_list', 'op'=>'Article'),
 					array('name' => '专题列表', 'act'=>'topicList', 'op'=>'Topic'),
@@ -106,6 +106,10 @@ return	array(
 			array('name' => '新闻','child'=>array(
 					array('name' => '新闻列表', 'act'=>'newsList', 'op'=>'News'),
 					array('name' => '新闻分类', 'act'=>'categoryList', 'op'=>'News'),
+			)),
+			array('name' => '素材','child'=>array(
+					array('name' => '素材列表', 'act'=>'materialList', 'op'=>'Material'),
+					array('name' => '素材分类', 'act'=>'materialClass', 'op'=>'Material'),
 			)),
 	)),
 		

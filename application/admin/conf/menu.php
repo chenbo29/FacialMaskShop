@@ -183,4 +183,16 @@ return	array(
                 array('name' => '苹果APP管理', 'act'=>'ios_audit', 'op'=>'MobileApp'),
 			))
 	)),
+
+	'pickup'=>array('name'=>'线下取货','child'=>array(
+			array('name' => '线下取货','child' => array(
+					array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
+					
+			)),
+			array('name' => '在线核销','child' => array(
+					array('name' => '取货码核销', 'act'=>'verification', 'op'=>'Pickup'),
+					
+			))
+           
+	)),
 );

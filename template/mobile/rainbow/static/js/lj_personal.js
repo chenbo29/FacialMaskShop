@@ -130,4 +130,10 @@ $(function(){
 			$(".lj_t_m_r13").hide()
 		}
 	})
+	/*自定义*/
+	$('#zt').on('click',function(){
+		
+	})
+	
+	
 })

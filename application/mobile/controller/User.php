@@ -90,6 +90,15 @@ class User extends MobileBase
         return $this->fetch();
     }
     
+    /**
+     * 分销
+     */
+    public function member()
+    {
+
+
+        return $this->fetch();
+    }
     
     public function p_details()
     {

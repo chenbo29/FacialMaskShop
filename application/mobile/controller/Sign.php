@@ -18,7 +18,12 @@ class Sign extends MobileBase {
         return $this->fetch();
     }
 
+    public function integral(){     
+        
+        
 
+        return $this->fetch();
+    }
   
 
 }

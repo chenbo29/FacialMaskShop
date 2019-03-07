@@ -612,10 +612,11 @@ class Promotion extends Base
         $count = $FlashSale->where($condition)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        // $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
 
-        // $price = Db::name('spec_goods_price')->where("item_id",$prom_list["item_id"])->select();
-        // print_r($prom_list["0"]["item_id"]);
+        $prom_list = DB::name("flash_sale")
+        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+        ->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
@@ -623,19 +624,27 @@ class Promotion extends Base
         return $this->fetch();
     }
 
-    public function spike_list_info()
+    public function flash_sale_info()
     {
         if (IS_POST) {
             $data = I('post.');
+            // var_dump($data);
             $data['start_time'] = strtotime($data['start_time'].' '.$data['start_time_h'].':0:0');
             $data['end_time'] = $data['start_time']+7200;
+            // var_dump(2);
             $flashSaleValidate = Loader::validate('FlashSale');
-            if (!$flashSaleValidate->batch()->check($data)) {
+            
+
+            if ($flashSaleValidate->batch()->check($data)) {
+
                 $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
+                // dump(1);die;
                 $this->ajaxReturn($return);
             }
             if (empty($data['id'])) {
+                dump(1);
                 $flashSaleInsertId = Db::name('flash_sale')->insertGetId($data);
+                var_dump($flashSaleInsertId);
                 if($data['item_id'] > 0){
                     //设置商品一种规格为活动
                     Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 1]);

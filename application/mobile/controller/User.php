@@ -77,6 +77,10 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+    //zp
+    public function welfare_zp(){
+        return $this->fetch();
+    }
 
 	public function personal()
     {
@@ -106,6 +110,8 @@ class User extends MobileBase
     {
         return $this->fetch();
     }
+    
+    
     public function logout()
     {
         session_unset();

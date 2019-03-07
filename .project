@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>b2t</name>
-	<comment></comment>
+	<name>666</name>
+	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -16,7 +16,33 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1531365942528</id>
+<<<<<<< HEAD
+			<id>1551925329587</id>
+=======
+			<id>1551922860979</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
+			<name></name>
+			<type>10</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.orFilterMatcher</id>
+				<arguments>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-bin</arguments>
+					</matcher>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-setting</arguments>
+					</matcher>
+				</arguments>
+			</matcher>
+		</filter>
+		<filter>
+<<<<<<< HEAD
+			<id>1551925354392</id>
+=======
+			<id>1551922942166</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -26,10 +52,10 @@
 		</filter>
 		<filter>
 <<<<<<< HEAD
-			<id>1551757710772</id>
+			<id>1551925354394</id>
 =======
-			<id>1551754478869</id>
->>>>>>> 36c2a0cb7c4944d9c6923a05ff0e6c5800973b61
+			<id>1551922942166</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
 			<name></name>
 			<type>26</type>
 			<matcher>

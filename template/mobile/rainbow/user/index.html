@@ -118,7 +118,7 @@
 							<span class="account-balance"><i>1000.00</i>元</span>
 						</div>
 						<span class="more-zp">
-							<a href="###">
+							<a href="{:U('User/welfare_zp')}">
 								查看名单
 								<i class="more-icon"></i>
 							</a>							
@@ -228,22 +228,6 @@
 				
 			</div>
 			
-			
-					
-			<script type="text/javascript">
-				$(function(){
-					$(".sign-in-zp").click(function(){
-						$(".model").show();
-						$(".dialog-sign-zp").show(100)
-					})
-					$(".model").click(function(){
-						$(".model").hide()
-						$(".dialog-sign-zp").hide(100)
-					})
-				})
-			</script>
-			
-			
 			<!--底部导航-start-->
     		<include file="public/footer_nav"/>
     		
@@ -251,5 +235,17 @@
 	</div>
 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+		$(function(){
+			$(".sign-in-zp").click(function(){
+				$(".model").show();
+				$(".dialog-sign-zp").show(100)
+			})
+			$(".model").click(function(){
+				$(".model").hide()
+				$(".dialog-sign-zp").hide(100)
+			})
+		})
+	</script>
 </body>
 </html>

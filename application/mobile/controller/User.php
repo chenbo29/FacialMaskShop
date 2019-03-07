@@ -110,6 +110,8 @@ class User extends MobileBase
     {
         return $this->fetch();
     }
+    
+    
     public function logout()
     {
         session_unset();

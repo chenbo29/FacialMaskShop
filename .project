@@ -16,7 +16,11 @@
 	</natures>
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
 			<id>1551925329587</id>
+=======
+			<id>1551922860979</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -34,7 +38,11 @@
 			</matcher>
 		</filter>
 		<filter>
+<<<<<<< HEAD
 			<id>1551925354392</id>
+=======
+			<id>1551922942166</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -43,7 +51,11 @@
 			</matcher>
 		</filter>
 		<filter>
+<<<<<<< HEAD
 			<id>1551925354394</id>
+=======
+			<id>1551922942166</id>
+>>>>>>> e2005734b1f4d552a4998b5d5db35b6b43a99930
 			<name></name>
 			<type>26</type>
 			<matcher>

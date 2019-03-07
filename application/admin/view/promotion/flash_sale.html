@@ -49,10 +49,10 @@
 							<div style="text-align: left; width: 100px;" class="">秒杀价格</div>
 						</th>
 						<th align="center" abbr="article_show" axis="col5" class="">
-							<div style="text-align: center; width: 50px;" class="">剩余数量</div>
+							<div style="text-align: center; width: 100px;" class="">已下单数</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">每人限购</div>
+							<div style="text-align: center; width: 100px;" class="">每人限购</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">开始时间</div>
@@ -76,7 +76,7 @@
 		</div>
 		<div class="tDiv">
 			<div class="tDiv2">
-				<a href="{:U('Promotion/spike_list_info')}">
+				<a href="{:U('Promotion/flash_sale_info')}">
 					<div class="fbutton">
 						<div title="添加活动" class="add">
 							<span><i class="fa fa-plus"></i>添加活动</span>
@@ -96,28 +96,28 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a>{$vo.goods_name}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 100px;"> </div>
+								<div style="text-align: left; width: 100px;">{$vo.market_price}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.price}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.order_num}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.buy_limit}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
+								<div style="text-align: center; width: 120px;">{$vo.start_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
+								<div style="text-align: center; width: 120px;">{$vo.end_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;"> </div>
+								<div style="text-align: center; width: 50px;">{$vo.is_end}</div>
 							</td>
 
 							<td align="left" class="handle">

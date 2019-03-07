@@ -37,20 +37,20 @@ class Goods extends MobileBase
 
         $secondLevel = $categoryGoods->where('level', 3)->where('is_show',1)->where('parent_id','in',$childId)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
        
-        $goods = array_map(function($secondLevel){
-            $result = array(
-                'id' => $secondLevel['id'],
-                'name' => $secondLevel['name'],
-                'moblie_name' => $secondLevel['mobile_name'],
-                'parent_id' => $secondLevel['parent_id'],
-                'parent_id_path' => $secondLevel['parent_id_path'],
-                'level' => $secondLevel['level'],
-                'image' => "<img src='".$secondLevel['image']."'/>"
-            );
-            return $result;
-        },$secondLevel);
+        // $goods = array_map(function($secondLevel){
+        //     $result = array(
+        //         'id' => $secondLevel['id'],
+        //         'name' => $secondLevel['name'],
+        //         'moblie_name' => $secondLevel['mobile_name'],
+        //         'parent_id' => $secondLevel['parent_id'],
+        //         'parent_id_path' => $secondLevel['parent_id_path'],
+        //         'level' => $secondLevel['level'],
+        //         'image' => "<img src='".$secondLevel['image']."'/>"
+        //     );
+        //     // return $result;
+        // },$secondLevel);
 
-        dump($result);
+       
         // $firstLevel = $categoryGoods->getParentListAttr(1,['parent_id_path'=>"0_12_13_17"]);
         // foreach ($firstLevel as $key => $value) {
         //     $secondLevel[] = $categoryGoods->getParentListAttr(1,['parent_id_path'=>$value['parent_id_path']]);

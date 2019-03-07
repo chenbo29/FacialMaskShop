@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=1">
 	<title>首页</title>
 	<link rel="stylesheet" href="__STATIC__/css/index.css?v=1">
+	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/swiper.min.js"></script>
 </head>
 
 <body>
@@ -215,10 +218,14 @@
 					</div>
 				</foreach>
 
+				<div id="J_ItemList">
+				</div>
+
 			</div>
 		</div>
 		<include file="public/footer_nav" />
 	</div>
+	<script type="text/javascript" src="__STATIC__/js/sourch_submit.js"></script>
 	<script>
 		$(document).ready(function () {
 			var mySwiper = new Swiper('.swiper-container', {
@@ -233,11 +240,35 @@
 				},
 			})
 		})
+	
+			/**
+			* 继续加载猜您喜欢
+			* */
+			var before_request = 1; // 上一次请求是否已经有返回来, 有才可以进行下一次请求
+			var page = 0;
+			function ajax_sourch_submit(){
+				if(before_request == 0)// 上一次请求没回来 不进行下一次请求
+					return false;
+				before_request = 0;
+				page++;
+				$.ajax({
+					type : "get",
+					url:"/index.php?m=Mobile&c=Index&a=ajaxGetMore&p="+page,
+					success: function(data)
+					{
+						console.log(data)
+						if(data){
+							$("#J_ItemList").append(data);
+							before_request = 1;
+						}else{
+							$('.get_more').hide();
+						}
+					}
+				});
+			}
+		</script>
 
-	</script>
-	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/swiper.min.js"></script>
+	
 </body>
 
 </html>

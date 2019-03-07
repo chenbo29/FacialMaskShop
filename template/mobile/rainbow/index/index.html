@@ -6,9 +6,9 @@
 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
 	<script src="__STATIC__/js/swiper.min.js"></script>
-	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css">
+	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=1">
     <title>首页</title>
-    <link rel="stylesheet" href="__STATIC__/css/index.css">
+    <link rel="stylesheet" href="__STATIC__/css/index.css?v=1">
 </head>
 <body>
 	<div class="wrapper">
@@ -192,38 +192,26 @@
 				<p class="p-title">为 / 你 / 推 / 荐</p>
 			</div>
 			<div class="recommend-list clearfix">
-               <div class="recommend-info">
-                   <div class="recommend-img">
-					  <a href=""><img src="__STATIC__/images/t_17.jpg" alt=""></a>
-				   </div>
-				   <div class="recommend-text">
-					   <div class="recommend-name">
-						   <a href="">
-							   雅鹿羽绒马甲女短款2017新款 韩版鸭绒休闲宽松韩国外套潮
-						   </a>
-					   </div>
-					   <div class="recommend-pic">
-						   <span class="pic-red">￥&nbsp399.00</span>
-						   <span class="evaluation">评价:9</span>
-					   </div>
-				   </div>
-			   </div>
-			   <div class="recommend-info">
-					<div class="recommend-img">
-					   <a href=""><img src="__STATIC__/images/t_18.jpg" alt=""></a>
-					</div>
-					<div class="recommend-text">
-						<div class="recommend-name">
-							<a href="">
-								羽绒马甲女短款 韩版鸭绒休闲宽松韩国外套潮
-							</a>
+			 
+				<foreach name="favourite_goods" id="v">
+					<div class="recommend-info">
+						<div class="recommend-img">
+						<a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id]))}"><img src="{$v[goods_id]|goods_thum_images=400,400}" alt=""></a>
 						</div>
-						<div class="recommend-pic">
-							<span class="pic-red">￥&nbsp4540.00</span>
-							<span class="evaluation">评价:109</span>
+						<div class="recommend-text">
+							<div class="recommend-name">
+								<a href="{:U('mobile/goods/goods_info',array('id'=>$v['goods_id']))}">
+									{$v.goods_name|getSubstr=0,33}
+								</a>
+							</div>
+							<div class="recommend-pic">
+								<span class="pic-red">￥&nbsp4540.00</span>
+								<span class="evaluation">评价:109</span>
+							</div>
 						</div>
-					</div>
-				</div> 
+					</div> 
+				</foreach>
+
 			</div>
 		</div>
 		<include file="public/footer_nav"/>

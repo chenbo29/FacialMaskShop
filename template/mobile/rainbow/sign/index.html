@@ -7,20 +7,28 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<title>team-deployment</title>
+		<script src="__STATIC__/js/public/rem.js" ></script>
 		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
-		<script type="text/javascript" src="__STATIC__/js/jquery-3.1.1.min.js" ></script>
-		<script type="text/javascript" src="__STATIC__/js/public/rem.js" ></script>
+		<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
 		
 	</head>
 	<body>
 		<div class="lj_top_sign">
+			<!--public head-->
+			<div class="lb_headWrap lb_headWrap_fiontWhite">
+				<p class="lb_headWrap_return" data-num="1" onclick="returnFun()">
+					<img class="lb_headWrap_return_img" src="__STATIC__/image/lj_sign_tl.png"/>
+				</p>
+				<span>累计积分</span>
+			</div>
+			
 			<div class="lj_wrap">
-				<div class="lj_sign_tl">
+				<!--<div class="lj_sign_tl">
 					<img src="__STATIC__/image/lj_sign_tl.png" />
 				</div>
 				<div class="lj_sign_tr">
 					<p>累计积分</p>
-				</div>
+				</div>-->
 				<div class="lj_s_banner">
 					<div class="lj_s_yqd">
 						<img class="lj_s_yqd_img" src="__STATIC__/image/lj_s_yqd.png" />
@@ -38,9 +46,10 @@
 			</div>
 		</div>
 		<div id="calendar" class="calendar"></div>
-		<script type="text/javascript" src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="__STATIC__/js/lj_calendar.js" ></script>
 		
-		
+		<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
+		<script src="__STATIC__/js/public/public_lb.js"></script>
+		<script  src="__STATIC__/js/lj_calendar.js" ></script>
+				
 	</body>
 </html>

@@ -186,7 +186,9 @@ return	array(
 
 	'pickup'=>array('name'=>'线下取货','child'=>array(
 			array('name' => '线下取货','child' => array(
-					array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
+					// array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
+					array('name' => '取货列表', 'act'=>'index', 'op'=>'Pickup'),
+					array('name'=>'门店管理','act'=>'store','op'=>'Pickup'),
 					
 			)),
 			array('name' => '在线核销','child' => array(

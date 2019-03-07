@@ -69,6 +69,10 @@ img{max-width: 100%;}
 .lj_main_edit ul li:last-child{border: none;}
 .lj_main_edit ul li p{display: inline-block; font-size: 0.26rem;color: #1a1a1a;}
 .lj_main_edit ul li p:nth-child(2n){margin-left: 0.48rem;}
+/*区域联动*/
+/*.regionBox {
+	
+}*/
 .lj_edit_p{margin-left: 0.77rem !important;}
 .lj_edit_p2{margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
 .lj_edit_p1{margin-right: 0.18rem;}

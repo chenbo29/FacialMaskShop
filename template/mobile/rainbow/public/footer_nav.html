@@ -21,23 +21,6 @@
 	</ul>
 </div>
 
-<!--底部导航-->
-<div class="footer-zp">
-	<ul>
-		<li <if condition="CONTROLLER_NAME eq 'Index'">class="on"</if>  >
-			<a href="{:U('Index/index')}"><i class="home-icon"></i><span>首页</span></a>
-		</li>
-		<li <if condition="CONTROLLER_NAME eq 'Goods'">class="on"</if> >
-			<a href="{:U('Goods/categoryList')}"><i class="category-icon"></i><span>分类</span></a>
-		</li>
-		<li <if condition="CONTROLLER_NAME eq 'Cart'">class="on" </if> >
-			<a href="{:U('Cart/index')}"><i class="cart-icon"></i><span>购物车</span></a>
-		</li>
-		<li <if condition="CONTROLLER_NAME eq 'User'">class="on" </if> >
-			<a href="{:U('User/index')}"><i class="user-icon"></i><span>我的</span></a>
-		</li>
-	</ul>
-</div>
 
 <script src="__PUBLIC__/js/jqueryUrlGet.js"></script><!--获取get参数插件-->
 <script type="text/javascript">

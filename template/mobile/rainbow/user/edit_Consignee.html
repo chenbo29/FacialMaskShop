@@ -4,10 +4,14 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<title>edit_Consignee</title>
-		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
-		<script type="text/javascript" src="__STATIC__/js/public/jquery-1.8.3.min.js" ></script>
 		<script type="text/javascript" src="__STATIC__/js/public/rem.js" ></script>
-		<script type="text/javascript" src="__STATIC__/js/lj_personal.js" ></script>
+		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
+		
+		<!--三级联动css-->
+		<link rel="stylesheet" href="__STATIC__/css/public_lb/layout.min.css" />
+		<link rel="stylesheet" href="__STATIC__/css/public_lb/scs.min.css" />
+		<!--<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />-->
+			
 	</head>
 	<body>
 		<div class="lj_top">
@@ -34,7 +38,11 @@
 						</li>
 						<li>
 							<p>所在地区:</p>
-							<p>广东省广州市白云区</p>
+							<!--<p>广东省广州市白云区</p>-->
+							<!--19-289-3043 => 弹出 对应的=>广东省 广州市 白云区,需要保存两个值:data-key、value-->
+							<p>
+								<input type="text" class="" readonly placeholder="Click me to pick an address" id="myAddrs" name="addr" data-key="19-289-3043" value="广东省 广州市 白云区" />
+							</p>
 						</li>
 						<li>
 							<p>详细地址:</p>
@@ -62,7 +70,11 @@
 		</div>
 			
 			
-		
-		
+		<script src="__STATIC__/js/public/jquery-1.8.3.min.js" ></script>
+		<script src="__STATIC__/js/lj_personal.js" ></script>
+		<!--三级联动js-->
+		<script src="__STATIC__/js/public/jquery.scs.min.js"></script>
+		<script src="__STATIC__/js/public/cnaddrarr.min.js"></script>
+		<script src="__STATIC__/js/public/region_lb.js"></script>
 	</body>
 </html>

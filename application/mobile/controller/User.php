@@ -81,6 +81,9 @@ class User extends MobileBase
     public function welfare_zp(){
         return $this->fetch();
     }
+    public function qianbao(){
+        return $this->fetch();
+    }
 
 	public function personal()
     {

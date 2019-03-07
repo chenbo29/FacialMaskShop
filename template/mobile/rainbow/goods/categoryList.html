@@ -29,7 +29,10 @@
 				<!--左侧菜单-->
 				<div class="menu">
 					<ul>
-						<li class="active"><i></i>为您推荐</li>
+						<foreach name="category" item="vo" key="i">
+							<li><i></i>{$vo.mobile_name}</li>
+						</foreach>
+						<!-- <li class="active"><i></i>为您推荐</li>
 						<li><i></i>品牌墙</li>
 						<li><i></i>美容彩妆</li>
 						<li><i></i>奶粉纸尿裤</li>
@@ -43,7 +46,7 @@
 						<li><i></i>服饰鞋靴</li>
 						<li><i></i>家用家电</li>
 						<li><i></i>医药保健</li>
-						<li><i></i>汽车生活</li>
+						<li><i></i>汽车生活</li> -->
 					</ul>
 				</div>
 				<!--右边分类内容-->
@@ -52,8 +55,22 @@
 						<div class="advert">
 							<a href=""><img src="__STATIC__/images/category/advert-1.jpg" /></a>
 						</div>
-						<div class="cate-item">
-							<h3>常用分类</h3>
+						<foreach name="first_level" item="vo1" key="k">
+							<div class="cate-item">
+								<h3>{$vo1.name}</h3>
+								<ul class="cate-list">
+									<foreach name="second_level" item="vo2" key="i">
+										<li class="item">
+											<a href="###">
+												{$vo2.image}
+												<p>{$vo2.name}</p>
+											</a>
+										</li>
+									</foreach>
+								</ul>
+							</div>
+						</foreach>
+							<!-- <h3>常用分类</h3>
 							<ul class="cate-list">
 								<li class="item">
 									<a href="{:U('goods/goodsInfo')}">
@@ -224,8 +241,8 @@
 								查看更多<i></i>
 							</a>
 						</div>
-					</div>
-					<div class="branchList">
+					</div> -->
+					<!-- <div class="branchList">
 						<div class="advert">
 							<a href="###"><img src="__STATIC__/images/category/advert-1.jpg" /></a>
 						</div>
@@ -483,7 +500,7 @@
 								查看更多<i></i>
 							</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			

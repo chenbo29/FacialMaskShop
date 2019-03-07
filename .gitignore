@@ -3,5 +3,6 @@
 /public/upload/goods/thumb/*
 /vendor/topthink/think-captcha/assets/bgs/*
 .vscode
+.project
 .idea
 /public/upload/goods/thumb/

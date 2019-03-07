@@ -105,6 +105,9 @@ img{
     padding:.2rem .52rem .2rem .52rem;
 }
 .headerInput  .search{
+    background: url("../images/t_12.png") no-repeat .2rem;
+    background-size:50%;
+    border-right: .01rem solid #cccccc;
     width: .82rem;
     height: .55rem;
     background-color:#ffffff;
@@ -129,6 +132,7 @@ img{
     width: 4.07rem;
     border-radius: 0 .5rem .5rem 0;
     caret-color: transparent;
+    outline: none;
 }
 
 .searchMsg{
@@ -142,28 +146,11 @@ img{
     padding:.2rem .2rem .2rem .0rem;
 }
 
-.swiper-box{
+.swiper-container{
     height: 2rem;
     width: 100%;
     padding-top:.92rem;
-    position: relative;
-}
-
-.swiper-box .swiper-list {
-    height:2rem;
-    width: 100%;
-    overflow: hidden;
-}
-
-.swiper-box ul li{
-    float: left;
-    height: 100%;
-    width: 100%;
-}
-
-.swiper-box .swiper-list .swiper-item>a>img{
-    height: 100%;
-    width: 100%;
+   
 }
 
 .gongGe{
@@ -175,10 +162,7 @@ img{
     width: 25%;
     height: 1.4rem;
     float: left;
-<<<<<<< Updated upstream
     text-align: center;
-=======
->>>>>>> Stashed changes
 }
 
 .gongGe .gongGeItem>a>img{
@@ -363,10 +347,11 @@ img{
 .recommend-list .recommend-info{
     float: left;
     width: 49%;
-    height:4.5rem ;
+    height:4.7rem ;
     border-radius: .1rem;
     background-color:#ffffff;
     margin-right: .12rem;
+    margin-bottom: .12rem;
 }
 
  .recommend-info:nth-child(2n){
@@ -389,17 +374,18 @@ img{
      position: relative;
  }
  .recommend-info  .recommend-text  .recommend-name{
+    overflow: hidden;
+    font-size:.3rem;
+    padding-left:.1rem;
+    padding-top:.1rem;
+ }
+ .recommend-info  .recommend-text  .recommend-name>a{
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    color: #444;
-    display: -webkit-box;
-    height: .7rem;
-    line-height: .3rem;
     overflow: hidden;
-    font-size:.2rem;
-    padding-left:.1rem;
  }
-
+ 
  .recommend-pic{
      display: flex;
      justify-content:space-between;
@@ -414,3 +400,5 @@ img{
      padding-right:.3rem;
      font-size: .2rem;
  }
+
+

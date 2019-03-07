@@ -7,8 +7,8 @@
 	<div class="fixed-bar">
 		<div class="item-title">
 			<div class="subject">
-				<h3>竞拍管理</h3>
-				<h5>网站系统竞拍活动审核与管理</h5>
+				<h3>秒杀管理</h3>
+				<h5>网站系统秒杀活动审核与管理</h5>
 			</div>
 		</div>
 	</div>
@@ -19,22 +19,15 @@
 			<span title="收起提示" id="explanationZoom" style="display: block;"></span>
 		</div>
 		<ul>
-			<li>竞拍管理, 由平台设置管理.</li>
-			<li>竞拍活动开始结束时间跨度必须为两个小时，因为前台竞拍活动展示是以每两个小时为一场，否则前台无法展示</li>
+			<li>秒杀管理, 由平台设置管理.</li>
+			<li></li>
 		</ul>
 	</div>
 	<div class="flexigrid">
 		<div class="mDiv">
 			<div class="ftitle">
-				<h3>竞拍活动列表</h3>
+				<h3>秒杀活动列表</h3>
 				<h5>(共{$pager->totalRows}条记录)</h5>
-                <div class="fbutton">
-                    <a href="http://help.tp-shop.cn/Index/Help/info/cat_id/5/id/47.html" target="_blank">
-                        <div class="add" title="帮助">
-                            <span>帮助</span>
-                        </div>
-                    </a>
-                </div>
 			</div>
 			<a href=""><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></a>
 		</div>
@@ -50,19 +43,16 @@
 							<div style="text-align: left; width: 240px;" class="">商品</div>
 						</th>
 						<th align="left" abbr="article_time" axis="col6" class="">
-							<div style="text-align: left; width: 50px;" class="">原价</div>
+							<div style="text-align: left; width: 100px;" class="">原价</div>
 						</th>
 						<th align="left" abbr="ac_id" axis="col4" class="">
-							<div style="text-align: left; width: 100px;" class="">秒杀价</div>
+							<div style="text-align: left; width: 100px;" class="">秒杀价格</div>
 						</th>
 						<th align="center" abbr="article_show" axis="col5" class="">
-							<div style="text-align: center; width: 50px;" class="">秒杀数量</div>
+							<div style="text-align: center; width: 100px;" class="">已下单数</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 120px;" class="">剩余数量</div>
-						</th>
-						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 120px;" class="">没人限购</div>
+							<div style="text-align: center; width: 100px;" class="">每人限购</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">开始时间</div>
@@ -71,7 +61,7 @@
 							<div style="text-align: center; width: 120px;" class="">结束时间</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">活动状态</div>
+							<div style="text-align: center; width: 50px;" class="">状态</div>
 						</th>
 						<th align="left" axis="col1" class="handle">
 							<div style="text-align: center; width: 150px;">操作</div>
@@ -106,31 +96,28 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a>{$vo.goods_name}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 50px;"> </div>
+								<div style="text-align: left; width: 100px;">{$vo.market_price}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.price}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.order_num}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
+								<div style="text-align: center; width: 100px;">{$vo.buy_limit}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
+								<div style="text-align: center; width: 120px;">{$vo.start_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
+								<div style="text-align: center; width: 120px;">{$vo.end_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 120px;"> </div>
-							</td>
-							<td align="left" class="">
-								<div style="text-align: center; width: 50px;"> </div>
+								<div style="text-align: center; width: 50px;">{$vo.is_end}</div>
 							</td>
 
 							<td align="left" class="handle">

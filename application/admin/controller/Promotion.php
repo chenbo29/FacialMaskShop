@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -602,7 +602,9 @@ class Promotion extends Base
         return $this->fetch($tpl);
     }
 
-    //限时抢购
+    /*
+    * 秒杀管理
+    */
     public function flash_sale()
     {
         $condition = array();
@@ -610,7 +612,12 @@ class Promotion extends Base
         $count = $FlashSale->where($condition)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        // $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+
+        $prom_list = DB::name("flash_sale")
+        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+        ->limit($Page->firstRow.','.$Page->listRows)->select();
+
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
         $this->assign('pager', $Page);
@@ -621,15 +628,23 @@ class Promotion extends Base
     {
         if (IS_POST) {
             $data = I('post.');
+            // var_dump($data);
             $data['start_time'] = strtotime($data['start_time'].' '.$data['start_time_h'].':0:0');
             $data['end_time'] = $data['start_time']+7200;
+            // var_dump(2);
             $flashSaleValidate = Loader::validate('FlashSale');
-            if (!$flashSaleValidate->batch()->check($data)) {
+            
+
+            if ($flashSaleValidate->batch()->check($data)) {
+
                 $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
+                // dump(1);die;
                 $this->ajaxReturn($return);
             }
             if (empty($data['id'])) {
+                dump(1);
                 $flashSaleInsertId = Db::name('flash_sale')->insertGetId($data);
+                var_dump($flashSaleInsertId);
                 if($data['item_id'] > 0){
                     //设置商品一种规格为活动
                     Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 1]);
@@ -739,13 +754,13 @@ class Promotion extends Base
         $this->assign("URL_Home", "");
     }
 	
-	//秒杀管理表
-	public function Spike_list(){
+	//竞拍
+	public function auction_list(){
 		
 		return $this->fetch();
 	}
-	//秒杀管理操作
-	public function Spike_list_info(){
+	//竞拍管理操作
+	public function auction_list_info(){
 		
 		return $this->fetch();
 	}

@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -28,7 +28,7 @@ if(version_compare(PHP_VERSION,'5.5.0','<') || version_compare(PHP_VERSION,'7.1.
 //error_reporting(E_ALL ^ E_NOTICE);//显示除去 E_NOTICE 之外的所有错误信息
 error_reporting(E_ERROR | E_WARNING | E_PARSE);//报告运行时错误
 
-//检测是否已安装TPshop系统
+//检测是否已安装智丰网络
 if(file_exists("./install/") && !file_exists("./install/install.lock")){
 	if($_SERVER['PHP_SELF'] != '/index.php'){
 		header("Content-type: text/html; charset=utf-8");         
@@ -47,7 +47,7 @@ require __DIR__ . '/saas.php';
 //  定义插件目录
 define('PLUGIN_PATH', __DIR__ . '/plugins/');
 defined('UPLOAD_PATH') or define('UPLOAD_PATH','public/upload/'); // 编辑器图片上传路径
-define('TPSHOP_CACHE_TIME',1); // TPshop 缓存时间  31104000
+define('TPSHOP_CACHE_TIME',1); //  缓存时间  31104000
 $http = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != 'off') ? 'https' : 'http';
 define('SITE_URL',$http.'://'.$_SERVER['HTTP_HOST']); // 网站域名
 //define('HTML_PATH','./Application/Runtime/Html/'); //静态缓存文件目录，HTML_PATH可任意设置，此处设为当前项目下新建的html目录
@@ -55,6 +55,9 @@ define('INSTALL_DATE',1463741583);
 define('SERIALNUMBER','20160520065303oCWIoa');
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/application/');
+
+// define("BIND_MODULE",'user');
+
 // 定义时间
 define('NOW_TIME',$_SERVER['REQUEST_TIME']);
 // 加载框架引导文件

@@ -106,8 +106,12 @@
 }
 .user-list-item .tit-zp .more-zp a{
 	color: #151515;
+	/*font-size: 0.24rem;*/
+}
+.user-list-item .tit-zp .more-zp a i:first-child{
 	font-size: 0.24rem;
-	
+	position: relative;
+	top: -0.03rem;
 }
 .user-list-item .tit-zp .more-icon{
 	display: inline-block;
@@ -115,7 +119,6 @@
 	height: 0.22rem;
 	background: url(../../images/user_zp/ZJT@2x.png) no-repeat;
 	background-size: 100%;
-	vertical-align: middle;
 }
 
 .user-nav-zp ul{

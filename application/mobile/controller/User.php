@@ -77,12 +77,28 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+    //zp
+    public function welfare_zp(){
+        return $this->fetch();
+    }
+    public function qianbao(){
+        return $this->fetch();
+    }
 
 	public function personal()
     {
         return $this->fetch();
     }
     
+    /**
+     * 分销
+     */
+    public function member()
+    {
+
+
+        return $this->fetch();
+    }
     
     public function p_details()
     {
@@ -106,6 +122,8 @@ class User extends MobileBase
     {
         return $this->fetch();
     }
+    
+    
     public function logout()
     {
         session_unset();

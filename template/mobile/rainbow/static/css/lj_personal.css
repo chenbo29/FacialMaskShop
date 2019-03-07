@@ -80,28 +80,46 @@ img{max-width: 100%;}
 /*---------------address-------------------*/
 
 .lj_main_edit{position: relative;background: #fff;margin-top: 0.4rem;border-radius: 0.1rem;}
+.lj_main_edit ul li input{width: 4.54rem; font-size: 0.26rem;color: #1a1a1a;border: none;outline: none;margin-left: 0.48rem;}
 .lj_main_edit ul li{line-height: 0.86rem;border-bottom: 1px solid #f5f5f5 ;margin-left: 0.3rem;margin-right: 0.3rem;}
 .lj_main_edit ul li:last-child{border: none;}
 .lj_main_edit ul li p{display: inline-block; font-size: 0.26rem;color: #1a1a1a;}
-.lj_main_edit ul li p:nth-child(2n){margin-left: 0.48rem;}
+.lj_shr{margin-left: 0.78rem !important;}
+
 /*区域联动*/
 /*.regionBox {
 	
 }*/
 .lj_edit_p{margin-left: 0.77rem !important;}
+<<<<<<< HEAD
 .lj_edit_p2{margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 border-radius: 0.1rem;}
+=======
+.lj_edit_p2{background: #fff;margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
+>>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .lj_edit_p1{margin-right: 0.18rem;}
-#zt{color: #999999;}
+.lj_edit_p3{margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
+
+.lj_p4{background: #ffbca4;margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
+#zt{color: #999999;cursor: pointer;}
 .lj_main_edit ul li p:nth-child(1){color: #666666;}
 .lj_main_edit ul li label{display: block;border: 1px solid #cdcdcd;background: #fff;width: 0.41rem;height: 0.41rem;border-radius: 50%;position: absolute;bottom: 0.32rem;right: 0.81rem; }
 .lj_anniu{float: right;margin-top: 0.22rem; display: block;width: 0.94rem;height: 0.42rem;background: #e6e6e6;border-radius: 0.3rem;}
 
 .lj_c{background: #ffbca4;}
 .lj_l{right: 0.3rem !important;}
+
+.lj_bg{position: absolute;left: 0;top: 0; width: 100%;height: 100%;background: #000;background: rgba(0,0,0,.5); display: none;}
+.lj_tank{border-radius: 0.1rem; opacity: 1; width: 4rem;height: 2.5rem;position: fixed;left: 23%;top:3.4rem; background: #fff;border: 1px solid #000000;overflow: hidden;display: none;}
+.lj_tank p{font-size: 0.23rem;color: #000;text-align: center;margin-top: 0.2rem;}
+.lj_tank input{font-size: 0.2rem; padding-right: 0.1rem; border-radius: 0.05rem;border: 1px solid #999; width: 3.5rem;line-height: 0.5rem;padding-left: 0.1rem;outline: none;margin-left: 0.14rem;margin-top: 0.3rem;}
+.lj_tank_btn{margin-left: 0.7rem;}
+.lj_tank_btn input{cursor: pointer;width: 32%;text-align: center;line-height: 0.35rem;height: 0.35rem;border: none;background: #0086E3;color: #fff;}
+
+
 
 /*--------------edit-Consignee,edit-personal-----------------------------*/
 
@@ -196,6 +214,7 @@ margin-bottom: 0.1rem;}
 
 
 /*------------------团队业绩----------------------*/
+<<<<<<< HEAD
 
 .lj_top_sign{width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;line-height: 0.88rem;
 	padding-top: 1.2rem;
@@ -203,11 +222,16 @@ margin-bottom: 0.1rem;}
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+=======
+.lj_s_banner{text-align: center;}
+.lj_top_sign{position: relative; width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;line-height: 0.88rem;}
+>>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .lj_sign_tl{float: left; width: 0.16rem;height: 0.25rem;}
 .lj_sign_tl img{vertical-align: middle;}
 .lj_sign_tr{text-align: center;}
 .lj_sign_tr p{font-size: 0.23rem;color: #fff;}
 
+<<<<<<< HEAD
 .lj_s_banner{width: 3.07rem;margin: 0 auto;border: 1px solid #FFFFFF;height: 0.8rem;border-radius: 0.5rem;text-align: center;}
 .lj_s_yqd_img{width: 0.38rem;height: 0.4rem;float: left;padding-top: 0.2rem;padding-left: 0.7rem;
 	box-sizing: border-box;
@@ -219,16 +243,25 @@ margin-bottom: 0.1rem;}
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+=======
+.lj_s_yqd{width: 3.07rem;margin: 0 auto;border: 1px solid #FFFFFF;height: 0.8rem;border-radius: 0.5rem;text-align: center;}
+.lj_s_yqd_img{width: 0.38rem;height: 0.4rem;float: left;padding-top: 0.2rem;padding-left: 0.7rem;}
+.lj_s_yqd a{font-size: 0.37rem;color: #fff;float: left;padding-left: 0.1rem;margin-top: -0.05rem;}
+>>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .lj_s_lxqd{line-height: 0.3rem;}
 .lj_s_banner p{font-size: 0.24rem;color: #ffffff;}
 
+.lj_integral{margin-bottom: 0.6rem; background: url(../image/lj_top_sign.jpg) no-repeat;width: 100%;height: 4.3rem;position: relative;}
+.lj_in_x{border-top: 2px solid #ffffff;position: absolute;top: 0.88rem;left: 0;width: 100%;}
+.lj_in_l{float: left;width: 0.15rem;height: 0.25rem;line-height: 0.88rem;}
+.lj_in_l img{vertical-align: middle;}
+.lj_in_r{text-align: center;line-height: 0.88rem;}
+.lj_in_r p{font-size: 0.23rem;color: #ffffff;}
 
-.calendar-date .item:hover,
-.calendar-date .item-curMonth:hover {
-  background-color: #747474;
-  color: #fff;
-}
+.lj_in_banner{text-align: center;margin-top: 0.36rem;margin-bottom: 0.85rem;}
+.lj_in_banner p{font-size: 0.3rem;color: #ffffff;line-height: 0.48rem;}
 
+<<<<<<< HEAD
 .calendar {
   display: none;
   width: 6.9rem;
@@ -300,11 +333,36 @@ margin-bottom: 0.1rem;}
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;}
+=======
+.lj_in_jfh{ margin: 0 auto; text-align: center;border: 1px solid #FFFFFF;border-radius: 0.35rem;width: 3.6rem;height: 0.57rem;}
+.lj_in_jfh p{font-size: 0.26rem;color: #FFFFFF;line-height: 0.57rem;}
+
+.lj_in_main1{margin-top: 0.3rem; background: #ffecbb;width: 100%;height: 0.6rem;border-radius: 0.3rem;}
+.lj_in_main1 ul li{float: left;margin-left: 1.44rem;}
+.lj_in_main1 ul li:first-child{margin-left: 0.91rem !important;}
+.lj_in_main1 ul li p{font-size: 0.26rem;color: #ff8348;line-height: 0.6rem;}
+.lj_main2{background: #ffd7bb;}
+
+
+.calendar-date .item:hover,
+.calendar-date .item-curMonth:hover {background-color: #747474;color: #fff;}
+
+.calendar {display: none;width: 6.9rem;margin: -0.8rem auto 0;background-color: #fafafa;border-radius: 0.1rem;border: 2px solid #999999;}
+.calendar-title {position: relative;height: 30px;line-height: 30px;padding: 10px 0; margin-left: 43%;margin-bottom: 20px;margin-top: 20px;}
+.calendar-title a.title {display: inline-block;font-size: 0.2rem;text-indent: 10px;color: #494949;}
+#backToday {position: absolute;left: 70%;top: 8px;width: 40px;height: 40px;line-height: 40px;text-align: center;border-radius: 50%;color: #fff;background-color: rgb(255, 128, 142);font-size: 18px;}
+.calendar-title .arrow {position: absolute;top: 23%;right: 63%;width: 46%;}
+.calendar-title .arrow span {  color: #ddd; font-size: 26px;  cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
+.calendar-title .arrow span img{width: 0.16rem;height: 0.25rem;}
+.calendar-title .arrow span:hover {  color: #888;}
+.calendar-title .arrow-prev {  float: left;}
+.calendar-title .arrow-next {  float: right;}
+.calendar-date{margin: -0.55rem;padding-bottom: 0.49rem;}
+>>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .calendar-week,
-.calendar-date {
-  overflow: hidden;
-}
+.calendar-date {  overflow: hidden;}
 .calendar-week .item,
+<<<<<<< HEAD
 .calendar-date .item {
   float: left;
   width: 50px;
@@ -365,21 +423,33 @@ margin-bottom: 0.1rem;}
   font-size: 14px;
   line-height: 24px;
 }
+=======
+.calendar-date .item {  float: left;  width: 50px;  height: 50px;  line-height: 50px;  text-align: center;  margin-left: 0.56rem;  color: #cbcbcb;}
+.calendar-week {  padding-bottom: 0.7rem;  border-top: 2px solid #999999;  font-size: 0.24rem;}
+.calendar-week .item1{margin-left: 0.56rem;color: #747474;}
+.calendar-week .item2{margin-left: 0rem;}
+.calendar-date .item {  border-radius: 50%;  cursor: pointer;  font-size: 0.2rem;  margin-bottom: 0.4rem;  }
+>>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
+
+.calendar-date .item-curMonth {  color: #333;}
+
+.calendar-today { display: none;  opacity: 0;  position: absolute;  right: 20px;  top: 20px;  width: 90px;  height: 48px;  padding: 6px 10px;  background-color: rgb(255, 128, 142);  border-radius: 5px;}
+.calendar-today .triangle {  position: absolute;  top: 50%;  left: -16px;  margin-top: -8px;  border-width: 8px;  border-style: solid;  border-color: transparent rgb(255, 128, 142) transparent transparent;}
+.calendar-today p { color: #fff;  font-size: 14px;  line-height: 24px;}
+
+/*---------------------日历插件css-------------------*/
 
 
 
 
 
-
-
-
-@media only screen and (min-width: 320px) {
+@media only screen and (max-width: 320px) {
 	.lj_team_nav ul li{width: 2.48rem;}
 	.lj_t_bor label{top: 0.06rem;}
 	.lj_t_bor em{top: 0.06rem;}
 	.lj_edit_p2{margin-left: 0.2rem !important;}
 }
-@media only screen and (min-width: 750px) {
+@media only screen and (max-width: 750px) {
 	.lj_team_nav ul li{width: 2.49rem;}
 	.lj_t_bor label{top: 0.08rem;}
 	.lj_t_bor em{top: 0.08rem;}

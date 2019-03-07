@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -84,6 +84,35 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+
+	public function personal()
+    {
+        return $this->fetch();
+    }
+    
+    
+    public function p_details()
+    {
+        return $this->fetch();
+    }
+    
+    public function modify()
+    {
+        return $this->fetch();
+    }
+    
+     public function edit_personal()
+    {
+        return $this->fetch();
+    }
+      public function lj_address()
+    {
+        return $this->fetch();
+    }
+      public function edit_Consignee()
+    {
+        return $this->fetch();
+    }
     public function logout()
     {
         session_unset();

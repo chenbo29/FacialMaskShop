@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop  万能 插件安装卸载
+ * 智丰网络  万能 插件安装卸载
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -33,7 +33,7 @@ class plugins extends Model
      */
     function install()
     {                                     
-        $tpshop_version = file_get_contents($this->app_path.'/Application/Admin/Conf/version.txt'); // TPshop 版本
+        $tpshop_version = file_get_contents($this->app_path.'/Application/Admin/Conf/version.txt'); //  版本
         $config = include $this->app_path.'plugins/function/helloworld/config.php'; // 当前插件适合哪些版本
         $config['version'] = explode(',', $config['version']);
         if(!in_array($tpshop_version, $config['version']))

@@ -84,6 +84,8 @@
 }
 .joinauction{
 	
+	
+	 
 	 font-size: .32rem;
 	 background: #FF5722;	
 	 color: white;
@@ -95,6 +97,10 @@
 	 position: absolute;
 	 bottom: .3rem;
 	 right: .8rem;
+	
+}
+.section a{
+	text-decoration: none;
 	
 }
 

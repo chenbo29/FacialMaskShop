@@ -1,3 +1,12 @@
+@font-face{
+	font-family: 'PingFangBold';
+	src:url("../../font/PingFangBold.ttf")
+}
+.wrapper{
+	width: 100%;
+	height: 100%;
+	font-family: "PingFangBold";
+}
 .topreturn-wrap{
     width: 100%;
     height: 0.88rem;
@@ -99,6 +108,7 @@
 	color: #333333;
 	line-height: 0.36rem;
 	margin-bottom: 0.2rem;
+	font-size: 0.24rem;
 }
 .news-list-zp .text p{
 	color: #999999;

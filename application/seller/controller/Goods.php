@@ -173,7 +173,7 @@ class Goods extends Base {
     /**
      *  商品列表
      */
-    public function goodsList(){      
+    public function goodsList(){     
         $GoodsLogic = new GoodsLogic();        
         $brandList = $GoodsLogic->getSortBrands();
         $categoryList = $GoodsLogic->getSortCategory();
@@ -186,8 +186,8 @@ class Goods extends Base {
      *  商品列表
      */
     public function ajaxGoodsList(){            
-        
-        $where = ' 1 = 1 '; // 搜索条件                
+        $seller_id = session('seller_id');
+        $where = "seller_id='".$seller_id."'"; // 搜索条件                
         I('intro')    && $where = "$where and ".I('intro')." = 1" ;        
         I('brand_id') && $where = "$where and brand_id = ".I('brand_id') ;
         (I('is_on_sale') !== '') && $where = "$where and is_on_sale = ".I('is_on_sale') ;                

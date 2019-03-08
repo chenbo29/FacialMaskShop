@@ -49,6 +49,16 @@ class Seckill extends MobileBase
        
         return $this->fetch();
     }
+     public function lj_fill()
+    {
+       
+        return $this->fetch();
+    }
+         public function wtf_submit()
+    {
+       
+        return $this->fetch();
+    }
     
 
 }

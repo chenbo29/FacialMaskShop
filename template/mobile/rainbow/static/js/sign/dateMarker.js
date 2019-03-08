@@ -55,16 +55,18 @@
 
     markerHTML += '<div class="date-marker">';
     markerHTML +=   '<div class="date-marker-header">';
-    markerHTML +=     	'<p class="month-prev">';
-    markerHTML +=       	'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/returnImg666_lb.png"/>';
-    markerHTML +=     	'</p>';
+    markerHTML +=   	'<div class="date-marker-header_timeBox">';
+    markerHTML +=     		'<p class="month-prev">';
+    markerHTML +=       		'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/returnImg666_lb.png"/>';
+    markerHTML +=     		'</p>';
     /*年份*/
-    markerHTML +=     	this.buildYearSelect();
+    markerHTML +=     		this.buildYearSelect();
     /*月份*/
-    markerHTML +=     	this.buildMonthSelect();
-    markerHTML +=     	'<p class="month-next">';
-    markerHTML +=       	'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/leftImg666.png"/>';
-    markerHTML +=     	'</p>';
+    markerHTML +=     		this.buildMonthSelect();
+    markerHTML +=     		'<p class="month-next">';
+    markerHTML +=       		'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/leftImg666.png"/>';
+    markerHTML +=     		'</p>';
+    markerHTML +=   	'</div>';
     markerHTML +=   '</div>';
     markerHTML +=   '<ul class="date-marker-body"></ul>';
     markerHTML += '</div>';

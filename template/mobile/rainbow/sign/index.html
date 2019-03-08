@@ -32,7 +32,7 @@
 						<!--button-->
 						<p class="signInBut">
 							<img class="topImgBox_butBoxImg" src="__STATIC__/image/lj_s_yqd.png" />	
-							<span>已签到</span>
+							<span>签到</span>
 						</p>
 					</div>
 					<!--积分-->
@@ -58,27 +58,53 @@
 		
 		<script>
 			$(document).ready(function(){
+				/*签到请求*/
 				$.ajax({
 					type: "GET",
 					url: "/mobile/sign/get_sign_day?user_id=" + {$user_id},
 					async: true,
 					success: function(data){
-						console.log(data);
+						if(data['status'] == 1){
+							/*后台 传过来的数组（签到日期）*/
+							var signArr = data['data'];
+							/*存储后台传过来（修改后）日期*/
+							var newSignArr = [];
+							console.log(signArr);
+							/*后台传过来的值 => '2019/03/06'*/
+							/*月、日*/
+							var monthS, dayS ;
+							/**重新对后台传过来的数据，（2019/03/06）进行编辑=> '2019/3/6' **/
+							for(var k=0;k<signArr.length;k++){
+								monthS = Number(signArr[k].split('/')[1]);
+								dayS = Number(signArr[k].split('/')[2]);
+								console.log(signArr[k].split('/')[0],monthS,dayS);
+								newSignArr[k] = signArr[k].split('/')[0] + '/' + monthS + '/' + dayS;
+							}
+							
+							console.log('编辑后',newSignArr);
+//							/*后台传过来的数组*/
+							for(var j=0;j<newSignArr.length;j++){
+								/*.getMonth()=>获取当前月份(0-11,0代表1月)*/
+								for(var i = 0; i < $('.date-marker-body li').length; i++) {
+									/**传过来的数据-不要在月份和日期前加0 =>'2019/3/6' **/
+									if($('.date-marker-body li').eq(i).attr('data-markdate') == newSignArr[j]) {
+										$('.date-marker-body li').eq(i).append(`
+											<img class="signInIconL" src="/template/mobile/rainbow/static/images/sign/signInIconS.png" />
+										`);
+									}
+								}
+							}
+							
+						}else {
+							console.log('无数据');
+						}
+						
 					},
 					error: function(error){
 						console.log('请求错误！');
 					}
 				});
-				/*.getMonth()=>获取当前月份(0-11,0代表1月)*/
-				for(var i = 0; i < $('.date-marker-body li').length; i++) {
-					/*传过来的数据-不要在月份和日期前加0*/
-					if($('.date-marker-body li').eq(i).attr('data-markdate') == "2019/2/8") {
-						$('.date-marker-body li').eq(i).append(`
-							<img class="signInIconL" src="/template/mobile/rainbow/static/images/sign/signInIconS.png" />
-						`);
-						console.log("{$user_id}",666);
-					}
-				}
+				
 				
 			})
 		</script>

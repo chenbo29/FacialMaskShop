@@ -31,7 +31,7 @@ em{
 
 /*top box*/
 .date-marker-header {
-	padding-left: 1.35rem;
+	/*padding-left: 1.35rem;*/
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -40,8 +40,13 @@ em{
 	text-align: center;
 	border-bottom: .02rem solid #999;
 }
-
-
+/*时间 box*/
+.date-marker-header_timeBox {
+	margin: 0 auto;
+	display: table;
+	width: auto;
+	height: 100%;
+}
 /*top box => 左点击*/
 
 .month-prev {

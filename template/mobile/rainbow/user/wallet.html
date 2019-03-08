@@ -12,7 +12,7 @@
     <div class="wtf_head">
         <div class="wtf_wrap">
             <span>
-                <a href="#">
+                <a href="javascript:history.go(-1);">
                     <img src="__STATIC__/images/wallet/wtf_Back.png" />
                 </a>
             </span>
@@ -29,10 +29,10 @@
         <div class="wtf_wrap">
             <div class="wtf_money">
                 <p>金库总额</p>
-                <p>30000</p>
+                <p>{$user.user_money}</p>
                 <div class="wtf_jfquan">
                     <div class="wtf_jf">
-                        积分<span>36200分</span>
+                        积分<span>{$user.pay_points}分</span>
                     </div>
                     <div class="wtf_yhq">
                         优惠券<span>3张</span>

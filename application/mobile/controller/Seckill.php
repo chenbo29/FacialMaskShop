@@ -31,7 +31,7 @@ class Seckill extends MobileBase
     /**
      * 秒杀 提交 订单
      */
-    public function submit()
+    public function submit_order()
     {
        
         $time = "2019,3,8";
@@ -49,5 +49,16 @@ class Seckill extends MobileBase
        
         return $this->fetch();
     }
+     public function lj_fill()
+    {
+       
+        return $this->fetch();
+    }
+         public function wtf_submit()
+    {
+       
+        return $this->fetch();
+    }
     
+
 }

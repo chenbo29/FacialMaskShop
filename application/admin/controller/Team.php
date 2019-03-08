@@ -25,6 +25,10 @@ use app\common\logic\MessageFactory;
 use think\Loader;
 use think\Db;
 use think\Page;
+use app\common\model\GoodsActivity;
+use app\common\model\GroupBuy;
+use app\common\logic\MessageTemplateLogic;
+
 
 class Team extends Base
 {
@@ -33,7 +37,23 @@ class Team extends Base
 		return $this->fetch();
 	}
 	public function info(){
-		
+        $act = I('GET.act', 'add');
+        $groupbuy_id = I('get.id/d');
+        $group_info = array();
+        $group_info['start_time'] = date('Y-m-d H:i:s');
+        $group_info['end_time'] = date('Y-m-d H:i:s', time() + 3600 * 365);
+        $group_info['is_edit'] = 1;
+        if ($groupbuy_id) {
+            $GroupBy = new GroupBuy();
+            $group_info = $GroupBy->with('specGoodsPrice,goods')->find($groupbuy_id);
+            $group_info['start_time'] = date('Y-m-d H:i:s', $group_info['start_time']);
+            $group_info['end_time'] = date('Y-m-d H:i:s', $group_info['end_time']);
+            $act = 'edit';
+        }
+        $this->assign('min_date', date('Y-m-d H:i:s'));
+        $this->assign('info', $group_info);
+        $this->assign('act', $act);
+
 		return $this->fetch();
 	}
 }

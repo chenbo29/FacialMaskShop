@@ -4,6 +4,9 @@ return	array(
 			array('name' => '概览','child' => array(
 					array('name' => '模板设置', 'act'=>'index', 'op'=>'index'),
 			)),
+			array('name' => '导航','child' => array(
+				array('name'=>'PC端导航栏','act'=>'navigationList','op'=>'System'),
+			)),
 	)),
 
 	'system'=>array('name'=>'设置','child'=>array(
@@ -47,20 +50,17 @@ return	array(
 
 	)),
 		
-	'decorate'=>array('name'=>'装修','child'=>array(
-		array('name' => '模板','child'=>array(
-				array('name' => '模板分类管理', 'act'=>'template_class', 'op'=>'block', 'admin_saas'=>1),
-				//array('name' => '首页装修', 'act'=>'templateList', 'op'=>'Template'),
-				array('name' => '首页装修', 'act'=>'templateList', 'op'=>'block'),
-				array('name' => '行业模板设置', 'act'=>'templateList2', 'op'=>'block',  'admin_saas'=>1),
-				array('name' => '自定义页面', 'act'=>'pageList', 'op'=>'Block'),
-				array('name' => '会员中心自定义', 'act'=>'user_center_menu', 'op'=>'System'),
-				array('name' => '模板切换', 'act'=>'change', 'op'=>'Template'),
-		)),
-		array('name' => '导航','child' => array(
-			array('name'=>'PC端导航栏','act'=>'navigationList','op'=>'System'),
-		)),
-	)),
+	// 'decorate'=>array('name'=>'装修','child'=>array(
+	// 	array('name' => '模板','child'=>array(
+	// 			array('name' => '模板分类管理', 'act'=>'template_class', 'op'=>'block', 'admin_saas'=>1),
+	// 			//array('name' => '首页装修', 'act'=>'templateList', 'op'=>'Template'),
+	// 			array('name' => '首页装修', 'act'=>'templateList', 'op'=>'block'),
+	// 			array('name' => '行业模板设置', 'act'=>'templateList2', 'op'=>'block',  'admin_saas'=>1),
+	// 			array('name' => '自定义页面', 'act'=>'pageList', 'op'=>'Block'),
+	// 			array('name' => '会员中心自定义', 'act'=>'user_center_menu', 'op'=>'System'),
+	// 			array('name' => '模板切换', 'act'=>'change', 'op'=>'Template'),
+	// 	))
+	// )),
 
 
 	'shop'=>array('name'=>'商城','child'=>array(
@@ -97,7 +97,7 @@ return	array(
 					array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
 					array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
 					//array('name' => '帮助管理', 'act'=>'help_list', 'op'=>'Article'),
-					array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
+					// array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 					array('name' => '会员协议', 'act'=>'agreement', 'op'=>'Article'),
 					//array('name' => '公告管理', 'act'=>'notice_list', 'op'=>'Article'),
 					array('name' => '专题列表', 'act'=>'topicList', 'op'=>'Topic'),
@@ -106,6 +106,10 @@ return	array(
 			array('name' => '新闻','child'=>array(
 					array('name' => '新闻列表', 'act'=>'newsList', 'op'=>'News'),
 					array('name' => '新闻分类', 'act'=>'categoryList', 'op'=>'News'),
+			)),
+			array('name' => '素材','child'=>array(
+					array('name' => '素材列表', 'act'=>'materialList', 'op'=>'Material'),
+					array('name' => '素材分类', 'act'=>'materialClass', 'op'=>'Material'),
 			)),
 	)),
 		
@@ -195,4 +199,14 @@ return	array(
 			))
            
 	)),
+
+
+	'seller'=>array('name'=>'商家管理','child'=>array(
+		array('name' => '商家管理','child' => array(
+				array('name' => '商家列表', 'act'=>'seller_list', 'op'=>'SellerManagement'),
+				
+		))
+		
+	   
+)),
 );

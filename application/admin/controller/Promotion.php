@@ -276,11 +276,13 @@ class Promotion extends Base
 
     public function prom_order_save()
     {
+        // 收集数据
         $data = I('post.');
         $data['start_time'] = strtotime($data['start_time']);
         $data['end_time'] = strtotime($data['end_time']);
         $data['group'] = $data['group'] ? implode(',', $data['group']) : '';
         $prom_id = $data['id'];
+        //验证
         $promOrderValidate = Loader::validate('PromOrder');
         if(!$promOrderValidate->scene($data['act'])->batch()->check($data)){
             $error = '';
@@ -289,12 +291,15 @@ class Promotion extends Base
             }
             $this->ajaxReturn(['status' => -1,'msg'=>$error]);
         }
+        // 编辑或者添加
         $promOrderModel = new PromOrder();
         if ($data['act']=='edit') {
             $promOrderModel->where("id=$prom_id")->save($data);
             adminLog("管理员id【 ".$this->admin_id." 】修改了订单促销 ID【".$data['id']."】");
         } else {
+            // 插入数据并且返回自增id
             $add_id = $promOrderModel->insertGetId($data);
+            // 日志记录
             adminLog("管理员id【 ".$this->admin_id." 】添加了订单促销 ID【".$add_id."】");
             if($data['mmt_message_switch'] == 1) {
 
@@ -339,7 +344,9 @@ class Promotion extends Base
                     'message_val' => [],
                     'prom_id' => $add_id
                 ];
+                // 发短信
                 $messageFactory = new MessageFactory();
+                // new MessageActivityLogic($message);
                 $messageLogic = $messageFactory->makeModule($send_data);
                 $messageLogic->sendMessage();
             }
@@ -393,6 +400,7 @@ class Promotion extends Base
             $group_info['end_time'] = date('Y-m-d H:i:s', $group_info['end_time']);
             $act = 'edit';
         }
+        // dump($group_info);
         $this->assign('min_date', date('Y-m-d H:i:s'));
         $this->assign('info', $group_info);
         $this->assign('act', $act);
@@ -704,8 +712,8 @@ class Promotion extends Base
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-            $info['start_time'] = date('Y-m-d H:i', $info['start_time']);
-            $info['end_time'] = date('Y-m-d H:i', $info['end_time']);
+            $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
+            $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
         }
         // $info['start_time_h'] = 0;
         // $now_time = strtotime(date('Y-m-d'));

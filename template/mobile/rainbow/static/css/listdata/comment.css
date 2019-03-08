@@ -1,3 +1,5 @@
+
+.clear{clear: both;}
 /*最外边框*/
 .wrap_com {
 	padding-top: .88rem;
@@ -45,4 +47,26 @@
 }
 .contentTabWrap {
 	display: none;
+	width: 100%;
+	height: auto;
+	padding: 0.3rem 0.21rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	/*border-bottom: 1px solid #f5f5f5;*/
+	/*height: 3.25rem;*/
 }
+
+.contentTabWrap_item1{width: 100%;font-size: 0.16rem;border-bottom: 2px solid #f5f5f5;margin-bottom: 0.3rem;}
+.contentTabWrap_l p{
+	display: inline-block;
+	font-size: 0.16rem;color: #333333;
+	
+}
+.contentTabWrap_l img{display: inline-block;width: 0.17rem;height: 0.15rem;}
+.contentTabWrap_p p{font-size: 0.2rem;color: #333333;margin-top: 0.24rem;}
+.contentTabWrap_list{margin-top: 0.25rem;height: 1.35rem;}
+.contentTabWrap_list ul li{float: left;margin-left: 0.2rem;list-style: none;}
+.contentTabWrap_list ul li:first-child{margin-left: 0;}
+
+.contentTabWrap_p2 p{font-size: 0.16rem;color: #999999;margin-bottom: 0.2rem;}

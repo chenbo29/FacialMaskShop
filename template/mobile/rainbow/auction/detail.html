@@ -25,20 +25,28 @@
 			</div>
 		</div>
 
-		<img src="__STATIC__/auction/pic.png" class="img" />
+		<div class="fu">
+			<img src="__STATIC__/auction/pic.png" class="img" />
+		</div>
+		
 		<p class="desc">-17 Super Rugby Highlanders Jersey高地人橄榄球衣055 16款 S</p>
-		<div class="priceear">
-			<p style="display: inline-block;" class="price">￥72</p><span>当前价</span>
-		</div>
-		<div class="right">
 
-			<img src="__STATIC__/auction/lovely.jpg" style="width: 40px; border-radius: 50%" />
-			<span class="span1">张三</span><span class="span2">当前最高￥90</span>
+
+		<div class="jiatou">
+			<div class="priceear">
+				<p class="price">￥72</p><span>起拍</span>
+			</div>
+			<div class="right">
+				<img src="__STATIC__/auction/lovely.jpg" style="width: .8rem; border-radius: 50%" />
+				<span class="span1">张三</span><span class="span2">当前最高￥90</span>
+			</div>
 
 		</div>
+
+
+
 
 		<div class="headpicear">
-
 
 			<div>
 				<img src="__STATIC__/auction/lovely.jpg" style="width: 40px; border-radius: 50%" />
@@ -67,22 +75,21 @@
 
 
 		<div class="number">
-			<form id="form" style="margin-top: 6.2rem;margin-left: .5rem; display: inline-block">
+			<form id="form" style="margin-left: .5rem; display: inline-block">
 				<input type=button value="-" onClick="javascript:this.form.amount.value--;"
-					style="background: #FFFFFF; border-radius: 50%;width: 25px;border: 1px solid black;">
-				<input type=text name=amount value=1 style="width: 20px; border: none;text-align: center;">
+					style="background: #FFFFFF; border-radius: 50%;width:.5rem;border: 1px solid black;outline: none;">
+				<input type=text name=amount value=1
+					style="width: .4rem; border: none;text-align: center;outline: none;">
 				<input type=button value="+" onClick="javascript:this.form.amount.value++;"
-					style="background:#FFFFFF; color: white;width: 25px;border-radius: 50%;border: 1px solid black;color: black;">
+					style="background:#FFFFFF; color: white;width: .5rem;border-radius: 50%;border: 1px solid black;color: black;outline: none;">
 			</form>
 			<div id="myprice"
-				style="background:#FB5926 ;color: white; display: inline-block;width: 60px; height: 40px; border-radius: .03rem;font-size: .25rem; text-align: center; line-height: 40px;border-radius:20%;margin-left:3.2rem;">
+				style="margin-top:.07rem;background:#FB5926 ;color: white; display: inline-block;width:1.2rem; height: .8rem; border-radius: .03rem;font-size: .25rem; text-align: center; line-height: .8rem;border-radius:20%;margin-left:3.2rem;">
 				确认出价
 			</div>
 		</div>
 
-
-
-		<div style="margin-top: 10px;" class="content">
+		<div style="margin-top: 1.3rem;" class="content">
 
 			<h1 class="rule">竞拍规则</h1>
 			<p>1.集满福袋的人才可以参与竞拍</p>
@@ -94,9 +101,6 @@
 	</div>
 	</div>
 
-
-
-
 	<div id="mask">
 		<div class="tanchuk">
 			<p class="paicheng">竞拍成功</p>
@@ -104,15 +108,10 @@
 			<p id="tobuy">付款购买</p>
 		</div>
 	</div>
-
-
-
-
 	<div id="mask2">
 
 
 		<div class="bianji">
-
 
 			<ul>
 
@@ -127,70 +126,39 @@
 					<span>配送</span>
 					<input placeholder="第三方快递" />
 					<span class="fuhao">></span>
-
 				</li>
 				<li>
-
 					<span>优惠卷</span>
 					<input placeholder="暂无可用" />
 					<span class="fuhao">></span>
-
-
 				</li>
 				<li>
 					<span>红包</span>
 					<input placeholder="暂无可用" />
 					<span class="fuhao">></span>
-
 				</li>
 
 				<li>
-
 					<span>应付总额</span>
 					<input placeholder="￥16.00" />
 					<span class="fuhao">></span>
 
 				</li>
-
-
-
 			</ul>
-
-
 
 			<div class="xieyi">
 				<input type="checkbox" class="inputbiao" />
 				<span class="text">本人同意并且接受以下协议</span>
-				<span style="margin-left: 1.3rem;">￥16.00</span>
+				<span style="margin-left: 1.3rem;" class="zongshu">￥16.00</span>
 			</div>
 
 
-
-
-
-
-
 		</div>
-
-
 
 		<div class="submit">
-
 			提交订单
-
 		</div>
-
-
-
-
-
-
-
-
-
-
 	</div>
-
 
 	<div id="mask3">
 		<div class="tanchuk">
@@ -200,10 +168,14 @@
 		</div>
 	</div>
 
+	<script>
+		//定义方法  
+		$(document).ready(function () {
+			//定义参数 显示出GetRTime()方法 1000毫秒以后启动  
+			var timer_rt = window.setInterval("GetRTime(2019,4,1)", 1000);
+		});
 
-
-
-
+	</script>
 
 </body>
 

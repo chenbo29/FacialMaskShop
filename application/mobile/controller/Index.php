@@ -57,29 +57,7 @@ class Index extends MobileBase {
         return $this->fetch();
     }
 
-    public function index2(){
-        $id=I('get.id');  
-        $role=I('get.role'); 
-
-        if($role){
-            $arr=M('industry_template')->where('id='.$id)->field('template_html,block_info')->find();
-        }else{
-            if($id){
-                $arr=M('mobile_template')->where('id='.$id)->field('template_name ,template_html,block_info,is_index')->find();
-            }else{
-                $arr=M('mobile_template')->order('id DESC')->limit(1)->field('template_name ,template_html,block_info,is_index')->find();
-            } 
-        }
-
-        $html=htmlspecialchars_decode($arr['template_html']);
-        $logo=tpCache('shop_info.wap_home_logo');
-        $this->assign('wap_logo',$logo);
-        $this->assign('html',$html);
-        $this->assign('is_index',$arr['is_index']); //是否为首页, 如果不是首页, 则显示"返回"按钮
-        $this->assign('info',$arr['block_info']);
-        $this->assign('template_name',$arr['template_name']);
-        return $this->fetch();
-    }
+ 
 
     //商品列表板块参数设置
     public function goods_list_block(){
@@ -166,17 +144,7 @@ class Index extends MobileBase {
         return $this->fetch();
     }
 
-    /**
-     * 模板列表
-     */
-    public function mobanlist(){
-        $arr = glob("D:/wamp/www/svn_tpshop/mobile--html/*.html");
-        foreach($arr as $key => $val)
-        {
-            $html = end(explode('/', $val));
-            echo "<a href='http://www.php.com/svn_tpshop/mobile--html/{$html}' target='_blank'>{$html}</a> <br/>";            
-        }        
-    }
+  
 
     /**
      * 门店列表
@@ -251,12 +219,9 @@ class Index extends MobileBase {
     public function ajaxGetMore(){
     	$p = I('p/d',1);
         $where = [
-            'is_recommend' => 1,
-            'exchange_integral'=>0,  //积分商品不显示
-            'is_on_sale' => 1,
-            'virtual_indate' => ['exp', ' = 0 OR virtual_indate > ' . time()]
+            'is_on_sale' => 1
         ];
-    	$favourite_goods = Db::name('goods')->where($where)->order('sort DESC')->page($p,C('PAGESIZE'))->cache(true,TPSHOP_CACHE_TIME)->select();//首页推荐商品
+    	$favourite_goods = Db::name('goods')->where($where)->order('sort DESC')->page($p,C('PAGESIZE'))->select();//首页推荐商品
     	$this->assign('favourite_goods',$favourite_goods);
     	return $this->fetch();
     }

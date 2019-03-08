@@ -15,16 +15,10 @@ $(function(){
 	
 	};
 	
-	
-	
-	
-	
 	 //定义方法  
 	    $(document).ready(function () {  
 	        //定义参数 显示出GetRTime()方法 1000毫秒以后启动  
-	        var timer_rt = window.setInterval("GetRTime(2017,4,7)", 1000);  
-	        
-	        
+	        var timer_rt = window.setInterval("GetRTime(2019,3,8)", 1000);          
 	    });  
 	    
 	    

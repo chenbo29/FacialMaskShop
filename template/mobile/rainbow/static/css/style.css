@@ -1242,7 +1242,7 @@ footer .flool3 p {
 	border-bottom:1px solid #dedede;
 	position:relative;
 	text-align:center;
-	line-height:1.87733rem
+	line-height:.87733rem
 }
 .classreturn .content .return {
 	position:absolute;
@@ -5443,6 +5443,7 @@ input:-ms-input-placeholder {
 	width:3.84rem;
 	height:3.84rem;
 	/* margin-right: 0.3125rem */
+	border-radius: 0.25rem;
 }
 .sc_list .deleshow {
 	width:9.17333rem
@@ -6486,7 +6487,7 @@ span.mp_mp {
 .search_pl .search2 .ri_ss img {
 	width:.73867rem;
 	height:.73867rem;
-	margin-top:0.5rem; 
+	margin-top:0.15rem; 
 }
 .near-le-ri {
 	padding:1.65333rem 0 .42667rem 0
@@ -6507,6 +6508,8 @@ span.mp_mp {
 .lsw_seach a{
 	font-size:0.7rem;
 	margin-top:-0.25rem;
+	position: relative;
+    top: .3rem;
 }
 .se_shien {
 	position:inherit;
@@ -6557,9 +6560,9 @@ span.mp_mp {
 	background-size:1.70667rem;
 	width:.85333rem;
 	height:.85333rem;
-	top:.55467rem;
+	top:.855467rem;
 	margin-left: -1.1rem;
-    margin-top: -0.15rem
+    margin-top: -0.55rem
 }
 .search_list_dump ul li .listorimg.orimg {
 	background-position-x:-.85333rem
@@ -6603,7 +6606,7 @@ span.mp_mp {
 	background-color:white;
 	overflow:hidden;
 	position:absolute;
-	top:4.57733rem;
+	top:4.8rem;
 	z-index:99;
 	width:100%
 }

@@ -7,7 +7,6 @@ img{max-width: 100%;}
 
 .lj_wrap{width: 6.87rem;margin: 0 auto;}
 
-
 .lj_top{line-height: 0.88rem;background: #fff;}
 .lj_top_left{float: left;width: 0.25rem;height: 0.41rem;}
 .lj_top_left img{vertical-align: middle;}
@@ -86,20 +85,15 @@ img{max-width: 100%;}
 .lj_main_edit ul li p{display: inline-block; font-size: 0.26rem;color: #1a1a1a;}
 .lj_shr{margin-left: 0.78rem !important;}
 
-/*区域联动*/
-/*.regionBox {
-	
-}*/
+
 .lj_edit_p{margin-left: 0.77rem !important;}
-<<<<<<< HEAD
 .lj_edit_p2{margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 border-radius: 0.1rem;}
-=======
+
 .lj_edit_p2{background: #fff;margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
->>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .lj_edit_p1{margin-right: 0.18rem;}
 .lj_edit_p3{margin-left: 0rem !important;margin-left: 0.3rem !important;border: 1px solid #999999;line-height: 0.36rem;padding: 0rem 0.2rem 0rem 0.2rem;border-radius: 0.1rem;}
 
@@ -214,7 +208,6 @@ margin-bottom: 0.1rem;}
 
 
 /*------------------团队业绩----------------------*/
-<<<<<<< HEAD
 
 .lj_top_sign{width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;line-height: 0.88rem;
 	padding-top: 1.2rem;
@@ -222,16 +215,15 @@ margin-bottom: 0.1rem;}
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-=======
+
 .lj_s_banner{text-align: center;}
 .lj_top_sign{position: relative; width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;line-height: 0.88rem;}
->>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
+
 .lj_sign_tl{float: left; width: 0.16rem;height: 0.25rem;}
 .lj_sign_tl img{vertical-align: middle;}
 .lj_sign_tr{text-align: center;}
 .lj_sign_tr p{font-size: 0.23rem;color: #fff;}
 
-<<<<<<< HEAD
 .lj_s_banner{width: 3.07rem;margin: 0 auto;border: 1px solid #FFFFFF;height: 0.8rem;border-radius: 0.5rem;text-align: center;}
 .lj_s_yqd_img{width: 0.38rem;height: 0.4rem;float: left;padding-top: 0.2rem;padding-left: 0.7rem;
 	box-sizing: border-box;
@@ -243,11 +235,10 @@ margin-bottom: 0.1rem;}
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-=======
+
 .lj_s_yqd{width: 3.07rem;margin: 0 auto;border: 1px solid #FFFFFF;height: 0.8rem;border-radius: 0.5rem;text-align: center;}
 .lj_s_yqd_img{width: 0.38rem;height: 0.4rem;float: left;padding-top: 0.2rem;padding-left: 0.7rem;}
 .lj_s_yqd a{font-size: 0.37rem;color: #fff;float: left;padding-left: 0.1rem;margin-top: -0.05rem;}
->>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
 .lj_s_lxqd{line-height: 0.3rem;}
 .lj_s_banner p{font-size: 0.24rem;color: #ffffff;}
 
@@ -261,79 +252,7 @@ margin-bottom: 0.1rem;}
 .lj_in_banner{text-align: center;margin-top: 0.36rem;margin-bottom: 0.85rem;}
 .lj_in_banner p{font-size: 0.3rem;color: #ffffff;line-height: 0.48rem;}
 
-<<<<<<< HEAD
-.calendar {
-  display: none;
-  width: 6.9rem;
-  margin: -0.8rem auto 0;
-  background-color: #fafafa;
-  border-radius: 0.1rem;
-  border: 2px solid #999999;
-}
-.calendar-title {
-	position: relative;
-	height: 30px;
-	line-height: 30px;
-	padding: 10px 0;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-   margin-left: 43%;
-   margin-bottom: 20px;
-   margin-top: 20px;
-}
-.calendar-title a.title {
-  display: inline-block;
-  font-size: 0.2rem;
-  text-indent: 10px;
-  color: #494949;
- 
-}
-#backToday {
-  position: absolute;
-  left: 70%;
-  top: 8px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff;
-  background-color: rgb(255, 128, 142);
-  font-size: 18px;
-}
-.calendar-title .arrow {
-  position: absolute;
-  top: 23%;
-  right: 63%;
-  width: 46%;
-}
-.calendar-title .arrow span {
-  color: #ddd;
-  font-size: 26px;
-  cursor: pointer;
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-.calendar-title .arrow span img{width: 0.16rem;height: 0.25rem;}
-.calendar-title .arrow span:hover {
-  color: #888;
-}
-.calendar-title .arrow-prev {
-  float: left;
-}
-.calendar-title .arrow-next {
-  float: right;
-}
-.calendar-date{margin: -0.55rem;padding-bottom: 0.49rem;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;}
-=======
 .lj_in_jfh{ margin: 0 auto; text-align: center;border: 1px solid #FFFFFF;border-radius: 0.35rem;width: 3.6rem;height: 0.57rem;}
 .lj_in_jfh p{font-size: 0.26rem;color: #FFFFFF;line-height: 0.57rem;}
 
@@ -342,105 +261,6 @@ margin-bottom: 0.1rem;}
 .lj_in_main1 ul li:first-child{margin-left: 0.91rem !important;}
 .lj_in_main1 ul li p{font-size: 0.26rem;color: #ff8348;line-height: 0.6rem;}
 .lj_main2{background: #ffd7bb;}
-
-
-.calendar-date .item:hover,
-.calendar-date .item-curMonth:hover {background-color: #747474;color: #fff;}
-
-.calendar {display: none;width: 6.9rem;margin: -0.8rem auto 0;background-color: #fafafa;border-radius: 0.1rem;border: 2px solid #999999;}
-.calendar-title {position: relative;height: 30px;line-height: 30px;padding: 10px 0; margin-left: 43%;margin-bottom: 20px;margin-top: 20px;}
-.calendar-title a.title {display: inline-block;font-size: 0.2rem;text-indent: 10px;color: #494949;}
-#backToday {position: absolute;left: 70%;top: 8px;width: 40px;height: 40px;line-height: 40px;text-align: center;border-radius: 50%;color: #fff;background-color: rgb(255, 128, 142);font-size: 18px;}
-.calendar-title .arrow {position: absolute;top: 23%;right: 63%;width: 46%;}
-.calendar-title .arrow span {  color: #ddd; font-size: 26px;  cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
-.calendar-title .arrow span img{width: 0.16rem;height: 0.25rem;}
-.calendar-title .arrow span:hover {  color: #888;}
-.calendar-title .arrow-prev {  float: left;}
-.calendar-title .arrow-next {  float: right;}
-.calendar-date{margin: -0.55rem;padding-bottom: 0.49rem;}
->>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
-.calendar-week,
-.calendar-date {  overflow: hidden;}
-.calendar-week .item,
-<<<<<<< HEAD
-.calendar-date .item {
-  float: left;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  margin-left: 0.56rem;
-  color: #cbcbcb;
-}
-.calendar-week {
-  padding-bottom: 0.7rem;
-  box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-  border-top: 2px solid #999999;
-  font-size: 0.24rem;
-}
-.calendar-week .item1{margin-left: 0.56rem;color: #747474;}
-.calendar-week .item2{margin-left: 0rem;}
-.calendar-date .item {
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.2rem;
-  margin-bottom: 0.4rem;
-  
-}
-
-.calendar-date .item-curMonth {
-  color: #333;
-}
-
-.calendar-today {
-  display: none;
-  opacity: 0;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 90px;
-  height: 48px;
-  padding: 6px 10px;
-  box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-  background-color: rgb(255, 128, 142);
-  border-radius: 5px;
-}
-.calendar-today .triangle {
-  position: absolute;
-  top: 50%;
-  left: -16px;
-  margin-top: -8px;
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent rgb(255, 128, 142) transparent transparent;
-}
-.calendar-today p {
-  color: #fff;
-  font-size: 14px;
-  line-height: 24px;
-}
-=======
-.calendar-date .item {  float: left;  width: 50px;  height: 50px;  line-height: 50px;  text-align: center;  margin-left: 0.56rem;  color: #cbcbcb;}
-.calendar-week {  padding-bottom: 0.7rem;  border-top: 2px solid #999999;  font-size: 0.24rem;}
-.calendar-week .item1{margin-left: 0.56rem;color: #747474;}
-.calendar-week .item2{margin-left: 0rem;}
-.calendar-date .item {  border-radius: 50%;  cursor: pointer;  font-size: 0.2rem;  margin-bottom: 0.4rem;  }
->>>>>>> 859ab65ca6de54a508a06fcdd76023eeac7db1dc
-
-.calendar-date .item-curMonth {  color: #333;}
-
-.calendar-today { display: none;  opacity: 0;  position: absolute;  right: 20px;  top: 20px;  width: 90px;  height: 48px;  padding: 6px 10px;  background-color: rgb(255, 128, 142);  border-radius: 5px;}
-.calendar-today .triangle {  position: absolute;  top: 50%;  left: -16px;  margin-top: -8px;  border-width: 8px;  border-style: solid;  border-color: transparent rgb(255, 128, 142) transparent transparent;}
-.calendar-today p { color: #fff;  font-size: 14px;  line-height: 24px;}
-
-/*---------------------日历插件css-------------------*/
-
-
-
 
 
 @media only screen and (max-width: 320px) {

@@ -13,7 +13,11 @@ class Sign extends MobileBase {
 
     public function index(){     
         
+        //$user_id = session('user.user_id');
         
+        $user_id = 1;
+        
+        $this->assign('user_id',$user_id);
 
         return $this->fetch();
     }

@@ -143,7 +143,7 @@ class Goods extends Base {
                     $return_arr = array(
                         'status' => 1,
                         'msg'   => '操作成功',
-                        'data'  => array('url'=>U('Admin/Goods/categoryList')),
+                        'data'  => array('url'=>U('seller/Goods/categoryList')),
                     );
                     $this->ajaxReturn($return_arr);
 
@@ -166,7 +166,7 @@ class Goods extends Base {
         $goods_count > 0 && $this->ajaxReturn(['status' => -1,'msg' =>'该分类下有商品不得删除!']);
         // 删除分类
         DB::name('goods_category')->where('id',$ids)->delete();
-        $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','url'=>U('Admin/Goods/categoryList')]);
+        $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','url'=>U('seller/Goods/categoryList')]);
     }
     
     
@@ -592,7 +592,7 @@ class Goods extends Base {
         M("goods_attr")->whereIn('goods_id',$goods_ids)->delete();  //商品属性
         M("goods_collect")->whereIn('goods_id',$goods_ids)->delete();  //商品收藏
 
-        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/goods/goodsList")]);
+        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("seller/goods/goodsList")]);
     }
     /**
      * 品牌列表
@@ -656,7 +656,7 @@ class Goods extends Base {
         }
         $res=Db::name('Brand')->whereIn('id',$brind_ids)->delete();
         if($res){
-            $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/goods/brandList")]);
+            $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("seller/goods/brandList")]);
         }
         $this->ajaxReturn(['status' => -1,'msg' => '操作失败','data'  =>'']);
     }      

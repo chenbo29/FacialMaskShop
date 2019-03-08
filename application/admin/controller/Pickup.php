@@ -13,20 +13,47 @@ class Pickup extends Base {
 		return $this->fetch('pickup');
 	}
 
-	public function pickup_list(){
+	// public function pickup_list(){
 
-		$Pickup =  M('offline_pickup'); 
-		$res = $Pickup->order('id desc')->select();
-  		$this->assign('res',$res);
+	// 	$Pickup =  M('offline_pickup'); 
+	// 	$res = $Pickup->order('id desc')->select();
+ //  		$this->assign('res',$res);
 
 
-		return $this->fetch();
-	}
+	// 	return $this->fetch();
+	// }
+	public function stay(){
+
+        $Pickup =  M('order'); 
+        $res = $Pickup->order('order_id desc')->select();
+        $this->assign('res',$res);
+
+
+        return $this->fetch();
+    }
+	
+
+	
+    public function off(){
+
+
+
+        return $this->fetch();
+
+    }
+
+    public function statistic(){
+
+
+    	
+        return $this->fetch();
+
+    }
 
     public function index(){
 
-        $Pickup =  M('pick_up'); 
-        $res = $Pickup->order('pickup_id desc')->select();
+        $Pickup =  M('order');
+        $res = $Pickup->order('order_id desc')->select();
         $this->assign('res',$res);
 
 
@@ -55,4 +82,15 @@ class Pickup extends Base {
 		return $this->fetch();
 	}
 }
+
+// 	public function place(){
+// 		$Pickup =  M(''); 
+// 		$res = $Pickup->order('id desc')->select();
+//   		$this->assign('res',$res);
+
+		
+		
+// 		return $this->fetch();
+// 	}
+// }
 

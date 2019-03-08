@@ -20,10 +20,10 @@
             </div>
             <if condition="$Request.param.statistic neq 1">
                 <ul class="tab-base nc-row">
-                    <li><a href="{:U('ShopOrder/off')}"><span>核销提货码</span></a></li>
-                    <li><a href="{:U('ShopOrder/index')}" <if condition="$Request.param.is_write_off nheq '0'">class="current"</if>><span>全部自提订单</span></a></li>
-                    <li><a href="{:U('ShopOrder/index',['is_write_off'=>0])}" <if condition="$Request.param.is_write_off heq '0'">class="current"</if>><span>待自提订单</span></a></li>
-                    <li><a href="{:U('ShopOrder/statistic')}"><span>数据统计</span></a></li>
+                    <li><a href="{:U('pickup/off')}"><span>核销提货码</span></a></li>
+                    <li><a href="{:U('pickup/index')}" <if condition="$Request.param.is_write_off nheq '0'">class="current"</if>><span>全部自提订单</span></a></li>
+                    <li><a href="{:U('pickup/stay',['is_write_off'=>0])}" <if condition="$Request.param.is_write_off heq '0'">class="current"</if>><span>待自提订单</span></a></li>
+                    <li><a href="{:U('pickup/statistic')}"><span>数据统计</span></a></li>
                 </ul>
             </if>
         </div>
@@ -48,7 +48,7 @@
             </div>
             <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
             <if condition="$Request.param.statistic neq 1">
-                <form class="navbar-form form-inline" method="get" action="{:U('ShopOrder/index')}">
+                <form class="navbar-form form-inline" method="get" action="{:U('pickup/index')}">
                 <input type="hidden" name="is_write_off" value="{$Request.param.is_write_off}">
                 <div class="sDiv">
                     <div class="dyrDiv2">
@@ -149,10 +149,10 @@
                                 <div style="text-align: center; width: 120px;">{$order['order']['add_time']|date='Y-m-d H:i:s',###}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 100px;">{$order['order']['consignee']}</div>
+                                <div style="text-align: center; width: 100px;">{$order.consignee}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 100px;">{$order['order']['mobile']}</div>
+                                <div style="text-align: center; width: 100px;">{$order.mobile}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 100px;">{$order['shop']['shop_name']}</div>
@@ -164,13 +164,13 @@
                                 <div style="text-align: center; width: 50px;">自提</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 50px;">{$Think.config.ORDER_STATUS[$order['order']['order_status']]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.ORDER_STATUS[$order.order_status]}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 50px;">{$Think.config.PAY_STATUS[$order['order']['pay_status']]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.PAY_STATUS[$order.pay_status]}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 50px;">{$Think.config.SHIPPING_STATUS[$order['order']['shipping_status']]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.SHIPPING_STATUS[$order.shipping_status]}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 50px;">{$list.pay_name|default='其他方式'}</div>
@@ -274,7 +274,7 @@
         var ordreStr = '',shopStr = '';
         $.ajax({
             type:"POST",
-            url:"/index.php?m=Admin&c=ShopOrder&a=getOrderGoodsInfo",
+            url:"/index.php?m=Admin&c=pickup&a=getOrderGoodsInfo",
             data:{order_id:order_id},
             dataType:"json",
             success: function (data) {
@@ -290,25 +290,25 @@
         })
     }
     $("#fahuo").click(function(){
-        var shopOrderId = $("#shop-order-id").val();
-        var oldShopOrderId = $("#old-shop-order-id").val();
+        var pickupId = $("#shop-order-id").val();
+        var oldpickupId = $("#old-shop-order-id").val();
         var isCode = $(".ztfh-lab-bg").data().val;
-        var newShopOrderId = oldShopOrderId;
+        var newpickupId = oldpickupId;
         if (isCode == 1) {
-            if(shopOrderId != oldShopOrderId){
+            if(pickupId != oldpickupId){
                 layer.alert("提货码错误", {icon: 2});
                 return;
             }
-            if(shopOrderId == ""){
+            if(pickupId == ""){
                 layer.alert("请输入提货码", {icon: 2});
                 return;
             }
-            newShopOrderId = shopOrderId;
+            newpickupId = pickupId;
         }
         $.ajax({
             type: "POST",
-            url: "/index.php?m=Admin&c=ShopOrder&a=writeOff",
-            data: {shop_order_id: newShopOrderId},
+            url: "/index.php?m=Admin&c=pickup&a=writeOff",
+            data: {shop_order_id: newpickupId},
             dataType: "json",
             success: function (data) {
                 if(data.status == 1){

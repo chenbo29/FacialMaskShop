@@ -255,7 +255,7 @@
 	
 	background: white;
     position: fixed;
-    bottom: 1.5rem;
+    bottom: 1rem;
     right: 0rem;
     left: 0rem;
 
@@ -281,6 +281,8 @@ width: 1.6rem;
 }
 .fuhao{
 	
+  position: absolute;
+  right: .6rem;
 	
 	
 }
@@ -299,17 +301,30 @@ li input  {
 	width: 100%;
 	height: .5rem;
 	line-height:.01rem;
-	position: absolute;
+	position: relative;
 	color: #767676;
 	background: white;
 	
+}
+.inputbiao{
 	
+	position: absolute;
+	left: .2rem;
+	bottom: .1rem;
 	
 }
 .xieyi span{
 	
 	font-size: .3rem;
-	padding-bottom: 1.2rem;
+	margin-left:.7rem ;
+	
+	
+}
+.xieyi span:nth-child(3){
+	color: red;
+	position: absolute;
+	right: .5rem;
+	bottom: .2rem;
 	
 }
 .submit{

@@ -250,6 +250,7 @@ class Goods extends MobileBase
         C('TOKEN_ON', true);
         $goodsLogic = new GoodsLogic();
         $goods_id = I("get.id/d");
+       
         $goodsModel = new \app\common\model\Goods();
         $goods = $goodsModel::get($goods_id);
         if (empty($goods) || ($goods['is_on_sale'] == 0)) {
@@ -268,6 +269,7 @@ class Goods extends MobileBase
 
         $recommend_goods = M('goods')->where("is_recommend=1 and is_on_sale=1 and cat_id = {$goods['cat_id']}")->cache(7200)->limit(9)->field("goods_id, goods_name, shop_price")->select();
         $this->assign('recommend_goods', $recommend_goods);
+      
         $this->assign('goods', $goods);
         return $this->fetch();
     }

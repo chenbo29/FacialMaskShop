@@ -9,8 +9,7 @@
 .detail{
 	
 	margin-top: 80px;
-	
-	
+
 	
 }
 
@@ -28,13 +27,24 @@
 	transform: translate(-50%,0);
 	
 }
+.fu{
+	
+	width:6.6rem;
+	height: 2.5rem;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%,0);
+	top: .4rem;
+	overflow: hidden;
+	
+	
+}
 .img{
 	
 	
 	width: 6.6rem;
 	/*margin: 0 7%;*/
-	position: relative;
-	top: .7rem;
+	position: absolute;
 	left: 50%;
 	transform: translate(-50%,0);
 
@@ -87,7 +97,7 @@
 
 .right{
 	
-	width: 4.3rem;
+	width: 4.6rem;
 	height: 1.4rem;
 	border: 1px solid #EEEEEE;
 	position: absolute;
@@ -109,6 +119,11 @@
 
 .right .span1{
 	
+	 width: 1rem;
+	 height: 1.4rem;
+	 text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
 	 position: absolute;	
 	 top: .06rem;
 	 left: 1.1rem;
@@ -116,9 +131,15 @@
 }
 .right .span2{
 	
-	 position: absolute;	
+	 position: absolute;
+	 width: 2.2rem;
+	 height: 1.4rem;	
 	 top: .06rem;
-	 left: 1.9rem;
+	 left: 2.3rem;
+	 font-size: .25rem;
+	 text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
 	
 }
 .headpicear{
@@ -142,13 +163,23 @@
 
 .p1{
 	
+	width: 1.3rem;
+	height: .3rem;
 	font-size: .25rem;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 
 }
 .p2{
-	
+
+	width: 1.3rem;
+	height: .3rem;
 	font-size: .25em;
 	margin-bottom: .3rem;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 	
 	
 	

@@ -69,7 +69,7 @@ input {
 }
 /*public head*/
 .lb_headWrap {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -80,14 +80,22 @@ input {
 	height: .88rem;
 	font: .28rem/.88rem "微软雅黑";
 	text-align: center;
+	color: #333;
 	letter-spacing: .02rem;
 }
+/*头部 底部线*/
 .lb_headWrap_line {
 	border-bottom: .01rem solid #ccc;
 }
+/*头部 背景颜色*/
 .lb_headWrap_bacColor {
 	background-color: #fff;
 }
+/*头部 字体颜色*/
+.lb_headWrap_fiontWhite {
+	color: #fff;
+}
+
 .lb_headWrap_return {
 	position: absolute;
 	top: 0;

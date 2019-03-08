@@ -16,7 +16,7 @@
 	width: 96%;
 	height: 5.53rem;
 	margin: 3% 2%;
-	margin-top: .40rem;
+	margin-top: .8rem;
 	border: 1px solid #BEBEBE;
 	position: relative;
 	margin-bottom: 1rem;
@@ -78,7 +78,7 @@
     font-size: .3rem;
     left: 5%;
     display: inline-block;
-    border: 1px solid red;
+   
     
 	
 }

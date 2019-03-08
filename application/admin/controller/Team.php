@@ -40,15 +40,19 @@ class Team extends Base
         $act = I('GET.act', 'add');
         $groupbuy_id = I('get.id/d');
         $group_info = array();
-
+        $group_info['start_time'] = date('Y-m-d H:i:s');
+        $group_info['end_time'] = date('Y-m-d H:i:s', time() + 3600 * 365);
+        $group_info['is_edit'] = 1;
         if ($groupbuy_id) {
             $GroupBy = new GroupBuy();
             $group_info = $GroupBy->with('specGoodsPrice,goods')->find($groupbuy_id);
-
+            $group_info['start_time'] = date('Y-m-d H:i:s', $group_info['start_time']);
+            $group_info['end_time'] = date('Y-m-d H:i:s', $group_info['end_time']);
             $act = 'edit';
         }
-        //$this->assign('min_date', date('Y-m-d H:i:s'));
+        $this->assign('min_date', date('Y-m-d H:i:s'));
         $this->assign('info', $group_info);
+        $this->assign('act', $act);
 
 		return $this->fetch();
 	}

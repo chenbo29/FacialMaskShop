@@ -12,7 +12,7 @@ class Seckill extends MobileBase
     /**
      * 秒杀
      */
-    public function index()
+    public function index_zp()
     {
        
         return $this->fetch();
@@ -34,6 +34,10 @@ class Seckill extends MobileBase
     public function submit()
     {
        
+        $time = "2019,3,8";
+        $this->assign('time',$time);
+
+
         return $this->fetch();
     }
 

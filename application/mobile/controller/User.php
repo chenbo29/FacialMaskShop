@@ -81,8 +81,15 @@ class User extends MobileBase
     public function welfare_zp(){
         return $this->fetch();
     }
+<<<<<<< HEAD
     
     public function qianbao(){
+=======
+
+
+    
+    public function wallet(){
+>>>>>>> 98bd5f235b218bada9f5c1acf5211dfb2ce3b2ae
 
         $user = session('user');
         //获取账户资金记录

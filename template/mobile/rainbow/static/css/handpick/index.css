@@ -48,7 +48,6 @@ img{
 .handpickBox{
     width: 100%;
     background-color: #f4f4f4;
-    padding-bottom: 2rem;
 }
 
 .handpickBox .headerBox{
@@ -92,7 +91,7 @@ img{
     height: 2.62rem;
     width: 100%;
 }
-.advertising>img{
+.advertising img{
     height: 2.62rem;
     width: 100%;
 }
@@ -101,7 +100,7 @@ img{
      height: 2.22rem;
      width: 100%;
 }
-.advertisingtwo>img{
+.advertisingtwo img{
     height: 2.22rem;
     width: 100%;
 }
@@ -136,6 +135,34 @@ img{
 .handpickListImg{
     height: 1rem;
     width: 100%;
+}
+.handpickListImg ul{
+    height: 1rem;
+    width: 100%;
+    display: flex;
+}
+.handpickListImg ul li{
+    height: 1rem;
+    width: 20%;
+    text-align: center;
+    background-color:#0e264a;
+    border-left:.02rem solid #FFFFFF;
+}
+
+.handpickListImg ul li img{
+    width: .5rem;
+    height:.5rem;
+    margin-top:.08rem;
+}
+
+.handpickListImg ul li P{
+  color:#FFFFFF;
+  font-size:.2rem;
+  padding-top:.1rem;
+}
+
+.handpickListImg ul .active{
+    background-color:#ff5722;
 }
 
 /* 新品速递 */
@@ -248,8 +275,83 @@ img{
   margin-bottom:.49rem;
 }
 
-/* 轮播图 */
+/* 层叠轮播图 */
 .swiperBox{
     height:2.82rem;
     width:100%;
+    /* position: relative; */
+    overflow: hidden;
 }
+
+.swiperBox .Cooldog_content{
+    position: absolute;
+    height:2.82rem;
+    left: 12%;
+}
+
+.swiperBox .Cooldog_content>ul>li{
+    position: absolute;
+    top: 0;
+    left: .04rem;
+    width: 5.62rem;
+    height:2.82rem;
+    transition: all 0.3s ease;
+    transform: translate3d(-.94rem, 0, 0) scale(0.81);
+    transform-origin: 0 50%;
+    opacity: 0.8;
+    z-index: 3;
+}
+
+.swiperBox .Cooldog_content>ul>li img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.swiperBox .Cooldog_content>ul>.p3{
+    transform: translate3d(2rem, 0, 0) scale(0.81);
+    transform-origin: 0 50%;
+    opacity: 0.8;
+    z-index: 3;
+}
+.swiperBox .Cooldog_content>ul>.p1{
+    transform: translate3d(0rem, 0, 0) scale(1);
+    opacity: 1;
+    z-index: 4;
+}
+/* 加载样式 */
+
+/*加载中 */
+.loding{
+    
+    position: relative;
+    height:1rem;
+    line-height: 1rem;
+ }
+ .loding .loding1{
+     position: absolute;
+     left:40%;
+     top:20%;
+     width:.6rem;
+     height: .6rem;
+     margin-right:0;
+     display: inline-block;
+     box-sizing: border-box;
+     animation: loading1 1s linear infinite;
+ }
+ @keyframes loading1{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+ .loding>span{
+     position: absolute;
+     left:48%;
+     color:#cdcdcd;
+     padding-left:.1rem;
+     margin-top:.1rem;
+ }

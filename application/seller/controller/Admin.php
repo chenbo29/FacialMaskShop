@@ -1,18 +1,4 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用最新Thinkphp5助手函数特性实现单字母函数M D U等简写方式
- * ============================================================================
- * Author: 当燃      
- * Date: 2015-09-09
- */
-
 namespace app\seller\controller;
 
 use app\common\logic\SellerLogic;
@@ -140,12 +126,16 @@ class Admin extends Base {
             $password = encrypt(I('post.password/s'));
 			
             $verify = new Verify();
-            if (!$verify->check($code, "admin_login")) {
+            if (!$verify->check($code, "seller_login")) {
                 $this->ajaxReturn(['status' => 0, 'msg' => '验证码错误']);
             }
 			$condition['tp_seller.user_name'] = $username;
 			$condition['tp_seller.password'] = $password;
 			$seller = Db::name('seller')->where($condition)->find();
+
+			dump($seller);
+			exit;
+			
 			if(!$seller){
 				$return = ['status' => 0, 'msg' => '账号或密码错误！'];
 			}else{
@@ -189,7 +179,7 @@ class Admin extends Base {
         	'reset' => false
         );    
         $Verify = new Verify($config);
-        $Verify->entry("admin_login");
+        $Verify->entry("seller_login");
         exit();
     }
     

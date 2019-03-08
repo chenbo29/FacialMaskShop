@@ -1013,7 +1013,6 @@
             dataType: 'json',
             data: $('#cart2_form').serialize(),
             success: function (data) {
-                console.log(data);
                 is_shipping_able = true;
                 if(data.hasOwnProperty('code') && data.code == 301){
                     is_shipping_able = false;

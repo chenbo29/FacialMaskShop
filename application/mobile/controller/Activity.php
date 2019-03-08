@@ -129,7 +129,12 @@ class Activity extends MobileBase {
     public function flash_sale_list()
     {
         $time_space = flash_sale_time_space();
+        // $prom_list = DB::name("flash_sale")
+        // ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+        // ->limit($Page->firstRow.','.$Page->listRows)->select();
+        dump($time_space);
         $this->assign('time_space', $time_space);
+        // $this->assign('prom_list',$prom_list);
         return $this->fetch();
     }
 

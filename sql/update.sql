@@ -12,18 +12,18 @@ ALTER TABLE `tp_team_activity` ADD `return_commission` TINYINT(1) DEFAULT 0 COMM
 ALTER TABLE `tp_team_activity` MODIFY `buy_limit` smallint(4) NOT NULL DEFAULT '0' COMMENT '限购数量：0不限制';
 ALTER TABLE `tp_team_activity` ADD `activity_rule` TEXT COMMENT '活动规则';
 ALTER TABLE `tp_team_activity` ADD `goods_intro` TEXT COMMENT '商品简介';
-ALTER TABLE `tp_team_activity` ADD `create_time` datetime NOT NULL COMMENT '创建时间';
+ALTER TABLE `tp_team_activity` ADD `create_time` datetime DEFAULT NULL COMMENT '创建时间';
 ALTER TABLE `tp_team_activity` ADD `update_time` datetime DEFAULT NULL COMMENT '更新时间';
 #tp_team_goods_item表增加和修改字段
 ALTER TABLE `tp_team_goods_item` ADD `sku` varchar(60) DEFAULT '' COMMENT 'SKU' AFTER `item_id`;
 ALTER TABLE `tp_team_goods_item` ADD `goods_price` decimal(10,2) DEFAULT '0.00' COMMENT '商品原价' AFTER `sku`;
-ALTER TABLE `tp_team_goods_item` ADD `current_price` decimal(10,2) DEFAULT '0.00' COMMENT '现价' AFTER goods_price;
+ALTER TABLE `tp_team_goods_item` ADD `current_price` decimal(10,2) DEFAULT '0.00' COMMENT '现价' AFTER `goods_price`;
 
 CREATE TABLE `tp_team_ladder` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `team_id` int(10) DEFAULT '0' COMMENT '拼团活动id',
-  `level` int(11) DEFAULT '0' COMMENT '层级',
-  `group_number` int(11) DEFAULT 0 COMMENT '拼团人数：0默认不限制',
+  `level` int(3) DEFAULT '0' COMMENT '层级',
+  `group_number` int(11) DEFAULT 0 COMMENT '拼团人数：0默认不限制';
   `price` decimal(10,2) DEFAULT '0.00' COMMENT '拼团价格',
   `status` tinyint(1) DEFAULT '0' COMMENT '状态：0存在，1已删除',
   PRIMARY KEY (`id`)

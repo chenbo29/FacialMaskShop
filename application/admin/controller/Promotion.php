@@ -393,6 +393,7 @@ class Promotion extends Base
             $group_info['end_time'] = date('Y-m-d H:i:s', $group_info['end_time']);
             $act = 'edit';
         }
+        // dump($group_info);
         $this->assign('min_date', date('Y-m-d H:i:s'));
         $this->assign('info', $group_info);
         $this->assign('act', $act);

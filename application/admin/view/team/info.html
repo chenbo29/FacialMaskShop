@@ -42,7 +42,7 @@
 			    </dd>
 			</dl>
 			
-			<dl class="row">
+			<!-- <dl class="row">
 			    <dt class="tit">
 			        <label><em>*</em>时间段:</label>
 			    </dt>
@@ -52,8 +52,15 @@
 					<input type="text" id="end_time" name="end_time" value="{$info.end_time}" class="input-txt">
 					<span class="err" id="err_end_time"></span>
 			    </dd>
+			</dl> -->
+			<dl class="row">
+			    <dt class="tit">
+			        <label><em>*</em>时间段:</label>
+			    </dt>
+			    <dd class="opt">
+			        <input type="text" id="start_time" name="start_time" value="{$info.start_time}">至<input type="text" id="end_time" name="end_time" value="{$info.end_time}">
+			    </dd>
 			</dl>
-
 
 			<dl class="row">
 				<dt class="tit">
@@ -85,23 +92,56 @@
 				</dd>
 			</dl>
 			
-            <dl class="row">
+            <!-- <dl class="row">
                 <dt class="tit">
                     <label><em>*</em>团购类型</label>
                 </dt>
-                <dd class="opt ctype">
-                        <input name="team_type" class="team_type" type="radio" value="小团"><label>小团</label>
-						<input name="team_type" class="team_type" type="radio" value="大团"><label>大团</label>
-						<input name="team_type" class="team_type" type="radio" value="阶梯团"><label>阶梯团</label>
+                <dd class="opt">
+                    <select id="prom_type" name="type">
+                        <option value="0" <if condition="$info[type] eq 0">selected</if>>小团</option>
+                        <option value="1" <if condition="$info[type] eq 1">selected</if>>中团</option>
+                        <option value="2" <if condition="$info[type] eq 2">selected</if>>大团</option>
+                    </select>
 					<p class="notic">小团：邀请可成为团友，邀请人为团长，满足人数或者购买数量才可开团。为了避免团长开团后长期不能成团，开团24小时后如果还未成团，将会自动关闭订单。 <br/>
 大团：满足团购总人数或者购买总数量即可开团。 <br/>
 阶梯团：根据不同的团购人数，决定最后的团购价格。到达截止时间拼团自动结束，且订单交易完成后，多余的钱将返还至预存款中。 
 团购活动开启后请勿随意更改团购类型，以免造成不必要的损失。 <br/>
 默认关闭，若开启，小团将在24小时后自动成团，无论团购人数或购买数量是否达到若选择了开团等级，只有达到该等级的会员才可以开团。</p>
                 </dd>
-            </dl>
+            </dl> -->
+
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>促销活动类型</label>
+                </dt>
+                <dd class="opt">
+                    <select id="prom_type" name="type">
+                        <option value="0" <if condition="$info[type] eq 0">selected</if>>小团</option>
+                        <option value="1" <if condition="$info[type] eq 1">selected</if>>中团</option>
+                        <option value="2" <if condition="$info[type] eq 2">selected</if>>阶梯团&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                    </select>
+					<p class="notic">小团：邀请可成为团友，邀请人为团长，满足人数或者购买数量才可开团。为了避免团长开团后长期不能成团，开团24小时后如果还未成团，将会自动关闭订单。 <br/>
+						大团：满足团购总人数或者购买总数量即可开团。 <br/>
+						阶梯团：根据不同的团购人数，决定最后的团购价格。到达截止时间拼团自动结束，且订单交易完成后，多余的钱将返还至预存款中。 
+						团购活动开启后请勿随意更改团购类型，以免造成不必要的损失。 <br/>
+						默认关闭，若开启，小团将在24小时后自动成团，无论团购人数或购买数量是否达到若选择了开团等级，只有达到该等级的会员才可以开团。</p>
+                </dd>
+            </dl>			
+
+            <dl class="row" id="expression_dl">
+                <dt class="tit">
+                    <label><em>*</em>团购价:</label>
+                </dt>
+                <dd class="opt">
+                    <!-- <input type="text" id="expression" name="expression"  value="{$info.expression}" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
+					<p class="notic">% 折扣值(1-100 如果打9折，请输入90)</p> -->
+			        <input type="text" name="act_name" value="" class="input-txt">
+			        <p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p>					
+                </dd>
+			</dl>
 			
-			<dl class="row">
+
+			<!-- <dl class="row">
 			    <dt class="tit">
 			        <label><em>*</em>团购价:</label>
 			    </dt>
@@ -109,9 +149,9 @@
 			        <input type="text" name="act_name" value="" class="input-txt">
 			        <p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p>
 			    </dd>
-			</dl>
+			</dl> -->
 			
-			<dl class="row">
+			<!-- <dl class="row">
 				<dt class="tit">
 					<label><em>*</em>成团条件:</label>
 				</dt>
@@ -120,9 +160,9 @@
 						<input name="team_type" class="team_type" type="radio" value="按购买数量"><label>按购买数量</label>
 					<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p>
 				</dd>
-			</dl>
+			</dl> -->
 			
-			<dl class="row">
+			<!-- <dl class="row">
 			    <dt class="tit">
 			        <label><em>*</em>拼团人数:</label>
 			    </dt>
@@ -140,7 +180,7 @@
 			        <input type="text" name="act_name" value="" class="input-txt">
 			        <p class="notic">满足数量即可。</p>
 			    </dd>
-			</dl>
+			</dl> -->
 			
 			<dl class="row">
 			    <dt class="tit">
@@ -176,7 +216,7 @@
 			        	</div>
 			        </div>
 					
-					<div class="tDiv">
+					<!-- <div class="tDiv">
 						<div class="tDiv2">
 							<a href="{:U('Promotion/spike_list_info')}">
 								<div class="fbutton">
@@ -185,7 +225,19 @@
 									</div>
 								</div>
 							</a>
-						</div>
+						</div> -->
+
+						<div class="tDiv">
+							<div class="tDiv2">
+								
+									<div class="fbutton">
+										<div title="添加活动" class="add">
+											<span><a onclick="selectGoods()"><i class="fa fa-plus"></i></a>添加活动</span>
+										</div>
+									</div>
+								
+							</div>						
+
 						<div style="clear:both"></div>
 					</div>
 					<div class="bDiv" style="height: auto;">
@@ -368,6 +420,8 @@
             }
         });
     }
+
+
     function selectGoods(){
         var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>6,'prom_id'=>$info[id]))}";
         layer.open({
@@ -380,36 +434,24 @@
         });
     }
     function call_back(goodsItem){
+        $('#goods_id').val(goodsItem.goods_id);
         var html = '';
         if(goodsItem.spec != null){
             //有规格
-            $.each(goodsItem.spec, function (i, o) {
-                html += '<tr class="bd-line"> ' +
-                        '<input name="team_goods_item['+i+'][goods_id]" value="'+goodsItem.goods_id+'" type="hidden"/> ' +
-                        '<input name="team_goods_item['+i+'][item_id]" value="'+ o.item_id +'" type="hidden"/> ' +
-                        '<td> <div style="text-align: center; width: 250px;">'+o.key_name+'</div> </td> ' +
-                        '<td> <div style="text-align: center; width: 50px;"> '+ o.store_count+ ' </div> </td> ' +
-                        '<td> <div style="text-align: center; width: 100px;"> '+ o.price +' </div> </td> ' +
-                        '<td> <div style="text-align: center; width: 150px;"><input name="team_goods_item['+i+'][team_price]" value="1.00" type="text"/></div></td> ' +
-                        '<td class="handle"> <div style="text-align: center; width: 100px;"> <a class="btn red delete_tr" href="javascript:void(0)">删除</a> </div> </td> ' +
-                        '<td style="width: 100%;"> <div>&nbsp;</div> </td> ' +
-                        '</tr>';
-            });
-
+            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
+                    '<img style="width: 162px;height: 162px" src="'+goodsItem.spec.spec_img+'"/></div> <div class="goods-name"> ' +
+                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+goodsItem.spec.key_name+'</a> </div>' +
+                    ' <div class="goods-price">商城价：￥'+goodsItem.spec.price+'库存:'+goodsItem.spec.store_count+'</div> </div>';
+            $('input[name=item_id]').val(goodsItem.spec.item_id)
+            $('input[name=goods_name]').val(goodsItem.goods_name + goodsItem.spec.key_name);
         }else{
-            html = '<tr class="bd-line"> ' +
-                    '<input name="team_goods_item[0][goods_id]" value="'+goodsItem.goods_id+'" type="hidden"/> ' +
-                    '<input name="team_goods_item[0][item_id]" value="0" type="hidden"/> ' +
-                    '<td> <div style="text-align: center; width: 250px;"> -- </div> </td> ' +
-                    '<td> <div style="text-align: center; width: 50px;"> '+ goodsItem.store_count+ ' </div> </td> ' +
-                    '<td> <div style="text-align: center; width: 100px;"> '+ goodsItem.goods_price +' </div> </td> ' +
-                    '<td> <div style="text-align: center; width: 150px;"><input name="team_goods_item[0][team_price]" value="1.00" type="text"/></div></td> ' +
-                    '<td class="handle"> <div style="text-align: center; width: 100px;"> <a class="btn red delete_tr" href="javascript:void(0)">删除</a> </div> </td> ' +
-                    '<td style="width: 100%;"> <div>&nbsp;</div> </td> ' +
-                    '</tr>';
+            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
+                    '<img style="width: 162px;height: 162px" src="'+goodsItem.goods_image+'"/></div> <div class="goods-name"> ' +
+                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+'</a> </div>' +
+                    ' <div class="goods-price">商城价：￥'+goodsItem.goods_price+'库存:'+goodsItem.store_count+'</div> </div>';
+            $('input[name=goods_name]').val(goodsItem.goods_name);
         }
-        $('#goods_id').val(goodsItem.goods_id);
-        $('#goods_name').val(goodsItem.goods_name);
+        $('#select_goods_button').attr('data-goods-id',goodsItem.goods_id);
         $('#selected_group_goods').empty().html(html);
         $('.selected-group-goods').show();
         layer.closeAll('iframe');
@@ -420,6 +462,43 @@
         $("#img_a").attr('href', fileurl_tmp);
         $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
+
+    $("#prom_type").on("change",function(){
+        var type = parseInt($("#prom_type").val());
+        var expression = '';
+        switch(type){
+            case 0:{
+                expression = '<dt class="tit"><label><em>*</em>团购价</label></dt>'
+                        + '<dd class="opt"><input type="text" name="expression" pattern="([1-9]\\d?|100)" onkeyup="this.value=this.value.replace(/[^\\d.]/g,\'\')" value="" class="input-txt">'
+                        + '<p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p></dd>';
+                break;
+            }
+            case 1:{
+                expression = '<dt class="tit"><label><em>*</em>成团条件</label></dt>'
+                        + '<dd class="opt"><input name="team_type" class="team_type" type="radio" value="0" class="input-txt"><label>按拼团人数</label><input name="team_type" class="team_type" type="radio" value="1" class="input-txt"><label>按购买数量</label>'
+						// +'<dd class="opt"><input name="team_type" class="team_type" type="radio" value="1" class="input-txt"><label>按购买数量</label>'
+                        + '<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p></dd>';
+                break;			
+            }
+            case 2:{
+                expression = '<dt class="tit"><label><em>*</em>阶梯团:</label></dt>'
+                        + '<dd class="opt"><div class="hDiv"><div class="hDivBox"><table cellspacing="0" cellpadding="0"><thead><tr><th class="sign" axis="col0"><div style="width: 24px;"><i class="ico-check"></i></div></th><th align="left" abbr="article_title" axis="col3" class=""><div style="text-align: left; width: 50px;" class="">层级</div></th><th align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 100px;" class="">拼团价格</div></th><th align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 120px;" class="">拼团人数</div></th><th align="left" axis="col1" class="handle"><div style="text-align: center; width: 240px;">操作</div></th><th style="width:100%" axis="col7"><div></div></th></tr></thead></table></div></div>'
+                        + '<p class="notic">最多可设置10个阶梯。</p></dd>';
+                break;
+            }
+            case 3:{
+                expression = '<dt class="tit"><label><em>*</em>代金券</label></dt><dd class="opt"><select name="expression">'
+                        + '<tpshop sql="select * from __PREFIX__coupon where type=0 AND use_end_time gt $template_now_time" item="v"><option value="{$v.id}" <if condition="$v[id] eq $info[expression]">selected</if>>{$v.name}</option></tpshop></select>'
+                        + '</dd>';
+                break;
+            }
+            case 4:{
+                expression = '';
+                break;
+            }
+        }
+        $("#expression_dl").html(expression);
+    });
 
 </script>
 </body>

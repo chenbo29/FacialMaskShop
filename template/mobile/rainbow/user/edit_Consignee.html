@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
 		
 		<!--三级联动css-->
-		<link rel="stylesheet" href="__STATIC__/css/public_lb/layout.min.css" />
+		<!--<link rel="stylesheet" href="__STATIC__/css/public_lb/layout.min.css" />-->
 		<link rel="stylesheet" href="__STATIC__/css/public_lb/scs.min.css" />
 		<!--<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />-->
 			
@@ -30,11 +30,13 @@
 					<ul>
 						<li>
 							<p>收货人:</p>
-							<p class="lj_edit_p">张明</p>
+							<!--<p class="lj_edit_p">张明</p>-->
+							<input class="lj_shr" type="text" value="张明" />
 						</li>
 						<li>
 							<p>手机号码:</p>
-							<p>18605480486</p>
+							<!--<p>18605480486</p>-->
+							<input type="text" value="18605480486" />
 						</li>
 						<li>
 							<p>所在地区:</p>
@@ -46,13 +48,15 @@
 						</li>
 						<li>
 							<p>详细地址:</p>
-							<p>桃源速彩包装</p>
+							<!--<p>桃源速彩包装</p>-->
+							<input type="text" value="桃源速彩包装" />
 						</li>
 						<li>	
-							<p class="lj_edit_p1">地址标签:</p>
-							<p class="lj_edit_p2">家</p>
-							<p class="lj_edit_p2">公司</p>
-							<p class="lj_edit_p2">学校</p>
+							<p class="lj_edit_p1" >地址标签:</p>
+							<p class="lj_edit_p2 ">家</p>
+							<p class="lj_edit_p2 ">公司</p>
+							<p class="lj_edit_p2 ">学校</p>
+							
 							<p class="lj_edit_p2" id="zt">自定义</p>
 						</li>
 						<li>
@@ -68,8 +72,18 @@
 					<a href="#">确认</a>
 				</div>	
 		</div>
-			
-			
+		<div class="lj_bg">
+			<div class="lj_tank">
+				<p>地址标签</p>
+				<input type="text" placeholder="请输入" />
+				<div class="lj_tank_btn">
+					<input id="lj_t_btn" type="button" value="确认" />
+					<input id="lj_t_btn2" type="button" value="取消" />
+				</div>
+			</div>
+		</div>
+		
+		
 		<script src="__STATIC__/js/public/jquery-1.8.3.min.js" ></script>
 		<script src="__STATIC__/js/lj_personal.js" ></script>
 		<!--三级联动js-->
@@ -78,3 +92,4 @@
 		<script src="__STATIC__/js/public/region_lb.js"></script>
 	</body>
 </html>
+

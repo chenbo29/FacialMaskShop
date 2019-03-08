@@ -31,7 +31,7 @@ class Seckill extends MobileBase
     /**
      * 秒杀 提交 订单
      */
-    public function submit()
+    public function submit_order()
     {
        
         return $this->fetch();
@@ -46,4 +46,5 @@ class Seckill extends MobileBase
         return $this->fetch();
     }
     
+
 }

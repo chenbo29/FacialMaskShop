@@ -202,4 +202,14 @@ return	array(
 			// ))
            
 	)),
+
+
+	'seller'=>array('name'=>'商家管理','child'=>array(
+		array('name' => '商家管理','child' => array(
+				array('name' => '商家列表', 'act'=>'seller_list', 'op'=>'SellerManagement'),
+				
+		))
+		
+	   
+)),
 );

@@ -8,14 +8,14 @@
 <div id="append_parent"></div>
 <div id="ajaxwaitid"></div>
 <div class="page">
-    <div class="fixed-bar">
+    <!-- <div class="fixed-bar">
         <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
             <div class="subject">
                 <h3>竞拍管理 - 编辑竞拍</h3>
                 <h5>网站系统竞拍活动详情页</h5>
             </div>
         </div>
-    </div>
+    </div> -->
     <form class="form-horizontal" id="handleposition" method="post">
         <input type="hidden" id="goods_id" name="goods_id" value="{$info.goods_id}">
         <input type="hidden" name="id" value="{$info.id}">
@@ -26,22 +26,42 @@
                     <label><em>*</em>活动名称：</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="activity_name" id="activity_name" value="{$info.activity_name}" class="input-txt">
+                    <input type="text" name="activity_name" id="activity_name" value="{$info.goods_id}" class="input-txt">
                     <span class="err" id="err_title"></span>
                     <p class="notic">请填写活动名称</p>
                 </dd>
             </dl>
 			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>活动商品：</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="goods_name" id="goods_name" value="{$info.goods_name}" class="input-txt">
-			        <span class="err" id="err_title"></span>
-			        <p class="notic">参加过其他活动的商品不参与拍卖，请选择不带活动标签的商品，否则后果自负！</p>
-			    </dd>
-			</dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>选择竞拍商品</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" id="goods_name" readonly name="goods_name" value="{$info.goods_name}" class="input-txt">
+                    <div style="overflow: hidden" id="selected_group_goods">
+                        <if condition="$info['goods_id'] gt 0">
+                            <div style="float: left;margin-right: 10px" class="selected-group-goods">
+                                <div class="goods-thumb"><img style="width: 162px;height: 162px"  <notempty name="info['specGoodsPrice']">src="{$info['specGoodsPrice']['spec_img']}"<else/>src="{$info['goods_id']|goods_thum_images=162,162}"</notempty>/></div>
+                                <div class="goods-name">
+                                    <a target="_blank" href="{:U('Home/Goods/goodsInfo',array('id'=>$info['goods_id']))}">{$info.goods_name}</a>
+                                </div>
+                                <div class="goods-price">
+                                    <notempty name="info['specGoodsPrice']">
+                                        商城价：￥{$info['specGoodsPrice']['price']}库存:{$info['specGoodsPrice']['store_count']}
+                                        <else/>
+                                        商城价：￥{$info['goods']['shop_price']}库存:{$info['goods']['store_count']}
+                                    </notempty>
+                                </div>
+                            </div>
+                        </if>
+                    </div>
+                    <span class="err" id="err_goods_name"></span>
+                    <p class="notic">
+                        <a onclick="selectGoods()" class="ncap-btn" id="select_goods_button"><i class="fa fa-search"></i>选择商品</a>
+                    </p>
+                    <p class="notic">参加过其他活动的商品不参与拍卖，请选择不带活动标签的商品，否则后果自负！</p>
+                </dd>
+            </dl>
 			
 			<dl class="row">
 			    <dt class="tit">
@@ -67,7 +87,7 @@
 			
 			<dl class="row">
 			    <dt class="tit">
-			        <label><em>*</em>每轮时间：</label>
+			        <label><em>*</em>1每轮时间：</label>
 			    </dt>
 			    <dd class="opt">
 			        <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">分钟
@@ -150,12 +170,6 @@
 					<p class="notic">出价时需要增加的幅度。每次出价可以增加多个。</p>
 			    </dd>
 			</dl>
-
-
-            <if condition="$info['is_edit'] eq 0">
-                <div class="bot"><a class="ncap-btn-big">确认提交</a></div>
-            <else/>
-
             <dl class="row" txt="是否交货">
                 <dt class="tit">是否交货</dt>
                 <dd class="opt">
@@ -167,7 +181,25 @@
                     </div>
                     <p class="notic"></p>
                 </dd>
-            </dl>
+            </dl> 
+            <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+
+            <!-- <if condition="$info['is_edit'] eq 0"> -->
+                <!-- <div class="bot"><a class="ncap-btn-big">确认提交</a></div> -->
+            <!-- <else/>-->
+
+            <!-- <dl class="row" txt="是否交货">
+                <dt class="tit">是否交货</dt>
+                <dd class="opt">
+                    <div class="onoff">
+                        <label for="mmt_message_switch1" class="cb-enable selected">是</label>
+                        <label for="mmt_message_switch0" class="cb-disable ">否</label>
+                        <input id="mmt_message_switch1" name="mmt_message_switch" checked="checked" value="1" type="radio">
+                        <input id="mmt_message_switch0" name="mmt_message_switch" value="0" type="radio">
+                    </div>
+                    <p class="notic"></p>
+                </dd>
+            </dl>  -->
             <!-- <dl class="row">
                 <dt class="tit">手机短信通知</dt>
                 <dd class="opt">
@@ -193,8 +225,8 @@
                 </dd>
             </dl> --> 
 
-                <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
-            </if>
+                <!-- <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div> -->
+            <!-- </if> -->
         </div>
     </form>
 </div>
@@ -202,30 +234,26 @@
     $(document).ready(function(){
         $('#start_time').layDate();
     })
-    var ajax_return_status = 1; // 标识ajax 请求是否已经回来 可以进行下一次请求
+    // var ajax_return_status = 1; // 标识ajax 请求是否已经回来 可以进行下一次请求
     function verifyForm(){
         $('span.err').hide();
-        if (ajax_return_status == 0) {
-            return false;
-        }
-        if ($('#start_time').val() == ''){
-            layer.msg('请输入活动时间', {icon: 2,time: 1000});
-            return false;
-        }
-        ajax_return_status = 0;
+        // if (ajax_return_status == 0) {
+        //     return false;
+        // }
+        // if ($('#start_time').val() == ''){
+        //     layer.msg('请输入活动时间', {icon: 2,time: 1000});
+        //     return false;
+        // }
+        // ajax_return_status = 0;
         $.ajax({
             type: "POST",
-            url: "{:U('Admin/Promotion/flash_sale_info')}",
+            url: "{:U('Admin/Promotion/auction_list_info')}",
             data: $('#handleposition').serialize(),
             dataType: "json",
-            error: function () {
-                ajax_return_status = 1
-                layer.alert("服务器繁忙, 请联系管理员!");
-            },
             success: function (data) {
                 if (data.status == 1) {
                     layer.msg(data.msg, {icon: 1, time: 1000}, function(){
-                        location.href = "{:U('Admin/Promotion/flash_sale')}";
+                        location.href = "{:U('Admin/Promotion/auction_list')}";
                     });
                 } else {
                     layer.msg(data.msg, {icon: 2,time: 1000});
@@ -234,6 +262,10 @@
                     });
                     ajax_return_status = 1;
                 }
+            },
+            error: function () {
+                ajax_return_status = 1
+                layer.alert("服务器繁忙, 请联系管理员!");
             }
         });
     }

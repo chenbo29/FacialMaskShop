@@ -630,10 +630,8 @@ class Promotion extends Base
         if (IS_POST) {
             $data = I('post.');
             $data['start_time'] = strtotime($data['start_time']);
-            $data['end_time'] = $data['start_time'];
+            $data['end_time'] = strtotime($data['end_time']);
             // $flashSaleValidate = Loader::validate('FlashSale');
-            // // var_dump($flashSaleValidate);//exit;
-
             // if ($flashSaleValidate->batch()->check($data)) {
             //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
             //     $this->ajaxReturn($return);
@@ -789,8 +787,8 @@ class Promotion extends Base
     {
         if (IS_POST) {
             $data = I('post.');
+            $data['preview_time'] = strtotime($data['preview_time']);
             $data['start_time'] = strtotime($data['start_time']);
-            $data['end_time'] = $data['start_time'];
             // $flashSaleValidate = Loader::validate('FlashSale');
             // // var_dump($flashSaleValidate);//exit;
 
@@ -798,8 +796,10 @@ class Promotion extends Base
             //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
             //     $this->ajaxReturn($return);
             // }
+            // dump($data);exit;
             if (empty($data['id'])) {
                 $flashSaleInsertId = Db::name('auction')->insertGetId($data);
+                // dump($data);//exit;
                 if($data['item_id'] > 0){
                     //设置商品一种规格为活动
                     Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 1]);
@@ -809,31 +809,12 @@ class Promotion extends Base
                 }
                 adminLog("管理员添加抢购活动 " . $data['name']);
                 if ($flashSaleInsertId !== false) {
-
-                    // if($data['mmt_message_switch'] == 1) {
-                    //     $goods_original_img = Db::name('goods')->where("goods_id", $data['goods_id'])->value('original_img');
-                    //     // 发送抢购活动通知消息
-                    //     $send_data = [
-                    //         'message_title' => $data['title'],
-                    //         'message_content' => $data['description'],
-                    //         'img_uri' => $goods_original_img,
-                    //         'end_time' => $data['end_time'],
-                    //         'mmt_code' => 'flash_sale_activity',
-                    //         'prom_type' => 1,
-                    //         'users' => [],
-                    //         'message_val' => [],
-                    //         'category' => 1,
-                    //         'prom_id' => $flashSaleInsertId
-                    //     ];
-                    //     $messageFactory = new MessageFactory();
-                    //     $messageLogic = $messageFactory->makeModule($send_data);
-                    //     $messageLogic->sendMessage();
-                    // }
                     $this->ajaxReturn(['status' => 1, 'msg' => '添加抢购活动成功', 'result' => '']);
                 } else {
                     $this->ajaxReturn(['status' => 0, 'msg' => '添加抢购活动失败', 'result' => '']);
                 }
             } else {
+                dump(2222);
                 $r = M('auction')->where("id=" . $data['id'])->save($data);
                 M('goods')->where(['prom_type' => 1, 'prom_id' => $data['id']])->save(array('prom_id' => 0, 'prom_type' => 0));
                 if($data['item_id'] > 0){
@@ -851,6 +832,7 @@ class Promotion extends Base
                 }
             }
         }
+
         $id = I('id');
         $now_time = date('H');
         if ($now_time % 2 == 0) {
@@ -860,15 +842,32 @@ class Promotion extends Base
         }
         $flash_sale_time = strtotime(date('Y-m-d') . " " . $flash_now_time . ":00:00");
         $info['start_time'] = date("Y-m-d H:i:s", $flash_sale_time);
-        $info['preview_time'] = date("Y-m-d H:i:s", $flash_sale_time + 7200);
-        if ($id > 0) {
-            $FlashSale = new FlashSale();
-            $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-            $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
-            $info['preview_time'] = date("Y-m-d H:i:s", $info['preview_time']);
-        }
+        $info['preview_time'] = date("Y-m-d H:i:s", $flash_sale_time);
+        // if ($id > 0) {
+        //     $FlashSale = new FlashSale();
+        //     $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
+        //     $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
+        //     $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
+        // }
+
+        $info = DB::name("auction")
+            ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
+            ->limit($Page->firstRow.','.$Page->listRows)->select();
+        $info2 = DB::name("auction")
+            ->join("tp_spec_goods_price",'tp_auction.goods_id=tp_spec_goods_price.goods_id','left')
+            ->field('tp_spec_goods_price.item_id')
+            ->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        // $info = Db::query("SELECT * FROM
+        //     tp_auction , tp_goods , tp_spec_goods_price
+        //     WHERE tp_auction.goods_id = tp_goods.goods_id 
+        //     AND
+        //     tp_goods.goods_id = tp_spec_goods_price.goods_id");
+
+        dump($info2);//exit;
         $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
+        $this->assign('info2', $info2);
 		
 		return $this->fetch();
 	}
@@ -891,7 +890,7 @@ class Promotion extends Base
                 //没有商品规格
                 Db::name('goods')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
             }
-            M('flash_sale')->where(['id' => $id])->delete();
+            M('auction')->where(['id' => $id])->delete();
             // 删除抢购消息
             $messageFactory = new MessageFactory();
             $messageLogic = $messageFactory->makeModule(['category' => 1]);

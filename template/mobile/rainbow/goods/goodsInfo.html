@@ -298,7 +298,7 @@
             <ul>
                 <!--图片-s-->
                 <foreach name="goods['goods_images']" item="pic">
-                    <li><a href="javascript:void(0)"><img src="__STATIC__/images/zjy_banner.png" alt=""></a></li>
+                    <li><a href="javascript:void(0)"><img src="{$pic[image_url]}" alt=""></a></li>
                 </foreach>
                 <!--图片-e-->
             </ul>
@@ -307,23 +307,21 @@
     <div class="de_font p">
         <div class="thirty">
             <div class="fl">
-                <span class="similar-product-text"><span class="red">自营</span>Apple/苹果 iPhone XR</span>
-                <p style="margin-top: 5px;">
+                <span class="similar-product-text">{$goods.goods_name}</span>
+                <!-- <p style="margin-top: 5px;">
                 	<span class="similar-product-text" style="color: #f03435;margin-top: -.5rem">
                 	【抢券最高减400元 选套餐赠无线充礼盒】
                 	</span>
-                	<span class="thirty_span">Apple/苹果 iPhone XR 移动联通电信4G手机双卡双待苹果iPhoneX</span>
-                </p>
+                	<span class="thirty_span">{$goods.goods_name}</span>
+                </p> -->
             </div>
             <div class="scunde p">
                 <span class="red" id="price">￥{$goods.shop_price}</span>
                 <span id="market_price_title">市场价：</span><span class="linethr" id="market_price">{$goods.market_price}</span>
                 <p class="inlist">
                     <if condition="$goods.prom_type neq 2"><span style="float:left;">销量：{$goods['sales_sum']+$goods['virtual_sales_sum']}</span></if>
-                    <!--<span >当前库存：<span class="spec_store_count">{$goods.store_count}</span></span>-->
-                    <span>当前库存:<i>999</i></span>
-                </p>
-   
+                    <span >当前库存：<span class="spec_store_count">{$goods.store_count}</span></span>
+                </p>   
             </div>
         </div>
     </div>
@@ -359,8 +357,8 @@
                 <a href="javascript:void(0)">
                     <div class="order">
                         <div class="fl">
-                            <span class="firde">运费</span>
-                            <span>免运费</span>
+                            <span class="firde">运费信息</span>
+                            <span id="shipping_freight"></span>
                         </div>
                         <div class="fr">
                             <i class="Mright"></i>
@@ -387,10 +385,15 @@
         <div class="zjy_shopIngo">
         	<p class="zjy_shopIngo_P">
         		<span>商品评价(3587)</span>
-        		<span class="zjy_shopIngo_span">好评率87%</span>
+        		<!-- <span class="zjy_shopIngo_span">好评率87%</span>
         		<div class="fr goods_pos">
         			<i class="Mright"></i>
-        		</div>
+        		</div> -->
+        		<span class="zjy_shopIngo_span">好评率<i>
+                    <if condition="!empty($commentStatistics.c1) and !empty($commentStatistics.c0)">
+                        {:round($commentStatistics.c1/$commentStatistics.c0,3)*100}%
+                        <else/>0</if>
+                </i></span>
         	</p>	
         	<div class="zjy_goods">
         		<div class="zjy_goods_item">
@@ -398,7 +401,8 @@
         				<img src="__STATIC__/images/goods_user.png"/>
         				<span class="zjy_goods_item_span">1325465</span>
         			</div>
-        			<p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
+        			<p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>{$commentStatistics.c0}</p>
+        			<div class="score enkecor" onclick="seedeadei(this)">查看图文详情</div>
         		</div>
         		<div class="zjy_goods_item">
         			<img class="zjy_goods_item_img" src="__STATIC__/images/goods_iphoe.png"/>

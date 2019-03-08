@@ -47,10 +47,10 @@
 							<div style="width: 24px;"><i class="ico-check"></i></div>
 						</th>
 						<th align="left" abbr="activity_name" axis="col3" class="">
-							<div style="text-align: left; width: 150px;" class="">活动名称</div>
+							<div style="text-align: left; width: 100px;" class="">活动名称</div>
 						</th>
 						<th align="left" abbr="goods_name" axis="col6" class="">
-							<div style="text-align: left; width: 50px;" class="">商品</div>
+							<div style="text-align: left; width: 100px;" class="">商品</div>
 						</th>
 						<th align="left" abbr="start_price" axis="col4" class="">
 							<div style="text-align: left; width: 100px;" class="">起拍价</div>
@@ -133,10 +133,10 @@
 								<div style="text-align: center; width: 100px;">{$vo.delay_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.preview_time}</div>
+								<div style="text-align: center; width: 100px;">{$vo.preview_time|date='Y-m-d H:i:s',###}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.start_time}</div>
+								<div style="text-align: center; width: 100px;">{$vo.start_time|date='Y-m-d H:i:s',###}</div>
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 100px;">{$vo.payment_time}</div>

@@ -509,6 +509,15 @@ span,img {
 	margin:0 .64rem;
 	cursor:pointer;
 }
+.maleri30 .lsw_sousuo-text{
+	background: #eee;
+	font-size: 0.6rem;
+	padding:0.25rem;
+	border-radius: 0.25rem;
+	margin-right: 0.8rem;
+	margin-top:0.5rem;
+	color:#646464;
+}
 .action-sprite,.action-aa,.action-ab,.action-ac,.action-ad,.action-ae,.action-af,.action-ag,.action-ah,.action-ai,.action-aj,.action-ak,.action-al,.action-am,.action-an {
 	background-image:url("../images/action-s6077e892fb.png");
 	background-repeat:no-repeat
@@ -1162,11 +1171,10 @@ footer .flool3 p {
 	background-color:#fff
 }
 .similar-product-text {
-	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-line-clamp:2;
 	height:1.28rem;
-	font-size:.51000rem;
+	font-size:.6rem;
 	overflow:hidden;
     color:#232326;
     line-height:.64rem;
@@ -1195,6 +1203,7 @@ footer .flool3 p {
 	height:.55467rem;
 	line-height:.55467rem
 }
+
 .similar-product-price .big-price {
 	font-size:.59733rem
 }
@@ -1247,7 +1256,13 @@ footer .flool3 p {
 .classreturn .content .return a img {
 	width: 0.6933rem;
 	height: 1.08933rem;
-	margin-top:-0.15rem;
+	margin-top:0.25rem;
+}
+.classreturn .content .lsw_return a img {
+	width: 0.6933rem;
+	height: 1.08933rem;
+	/* margin-top:0.25rem; */
+	margin-left: -1.25rem;
 }
 .classreturn .content .search {
 	font-size:.59733rem
@@ -2199,7 +2214,7 @@ input:-ms-input-placeholder {
 	vertical-align:middle;
 }
 .myorder .order .fl span {
-	font-size:.64rem;
+	font-size:.5rem;
 	vertical-align:middle;
 	font-weight:normal;
 	margin-left:.21333rem
@@ -2219,7 +2234,7 @@ input:-ms-input-placeholder {
 }
 .myorder .order .fr i {
 	margin-top:.384rem;
-	margin-left:.21333rem
+	margin-left:1.3rem
 }
 .Mright {
 	background-image:url("../images/yr.png");
@@ -2600,8 +2615,9 @@ input:-ms-input-placeholder {
 	left:1.74933rem
 }
 .storenav {
-	background-color:#fff;
+	background-color:#fafafa;
 	border-bottom:1px solid #e0e0e0;
+	margin-top: 0.15rem;
 }
 .storenav ul li {
 	float:left;
@@ -2625,6 +2641,9 @@ input:-ms-input-placeholder {
 	padding-right:.21333rem;
 	cursor:pointer
 }
+/* .lsw_comprehensive{
+	color: #e73339;
+} */
 .storenav ul li i {
 	position:absolute;
 	background-image:url("../images/dg.png");
@@ -2653,7 +2672,7 @@ input:-ms-input-placeholder {
 	margin:0 auto;
 	margin-left:1.28rem;
 	padding:.21333rem;
-	overflow:auto;
+	/* overflow:auto; */
 	-moz-border-radius:.21333rem;
 	-webkit-border-radius:.21333rem;
 	border-radius:.21333rem
@@ -3123,20 +3142,30 @@ input:-ms-input-placeholder {
 	z-index:9
 }
 
+
 .zjy_shopIngo{
+	width: 100%;
+	height: 100%;
 	overflow-x: auto;
+   	position: relative;
+    border-bottom: 1px solid #eee;
+   	
+	
 	
 }
 .zjy_goods{
+	width: 100%;
 	display: flex;
 	overflow-x: auto;
 	
 }
+
 .zjy_goods .zjy_goods_item{
 	flex: 1;
 	float: left;
 	font-size: .5rem;
-	margin: 0 80px;
+	margin: 0 1.5rem;
+	
 }
 .zjy_goods_item_span{
 	position: relative;
@@ -3416,7 +3445,7 @@ input:-ms-input-placeholder {
 	padding-bottom:.42667rem
 }
 .de_font .fl {
-	width:12.288rem
+	width:100%;
 }
 .de_font .fl .similar-product-text {
 	height:1.57867rem;
@@ -5407,6 +5436,7 @@ input:-ms-input-placeholder {
 	border:1px solid #e0e0e0!important;
 	padding-top:0;
 	margin-bottom:.51333rem;
+	border-radius: 0.25rem;
 }
 .orderlistshpop:last-child .sc_list {
 	border-bottom:none;
@@ -5422,7 +5452,7 @@ input:-ms-input-placeholder {
 .sc_list .shopimg img {
 	width:3.84rem;
 	height:3.84rem;
-	margin-right: 0.3125rem
+	/* margin-right: 0.3125rem */
 }
 .sc_list .deleshow {
 	width:9.17333rem
@@ -6433,6 +6463,9 @@ span.mp_mp {
 	justify-items: center;
 	margin-left: 1rem;
 }
+.lsw_seach-img{
+	float:left;
+}
 .search_pl .search2 .le_inp input {
 	height:1.57733rem;
     width: 9.68rem;
@@ -6444,23 +6477,26 @@ span.mp_mp {
 	color:#666666;
 	background: #f2f2f2;
 	border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+	/* margin-left: 2rem; */
+	float: left;
 }
 .search_pl .search2 .ri_ss {
 	float:left;
-	 height: 1.57733rem;
-	 width: 1.5072rem;
-	 margin-left: 0.5rem;
+	height: 1.57733rem;
+	width: 1.5072rem;
+	margin-left: 0.5rem;
 	background-color:#f2f2f2;
 	text-align:center;
 	line-height: 1.57733rem;
 	border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-    margin-top: 0.05rem;
+	border-bottom-left-radius: 0.25rem;
+	margin-top: 0rem;
 }
 .search_pl .search2 .ri_ss img {
 	width:.73867rem;
-	height:.73867rem
+	height:.73867rem;
+	margin-top:0.5rem; 
 }
 .near-le-ri {
 	padding:1.65333rem 0 .42667rem 0
@@ -6470,6 +6506,7 @@ span.mp_mp {
 	font-size:.68267rem;
 	margin-left:0.25rem;
 	font-weight: bold;
+	color:#333;
 }
 .near-le-ri img {
 	float:right;
@@ -6479,7 +6516,7 @@ span.mp_mp {
 }
 .lsw_seach a{
 	font-size:0.7rem;
-	margin-top:0.1rem;
+	margin-top:-0.25rem;
 }
 .se_shien {
 	position:inherit;
@@ -6519,6 +6556,10 @@ span.mp_mp {
 	height:.55467rem;
 	top:.72533rem
 }
+.lsw_listorimg{
+	opacity: 0.5;
+	background: #fff !important;
+}
 .search_list_dump ul li .listorimg {
 	background-image:url("../images/listo.png");
 	background-repeat:no-repeat;
@@ -6527,7 +6568,8 @@ span.mp_mp {
 	width:.85333rem;
 	height:.85333rem;
 	top:.55467rem;
-	margin-left:-1rem;
+	margin-left: -1.1rem;
+    margin-top: -0.15rem
 }
 .search_list_dump ul li .listorimg.orimg {
 	background-position-x:-.85333rem
@@ -6541,7 +6583,9 @@ span.mp_mp {
 }
 .addimgchan .se_sclist .shopimg {
 	float:none;
-	text-align:center
+	text-align:center;
+	border-radius: 0.4rem;
+    overflow: hidden;
 }
 .addimgchan .se_sclist .shopimg img {
 	width:100%;
@@ -6569,7 +6613,7 @@ span.mp_mp {
 	background-color:white;
 	overflow:hidden;
 	position:absolute;
-	top:1.87733rem;
+	top:4.57733rem;
 	z-index:99;
 	width:100%
 }

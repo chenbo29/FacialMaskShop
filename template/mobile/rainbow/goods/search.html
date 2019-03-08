@@ -1,8 +1,27 @@
-<include file="public/header" title="搜索列表"  body=""/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>[title]--{$tpshop_config['shop_info_store_title']}</title>
+    <link rel="stylesheet" href="__STATIC__/css/style.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/iconfont.css"/>
+    <script src="__STATIC__/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="__STATIC__/js/zepto-1.2.0-min.js" type="text/javascript" charset="utf-8"></script>-->
+    <script src="__STATIC__/js/style.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__STATIC__/js/mobile-util.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__PUBLIC__/js/global.js"></script>
+    <script src="__STATIC__/js/layer.js"  type="text/javascript" ></script>
+    <script src="__STATIC__/js/swipeSlide.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{$tpshop_config.shop_info_store_ico|default='/public/static/images/logo/storeico_default.png'}" media="screen"/>
+	
+</head>
+<body>
+
+
     <!--搜索栏-s-->
     <div class="classreturn whiback bornone">
         <div class="content">
-            <div class="ds-in-bl return">
+            <div class="ds-in-bl lsw_return ">
                 <a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>
             </div>
             <div class="ds-in-bl search">
@@ -19,7 +38,7 @@
                 <a href="javascript:void(0);"><img src="__STATIC__/images/class1.png" alt="菜单"></a>
             </div> -->
             <div  class="storenav p search_list_dump"  style="float:right;margin-left:-0.1rem;">
-                <ul><li> <i class="listorimg"></i></li></ul>
+                <ul><li style="background: #fafafa;opacity:0.5"><i class="listorimg"></i></li></ul>
                    
             </div>
         </div>
@@ -34,7 +53,7 @@
     <nav class="storenav p search_list_dump" id="head_search_box product_sort">
         <ul>
             <li>
-                <span class="lb <if condition="(I('sort') eq 'is_new' or  I('sort') eq 'comment_count')">red</if>">综合</span>
+                <span class="lb <if condition="(I('sort') eq 'is_new' or  I('sort') eq 'comment_count')" style="color:#e73339 !important">red</if>">综合</span>
                 <i></i>
             </li>
             <li class="<if condition="I('sort') eq 'sales_sum'">red</if>">
@@ -48,10 +67,10 @@
                     <i  class="pr  <if condition="I('sort_asc') eq 'asc'">bpr2</if>  <if condition="I('sort_asc') eq 'desc'"> bpr1 </if>"></i>
                 </a>
             </li>
-            <li >
-                <span class="sx">新品</span>
-                
-    
+            <li class="<if condition="I('sort') eq 'sales_sum'">red</if>">
+                <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'sales_sum')),''));?>" >
+                     <span class="dq">新品</span>
+                </a>
             </li>
             <li >
                 <span class="sx">筛选</span>

@@ -21,151 +21,190 @@
         <input type="hidden" name="id" value="{$info.id}">
         <input type="hidden" name="item_id" value="{$info.item_id}">
         <div class="ncap-form-default">
-                    <dl class="row">
-                        <dt class="tit">
-                            <label><em>*</em>选择商品：</label>
-                        </dt>
-                        <dd class="opt">
-                            <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
-                            <span class="err" id="err_title"></span>
-                            <p class="notic">请选择商品。</p>
-                        </dd>
-                    </dl>
-        			
-        			<dl class="row">
-        			    <dt class="tit">
-        			        <label><em>*</em>开始时间：</label>
-        			    </dt>
-        			    <dd class="opt">
-        			        <input type="text" name="title" id="title" value="{$info.start_time}" class="input-txt">
-        			        <span class="err" id="err_title"></span>
-        			        <p class="notic">设置秒杀商品开始时间。</p>
-        			    </dd>
-        			</dl>
-        			
-        			<dl class="row">
-        			    <dt class="tit">
-        			        <label><em>*</em>结束时间：</label>
-        			    </dt>
-        			    <dd class="opt">
-        			        <input type="text" name="title" id="title" value="{$info.end_time}" class="input-txt">
-        			        <span class="err" id="err_title"></span>
-        			        <p class="notic">设置秒杀商品结束时间。</p>
-        			    </dd>
-        			</dl>
-        			
-        			<dl class="row">
-        			    <dt class="tit">
-        			        <label><em>*</em>秒杀价格：</label>
-        			    </dt>
-        			    <dd class="opt">
-        			        <input type="text" name="title" id="title" value="{$info.price}" class="input-txt">
-        			        <span class="err" id="err_title"></span>
-        			        <p class="notic">设置秒杀价格，必须低于原价。</p>
-        			    </dd>
-        			</dl>
-        			
-        			<dl class="row">
-        			    <dt class="tit">
-        			        <label><em>*</em>秒杀数量：</label>
-        			    </dt>
-        			    <dd class="opt">
-        			        <input type="text" name="title" id="title" value="{$info.goods_num}" class="input-txt">
-        			        <span class="err" id="err_title"></span>
-        			        <p class="notic">设置秒杀数量。</p>
-        			    </dd>
-        			</dl>
-        			
-        			<dl class="row">
-        			    <dt class="tit">
-        			        <label><em>*</em>每人限购：</label>
-        			    </dt>
-        			    <dd class="opt">
-        			        <input type="text" name="title" id="title" value="{$info.buy_limit}" class="input-txt">
-        			        <span class="err" id="err_title"></span>
-        					<p class="notic">设置限购数量。</p>
-        			    </dd>
-        			</dl>
-					
-					<dl class="row">
-					    <dt class="tit">
-					        <label><em>*</em>是否返佣：</label>
-					    </dt>
-					    <dd class="opt">
-					        <input type="text" name="title" id="title" value="{$info.is_commission}" class="input-txt">
-					        <span class="err" id="err_title"></span>
-					    </dd>
-					</dl>
-					<dl class="row">
-					    <dt class="tit">
-					        <label><em>*</em>允许使用优惠券：</label>
-					    </dt>
-					    <dd class="opt">
-					        <input type="text" name="title" id="title" value="{$info.is_coupon}" class="input-txt">
-					        <span class="err" id="err_title"></span>
-					    </dd>
-					</dl>
-					<dl class="row">
-					    <dt class="tit">
-					        <label><em>*</em>下架允许购买：</label>
-					    </dt>
-					    <dd class="opt">
-					        <input type="text" name="title" id="title" value="{$info.soldout_buy}" class="input-txt">
-					        <span class="err" id="err_title"></span>
-					    </dd>
-					</dl>
-					<dl class="row">
-					    <dt class="tit">
-					        <label><em>*</em>需要关注公众号：</label>
-					    </dt>
-					    <dd class="opt">
-					        <input type="text" name="title" id="title" value="{$info.public_mark}" class="input-txt">
-					        <span class="err" id="err_title"></span>
-					    </dd>
-					</dl>
-					
-        
-                        <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
-                    </if>
-                </div>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>活动标题</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="title" id="title" value="{$info.title}" class="input-txt">
+                    <span class="err" id="err_title"></span>
+                    <p class="notic">请填写活动标题</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>选择秒杀商品</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" id="goods_name" readonly name="goods_name" value="{$info.goods_name}" class="input-txt">
+                    <div style="overflow: hidden" id="selected_group_goods">
+                        <if condition="$info['goods_id'] gt 0">
+                            <div style="float: left;margin-right: 10px" class="selected-group-goods">
+                                <div class="goods-thumb"><img style="width: 162px;height: 162px"  <notempty name="info['specGoodsPrice']">src="{$info['specGoodsPrice']['spec_img']}"<else/>src="{$info['goods_id']|goods_thum_images=162,162}"</notempty>/></div>
+                                <div class="goods-name">
+                                    <a target="_blank" href="{:U('Home/Goods/goodsInfo',array('id'=>$info['goods_id']))}">{$info.goods_name}</a>
+                                </div>
+                                <div class="goods-price">
+                                    <notempty name="info['specGoodsPrice']">
+                                        商城价：￥{$info['specGoodsPrice']['price']}库存:{$info['specGoodsPrice']['store_count']}
+                                        <else/>
+                                        商城价：￥{$info['goods']['shop_price']}库存:{$info['goods']['store_count']}
+                                    </notempty>
+                                </div>
+                            </div>
+                        </if>
+                    </div>
+                    <span class="err" id="err_goods_name"></span>
+                    <p class="notic">
+                        <a onclick="selectGoods()" class="ncap-btn" id="select_goods_button"><i class="fa fa-search"></i>选择商品</a>
+                    </p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>秒杀价格</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" id="price" name="price" value="{$info.price}"  onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
+                    <span class="err" id="err_price"></span>
+                    <p class="notic">商品秒杀价格,单位：元</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>参加秒杀数量</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="goods_num" id="goods_num" value="{$info.goods_num}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
+                    <span class="err" id="err_goods_num"></span>
+                    <p class="notic">此秒杀活动最多允许秒杀的商品数量</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>秒杀数量</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" <if condition="$info[id] gt 0">readonly="readonly"</if> id="buy_limit" name="buy_limit" value="{$info.buy_limit}" onpaste="this.value=this.value.replace(/[^\d.]/g,'')" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')"  class="input-txt">
+                    <span class="err" id="err_buy_limit"></span>
+                    <p class="notic">限时秒杀每个人能购买的数量</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>开始时间</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" id="start_time" name="start_time" value="{$info.start_time}"  class="input-txt">
+                    <span class="err" id="err_start_time"></span>
+                    <p class="notic">秒杀开始时间</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>结束时间</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" id="end_time" name="end_time" value="{$info.end_time}" class="input-txt">
+                    <span class="err" id="err_end_time"></span>
+                    <p class="notic">秒杀结束时间</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>是否返佣：</label>
+                </dt>
+                <dd class="opt">
+                    <select name="is_commission" id="is_commission" value="{$info.is_commission}">
+                        <option value="1" >是</option> 
+                        <option value="0" selected>否</option>  
+                    </select>
+                    <!-- <input type="text" name="title" id="title" value="{$info.is_commission}" class="input-txt">
+                    <span class="err" id="err_title"></span> -->
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>允许使用优惠券：</label>
+                </dt>
+                <dd class="opt">
+                    <select name="is_coupon" id="is_coupon" value="{$info.is_coupon}">
+                        <option value="1" >是</option> 
+                        <option value="0" selected>否</option>  
+                    </select>
+                    <!-- <input type="text" name="is_coupon" id="is_coupon" value="{$info.is_coupon}" class="input-txt">
+                    <span class="err" id="err_title"></span> -->
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>下架允许购买：</label>
+                </dt>
+                <dd class="opt">
+                    <select name="soldout_buy" id="soldout_buy" value="{$info.soldout_buy}">
+                        <option value="1" >是</option> 
+                        <option value="0" selected>否</option>  
+                    </select>
+                    <!-- <input type="text" name="soldout_buy" id="soldout_buy" value="{$info.soldout_buy}" class="input-txt">
+                    <span class="err" id="err_title"></span> -->
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>需要关注公众号：</label>
+                </dt>
+                <dd class="opt">
+                    <select name="public_mark" id="public_mark" value="{$info.public_mark}">
+                        <option value="1" >是</option> 
+                        <option value="0" selected>否</option>  
+                    </select>
+                    <!-- <input type="text" name="public_mark" id="public_mark" value="{$info.public_mark}" class="input-txt">
+                    <span class="err" id="err_title"></span> -->
+                </dd>
+            </dl>
+            <!-- <dl class="row">
+                <dt class="tit">
+                    <label>秒杀介绍</label>
+                </dt>
+                <dd class="opt">
+                    <textarea placeholder="请输入活动介绍" name="description" rows="6" class="tarea">{$info.description}</textarea>
+                    <p class="notic">秒杀描述介绍</p>
+                </dd>
+            </dl> -->
+            <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+        </div>
     </form>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#start_time').layDate();
+        $('#end_time').layDate();
     })
-    var ajax_return_status = 1; // 标识ajax 请求是否已经回来 可以进行下一次请求
     function verifyForm(){
         $('span.err').hide();
-        if (ajax_return_status == 0) {
-            return false;
-        }
-        if ($('#start_time').val() == ''){
-            layer.msg('请输入活动时间', {icon: 2,time: 1000});
-            return false;
-        }
-        ajax_return_status = 0;
         $.ajax({
             type: "POST",
             url: "{:U('Admin/Promotion/flash_sale_info')}",
             data: $('#handleposition').serialize(),
             dataType: "json",
-            error: function () {
-                ajax_return_status = 1
-                layer.alert("服务器繁忙, 请联系管理员!");
-            },
             success: function (data) {
                 if (data.status == 1) {
-                    layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+                    layer.msg(data.msg, {
+                        icon: 1,
+                        time: 1000
+                    }, function(){
                         location.href = "{:U('Admin/Promotion/flash_sale')}";
                     });
                 } else {
                     layer.msg(data.msg, {icon: 2,time: 1000});
+                    alert(data.result)
                     $.each(data.result, function (index, item) {
                         $('#err_' + index).text(item).show();
                     });
-                    ajax_return_status = 1;
                 }
+            },
+            error: function () {
+                layer.alert("服务器繁忙, 请联系管理员!");
             }
         });
     }
@@ -182,7 +221,6 @@
     }
     function call_back(goodsItem){
         $('#goods_id').val(goodsItem.goods_id);
-        $('input[name=item_id]').val(''); //将规格ID重置一下
         var html = '';
         if(goodsItem.spec != null){
             //有规格
@@ -204,6 +242,7 @@
         $('.selected-group-goods').show();
         layer.closeAll('iframe');
     }
+
 </script>
 </body>
 </html>

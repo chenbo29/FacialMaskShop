@@ -6,9 +6,6 @@
     <title>我的</title>  
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/user_zp/index.css"/>
-    <script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-    
 </head>
 <body>
 	<div class="wrapper">
@@ -18,9 +15,9 @@
 				<div class="user-top-zp">
 					<div class="user-info-zp">
 						<div class="user-avatar-zp">
-							<img src="__STATIC__/images/user_zp/w12@2x.png"/>
+							<img src="{$user['head_pic']}"/>
 						</div>
-						<p class="user-name-zp">潘多拉</p>
+						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
 					<div class="sign-wrap-zp">
@@ -34,14 +31,18 @@
 							<span class="num-zp">10</span>
 							<span>商品关注</span>
 						</li>
-						<li>
-							<span class="num-zp">12</span>
-							<span>店铺关注</span>
-						</li>
-						<li>
-							<span class="num-zp">123</span>
-							<span>足迹</span>
-						</li>
+						<a href="/Mobile/User/collect_list">
+							<li>
+								<span class="num-zp">12</span>
+								<span>店铺关注</span>
+							</li>
+						</a>
+						<a href="/mobile/User/visit_log">
+							<li>
+								<span class="num-zp">123</span>
+								<span>足迹</span>
+							</li>
+						</a>
 					</ul>
 				</div>
 			</div>
@@ -51,8 +52,8 @@
 					<div class="tit-zp">
 						<h3>我的订单</h3>
 						<span class="more-zp">
-							<a href="###">
-								查看全部订单
+							<a href="/Mobile/Order/order_list/">
+								<i>查看全部订单</i>
 								<i class="more-icon"></i>
 							</a>							
 						</span>
@@ -60,27 +61,27 @@
 					<div class="user-nav-zp">
 						<ul>
 							<li>
-								<a href="###">
+								<a href="{:U('/Mobile/Order/order_list',array('type'=>'WAITPAY'))}">
 									<img src="__STATIC__/images/user_zp/mm3@2x.png"/>
-									<p>代付款</p>
+									<p>待付款</p>
 								</a>
 							</li>
 							<li>
-								<a href="###">
+								<a href="{:U('/Mobile/Order/wait_receive',array('type'=>'WAITRECEIVE'))}">
 									<img src="__STATIC__/images/user_zp/mm2@2x.png"/>
-									<p>代发货</p>
+									<p>待发货</p>
 								</a>
 							</li>
 							<li>
-								<a href="###">
+								<a href="{:U('Mobile/Order/comment',array('status'=>0))}">
 									<img src="__STATIC__/images/user_zp/mm5@2x.png"/>
-									<p>代收货</p>
+									<p>待收货</p>
 								</a>
 							</li>
 							<li>
-								<a href="###">
+								<a href="{:U('Mobile/Order/return_goods_list',array('type'=>1))}">
 									<img src="__STATIC__/images/user_zp/mm4@2x.png"/>
-									<p>代评价</p>
+									<p>待评价</p>
 								</a>
 							</li>
 						</ul>
@@ -91,8 +92,8 @@
 					<div class="tit-zp">
 						<h3>我的钱包</h3>
 						<span class="more-zp">
-							<a href="###">
-								查看钱包
+							<a href="{:U('mobile/User/qianbao')}">
+								<i>查看钱包</i>
 								<i class="more-icon"></i>
 							</a>							
 						</span>
@@ -102,7 +103,7 @@
 							<li>
 								<img src="__STATIC__/images/user_zp/JF1@2x.png" />
 								<p>积分</p>
-								<p class="num">3000</p>
+								<p class="num">{$user.pay_points}</p>
 							</li>
 							<li>
 								<img src="__STATIC__/images/user_zp/YHJ1@2x.png" />
@@ -121,8 +122,8 @@
 							<span class="account-balance"><i>1000.00</i>元</span>
 						</div>
 						<span class="more-zp">
-							<a href="###">
-								查看名单
+							<a href="{:U('User/welfare_zp')}">
+								<i>查看名单</i>
 								<i class="more-icon"></i>
 							</a>							
 						</span>
@@ -134,7 +135,7 @@
 						<h3>我的专栏</h3>
 						<span class="more-zp">
 							<a href="###">
-								查看全部专栏
+								<i>查看全部专栏</i>
 								<i class="more-icon"></i>
 							</a>							
 						</span>
@@ -154,7 +155,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="###">
+								<a href="/mobile/auction/index">
 									<img src="__STATIC__/images/user_zp/PM@2x.png"/>
 									<p>拍卖</p>
 								</a>
@@ -201,16 +202,22 @@
 									<p>线下取货</p>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="###">
 									<img src="__STATIC__/images/user_zp/zt26@2x.png"/>
 									<p>切换主题</p>
 								</a>
-							</li>
+							</li> -->
 							<li>
-								<a href="###">
+								<a href="{:U('Mobile/User/qianbao')}">
 									<img src="__STATIC__/images/user_zp/zhmx1@2x.png"/>
 									<p>账户明细</p>
+								</a>
+							</li>
+							<li>
+								<a href="{:U('mobile/user/member')}">
+									<img src="__STATIC__/images/user_zp/zt26@2x.png"/>
+									<p>我的分销</p>
 								</a>
 							</li>
 						</ul>
@@ -231,26 +238,24 @@
 				
 			</div>
 			
-			
-					
-			<script type="text/javascript">
-				$(function(){
-					$(".sign-in-zp").click(function(){
-						$(".model").show();
-						$(".dialog-sign-zp").show(100)
-					})
-					$(".model").click(function(){
-						$(".model").hide()
-						$(".dialog-sign-zp").hide(100)
-					})
-				})
-			</script>
-			
-			
 			<!--底部导航-start-->
     		<include file="public/footer_nav"/>
     		
 		</div>
 	</div>
+	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+		$(function(){
+			$(".sign-in-zp").click(function(){
+				$(".model").show();
+				$(".dialog-sign-zp").show(100)
+			})
+			$(".model").click(function(){
+				$(".model").hide()
+				$(".dialog-sign-zp").hide(100)
+			})
+		})
+	</script>
 </body>
 </html>

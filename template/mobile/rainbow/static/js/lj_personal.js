@@ -130,4 +130,22 @@ $(function(){
 			$(".lj_t_m_r13").hide()
 		}
 	})
+	/*自定义*/
+	$('#zt').click(function(){
+		$(".lj_bg").show();
+		$(".lj_tank").show();
+	})
+	
+	$('#lj_t_btn,#lj_t_btn2').click(function(){
+		$(".lj_bg").hide();
+		$(".lj_tank").hide();
+	})
+	
+	$(".lj_edit_p2").each(function(){
+		$(this).click(function(){
+			$(".lj_edit_p2").css({"border":"1px solid #999","color":"#000"});
+			$(this).css({"border":"1px solid #ffbca4","color":"#ffbca4"});
+		})
+	})
+	
 })

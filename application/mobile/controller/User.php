@@ -1,16 +1,5 @@
 <?php
-/**
- * 智丰网络
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用最新Thinkphp5助手函数特性实现单字母函数M D U等简写方式
- * ============================================================================
- * 2015-11-21
- */
+
 namespace app\mobile\controller;
 
 use app\common\logic\CartLogic;
@@ -78,18 +67,55 @@ class User extends MobileBase
 
     public function index()
     {
+
         $MenuCfg = new MenuCfg();
         $menu_list = $MenuCfg->where('is_show', 1)->order('menu_id asc')->select();
         $this->assign('menu_list', $menu_list);
+
+        
+
         return $this->fetch();
     }
 
+    //zp
+    public function welfare_zp(){
+        return $this->fetch();
+    }
+    public function qianbao(){
+
+        $user = session('user');
+        //获取账户资金记录
+        $logic = new UsersLogic();
+        $data = $logic->get_account_log($this->user_id, I('get.type'));
+        $account_log = $data['result'];
+
+        $this->assign('user', $user);
+        $this->assign('account_log', $account_log);
+        $this->assign('page', $data['show']);
+
+        // if ($_GET['is_ajax']) {
+        //     return $this->fetch('ajax_account_list');
+        //     exit;
+        // }
+
+
+        return $this->fetch();
+    }
 
 	public function personal()
     {
         return $this->fetch();
     }
     
+    /**
+     * 分销
+     */
+    public function member()
+    {
+
+
+        return $this->fetch();
+    }
     
     public function p_details()
     {
@@ -113,6 +139,8 @@ class User extends MobileBase
     {
         return $this->fetch();
     }
+    
+    
     public function logout()
     {
         session_unset();

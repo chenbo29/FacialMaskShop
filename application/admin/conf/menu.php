@@ -97,7 +97,7 @@ return	array(
 					array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
 					array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
 					//array('name' => '帮助管理', 'act'=>'help_list', 'op'=>'Article'),
-					array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
+					// array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
 					array('name' => '会员协议', 'act'=>'agreement', 'op'=>'Article'),
 					//array('name' => '公告管理', 'act'=>'notice_list', 'op'=>'Article'),
 					array('name' => '专题列表', 'act'=>'topicList', 'op'=>'Topic'),
@@ -106,6 +106,10 @@ return	array(
 			array('name' => '新闻','child'=>array(
 					array('name' => '新闻列表', 'act'=>'newsList', 'op'=>'News'),
 					array('name' => '新闻分类', 'act'=>'categoryList', 'op'=>'News'),
+			)),
+			array('name' => '素材','child'=>array(
+					array('name' => '素材列表', 'act'=>'materialList', 'op'=>'Material'),
+					array('name' => '素材分类', 'act'=>'materialClass', 'op'=>'Material'),
 			)),
 	)),
 		
@@ -182,5 +186,17 @@ return	array(
 				array('name' => '安卓APP管理', 'act'=>'index', 'op'=>'MobileApp'),
                 array('name' => '苹果APP管理', 'act'=>'ios_audit', 'op'=>'MobileApp'),
 			))
+	)),
+
+	'pickup'=>array('name'=>'线下取货','child'=>array(
+			array('name' => '线下取货','child' => array(
+					array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
+					
+			)),
+			array('name' => '在线核销','child' => array(
+					array('name' => '取货码核销', 'act'=>'verification', 'op'=>'Pickup'),
+					
+			))
+           
 	)),
 );

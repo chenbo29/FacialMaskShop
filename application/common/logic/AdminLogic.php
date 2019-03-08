@@ -63,7 +63,6 @@ class AdminLogic
         } else {
             $roleRights = $actList;
         }
-
         session('act_list', $roleRights);
     }
 

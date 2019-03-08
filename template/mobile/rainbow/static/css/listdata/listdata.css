@@ -1,6 +1,6 @@
 /*最大边框*/
 .lb_assembleWrap {
-	padding-bottom: .2rem;
+	padding: .88rem 0 .2rem 0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;

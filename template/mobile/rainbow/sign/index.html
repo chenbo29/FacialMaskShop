@@ -6,41 +6,120 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<title>Sign</title>
-		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
-		<script type="text/javascript" src="__STATIC__/js/jquery-3.1.1.min.js" ></script>
-		<script type="text/javascript" src="__STATIC__/js/public/rem.js" ></script>
+		<title>签到</title>
+		<script src="__STATIC__/js/public/rem.js" ></script>
+		<link rel="stylesheet" href="__STATIC__/css/sign/index.css"/>
+		<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
+		<!--日历 css-->
+    	<link rel="stylesheet" href="__STATIC__/css/sign/date.css" media="screen" title="no title" charset="utf-8">
 		
 	</head>
 	<body>
-		<div class="lj_top_sign">
-			<div class="lj_wrap">
-				<div class="lj_sign_tl">
-					<img src="__STATIC__/image/lj_sign_tl.png" />
-				</div>
-				<div class="lj_sign_tr">
-					<p>累计积分</p>
-				</div>
-				<div class="lj_s_banner">
-					<div class="lj_s_yqd">
-						<img class="lj_s_yqd_img" src="__STATIC__/image/lj_s_yqd.png" />
-						<a href="#">已签到</a>
+		<!--最外边框-->
+		<div class="wrap_signin">
+			<!--public head-->
+			<div class="lb_headWrap lb_headWrap_fiontWhite">
+				<p class="lb_headWrap_return" data-num="1" onclick="returnFun()">
+					<img class="lb_headWrap_return_img" src="__STATIC__/image/lj_sign_tl.png"/>
+				</p>
+				<span>累计积分</span>
+			</div>
+			<!--内容-->
+			<div class="content_si">
+				<!--背景图 box-->
+				<div class="topImgBox">
+					<div class="topImgBox_butBox">
+						<!--button-->
+						<p class="signInBut">
+							<img class="topImgBox_butBoxImg" src="__STATIC__/image/lj_s_yqd.png" />	
+							<span>签到</span>
+						</p>
 					</div>
-					<div class="clear"></div>
-					<p>+2积分</p>
-					<div class="lj_s_lxqd">
-						<p>已连续签到:&nbsp;&nbsp;<span>3天</span></p>
-						<p>累积签到:&nbsp;&nbsp;<span>23天</span></p>
-					</div>
-					
+					<!--积分-->
+					<p class="integralL">+2积分</p>
+					<!--连续、积累签到-->
+					<p class="recordBox">已连续签到:&nbsp;3天<br />积累签到:&nbsp;23天</p>
+				</div>
+				<!--日历 wrap-->
+				<div class="calendarWrapL">
+					<!--标签=>dateMarker.js中的'构建日历骨架'改，-->
+					<div class="date"></div>
 				</div>
 				
 			</div>
 		</div>
-		<div id="calendar" class="calendar"></div>
-		<script type="text/javascript" src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="__STATIC__/js/lj_calendar.js" ></script>
+			
 		
+		<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
+		<script src="__STATIC__/js/public/public_lb.js"></script>
+		<!--以下两个，日历js-->
+		<script src="__STATIC__/js/sign/DateMarker.js"></script>
+		<script src="__STATIC__/js/sign/sign.js"></script>
 		
+		<script>
+			$(document).ready(function(){
+				/*签到记录请求*/
+				$.ajax({
+					type: "GET",
+					url: "/mobile/sign/get_sign_day?user_id=" + {$user_id},
+					async: true,
+					success: function(data){
+						if(data['status'] == 1){
+							/*后台 传过来的数组（签到日期）*/
+							var signArr = data['data'];
+							/*存储后台传过来（修改后）日期*/
+							var newSignArr = [];
+							console.log(signArr);
+							/*后台传过来的值 => '2019/03/06'*/
+							/*月、日*/
+							var monthS, dayS ;
+							/**重新对后台传过来的数据，（2019/03/06）进行编辑=> '2019/3/6' **/
+							for(var k=0;k<signArr.length;k++){
+								monthS = Number(signArr[k].split('/')[1]);
+								dayS = Number(signArr[k].split('/')[2]);
+								console.log(signArr[k].split('/')[0],monthS,dayS);
+								newSignArr[k] = signArr[k].split('/')[0] + '/' + monthS + '/' + dayS;
+							}
+							
+							console.log('编辑后',newSignArr);
+//							/*后台传过来的数组*/
+							for(var j=0;j<newSignArr.length;j++){
+								/*.getMonth()=>获取当前月份(0-11,0代表1月)*/
+								for(var i = 0; i < $('.date-marker-body li').length; i++) {
+									/**传过来的数据-不要在月份和日期前加0 =>'2019/3/6' **/
+									if($('.date-marker-body li').eq(i).attr('data-markdate') == newSignArr[j]) {
+										$('.date-marker-body li').eq(i).append(`
+											<img class="signInIconL" src="/template/mobile/rainbow/static/images/sign/signInIconS.png" />
+										`);
+									}
+								}
+							}
+							
+						}else {
+							console.log('无数据');
+						}
+						
+					},
+					error: function(error){
+						console.log('报错',error);
+					}
+				});
+				
+				/*签到请求*/
+				$.ajax({
+					type: "GET",
+					url: "/mobile/sign/sign?user_id=" + {$user_id},
+					async: true,
+					success: function(_received){
+						console.log(_received);
+					},
+					error: function(error){ 
+						console.log('报错',error);
+					}
+				})
+				
+				
+			})
+		</script>
 	</body>
 </html>

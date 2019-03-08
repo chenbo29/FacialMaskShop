@@ -1,16 +1,4 @@
 <?php
-/**
- * 智丰网络
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用最新Thinkphp5助手函数特性实现单字母函数M D U等简写方式
- * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
- */
 
 namespace app\mobile\controller;
 
@@ -20,6 +8,7 @@ use app\common\logic\GoodsPromFactory;
 use app\common\model\Combination;
 use app\common\model\SpecGoodsPrice;
 use app\common\util\TpshopException;
+use app\common\model\GoodsCategory;
 use think\AjaxPage;
 use think\Page;
 use think\Db;
@@ -36,6 +25,55 @@ class Goods extends MobileBase
      */
     public function categoryList()
     {
+        $categoryGoods = new GoodsCategory;
+        
+        $category = $categoryGoods->where('level', 1)->where('is_show',1)->order('sort_order','asc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+        
+        $parentId = array_column($category, 'id');
+        
+        $firstLevel = $categoryGoods->where('level', 2)->where('parent_id','in',$parentId)->where('is_show',1)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+
+        $childId = array_column($firstLevel, 'id');
+
+        $secondLevel = $categoryGoods->where('level', 3)->where('is_show',1)->where('parent_id','in',$childId)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+       
+        // $goods = array_map(function($secondLevel){
+        //     $result = array(
+        //         'id' => $secondLevel['id'],
+        //         'name' => $secondLevel['name'],
+        //         'moblie_name' => $secondLevel['mobile_name'],
+        //         'parent_id' => $secondLevel['parent_id'],
+        //         'parent_id_path' => $secondLevel['parent_id_path'],
+        //         'level' => $secondLevel['level'],
+        //         'image' => "<img src='".$secondLevel['image']."'/>"
+        //     );
+        //     // return $result;
+        // },$secondLevel);
+
+       
+        // $firstLevel = $categoryGoods->getParentListAttr(1,['parent_id_path'=>"0_12_13_17"]);
+        // foreach ($firstLevel as $key => $value) {
+        //     $secondLevel[] = $categoryGoods->getParentListAttr(1,['parent_id_path'=>$value['parent_id_path']]);
+        // }
+
+        // $secondLevel = array_map(function($sLevel){
+        //     $sLevel['image'] = "<img src='".$sLevel['image']."'/>";
+        //     return $sLevel;
+        // },$secondLevel);
+        
+        // for ($i=0; $i < count($firstLevel); $i++) { 
+        //     for ($i=0; $i < count($secondLevel); $i++) { 
+        //         if ($secondLevel['parent_id'] == $firstLevel['id']) {
+        //             $result[] = $firstLevel[$i];
+        //         }
+        //     }
+        // }
+        
+        $this->assign('category', $category);
+        $this->assign('first_level', $firstLevel);
+        $this->assign('second_level', $secondLevel);
+        // $this->assign('img', $img);
+
         return $this->fetch();
     }
 
@@ -212,6 +250,7 @@ class Goods extends MobileBase
         C('TOKEN_ON', true);
         $goodsLogic = new GoodsLogic();
         $goods_id = I("get.id/d");
+       
         $goodsModel = new \app\common\model\Goods();
         $goods = $goodsModel::get($goods_id);
         if (empty($goods) || ($goods['is_on_sale'] == 0)) {
@@ -230,6 +269,7 @@ class Goods extends MobileBase
 
         $recommend_goods = M('goods')->where("is_recommend=1 and is_on_sale=1 and cat_id = {$goods['cat_id']}")->cache(7200)->limit(9)->field("goods_id, goods_name, shop_price")->select();
         $this->assign('recommend_goods', $recommend_goods);
+      
         $this->assign('goods', $goods);
         return $this->fetch();
     }

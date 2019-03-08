@@ -16,10 +16,10 @@
 				<h5>商城实物商品自提订单查询及管理</h5>
 			</div>
 			<ul class="tab-base nc-row">
-				<li><a href="{:U('ShopOrder/off')}"><span>核销提货码</span></a></li>
-				<li><a href="{:U('ShopOrder/index')}"><span>全部自提订单</span></a></li>
-				<li><a href="{:U('ShopOrder/index',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
-				<li><a href="{:U('ShopOrder/statistic')}" class="current"><span>数据统计</span></a></li>
+				<li><a href="{:U('pickup/off')}"><span>核销提货码</span></a></li>
+				<li><a href="{:U('pickup/index')}"><span>全部自提订单</span></a></li>
+				<li><a href="{:U('pickup/index',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
+				<li><a href="{:U('pickup/statistic')}" class="current"><span>数据统计</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 				<h5>今日自提订单总数：{$shop_order_today_count}</h5>
 			</div>
 			<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
-			<form class="navbar-form form-inline" method="get" action="{:U('ShopOrder/statistic')}" >
+			<form class="navbar-form form-inline" method="get" action="{:U('pickup/statistic')}" >
 				<div class="sDiv">
 					<div class="dyrDiv2">
 						<span style="width: 30px;font-size: 12px;margin-right: 10px;">自提时间</span>

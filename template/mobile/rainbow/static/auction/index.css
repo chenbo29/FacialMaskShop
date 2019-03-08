@@ -1,0 +1,91 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.big{
+	
+	margin-top: 80px;
+	
+	
+}
+.section{
+	
+	width: 96%;
+	height: 253px;
+	margin: 0 2%;
+	margin-top: 40px;
+	border: 1px solid #BEBEBE;
+	position: relative;
+	
+	
+}
+.time{
+	
+	width: 50%;
+	height: 40px;
+	border: 1px solid #BEBEBE;
+	position: absolute;
+	top: -15px;
+	background: white;
+	left: 50%;
+	transform: translate(-50%,0);
+	font-size: .3rem;
+	line-height: 40px;
+	text-align: center;
+	
+	
+}
+.img{
+	
+	
+	width: 86%;
+	margin: 0 7%;
+	position: absolute;
+	top: 40px;
+
+	
+}
+.priceear{
+	
+	
+	position: absolute;
+	bottom: 12px;	
+    font-size: .3rem;
+    left: 5%;
+    display: inline-block;
+	
+}
+
+.name {
+
+ 
+  font-size: .4rem;	
+	
+}
+.price{	
+	 color: #E8315D;
+	 font-size: .4rem;		
+}
+.priceear span{
+	
+	font-size: .2rem;	
+	
+}
+.joinauction{
+	
+	 font-size: .32rem;
+	 background: #FF5722;	
+	 color: white;
+	 width: 80px;
+	 height: 40px;
+	 line-height: 40px;
+	 text-align: center;
+	 border-radius: .06rem;
+	 position: absolute;
+	 bottom: 12px;
+	 right: 4px;
+	
+}
+

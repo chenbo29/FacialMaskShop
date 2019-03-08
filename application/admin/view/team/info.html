@@ -18,7 +18,10 @@
     </div>
     <form class="form-horizontal" id="handleposition" method="post" onsubmit="return false;">
         <input type="hidden" name="team_id" value="{$teamActivity.team_id}">
-        <input type="hidden" id="goods_id" name="goods_id" value="{$teamActivity.goods_id}" autocomplete="off">
+		<input type="hidden" id="goods_id" name="goods_id" value="{$info.goods_id}">
+		<input type="hidden" name="id" value="{$info.id}">
+		<input type="hidden" name="act" value="{$act}">
+		<input type="hidden" name="item_id" value="{$info.item_id}">
         <div class="ncap-form-default">
             <dl class="row">
                 <dt class="tit">
@@ -44,17 +47,42 @@
 			        <label><em>*</em>时间段:</label>
 			    </dt>
 			    <dd class="opt">
-			        <input type="text" name="act_name" value="">至<input type="text" name="act_name" value="">重置时间
+					<input type="text" id="start_time" name="start_time" value="{$info.start_time}"  class="input-txt">
+					<span class="err" id="err_start_time"></span>至
+					<input type="text" id="end_time" name="end_time" value="{$info.end_time}" class="input-txt">
+					<span class="err" id="err_end_time"></span>
 			    </dd>
 			</dl>
-			
+
+
 			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>选择商品</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="act_name" value="" class="input-txt">
-			    </dd>
+				<dt class="tit">
+					<label><em>*</em>选择商品</label>
+				</dt>
+				<dd class="opt">
+					<input type="text" readonly  id="goods_name" name="goods_name" value="{$info.goods_name}" class="input-txt">
+					<div style="overflow: hidden" id="selected_group_goods">
+						<if condition="$info['goods_id'] gt 0">
+							<div style="float: left;margin-right: 10px" class="selected-group-goods">
+								<div class="goods-thumb"><img style="width: 162px;height: 162px"  <notempty name="info['specGoodsPrice']">src="{$info['specGoodsPrice']['spec_img']}"<else/>src="{$info['goods_id']|goods_thum_images=162,162}"</notempty>/></div>
+								<div class="goods-name">
+									<a target="_blank" href="{:U('Home/Goods/goodsInfo',array('id'=>$info['goods_id']))}">{$info.goods_name}</a>
+								</div>
+								<div class="goods-price">
+									<notempty name="info['specGoodsPrice']">
+										商城价：￥{$info['specGoodsPrice']['price']}库存:{$info['specGoodsPrice']['store_count']}
+										<else/>
+										商城价：￥{$info['goods']['shop_price']}库存:{$info['goods']['store_count']}
+									</notempty>
+								</div>
+							</div>
+						</if>
+					</div>
+					<span class="err" id="err_goods_name"></span>
+					<p class="notic">
+						<a onclick="selectGoods()" class="ncap-btn"><i class="fa fa-search"></i>选择商品</a>
+					</p>
+				</dd>
 			</dl>
 			
             <dl class="row">
@@ -260,6 +288,35 @@
             $('#goods_name').removeAttr('readonly').val('').attr('readonly', 'readonly');
         }
     })
+
+    $(document).ready(function(){
+        laydate.render({
+            elem: '#start_time',//绑定元素
+            theme: 'molv', //主题
+            type:'datetime', //控件选择类型
+            format: 'yyyy-MM-dd HH:mm:ss', //自定义格式
+            calendar: true, //显示公历节日
+            min: '1970-01-01 00:00:00', //最小日期
+            max: '2099-12-31 00:00:00', //最大日期
+            // value: new Date(),//默认当前时间
+            isInitValue: true,
+            position : 'fixed', //定位方式
+            zIndex: 99999999, //css z-index
+        });
+        laydate.render({
+            elem: '#end_time',//绑定元素
+            theme: 'molv', //主题
+            type:'datetime', //控件选择类型
+            format: 'yyyy-MM-dd HH:mm:ss', //自定义格式
+            calendar: true, //显示公历节日
+            min: '1970-01-01 00:00:00', //最小日期
+            max: '2099-12-31 00:00:00', //最大日期
+            // value: new Date(),//默认当前时间
+            isInitValue: true,
+            position : 'fixed', //定位方式
+            zIndex: 99999999, //css z-index
+        });
+    })
     function initType(){
         var type = $("input[name='team_type']:checked").val();
         var commission = $('.commission');
@@ -312,7 +369,7 @@
         });
     }
     function selectGoods(){
-        var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods_item','prom_type'=>6,'prom_id'=>$teamActivity.team_id))}";
+        var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>6,'prom_id'=>$info[id]))}";
         layer.open({
             type: 2,
             title: '选择商品',

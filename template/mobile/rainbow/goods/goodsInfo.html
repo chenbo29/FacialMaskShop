@@ -271,526 +271,667 @@
 	.showP{
 		display: none;
 	}
-				
+	.goodsInfo_heads{
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        top: 0;
+        right:0 ;
+    }
+    .goodsInfo_heads img{
+        width: 100%;
+    }
+    .zjy_fengxiang{
+        width: 100%;
+        height: 10rem;
+        position: fixed;
+        bottom: 0;
+        z-index: 999;
+        background-color:#f9f9f9; 
+        display: none;
+
+    }
+    .zjy_fengxiang_item{
+        display: flex;
+        text-align: center;
+        padding: 1rem 20px;
+
+    }
+    .zjy_fengxiang_item div{
+        flex: 1;
+        font-size: .5rem;
+    }
+    .zjy_fengxiang_item div img{
+        margin-bottom: 30px;
+    }
+    .zjy_fengxiang h3{
+        text-align: center;
+        font-size: .6rem;
+        margin: 1rem 0;
+    }
+    .zjy_fengxiang_footer{
+        width: 100%;
+        height: 2rem;
+        text-align: center;
+        position: relative;
+        bottom: -1rem;
+        border-top: 1px solid #999;
+
+    }
+    .zjy_fengxiang_footer span{
+        display: inline-block;
+        width: 3rem;
+        line-height: 2rem;
+        font-size: .6rem
+    }
+    .zjy_bg_color{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 998;
+        top: 0;
+        background-color: rgba(0,0,0,0.4);
+        display: none ;
+    }
+    .zjy_bg_color_tow{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 998;
+        top: 0;
+        background-color: rgba(0,0,0,0.4);
+        display: none ;
+    }
+    ._zjy_show_click{
+        width: 80%;
+        height: 13rem;
+        background-color:#fff; 
+        z-index: 5;
+        position: absolute;
+        top: 10%;
+        left: 11%;
+        margin: 0 auto;
+        border-radius: .5rem;
+        text-align: center;
+        font-size: .6rem;
+        display: none;
+        z-index: 999;
+    }
+    ._zjy_show_click p{
+        margin: .8rem 0;
+    }
+    ._zjy_show_click p:first-child img{
+        width: 100%;
+    }
+    ._zjy_show_click ._zjy_show_click_p1{
+        font-size: .7rem;       
+    }
+    ._zjy_show_click p:nth-child(4){
+        font-size: .5rem;       
+        color: #999;       
+    }
+    ._zjy_show_click p:nth-child(5){
+        font-size: .6rem;       
+        color: #999;       
+    }
+    ._zjy_show_click_pfoot span{
+        display: inline-block;
+        width: 40%;
+        line-height: 1rem;
+        background-color: #ff592c;
+        color: #fff;
+        border-radius: .5rem;
+        
+    }
 </style>
-<div class="he_sustain">
-    <div class="classreturn loginsignup detail">
-        <div class="content">
-            <div class="ds-in-bl return">
-                <a href="javascript:history.back(-1)"><img src="__STATIC__/images/return.png" alt="返回"></a>
-            </div>
-            <div class="ds-in-bl search center" id="topcenter"></div>
-            <div class="ds-in-bl menu">
-                <a href="javascript:void(0);"><img src="__STATIC__/images/zjy_zhuanfa.png" alt="菜单"></a>
-            </div>
-        </div>
-    </div>
-</div>
+<div style="position:relative;">
+    <div class="zjy_bg_color"></div>
+    <div class="zjy_bg_color_tow"></div>
 
-<!--顶部隐藏菜单-s-->
-<include file="public/top_nav" top-header="top-header-m"/>
-<!--顶部隐藏菜单-e-->
-<!--商品抢购 start-->
-<!--商品s-->
-<div class="xq_details">
-    <div class="banner ban1 detailban">
-        <div class="mslide" id="slideTpshop">
-            <ul>
-                <!--图片-s-->
-                <foreach name="goods['goods_images']" item="pic">
-                    <li><a href="javascript:void(0)"><img src="__STATIC__/images/zjy_banner.png" alt=""></a></li>
-                </foreach>
-                <!--图片-e-->
-            </ul>
-        </div>
+    <div class="_zjy_show_click">
+        <p><img src="__STATIC__/images/zjy_goods_jx.png" alt=""></p>
+        <p><img src="__STATIC__/images/zjy_goods_lw.png" alt=""></p>
+        <p class="_zjy_show_click_p1">恭喜你获得积分</p>
+        <p>+10积分</p>
+        <p><span>积分：</span><span>2158</span></p>
+        <p class="_zjy_show_click_pfoot"><span>确定</span></p>
     </div>
-    <div class="de_font p">
-        <div class="thirty">
-            <div class="fl">
-                <span class="similar-product-text"><span class="red">自营</span>Apple/苹果 iPhone XR</span>
-                <p style="margin-top: 5px;">
-                	<span class="similar-product-text" style="color: #f03435;margin-top: -.5rem">
-                	【抢券最高减400元 选套餐赠无线充礼盒】
-                	</span>
-                	<span class="thirty_span">Apple/苹果 iPhone XR 移动联通电信4G手机双卡双待苹果iPhoneX</span>
-                </p>
-            </div>
-            <div class="scunde p">
-                <span class="red" id="price">￥{$goods.shop_price}</span>
-                <span id="market_price_title">市场价：</span><span class="linethr" id="market_price">{$goods.market_price}</span>
-                <p class="inlist">
-                    <if condition="$goods.prom_type neq 2"><span style="float:left;">销量：{$goods['sales_sum']+$goods['virtual_sales_sum']}</span></if>
-                    <!--<span >当前库存：<span class="spec_store_count">{$goods.store_count}</span></span>-->
-                    <span>当前库存:<i>999</i></span>
-                </p>
-   
+    <div class="he_sustain">
+        <div class="classreturn loginsignup detail">
+            <div class="content">
+                <div class="ds-in-bl return">
+                    <a href="javascript:history.back(-1)"><img src="__STATIC__/images/return.png" alt="返回"></a>
+                </div>
+                <div class="ds-in-bl search center" id="topcenter"></div>
+                <div class="goodsInfo_heads">
+                    <a href="javascript:void(0);"><img src="__STATIC__/images/zjy_zhuanfa.png" alt="菜单"></a>
+                </div>
             </div>
         </div>
     </div>
-   
-
-            <!--配送至-s-->
-            <div class="container" >
-            <div class="city">
-                <div class="screen_wi_loc">
-                    <div class="classreturn loginsignup">
-                        <div class="content">
-                            <div class="ds-in-bl return seac_retu">
-                                <a href="javascript:void(0);" onclick="closelocation();"><img src="__STATIC__/images/return.png" alt="返回"></a>
-                            </div>
-                            <div class="ds-in-bl search center">
-                                <span class="sx_jsxz">配送至</span>
-                            </div>
-                            <div class="ds-in-bl suce_ok">
-                                <a href="javascript:void(0);">&nbsp;</a>
+    <div class="zjy_fengxiang">
+        <h3>
+            <img src="__STATIC__/images/zjy_jx.png" alt="">分享到<img src="__STATIC__/images/zjy_jx.png">
+        </h3>
+        <div class="zjy_fengxiang_item">
+            <div><img src="__STATIC__/images/zjy_goodsInfo_wx.png" alt=""><h4>微信</h4></div>
+            <div><img src="__STATIC__/images/zjy_goodsInfo_zfb.png" alt=""><h4>支付宝</h4></div>
+            <div><img src="__STATIC__/images/zjy_goodsInfo_qq.png" alt=""><h4>qq</h4></div>
+            <div><img src="__STATIC__/images/zjy_goodsInfo_fzlj.png" alt=""><h4>复制链接</h4></div>
+            <div><img src="__STATIC__/images/zjy_goodsInfo_dkll.png" alt=""><h4>浏览器打开</h4></div>
+        </div>
+        <div class="zjy_fengxiang_footer">
+            <span>取消</span>
+        </div>
+    </div>
+    <!--顶部隐藏菜单-s-->
+    <include file="public/top_nav" top-header="top-header-m"/>
+    <!--顶部隐藏菜单-e-->
+    <!--商品抢购 start-->
+    <!--商品s-->
+    <div class="xq_details">
+        <div class="banner ban1 detailban">
+            <div class="mslide" id="slideTpshop">
+                <ul>
+                    <!--图片-s-->
+                    <foreach name="goods['goods_images']" item="pic">
+                        <li><a href="javascript:void(0)"><img src="__STATIC__/images/zjy_banner.png" alt=""></a></li>
+                    </foreach>
+                    <!--图片-e-->
+                </ul>
+            </div>
+        </div>
+        <div class="de_font p">
+            <div class="thirty">
+                <div class="fl">
+                    <span class="similar-product-text"><span class="red">自营</span>Apple/苹果 iPhone XR</span>
+                    <p style="margin-top: 5px;">
+                        <span class="similar-product-text" style="color: #f03435;margin-top: -.5rem">
+                        【抢券最高减400元 选套餐赠无线充礼盒】
+                        </span>
+                        <span class="thirty_span">Apple/苹果 iPhone XR 移动联通电信4G手机双卡双待苹果iPhoneX</span>
+                    </p>
+                </div>
+                <div class="scunde p">
+                    <span class="red" id="price">￥{$goods.shop_price}</span>
+                    <span id="market_price_title">市场价：</span><span class="linethr" id="market_price">{$goods.market_price}</span>
+                    <p class="inlist">
+                        <if condition="$goods.prom_type neq 2"><span style="float:left;">销量：{$goods['sales_sum']+$goods['virtual_sales_sum']}</span></if>
+                        <!--<span >当前库存：<span class="spec_store_count">{$goods.store_count}</span></span>-->
+                        <span>当前库存:<i>999</i></span>
+                    </p>
+       
+                </div>
+            </div>
+        </div>
+       
+    
+                <!--配送至-s-->
+                <div class="container" >
+                <div class="city">
+                    <div class="screen_wi_loc">
+                        <div class="classreturn loginsignup">
+                            <div class="content">
+                                <div class="ds-in-bl return seac_retu">
+                                    <a href="javascript:void(0);" onclick="closelocation();"><img src="__STATIC__/images/return.png" alt="返回"></a>
+                                </div>
+                                <div class="ds-in-bl search center">
+                                    <span class="sx_jsxz">配送至</span>
+                                </div>
+                                <div class="ds-in-bl suce_ok">
+                                    <a href="javascript:void(0);">&nbsp;</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="province-list"></div>
+                    <div class="city-list" style="display:none"></div>
+                    <div class="area-list" style="display:none"></div>
                 </div>
-                <div class="province-list"></div>
-                <div class="city-list" style="display:none"></div>
-                <div class="area-list" style="display:none"></div>
             </div>
-        </div>
-        <!--配送至-e-->
-
-        <div class="myorder p  choise_num_s">
-            <div class="content30">
-                <a href="javascript:void(0)">
-                    <div class="order">
-                        <div class="fl">
-                            <span class="firde">运费</span>
-                            <span>免运费</span>
+            <!--配送至-e-->
+    
+            <div class="myorder p  choise_num_s">
+                <div class="content30">
+                    <a href="javascript:void(0)">
+                        <div class="order">
+                            <div class="fl">
+                                <span class="firde">运费</span>
+                                <span>免运费</span>
+                            </div>
+                            <div class="fr">
+                                <i class="Mright"></i>
+                            </div>
                         </div>
-                        <div class="fr">
+                    </a>
+                </div>
+            </div>
+            <div class="myorder p">
+                <div class="content30">
+                    <a href="javascript:void(0)">
+                        <div class="order">
+                            <div class="fl">
+                                <span class="firde">说明</span>
+                                <span>假一赔十 | 7天无忧退货 | 保税仓发货 | 黑卡会员96折</span>
+                                <div class="fr">
+                                    <i class="Mright"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="zjy_shopIngo">
+                <p class="zjy_shopIngo_P">
+                    <span>商品评价(3587)</span>
+                    <span class="zjy_shopIngo_span">好评率87%</span>
+                    <div class="fr goods_pos">
+                        <i class="Mright"></i>
+                    </div>
+                </p>	
+                <div class="zjy_goods">
+                    <div class="zjy_goods_item">
+                        <div>
+                            <img src="__STATIC__/images/goods_user.png"/>
+                            <span class="zjy_goods_item_span">1325465</span>
+                        </div>
+                        <p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
+                    </div>
+                    <div class="zjy_goods_item">
+                        <img class="zjy_goods_item_img" src="__STATIC__/images/goods_iphoe.png"/>
+                    </div>
+                    <div class="zjy_goods_item">
+                        <div>
+                            <img src="__STATIC__/images/goods_user.png"/>
+                            <span class="zjy_goods_item_span">1325465</span>
+                        </div>
+                        <p class="zjy_goods_item_p"><span class="zjy_borer">好评</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
+                    </div>
+                    <div class="zjy_goods_item">
+                        <div>
+                            <img src="__STATIC__/images/goods_user.png"/>
+                            <span class="zjy_goods_item_span">1325465</span>
+                        </div>
+                        <p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
+                    </div>
+                    <div class="zjy_goods_item">
+                        <div>
+                            <img src="__STATIC__/images/goods_user.png"/>
+                            <span class="zjy_goods_item_span">1325465</span>
+                        </div>
+                        <p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="goods_what">
+                <p class="goods_what_head">
+                    <span style="margin-left: 15px;">问大家(84)</span>
+                    <div class="fr goods_pos">
+                        <i class="Mright"></i>
+                    </div>
+                </p>
+                <div class="goods_what_info">
+                    <p>
+                        <span>问</span>
+                        <span>使用了一天，各方面性能都很出色，是一次愉...</span>
+                        <span>1个回答</span>
+                    </p>
+                    <p>
+                        <span>问</span>
+                        <span>这个价位是官方正品吗？</span>
+                        <span>4个回答</span>
+                    </p>
+                </div>
+            </div>
+            <div class="zjy_goods_store">
+                <div>
+                    <span class="zjy_goods_store_spsan"><img src="__STATIC__/images/zjy_store.png"/></span>
+                    <div class="zjy_goods_store_left">
+                        <p>天乐数码旗舰店</p>
+                        <p>在售商品 69 件</p> 
+                    </div> 
+                    <div class="zjy_goods_store_right">
+                        <span>进入品牌</span>
+                        <div class="fr zhy_fr">
                             <i class="Mright"></i>
                         </div>
                     </div>
-                </a>
+                </div>
+                <div style="overflow:auto;">
+                        <div class="zjy_goods_inpohe">
+                                <div>
+                                    <img src="__STATIC__/images/zjy_rongyao8.png"/>
+                                    <h3>荣耀8x</h3>
+                                    <span>￥1499</span>
+                                </div>
+                                <div>
+                                    <img src="__STATIC__/images/zjy_xiaomi8.png"/>
+                                    <h3>小米8</h3>
+                                    <span>￥2299</span>
+                                </div>
+                                <div>
+                                    <img src="__STATIC__/images/zjy_oppr15.png"/>
+                                    <h3>OPPO R15</h3>
+                                    <span>￥2199</span>
+                                </div>
+                                <div>
+                                    <img src="__STATIC__/images/zjy_apple.jpg"/>       			
+                                    <h3>Apple iPad Pro</h3>
+                                    <h4>11英寸平板</h4>
+                                    <span>￥7688</span>
+                                </div>
+                                <div >
+                                    <img src="__STATIC__/images/zjy_cz.jpg"/>
+                                    
+                                    <h3>一加手机6T</h3>
+                                    <span>￥3599</span>
+                                </div>
+                            </div>
+                </div>
             </div>
+            
+            <div class="zjy_goods_tab">
+                <ul class="zjy_goods_tab_ui">
+                    <li class="on">相似推荐</li>
+                    <li>同类热销推荐</li>
+                </ul>
+                <div class="zjy_goods_contai active">
+                    <div class="">
+                        <img src="__STATIC__/images/zhy_huawei.png"/>
+                        <p>Huawei/华为 畅享9 PLUS </p>
+                        <span>￥1699</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_huawei20.png"/>
+                        <p>华为 HUAWEI P20</p>
+                        <span>￥3199</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_huawei9.png"/>
+                        <p>Huawei/华为  Mate 20</p>
+                        <span>￥4199</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_huaweic9.png"/>
+                        <p>小米 Mix 3</p>
+                        <span>￥3299</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_vovi.png"/>
+                        <p>vivo Z1 星耀黑</p>
+                        <span>￥1489</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_jg.png"/>
+                        <p>锤子 坚果 R1</p>
+                        <span>￥2999</span>
+                    </div>
+                    
+                </div>
+                <!--tow-->
+                <div class="zjy_goods_contai">
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_ej.png"/>
+                        <p>Huawei/华为 畅享9 PLUS </p>
+                        <span>￥1699</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_sb.png"/>
+                        <p>华为 HUAWEI P20</p>
+                        <span>￥3199</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_huawei9plus.png"/>
+                        <p>Huawei/华为  Mate 20</p>
+                        <span>￥4199</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_hmred.png"/>
+                        <p>小米 Mix 3</p>
+                        <span>￥3299</span>
+                    </div>
+                    <div class="">
+                        <img src="__STATIC__/images/zjy_oppr17.png"/>
+                        <p>vivo Z1 星耀黑</p>
+                        <span>￥1489</span>
+                    </div>
+                    <div class="zjy_tabs_text">
+                        <p>查看全部</p>
+                        <span style="position:relative;left: -.5rem;">See more</span>
+                    </div>       		
+            </div>
+                <div class="zjy_tab_footer">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>				
+                    </ul>
+                </div>	    
         </div>
-        <div class="myorder p">
-            <div class="content30">
-                <a href="javascript:void(0)">
-                    <div class="order">
-                        <div class="fl">
-                            <span class="firde">说明</span>
-                            <span>假一赔十 | 7天无忧退货 | 保税仓发货 | 黑卡会员96折</span>
-                            <div class="fr">
-			                    <i class="Mright"></i>
-			                </div>
+            <div class="zjy_questions">
+                <ul>
+                    <li>图文详情</li>
+                    <li>答疑</li>
+                </ul>
+                <p class="zjy_questions_p">
+                    <img src="__STATIC__/images/zjy_jx.png"/>图文详情<img src="__STATIC__/images/zjy_jx.png"/>
+                </p>
+                <div class="zjy_tabale">
+                    <h3>产品详情</h3>
+                    <table border="" cellspacing="" cellpadding="">
+                        <tr>
+                            <th>质地</th>
+                            <th>玻璃材质</th>						
+                        </tr>
+                        <tr>
+                            <th>品名</th>
+                            <th>Iphone</th>
+                            
+                        </tr>
+                        <tr>
+                            <th>保质期</th>
+                            <th>2年</th>
+                        </tr>
+                        <tr>
+                            <th>适用年龄</th>
+                            <th>12岁以上</th>
+                        </tr>
+                        <tr>
+                            <th>试用群体</th>
+                            <th>中性</th>
+                        </tr>
+                        <tr>
+                            <th>功能</th>
+                            <th>中性</th>
+                        </tr>
+                    </table>
+                    <div class="zjy_goods_an">
+                        <p class="pClick">展开<img style="display: inline-block;width: .5rem;height: .5rem;margin-left: 20px;" src="__STATIC__/images/zjy_gou.png" alt="" /></p>
+                        <p class="showP">收起<img style="display: inline-block;width: .5rem;height: .5rem;margin-left: 20px;" src="__STATIC__/images/zjy_shang.png" alt="" /></p>
+                        
+                        <div class="clickShow" style="margin-top: 1rem;">
+                            <img class="zjy_sj_bg" src="__STATIC__/images/zjy_sj_bg.png"/>
                         </div>
                     </div>
-                </a>
+                </div>
+                
+            </div>
+            <div class="zjy_foodter">
+                <h3><img src="__STATIC__/images/zjy_jx.png"/>授权品牌<img src="__STATIC__/images/zjy_jx.png"/></h3>			
+                <div><img src="__STATIC__/images/zjy_apps.png"/><p>APPLE</p></div>
             </div>
         </div>
-        <div class="zjy_shopIngo">
-        	<p class="zjy_shopIngo_P">
-        		<span>商品评价(3587)</span>
-        		<span class="zjy_shopIngo_span">好评率87%</span>
-        		<div class="fr goods_pos">
-        			<i class="Mright"></i>
-        		</div>
-        	</p>	
-        	<div class="zjy_goods">
-        		<div class="zjy_goods_item">
-        			<div>
-        				<img src="__STATIC__/images/goods_user.png"/>
-        				<span class="zjy_goods_item_span">1325465</span>
-        			</div>
-        			<p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
-        		</div>
-        		<div class="zjy_goods_item">
-        			<img class="zjy_goods_item_img" src="__STATIC__/images/goods_iphoe.png"/>
-        		</div>
-        		<div class="zjy_goods_item">
-        			<div>
-        				<img src="__STATIC__/images/goods_user.png"/>
-        				<span class="zjy_goods_item_span">1325465</span>
-        			</div>
-        			<p class="zjy_goods_item_p"><span class="zjy_borer">好评</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
-        		</div>
-        		<div class="zjy_goods_item">
-        			<div>
-        				<img src="__STATIC__/images/goods_user.png"/>
-        				<span class="zjy_goods_item_span">1325465</span>
-        			</div>
-        			<p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
-        		</div>
-        		<div class="zjy_goods_item">
-        			<div>
-        				<img src="__STATIC__/images/goods_user.png"/>
-        				<span class="zjy_goods_item_span">1325465</span>
-        			</div>
-        			<p class="zjy_goods_item_p"><span class="zjy_borer">心得</span>双十二买的 价格便宜 电池耐用屏幕分辨率和正常电话一样 质量非常好 苹果的质量一直都是很棒的...</p>
-        		</div>
-        	</div>
-        </div>
-        <div class="goods_what">
-        	<p class="goods_what_head">
-        		<span style="margin-left: 15px;">问大家(84)</span>
-        		<div class="fr goods_pos">
-        			<i class="Mright"></i>
-        		</div>
-        	</p>
-        	<div class="goods_what_info">
-        		<p>
-        			<span>问</span>
-        			<span>使用了一天，各方面性能都很出色，是一次愉...</span>
-        			<span>1个回答</span>
-        		</p>
-        		<p>
-        			<span>问</span>
-        			<span>这个价位是官方正品吗？</span>
-        			<span>4个回答</span>
-        		</p>
-        	</div>
-        </div>
-        <div class="zjy_goods_store">
-        	<div>
-        		<span class="zjy_goods_store_spsan"><img src="__STATIC__/images/zjy_store.png"/></span>
-        		<div class="zjy_goods_store_left">
-        			<p>天乐数码旗舰店</p>
-        			<p>在售商品 69 件</p> 
-        		</div> 
-        		<div class="zjy_goods_store_right">
-        			<span>进入品牌</span>
-        			<div class="fr zhy_fr">
-	        			<i class="Mright"></i>
-	        		</div>
-        		</div>
-        	</div>
-        	<div class="zjy_goods_inpohe">
-        		<div>
-        			<img src="__STATIC__/images/zjy_rongyao8.png"/>
-        			<h3>荣耀8x</h3>
-        			<span>￥1499</span>
-        		</div>
-        		<div>
-        			<img src="__STATIC__/images/zjy_xiaomi8.png"/>
-        			<h3>小米8</h3>
-        			<span>￥2299</span>
-        		</div>
-        		<div>
-        			<img src="__STATIC__/images/zjy_oppr15.png"/>
-        			<h3>OPPO R15</h3>
-        			<span>￥2199</span>
-        		</div>
-        		<div>
-        			<img src="__STATIC__/images/zjy_apple.jpg"/>       			
-        			<h3>Apple iPad Pro</h3>
-        			<h4>11英寸平板</h4>
-        			<span>￥7688</span>
-        		</div>
-        		<div >
-        			<img src="__STATIC__/images/zjy_cz.jpg"/>
-        			
-        			<h3>一加手机6T</h3>
-        			<span>￥3599</span>
-        		</div>
-        	</div>
-        </div>
+        <script type="text/javascript">
+            $(".Combination-list ul").css("width",$(".Combination-list ul li").length*10.5+"rem");
+        </script>
         
-        <div class="zjy_goods_tab">
-        	<ul class="zjy_goods_tab_ui">
-        		<li class="on">相似推荐</li>
-        		<li>同类热销推荐</li>
-        	</ul>
-        	<div class="zjy_goods_contai active">
-        		<div class="">
-        			<img src="__STATIC__/images/zhy_huawei.png"/>
-        			<p>Huawei/华为 畅享9 PLUS </p>
-        			<span>￥1699</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_huawei20.png"/>
-        			<p>华为 HUAWEI P20</p>
-        			<span>￥3199</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_huawei9.png"/>
-        			<p>Huawei/华为  Mate 20</p>
-        			<span>￥4199</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_huaweic9.png"/>
-        			<p>小米 Mix 3</p>
-        			<span>￥3299</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_vovi.png"/>
-        			<p>vivo Z1 星耀黑</p>
-        			<span>￥1489</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_jg.png"/>
-        			<p>锤子 坚果 R1</p>
-        			<span>￥2999</span>
-        		</div>
-        		
-        	</div>
-        	<!--tow-->
-        	<div class="zjy_goods_contai">
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_ej.png"/>
-        			<p>Huawei/华为 畅享9 PLUS </p>
-        			<span>￥1699</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_sb.png"/>
-        			<p>华为 HUAWEI P20</p>
-        			<span>￥3199</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_huawei9plus.png"/>
-        			<p>Huawei/华为  Mate 20</p>
-        			<span>￥4199</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_hmred.png"/>
-        			<p>小米 Mix 3</p>
-        			<span>￥3299</span>
-        		</div>
-        		<div class="">
-        			<img src="__STATIC__/images/zjy_oppr17.png"/>
-        			<p>vivo Z1 星耀黑</p>
-        			<span>￥1489</span>
-        		</div>
-        		<div class="zjy_tabs_text">
-        			<p>查看全部</p>
-        			<span>See more</span>
-        		</div>       		
-        </div>
-			<div class="zjy_tab_footer">
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>				
-				</ul>
-			</div>	    
+        </if>
+        <!--添加购物车JS-->
+        <script src="__PUBLIC__/js/mobile_common.js" type="text/javascript" charset="utf-8"></script>
     </div>
-		<div class="zjy_questions">
-			<ul>
-				<li>图文详情</li>
-				<li>答疑</li>
-			</ul>
-			<p class="zjy_questions_p">
-				<img src="__STATIC__/images/zjy_jx.png"/>图文详情<img src="__STATIC__/images/zjy_jx.png"/>
-			</p>
-			<div class="zjy_tabale">
-				<h3>产品详情</h3>
-				<table border="" cellspacing="" cellpadding="">
-					<tr>
-						<th>质地</th>
-						<th>玻璃材质</th>						
-					</tr>
-					<tr>
-						<th>品名</th>
-						<th>Iphone</th>
-						
-					</tr>
-					<tr>
-						<th>保质期</th>
-						<th>2年</th>
-					</tr>
-					<tr>
-						<th>适用年龄</th>
-						<th>12岁以上</th>
-					</tr>
-					<tr>
-						<th>试用群体</th>
-						<th>中性</th>
-					</tr>
-					<tr>
-						<th>功能</th>
-						<th>中性</th>
-					</tr>
-				</table>
-				<div class="zjy_goods_an">
-					<p class="pClick">展开<img style="display: inline-block;width: .5rem;height: .5rem;margin-left: 20px;" src="__STATIC__/images/zjy_gou.png" alt="" /></p>
-					<p class="showP">收起<img style="display: inline-block;width: .5rem;height: .5rem;margin-left: 20px;" src="__STATIC__/images/zjy_shang.png" alt="" /></p>
-					
-					<div class="clickShow" style="margin-top: 1rem;">
-						<img class="zjy_sj_bg" src="__STATIC__/images/zjy_sj_bg.png"/>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-		<div class="zjy_foodter">
-			<h3><img src="__STATIC__/images/zjy_jx.png"/>授权品牌<img src="__STATIC__/images/zjy_jx.png"/></h3>			
-			<div><img src="__STATIC__/images/zjy_apps.png"/><p>APPLE</p></div>
-		</div>
-    </div>
-    <script type="text/javascript">
-    	$(".Combination-list ul").css("width",$(".Combination-list ul li").length*10.5+"rem");
-    </script>
-     <!--搭配套餐 e-->
-    </if>
-    <!--添加购物车JS-->
-    <script src="__PUBLIC__/js/mobile_common.js" type="text/javascript" charset="utf-8"></script>
-</div>
-<!--商品-e-->
-
-
-
-<!--底部按钮-s-->
-<div class="podee">
-    <div class="cart-concert-btm p">
-        <div class="fl">
-            <ul>
-                <li>
-                    <if condition="(!empty($tpshop_config['basic_im_choose'])) && ($tpshop_config['basic_im_choose'] eq 1)">
-                        <!--im客服-->
-                        <a class="kf" href="{:U('supplier/index',array('goods_id'=>$goods['goods_id']))}">
-                            <i></i>
-                            <p>客服</p>
+    <!--商品-e-->
+    
+    
+    
+    <!--底部按钮-s-->
+    <div class="podee">
+        <div class="cart-concert-btm p">
+            <div class="fl">
+                <ul>
+                    <li>
+                        <if condition="(!empty($tpshop_config['basic_im_choose'])) && ($tpshop_config['basic_im_choose'] eq 1)">
+                            <!--im客服-->
+                            <a class="kf" href="{:U('supplier/index',array('goods_id'=>$goods['goods_id']))}">
+                                <i></i>
+                                <p>客服</p>
+                            </a>
+                            <elseif condition="(!empty($tpshop_config['basic_im_choose'])) && ($tpshop_config['basic_im_choose'] eq 2)" />
+                            <!--小能客服-->
+                            <a href="javascript:;">
+                                <i></i>
+                                <p>客服</p>
+                            </a>
+                            <else />
+                            <!--早先客服-->
+                            <!--<a href="tel:{$tpshop_config['shop_info_phone']}">tencent://message/?uin={$tpshop_config['shop_info_qq']}&Site=智丰网络商城&Menu=yes-->
+                            <a href="mqqwpa://im/chat?chat_type=wpa&uin={$tpshop_config['shop_info_qq']}&version=1&src_type=web&web_src=">
+                                <i></i>
+                                <p>客服</p>
+                            </a>
+                        </if>
+                    </li>
+                    <li>
+                        <a href="{:U('Mobile/Cart/index')}" >
+                            <span id="tp_cart_info"></span>
+                            <i class="gwc"></i>
+                            <p>购物车</p>
                         </a>
-                        <elseif condition="(!empty($tpshop_config['basic_im_choose'])) && ($tpshop_config['basic_im_choose'] eq 2)" />
-                        <!--小能客服-->
-                        <a href="javascript:;">
-                            <i></i>
-                            <p>客服</p>
-                        </a>
-                        <else />
-                        <!--早先客服-->
-                        <!--<a href="tel:{$tpshop_config['shop_info_phone']}">tencent://message/?uin={$tpshop_config['shop_info_qq']}&Site=智丰网络商城&Menu=yes-->
-                        <a href="mqqwpa://im/chat?chat_type=wpa&uin={$tpshop_config['shop_info_qq']}&version=1&src_type=web&web_src=">
-                            <i></i>
-                            <p>客服</p>
-                        </a>
-                    </if>
-                </li>
-                <li>
-                    <a href="{:U('Mobile/Cart/index')}" >
-                        <span id="tp_cart_info"></span>
-                        <i class="gwc"></i>
-                        <p>购物车</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="fr">
-            <ul>
-                <li class="o" id="join_cart_li" style="display: none;">
-                    <a class="pb_plusshopcar buy_button choise_num" href="javascript:void(0);"> 加入购物车</a>
-                </li>
-                <li class="r" id="buy_now_li" style="display: none;">
-                    <a class="choise_num" style="display:block;" href="javascript:void(0);">立即购买</a>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="fr">
+                <ul>
+                    <li class="o" id="join_cart_li" style="display: none;">
+                        <a class="pb_plusshopcar buy_button choise_num" href="javascript:void(0);"> 加入购物车</a>
+                    </li>
+                    <li class="r" id="buy_now_li" style="display: none;">
+                        <a class="choise_num" style="display:block;" href="javascript:void(0);">立即购买</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!--底部按钮-e-->
-
-
-
-
-<!--领取优惠券弹窗 start--------------------------------------------------------------------------------->
-<div class="recive_aready p" id="recive_aready_pop">
-	<div class="salpro-tit">
-    	<b>优惠券列表</b>
-        <div class="price_or fr"><i class="xxgro"></i></div>
+    <!--底部按钮-e-->
+    
+    
+    
+    
+    <!--领取优惠券弹窗 start--------------------------------------------------------------------------------->
+    <div class="recive_aready p" id="recive_aready_pop">
+        <div class="salpro-tit">
+            <b>优惠券列表</b>
+            <div class="price_or fr"><i class="xxgro"></i></div>
+        </div>
+        <div class="deta-coucon">
+    
+        </div>
     </div>
-    <div class="deta-coucon">
-
-    </div>
-</div>
-<!--领取优惠券弹窗 end--------------------------------------------------------------------------------->
-
-
-
-<!--选择属性的弹窗-s-->
-<form name="buy_goods_form" method="post" id="buy_goods_form">
-    <input type="hidden" name="goods_id" value="{$goods.goods_id}"><!-- 商品id -->
-    <input type="hidden" name="spec_goods_price" value='{$goods.spec_goods_price|json_encode=true}'>
-    <input type="hidden" name="activity_is_on" value=""><!-- 活动是否进行中 -->
-    <input type="hidden" name="goods_prom_type" value="{$goods.prom_type}"/><!-- 活动类型 -->
-    <input type="hidden" name="shop_price" value="{$goods.shop_price}"/><!-- 活动价格 -->
-    <input type="hidden" name="store_count" value="{$goods.store_count}"/><!-- 活动库存 -->
-    <input type="hidden" name="market_price" value="￥{$goods.market_price}"/><!-- 商品原价 -->
-    <input type="hidden" name="start_time" value=""/><!-- 活动开始时间 -->
-    <input type="hidden" name="end_time" value=""/><!-- 活动结束时间 -->
-    <input type="hidden" name="activity_title" value=""/><!-- 活动标题 -->
-    <input type="hidden" name="item_id" value="{$Request.param.item_id}"/><!-- 商品规格id -->
-    <input type="hidden" name="prom_id" value="{$goods.prom_id}"/><!-- 活动ID -->
-    <input type="hidden" name="exchange_integral" value="{$goods.exchange_integral}"/><!-- 积分 -->
-    <input type="hidden" name="point_rate" value="{$tpshop_config['integral_point_rate']}"/><!-- 积分兑换比 -->
-    <input type="hidden" name="is_virtual" value="{$goods.is_virtual}"/><!-- 是否是虚拟商品 -->
-    <input type="hidden" name="virtual_limit" id="virtual_limit" value="{$goods.virtual_limit|default=0}"/>
-    <input type="hidden" name="deposit_price" value=""/><!-- 订金 -->
-    <input type="hidden" name="balance_price" value=""/><!-- 尾款 -->
-    <input type="hidden" name="ing_amount" value=""/><!-- 已预订了多少 -->
-    <div class="choose_shop_aready p">
-        <!--商品信息-s-->
-        <div class="shop-top-under p">
-            <div class="maleri30">
-                <div class="shopprice">
-                    <div class="img_or fl"><img id="zoomimg" src="{$goods.original_img}"></div>
-                    <div class="fon_or fl">
-                        <h2 class="similar-product-text">{$goods.goods_name}</h2>
-                        <input type="hidden" id="goods_name" name="goods_id" value="{$goods.goods_id}">
-                        <div class="price_or" id="goods_price"><span>￥</span><span>{$goods.shop_price}</span></div>
-                        <div class="dqkc_or"><span>剩余库存：</span><span id="spec_store_count">{$goods.store_count}</span></div>
-                        <div class="dqkc_or buy_limit" style="display: none"><span>限购：</span><span id="buy_limit">{$goods.virtual_limit}</span></div>
-                        <div class="price_or team-pies p" style="display: none"><span class="confinetime">该商品拼团中</span><a class="pb_buy team_button">点击前往</a></div>
-                    </div>
-                    <div class="price_or fr">
-                        <i class="xxgro"></i>
+    <!--领取优惠券弹窗 end--------------------------------------------------------------------------------->
+    
+    
+    
+    <!--选择属性的弹窗-s-->
+    <form name="buy_goods_form" method="post" id="buy_goods_form">
+        <input type="hidden" name="goods_id" value="{$goods.goods_id}"><!-- 商品id -->
+        <input type="hidden" name="spec_goods_price" value='{$goods.spec_goods_price|json_encode=true}'>
+        <input type="hidden" name="activity_is_on" value=""><!-- 活动是否进行中 -->
+        <input type="hidden" name="goods_prom_type" value="{$goods.prom_type}"/><!-- 活动类型 -->
+        <input type="hidden" name="shop_price" value="{$goods.shop_price}"/><!-- 活动价格 -->
+        <input type="hidden" name="store_count" value="{$goods.store_count}"/><!-- 活动库存 -->
+        <input type="hidden" name="market_price" value="￥{$goods.market_price}"/><!-- 商品原价 -->
+        <input type="hidden" name="start_time" value=""/><!-- 活动开始时间 -->
+        <input type="hidden" name="end_time" value=""/><!-- 活动结束时间 -->
+        <input type="hidden" name="activity_title" value=""/><!-- 活动标题 -->
+        <input type="hidden" name="item_id" value="{$Request.param.item_id}"/><!-- 商品规格id -->
+        <input type="hidden" name="prom_id" value="{$goods.prom_id}"/><!-- 活动ID -->
+        <input type="hidden" name="exchange_integral" value="{$goods.exchange_integral}"/><!-- 积分 -->
+        <input type="hidden" name="point_rate" value="{$tpshop_config['integral_point_rate']}"/><!-- 积分兑换比 -->
+        <input type="hidden" name="is_virtual" value="{$goods.is_virtual}"/><!-- 是否是虚拟商品 -->
+        <input type="hidden" name="virtual_limit" id="virtual_limit" value="{$goods.virtual_limit|default=0}"/>
+        <input type="hidden" name="deposit_price" value=""/><!-- 订金 -->
+        <input type="hidden" name="balance_price" value=""/><!-- 尾款 -->
+        <input type="hidden" name="ing_amount" value=""/><!-- 已预订了多少 -->
+        <div class="choose_shop_aready p">
+            <!--商品信息-s-->
+            <div class="shop-top-under p">
+                <div class="maleri30">
+                    <div class="shopprice">
+                        <div class="img_or fl"><img id="zoomimg" src="{$goods.original_img}"></div>
+                        <div class="fon_or fl">
+                            <h2 class="similar-product-text">{$goods.goods_name}</h2>
+                            <input type="hidden" id="goods_name" name="goods_id" value="{$goods.goods_id}">
+                            <div class="price_or" id="goods_price"><span>￥</span><span>{$goods.shop_price}</span></div>
+                            <div class="dqkc_or"><span>剩余库存：</span><span id="spec_store_count">{$goods.store_count}</span></div>
+                            <div class="dqkc_or buy_limit" style="display: none"><span>限购：</span><span id="buy_limit">{$goods.virtual_limit}</span></div>
+                            <div class="price_or team-pies p" style="display: none"><span class="confinetime">该商品拼团中</span><a class="pb_buy team_button">点击前往</a></div>
+                        </div>
+                        <div class="price_or fr">
+                            <i class="xxgro"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--商品信息-e-->
-        <div class="shop-top-under p">
-            <div class="maleri30">
-                <div class="shulges p">
-                    <p>数量</p>
-                    <!--选择数量-->
-                    <div class="plus">
-                        <span class="mp_minous" onclick="altergoodsnum(-1);">-</span>
-                                <span class="mp_mp">
-                        <input type="tel" class="num buyNum" id="number" residuenum="{$goods.store_count}" name="goods_num" value="1" min="1" max="{$goods.store_count}" onblur="altergoodsnum(0)">
-                                </span>
-                        <span class="mp_plus" onclick="altergoodsnum(1);">+</span>
+            <!--商品信息-e-->
+            <div class="shop-top-under p">
+                <div class="maleri30">
+                    <div class="shulges p">
+                        <p>数量</p>
+                        <!--选择数量-->
+                        <div class="plus">
+                            <span class="mp_minous" onclick="altergoodsnum(-1);">-</span>
+                                    <span class="mp_mp">
+                            <input type="tel" class="num buyNum" id="number" residuenum="{$goods.store_count}" name="goods_num" value="1" min="1" max="{$goods.store_count}" onblur="altergoodsnum(0)">
+                                    </span>
+                            <span class="mp_plus" onclick="altergoodsnum(1);">+</span>
+                        </div>
                     </div>
+                    <volist name="goods['spec']" id="spec">
+                        <div class="shulges p choicsel" >
+                            <p>{$spec['name']}</p>
+                            <!-------商品属性值-s------->
+                            <volist name="spec['spec_item']" id="spec_item">
+                                <div class="plus choic-sel">
+                                    <a id="goods_spec_a_{$spec_item['id']}" title="{$spec_item['item']}" class="spec_item"
+                                    <volist name="goods['spec_image']" id="spec_image">
+                                        <if condition="$spec_image['spec_image_id'] eq $spec_item['id']">
+                                            data-img-src="{$spec_image['src']}"
+                                        </if>
+                                    </volist>
+                                    >
+                                        <input id="goods_spec_{$spec_item['id']}" style="display: none" type="radio" name="goods_spec[{$spec['name']}]" value="{$spec_item['id']}"/>{$spec_item['item']}
+                                    </a>
+                                 </div>
+                            </volist>
+                            <!-------商品属性值-e-------->
+                        </div>
+                    </volist>
                 </div>
-                <volist name="goods['spec']" id="spec">
-                    <div class="shulges p choicsel" >
-                        <p>{$spec['name']}</p>
-                        <!-------商品属性值-s------->
-                        <volist name="spec['spec_item']" id="spec_item">
-                            <div class="plus choic-sel">
-                                <a id="goods_spec_a_{$spec_item['id']}" title="{$spec_item['item']}" class="spec_item"
-                                <volist name="goods['spec_image']" id="spec_image">
-                                    <if condition="$spec_image['spec_image_id'] eq $spec_item['id']">
-                                        data-img-src="{$spec_image['src']}"
-                                    </if>
-                                </volist>
-                                >
-                                    <input id="goods_spec_{$spec_item['id']}" style="display: none" type="radio" name="goods_spec[{$spec['name']}]" value="{$spec_item['id']}"/>{$spec_item['item']}
-                                </a>
-                             </div>
-                        </volist>
-                        <!-------商品属性值-e-------->
-                    </div>
-                </volist>
-            </div>
-    </div>
-    <div class="btns-fixed-wrap">
-        <div class="plusshopcar-buy p btns-fixed-w100">
-            <a id="join_cart" class="pb_buy buy_button" href="javascript:void(0);" >加入购物车</a>
-            <a id="buy_now" class="pb_buy buy_button" href="javascript:void(0);" >立即购买 </a>
         </div>
-    </div>
-    </div>
-</form>
-<!--选择属性的弹窗-e-->
-<a onclick="$('html,body').animate({'scrollTop':0},600)" style="display: block;width: 1.5rem;height:1.5rem;position: fixed; bottom: 3rem;right:0.4rem; background-color: rgba(243,241,241,0.5);border: 1px solid #CCC;-webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;" id="topup">
-    <img src="__STATIC__/images/topup.png" style="display: block;width: 1.45rem;height:1.45rem;">
-</a>
-<div class="mask-filter-div" style="display: none;"></div>
+        <div class="btns-fixed-wrap">
+            <div class="plusshopcar-buy p btns-fixed-w100">
+                <a id="join_cart" class="pb_buy buy_button" href="javascript:void(0);" >加入购物车</a>
+                <a id="buy_now" class="pb_buy buy_button" href="javascript:void(0);" >立即购买 </a>
+            </div>
+        </div>
+        </div>
+    </form>
+    <!--选择属性的弹窗-e-->
+    <a onclick="$('html,body').animate({'scrollTop':0},600)" style="display: block;width: 1.5rem;height:1.5rem;position: fixed; bottom: 3rem;right:0.4rem; background-color: rgba(243,241,241,0.5);border: 1px solid #CCC;-webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;" id="topup">
+        <img src="__STATIC__/images/topup.png" style="display: block;width: 1.45rem;height:1.45rem;">
+    </a>
+    <div class="mask-filter-div" style="display: none;"></div>
+</div>
+
 <script type="text/javascript" src="__STATIC__/js/mobile-location.js"></script>
 <include file="public/wx_share"/>
 <!--优惠卷弹窗打开和关闭-->
@@ -1681,6 +1822,35 @@ function combinationCurl(goods_id,item,combination_id) {
 			$(".pClick").show()
 			$(this).hide()
 		})
+        $(".goodsInfo_heads").on("click",function(){
+            $(".zjy_fengxiang").show()
+            $(".zjy_bg_color").show()
+        })
+        $(".zjy_fengxiang_footer").on("click",function(){
+            $(".zjy_fengxiang").hide()
+            $(".zjy_bg_color").hide()
+
+        })
+        $(".zjy_bg_color").on("click",function(){
+            $(".zjy_fengxiang").hide()
+            $(this).hide()
+        })
+        $(".zjy_fengxiang_item div").on("click",function(){
+            $(".zjy_fengxiang").hide()
+            $(".zjy_bg_color").hide()
+            $("._zjy_show_click").show()
+            $('.zjy_bg_color_tow').show()
+        })
+        $("._zjy_show_click_pfoot").on("click",function(){
+            $(".zjy_bg_color_tow").hide()
+            $("._zjy_show_click").hide()
+
+        })
+        $(".zjy_bg_color_tow").on("click",function(){
+            $("._zjy_show_click").hide()
+            $(this).hide()
+            
+        })
 	})
 </script>
 

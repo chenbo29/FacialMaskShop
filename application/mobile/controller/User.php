@@ -82,11 +82,43 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+
+    
+    public function wallet(){
+
+        $user = session('user');
+        //获取账户资金记录
+        $logic = new UsersLogic();
+        $data = $logic->get_account_log($this->user_id, I('get.type'));
+        $account_log = $data['result'];
+
+        $this->assign('user', $user);
+        $this->assign('account_log', $account_log);
+        $this->assign('page', $data['show']);
+
+        // if ($_GET['is_ajax']) {
+        //     return $this->fetch('ajax_account_list');
+        //     exit;
+        // }
+
+
+        return $this->fetch();
+    }
+
 	public function personal()
     {
         return $this->fetch();
     }
     
+    /**
+     * 分销
+     */
+    public function member()
+    {
+
+
+        return $this->fetch();
+    }
     
     public function p_details()
     {

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
     <title>[title]--{$tpshop_config['shop_info_store_title']}</title>
     <!-- <title>搜索</title> -->
     <link rel="stylesheet" href="__STATIC__/css/style.css">
@@ -85,7 +86,7 @@
 		<div class="p search_pl">
             <div class="classreturn whiback bornone">
                 <div class="content">
-                    <div class="ds-in-bl return">
+                    <div class="ds-in-bl return ">
                         <a href="javascript:history.back(-1);"><img src="/template/mobile/rainbow/static/images/return.png" alt="返回"></a>
                     </div>
                 </div>
@@ -93,13 +94,13 @@
 				<div class="search2">
                     <form method="get" action="{:U('Goods/search')}" id="sourch_form">
                         
-                        <a href="javascript:;" onclick="ajaxsecrch()" ><div class="ri_ss"><img src="__STATIC__/images/seas.png"/></div></a>
-                        <div class="le_inp"><input type="text" name="q" id="q" value="" placeholder="搜索商品"/></div>
+                        <a href="javascript:;" onclick="ajaxsecrch()" class="lsw_seach-img" style="float:left"><div class="ri_ss"><img src="__STATIC__/images/seas.png"/></div></a>
+                        <div class="le_inp"><input type="text" name="q" id="qcc" value="" placeholder="商品 店铺"/></div>
                     </form>
 				</div>
             </div>
             <div class="lsw_seach">
-                <a href="">取消</a>
+                <a href="javascript:;" class="ccdd">取消</a>
             </div>
 		</div>
 		<div class="near-le-ri p">
@@ -111,7 +112,8 @@
 			<div class="maleri30">
 				<ul>
                     <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
-                        <li><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></li>
+                        <!-- <li><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></li> -->
+                        <span class="lsw_sousuo-text"><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></span>
                     </foreach>
 				</ul>
 			</div>
@@ -127,7 +129,8 @@
                 <div class="maleri30">
                     <ul>
                         <foreach name="tpshop_config.hot_keywords" item="wd" key="k">
-                            <li><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></li>
+                            <!-- <li><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></li> -->
+                            <span class="lsw_sousuo-text"><a href="{:U('Goods/search',array('q'=>$wd))}" <if condition="$k eq 0">class="ht"</if>>{$wd}</a></span>
                         </foreach>
                     </ul>
                 </div>
@@ -137,6 +140,26 @@
         <!--底部导航-end-->
 </body>
 </html>
+<script>
+     $(function(){
+         $("#qcc").keydown(function(){
+                $(".lsw_seach").children().html("搜索")  
+         })
+        //  .blur(function(){
+        //         $(".lsw_seach").children().html("取消")
+        //  })
+         $(".ccdd").click(function(){
+             var msg=$("#qcc").val()
+             if($(".lsw_seach").children().html()=="搜索"){
+                $(this).attr("href",`http://www.tt.com/Mobile/Goods/search/id/0/q/${msg}/shop_price/sort_asc/desc`)
+             }else{
+                $("#qcc").val("")
+             }
+             
+         })
+     })
+
+</script>
 <script>
     function ajaxsecrch(){
         if($.trim($('#q').val()) != ''){

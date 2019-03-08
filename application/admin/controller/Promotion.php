@@ -704,8 +704,8 @@ class Promotion extends Base
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-            $info['start_time'] = date('Y-m-d H:i', $info['start_time']);
-            $info['end_time'] = date('Y-m-d H:i', $info['end_time']);
+            $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
+            $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
         }
         // $info['start_time_h'] = 0;
         // $now_time = strtotime(date('Y-m-d'));

@@ -4,13 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=1">
+	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=2">
 	<title>首页</title>
-	<link rel="stylesheet" href="__STATIC__/css/index.css?v=1">
-	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/swiper.min.js"></script>
+	<link rel="stylesheet" href="__STATIC__/css/index.css?v=2">
 </head>
 
 <body>
@@ -22,9 +18,9 @@
 			</div>
 			<div class="headerInput">
 				<div class="search">
-					<!-- <img src="__STATIC__/images/t_12.png" alt=""> -->
+					
 				</div>
-				<input type="text" class="searchInput">
+				<div class="searchInput">搜索</div>
 			</div>
 			<div class="searchMsg">
 				<img src="__STATIC__/images/q3.png" alt="">
@@ -111,7 +107,7 @@
 		<div class="msgHeadline">
 			<h4 class="Headline">智丰头条</h4>
 			<a href="">
-				<p class="shopRed">雪山旗舰店入送卷了</p>
+				<p class="shopRed">雪山旗舰店入送卷了</p> v   
 			</a>
 			<a href="">
 				<p class="shopMove">| 更多</p>
@@ -128,9 +124,9 @@
 					<span class="countTimeImg">
 						<img src="__STATIC__/images/t_8.png" alt="">
 					</span>
-					<span class="tiemNum">12</span>:
-					<span class="tiemNum">22</span>:
-					<span class="tiemNum">00</span>
+					<span class="tiemNum hour">12</span>:
+					<span class="tiemNum branch">22</span>:
+					<span class="tiemNum second">00</span>
 				</div>
 				<div class="more">
 					<a href="/mobile/seckill/index">
@@ -223,9 +219,18 @@
 
 			</div>
 		</div>
+			 <div class="loading-box" style="display:none;">
+				<div class='loading' >
+			 </div> 
+			 <p class="p-zai">加载中...</p>
+		</div>
+
 		<include file="public/footer_nav" />
 	</div>
 	<script type="text/javascript" src="__STATIC__/js/sourch_submit.js"></script>
+	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/swiper.min.js"></script>
 	<script>
 		$(document).ready(function () {
 			var mySwiper = new Swiper('.swiper-container', {
@@ -234,19 +239,20 @@
 				pagination: {
 					el: '.swiper-pagination',
 				},
-				// 如果需要滚动条
-				scrollbar: {
-					el: '.swiper-scrollbar',
-				},
+				autoplay: {
+					delay: 3000,
+					stopOnLastSlide: false,
+					disableOnInteraction: true,
+					},
 			})
 		})
-	
 			/**
 			* 继续加载猜您喜欢
 			* */
 			var before_request = 1; // 上一次请求是否已经有返回来, 有才可以进行下一次请求
 			var page = 0;
 			function ajax_sourch_submit(){
+				// $('.loading-box').show();
 				if(before_request == 0)// 上一次请求没回来 不进行下一次请求
 					return false;
 				before_request = 0;
@@ -256,16 +262,31 @@
 					url:"/index.php?m=Mobile&c=Index&a=ajaxGetMore&p="+page,
 					success: function(data)
 					{
-						console.log(data)
 						if(data){
 							$("#J_ItemList").append(data);
 							before_request = 1;
+							$('.loading-box').show();
 						}else{
-							$('.get_more').hide();
+							$('.loading-box').hide();
 						}
 					}
 				});
 			}
+
+			/**
+			* 搜索
+			* */
+			$(function(){
+				 $(".headerInput").click(function(){
+								$(window).attr('location',` /mobile/Goods/ajaxSearch`);
+				 })
+				 $(document).keydown(function (event) {
+        if (event.keyCode == 13) {
+          $('.headerInput').triggerHandler('click');
+        }
+      });
+
+			})
 		</script>
 
 	

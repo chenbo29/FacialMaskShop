@@ -124,26 +124,27 @@ class Admin extends Base {
             $code = I('post.vertify');
             $username = I('post.username/s');
             $password = encrypt(I('post.password/s'));
-			
+		
             $verify = new Verify();
             if (!$verify->check($code, "seller_login")) {
                 $this->ajaxReturn(['status' => 0, 'msg' => '验证码错误']);
             }
-			$condition['tp_seller.user_name'] = $username;
-			$condition['tp_seller.password'] = $password;
-			$seller = Db::name('seller')->where($condition)->find();
-
-			dump($seller);
-			exit;
 			
+			$seller = M('seller')->where(['user_name'=>$username])->find();
 			if(!$seller){
-				$return = ['status' => 0, 'msg' => '账号或密码错误！'];
-			}else{
+				$return = ['status' => 0, 'msg' => $username.'用户不存在'];
+				$this->ajaxReturn($return);
+			}
+			if($seller['password'] != $password){
+				$return = ['status' => 0, 'msg' => '密码错误'];
+				$this->ajaxReturn($return);
+			}
+			
 			session('seller_id', $seller['seller_id']);
 			// session('last_login_time', $seller['last_login']);
 			session('last_login_ip', $seller['last_ip']);
 			$return =['status' => 1, 'url' => U('Seller/Index/index')];
-			}
+			
 			$this->ajaxReturn($return);
         }
 

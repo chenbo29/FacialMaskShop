@@ -3,7 +3,7 @@
 <div class="top_search_wrap">
     <div class="top_search">
         <img src="__STATIC__/images/t_12.png">
-        <input type="text" placeholder="商品名称/商品编号/订单号">
+        <input class="Search" type="text" placeholder="商品名称/商品编号/订单号">
     </div>
 </div>
 <div class="tit-flash-sale p mytit_flash">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="fr">
                             <span>{$order['order_status_detail']}</span>
-                            <img src="__STATIC__/images/delete.png">
+                            <img onclick="deleteElement(this)" src="__STATIC__/images/delete.png">
                         </div>
                     </div>
                 </div>
@@ -76,11 +76,12 @@
                                     </div>
                                     <div class="prices  wiconfine">
                                         <p class="sc_pri"><span>￥</span><span>{$goods[member_goods_price]}</span></p>
+                                        <p class="sc_num"><span>数量</span>&nbsp;<span>{$goods[goods_num]}</span></p>                                        
                                     </div>
-                                    <div class="qxatten  wiconfine">
+                                    <!-- <div class="qxatten  wiconfine">
                                         <p class="weight"><span>数量</span>&nbsp;<span>{$goods[goods_num]}</span></p>
                                        
-                                    </div>
+                                    </div> -->
                                     <div class="buttondde">
                                         <notempty name="goods['return_goods']">
                                             <a class="applyafts">已申请售后</a>
@@ -100,7 +101,8 @@
                     <div class="maleri30">
                 <span class="price-alln">
                     <!--<span class="red">￥{$list['order_amount']}</span><span class="threel">共{$list.goods_list|count}件</span>-->
-                    <span class="red">￥{$order['total_amount']}</span><span class="threel" id="goodsnum">共{$order.count_goods_num}件</span>
+
+                        <span class="threel" id="goodsnum">共{$order.count_goods_num}件 应付总额</span><span class="red">￥{$order['total_amount']}</span>      
                     <!--if condition="$list['pay_code'] eq 'cod'"><i class="tits-ions qxatten-ions">货到付款</i></if -->
                 </span>
                         <if condition="$order.pay_btn eq 1">
@@ -188,6 +190,36 @@
             }
         });
     }
+    /*
+    **删除列表
+    */
+    function deleteElement(Obj){
+        if(confirm("确定删除该商品?")){
+            //点击确定后操作　　
+            Obj.parentNode.parentNode.parentNode.parentNode.remove();
+        }
+    }
+    /*
+    **搜索框
+    */
+     //输入框正在输入时
+     $(".Search").on('input',function(){
+        $('.search_btn').css({'background':'#f23030','color':'#fff','border': 'none'})
+        $('.search_btn').html('搜索');
+    })
+     //输入框得到焦点时
+    $(".Search").on('focus',function(){
+        $('.top_search').css("width", "85%");
+        $('.top_search_wrap').append('<div class="search_btn">取消</div>')
+        $('.top_search').append('<img class="search_img" src="__STATIC__/images/category/close.png"></img>')
+    })
+    //输入框失去焦点时
+    $(".Search").on('blur',function(){
+        $('.top_search').css("width", "100%");
+        $('.search_btn').remove();
+        $('.search_img').remove();
+        $(".Search").val('')
+    })
 </script>
 </body>
 </html>

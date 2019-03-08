@@ -1244,6 +1244,12 @@ footer .flool3 p {
 	text-align:center;
 	line-height:1.87733rem
 }
+.classreturn .content {
+	width: 100%;
+	background: #fff;
+	z-index: 99;
+	position: fixed;
+}
 .classreturn .content .return {
 	position:absolute;
 	left:.42667rem;
@@ -5053,9 +5059,25 @@ input:-ms-input-placeholder {
 .edit_gtfix .ttrebu img {
 	width:16rem
 }
+.getmore .packeg{
+	border-bottom: 0.0313rem solid #ccc;
+}
+.getmore .packeg .fl p span{
+	margin-left: 0.3125rem;
+	vertical-align: top;
+}
+.getmore .packeg .fr img{
+	width: 1rem !important;
+	height: 1rem !important;
+	margin-left: 0.3125rem;
+}
+.getmore .packeg,.getmore .packeg .maleri30>*,.getmore .packeg .maleri30 .fr>*{
+	height: 1.25rem;
+	line-height: 1.25rem;
+}
 .packeg {
 	background-color:white;
-	height:2.13333rem;
+	height:2.1333rem;
 	position:relative
 }
 .packeg .fl {
@@ -5459,8 +5481,9 @@ input:-ms-input-placeholder {
 }
 .sc_list .deleshow .deletes {
 	overflow:hidden;
-	clear:both
-}
+	clear:both;
+	margin-top: 0.3125rem;
+}	
 .sc_list .deleshow .deletes .similar-product-text {
 	width:7.89333rem;
 	padding:0
@@ -5472,6 +5495,11 @@ input:-ms-input-placeholder {
 	margin-top:.256rem;
 	width:.72533rem;
 	height:.72533rem
+}
+.sc_list .deleshow .sc_num {
+	font-size:.55467rem;
+    color:#999;
+	overflow:hidden;
 }
 .sc_list .deleshow .weight {
 	font-size:.55467rem;
@@ -6741,7 +6769,7 @@ span.mp_mp {
 	margin: 0
 }
 .se_sclist .deleshow .prices {
-	margin-top:0;
+	margin-top:0.3125rem;
 }
 .se_sclist .deleshow .prices .sc_pri {
 	margin-top:0
@@ -7255,6 +7283,10 @@ span.mp_mp {
 	height:2.77333rem
 }
 .top_search_wrap{
+	width: 100%;
+	position: fixed;
+	background: #f4f4f4;
+	z-index: 99;
 	padding: 0.3125rem 0.3125rem;
 }
 .top_search{
@@ -7266,7 +7298,8 @@ span.mp_mp {
 .top_search img{
 	width: .7rem;
 	height: .7rem;
-	margin: 0.125rem ;
+	margin: 0.125rem;
+	vertical-align: top;
 }
 .top_search input{
 	width: 90%;
@@ -7276,7 +7309,26 @@ span.mp_mp {
 	background: #fff;
 	font-size: .5rem;
 }
+.search_btn{
+    position: absolute;
+    top: 0.3rem;
+    right: .5rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    color: #939393;
+	padding: 0 .25rem;
+	font-size: .5rem;
+    border: 0.0625rem solid #a7a7a7;
+	background: #fff;
+}
+.top_search .search_img{
+	position: absolute;
+    top: 0.3rem;
+    right: 2.8rem;
+}
 .tit-flash-sale {
+	margin-top: 1.65rem;
 	background-color:#333333;
 	overflow:hidden;
 }
@@ -7483,10 +7535,12 @@ p.nike-price .throughli {
 }
 .price-alln {
 	font-size:.55467rem;
-	margin:.384rem;
-	float:right;
-	width:100%;
+	margin:.384rem 0;
+	float: left;;
 	position:relative;
+}
+.price-alln a{
+	float: right;
 }
 .qxatten-ions {
 	right:0px;
@@ -7503,11 +7557,13 @@ p.nike-price .throughli {
 }
 .shop-rebuy {
 	float:right;
+	color:#ff6e33 ;
 	padding:.36267rem .53333rem;
 	margin-right:.33333rem;
 	border:1px solid #e2e2e2;
 	font-size:.55467rem;
-	border-radius:.21333rem
+	border-radius:.21333rem;
+	background: #fddecf
 }
 .paysoon {
 	color:white;

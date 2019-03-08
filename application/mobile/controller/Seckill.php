@@ -34,6 +34,10 @@ class Seckill extends MobileBase
     public function submit()
     {
        
+        $time = "2019,3,8";
+        $this->assign('time',$time);
+
+
         return $this->fetch();
     }
 

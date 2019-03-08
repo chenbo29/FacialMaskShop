@@ -33,26 +33,16 @@
                 </dd>
             </dl>
 			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>是否开启活动</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="act_name" value="" class="input-txt">
-			    </dd>
-			</dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>是否开启</label>
+                </dt>
+                <dd class="opt">
+							  <input type="radio" name="identity" value="0"/>是
+							  <input type="radio" name="identity" value="1"/>否			
+                </dd>
+            </dl>	
 			
-			<!-- <dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>时间段:</label>
-			    </dt>
-			    <dd class="opt">
-					<input type="text" id="start_time" name="start_time" value="{$info.start_time}"  class="input-txt">
-					<span class="err" id="err_start_time"></span>至
-					<input type="text" id="end_time" name="end_time" value="{$info.end_time}" class="input-txt">
-					<span class="err" id="err_end_time"></span>
-			    </dd>
-			</dl> -->
 			<dl class="row">
 			    <dt class="tit">
 			        <label><em>*</em>时间段:</label>
@@ -92,34 +82,14 @@
 				</dd>
 			</dl>
 			
-            <!-- <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>团购类型</label>
-                </dt>
-                <dd class="opt">
-                    <select id="prom_type" name="type">
-                        <option value="0" <if condition="$info[type] eq 0">selected</if>>小团</option>
-                        <option value="1" <if condition="$info[type] eq 1">selected</if>>中团</option>
-                        <option value="2" <if condition="$info[type] eq 2">selected</if>>大团</option>
-                    </select>
-					<p class="notic">小团：邀请可成为团友，邀请人为团长，满足人数或者购买数量才可开团。为了避免团长开团后长期不能成团，开团24小时后如果还未成团，将会自动关闭订单。 <br/>
-大团：满足团购总人数或者购买总数量即可开团。 <br/>
-阶梯团：根据不同的团购人数，决定最后的团购价格。到达截止时间拼团自动结束，且订单交易完成后，多余的钱将返还至预存款中。 
-团购活动开启后请勿随意更改团购类型，以免造成不必要的损失。 <br/>
-默认关闭，若开启，小团将在24小时后自动成团，无论团购人数或购买数量是否达到若选择了开团等级，只有达到该等级的会员才可以开团。</p>
-                </dd>
-            </dl> -->
-
             <dl class="row">
                 <dt class="tit">
                     <label><em>*</em>促销活动类型</label>
                 </dt>
                 <dd class="opt">
-                    <select id="prom_type" name="type">
-                        <option value="0" <if condition="$info[type] eq 0">selected</if>>小团</option>
-                        <option value="1" <if condition="$info[type] eq 1">selected</if>>中团</option>
-                        <option value="2" <if condition="$info[type] eq 2">selected</if>>阶梯团&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                    </select>
+							  <input type="radio" name="identity" value="0" onclick="radioClick(0,this.name)"/>小团
+							  <input type="radio" name="identity" value="1" onclick="radioClick(0,this.name)"/>中团				
+                              <input type="radio" name="identity" value="2" onclick="radioClick(0,this.name)"/>阶梯团	
 					<p class="notic">小团：邀请可成为团友，邀请人为团长，满足人数或者购买数量才可开团。为了避免团长开团后长期不能成团，开团24小时后如果还未成团，将会自动关闭订单。 <br/>
 						大团：满足团购总人数或者购买总数量即可开团。 <br/>
 						阶梯团：根据不同的团购人数，决定最后的团购价格。到达截止时间拼团自动结束，且订单交易完成后，多余的钱将返还至预存款中。 
@@ -128,41 +98,36 @@
                 </dd>
             </dl>			
 
-            <dl class="row" id="expression_dl">
+            <dl class="row" id="casea" style="display:none">
                 <dt class="tit">
                     <label><em>*</em>团购价:</label>
                 </dt>
                 <dd class="opt">
-                    <!-- <input type="text" id="expression" name="expression"  value="{$info.expression}" onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" class="input-txt">
-					<p class="notic">% 折扣值(1-100 如果打9折，请输入90)</p> -->
 			        <input type="text" name="act_name" value="" class="input-txt">
 			        <p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p>					
-                </dd>
-			</dl>
-			
-
-			<!-- <dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>团购价:</label>
-			    </dt>
-			    <dd class="opt">
-			        <input type="text" name="act_name" value="" class="input-txt">
-			        <p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p>
-			    </dd>
-			</dl> -->
-			
-			<!-- <dl class="row">
-				<dt class="tit">
-					<label><em>*</em>成团条件:</label>
-				</dt>
-				<dd class="opt ctype">
-						<input name="team_type" class="team_type" type="radio" value="按拼团人数"><label>按拼团人数</label>
-						<input name="team_type" class="team_type" type="radio" value="按购买数量"><label>按购买数量</label>
-					<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p>
 				</dd>
-			</dl> -->
-			
-			<!-- <dl class="row">
+                <dt class="tit">
+						<label><em>*</em>最大开团数:</label>
+				</dt>
+				<dd class="opt">
+					<input type="text" name="act_name" value="" class="input-txt">				
+				</dd>				
+
+			</dl>
+
+            <dl class="row" id="contentinpt" style="display:none">
+                <dt class="tit">
+                    <label><em>*</em>成团条件:</label>
+                </dt>
+                <dd class="opt" >
+					<input name="team_type" class="team_type" type="radio" value="0" onclick="radioClick(2,this.name)"><label>按拼团人数</label>
+					<input name="team_type" class="team_type" type="radio" value="1" onclick="radioClick(2,this.name)"><label>按购买数量</label>
+				<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p>					
+                </dd>
+			</dl>		
+
+
+			<dl class="row" id="p_num" style="display:none">
 			    <dt class="tit">
 			        <label><em>*</em>拼团人数:</label>
 			    </dt>
@@ -172,7 +137,7 @@
 			    </dd>
 			</dl>
 			
-			<dl class="row">
+			<dl class="row" id="b_num" style="display:none">
 			    <dt class="tit">
 			        <label><em>*</em>购买数量:</label>
 			    </dt>
@@ -180,13 +145,13 @@
 			        <input type="text" name="act_name" value="" class="input-txt">
 			        <p class="notic">满足数量即可。</p>
 			    </dd>
-			</dl> -->
-			
-			<dl class="row">
-			    <dt class="tit">
-			        <label><em>*</em>阶梯团:</label>
-			    </dt>
-			    <dd class="opt">
+			</dl>
+
+            <dl class="row" id="jieti" style="display:none">
+                <dt class="tit">
+                    <label><em>*</em>阶梯团:</label>
+                </dt>
+                <dd class="opt" >
 			        <div class="hDiv">
 			        	<div class="hDivBox">
 			        		<table cellspacing="0" cellpadding="0">
@@ -214,25 +179,13 @@
 			        			</thead>
 			        		</table>
 			        	</div>
-			        </div>
-					
-					<!-- <div class="tDiv">
-						<div class="tDiv2">
-							<a href="{:U('Promotion/spike_list_info')}">
-								<div class="fbutton">
-									<div title="添加活动" class="add">
-										<span><i class="fa fa-plus"></i>添加活动</span>
-									</div>
-								</div>
-							</a>
-						</div> -->
-
+			        </div>					
 						<div class="tDiv">
 							<div class="tDiv2">
 								
 									<div class="fbutton">
 										<div title="添加活动" class="add">
-											<span><a onclick="selectGoods()"><i class="fa fa-plus"></i></a>添加活动</span>
+											<span><a onclick="selectGoods1()"><i class="fa fa-plus"></i></a>添加活动</span>
 										</div>
 									</div>
 								
@@ -276,9 +229,130 @@
 						<div class="iDiv" style="display: none;"></div>
 					</div>
 					<p class="notic">最多可设置10个阶梯。</p>
-			    </dd>
+                </dd>
+			</dl>	
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>SKU拼团价:</label>
+                </dt>
+                <dd class="opt">
+					<a onclick="selectGoods2()" class="ncap-btn">编辑拼团sku价格</a>
+                </dd>
 			</dl>
-			
+            <dl class="row">
+                <dd class="opt">
+						<div class="hDiv" style="margin-left: 15%;">
+								<div class="hDivBox">
+									<table cellspacing="0" cellpadding="0">
+										<thead>
+										<tr>
+											<th class="sign" axis="col0">
+												<div style="width: 24px;"><i class="ico-check"></i></div>
+											</th>
+											<th align="left" abbr="article_title" axis="col3" class="">
+												<div style="text-align: left; width: 50px;" class="">sku</div>
+											</th>
+											<th align="left" abbr="ac_id" axis="col4" class="">
+												<div style="text-align: center; width: 100px;" class="">原价</div>
+											</th>
+											<th align="left" abbr="ac_id" axis="col4" class="">
+												<div style="text-align: center; width: 120px;" class="">现价</div>
+											</th>
+											<th align="left" axis="col1" class="handle">
+												<div style="text-align: center; width: 240px;">拼团价</div>
+											</th>
+											<th style="width:100%" axis="col7">
+												<div></div>
+											</th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+							</div>
+							
+							<!-- <div class="tDiv">
+								<div class="tDiv2">
+									<a href="{:U('Promotion/spike_list_info')}">
+										<div class="fbutton">
+											<div title="添加活动" class="add">
+												<span><i class="fa fa-plus"></i>添加活动</span>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div style="clear:both"></div>
+							</div> -->
+							<div class="bDiv" style="height: auto;">
+								<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
+									<table>
+										<tbody>
+										<foreach name="prom_list" item="vo" key="k" >
+											<tr>
+												<td class="sign">
+													<div style="width: 24px;"><i class="ico-check"></i></div>
+												</td>
+												<td align="left" class="">
+													<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+												</td>
+												<td align="left" class="">
+													<div style="text-align: left; width: 100px;"> </div>
+												</td>
+												<td align="left" class="">
+													<div style="text-align: center; width: 100px;"> </div>
+												</td>
+							
+												<td align="left" class="handle">
+													<div style="text-align: left; width: 150px; max-width:170px;">
+														<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+														<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+													</div>
+												</td>
+												<td align="" class="" style="width: 100%;">
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</foreach>
+										</tbody>
+									</table>
+								</div>
+								<div class="iDiv" style="display: none;"></div>
+							</div>
+							<p style="margin-left: 30%;">暂无数据</p>							
+                </dd>
+            </dl>			
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>是否返佣</label>
+                </dt>
+                <dd class="opt">
+							  <input type="radio" name="identity" value="0"/>否
+							  <input type="radio" name="identity" value="1"/>是			
+                </dd>
+			</dl>
+
+            <dl class="row">
+					<dt class="tit">
+						<label><em>*</em>团长是否免单</label>
+					</dt>
+					<dd class="opt">
+								  <input type="radio" name="is_free" value="0" onclick="radioClick(1,this.name)" checked='true'/>否
+								  <input type="radio" name="is_free" value="1" onclick="radioClick(1,this.name)"/>是	
+								  <p class="notic">可设置团长是否允许免单或固定价（设置0或空按拼团价来计算)</p>		
+					</dd>
+			</dl>				
+
+            <dl class="row" id="disc">
+					<dt class="tit">
+						<label>折扣价:</label>
+					</dt>
+					<dd class="opt">
+							<input type="text" name="identity" value=""/>
+							
+					</dd>
+			</dl>			
+
+
 			<dl class="row">
 			    <dt class="tit">
 			        <label><em>*</em>限购:</label>
@@ -294,8 +368,7 @@
 			        <label><em>*</em>活动规则:</label>
 			    </dt>
 			    <dd class="opt">
-			        <textarea type="text" name="act_name" class="input-txt">
-					</textarea>
+			        <textarea type="text" name="act_name" class="input-txt"></textarea>
 			    </dd>
 			</dl>
 			<dl class="row">
@@ -303,8 +376,7 @@
 			        <label><em>*</em>商品简介:</label>
 			    </dt>
 			    <dd class="opt">
-			        <textarea type="text" name="act_name" class="input-txt">
-			        </textarea>
+			        <textarea type="text" name="act_name" class="input-txt"></textarea>
 					<p class="notic">简单介绍下商品。</p>
 			    </dd>
 			</dl>
@@ -422,6 +494,32 @@
     }
 
 
+    function selectGoods2(){
+        var url = "{:U('Promotion/search_goods2',array('tpl'=>'add_sku','prom_type'=>6,'prom_id'=>$info[id]))}";
+        layer.open({
+            type: 2,
+            title: '选择商品',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['30%', '50%'],
+            content: url,
+        });
+    }
+
+
+    function selectGoods1(){
+        var url = "{:U('Promotion/search_goods1',array('tpl'=>'add_active','prom_type'=>6,'prom_id'=>$info[id]))}";
+        layer.open({
+            type: 2,
+            title: '选择商品',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['30%', '50%'],
+            content: url,
+        });
+    }
+
+
     function selectGoods(){
         var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>6,'prom_id'=>$info[id]))}";
         layer.open({
@@ -463,42 +561,83 @@
         $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
 
-    $("#prom_type").on("change",function(){
-        var type = parseInt($("#prom_type").val());
-        var expression = '';
-        switch(type){
-            case 0:{
-                expression = '<dt class="tit"><label><em>*</em>团购价</label></dt>'
-                        + '<dd class="opt"><input type="text" name="expression" pattern="([1-9]\\d?|100)" onkeyup="this.value=this.value.replace(/[^\\d.]/g,\'\')" value="" class="input-txt">'
-                        + '<p class="notic">若选择了阶梯团，实际团购价以设置的拼团价格为准。</p></dd>';
-                break;
-            }
-            case 1:{
-                expression = '<dt class="tit"><label><em>*</em>成团条件</label></dt>'
-                        + '<dd class="opt"><input name="team_type" class="team_type" type="radio" value="0" class="input-txt"><label>按拼团人数</label><input name="team_type" class="team_type" type="radio" value="1" class="input-txt"><label>按购买数量</label>'
-						// +'<dd class="opt"><input name="team_type" class="team_type" type="radio" value="1" class="input-txt"><label>按购买数量</label>'
-                        + '<p class="notic">小团活动可以设置最大开团数量，达到最大开团数后将不能再开团；默认为0，则不限制开团数。注：活动进行期间改变最大开团数，将会重置剩余开团数小团可设置团长是否允许免单或固定价（设置0或空按拼团价来计算）；默认不允许免单，不允许免单的情况下团长按商品的拼团价支付。 </p></dd>';
-                break;			
-            }
-            case 2:{
-                expression = '<dt class="tit"><label><em>*</em>阶梯团:</label></dt>'
-                        + '<dd class="opt"><div class="hDiv"><div class="hDivBox"><table cellspacing="0" cellpadding="0"><thead><tr><th class="sign" axis="col0"><div style="width: 24px;"><i class="ico-check"></i></div></th><th align="left" abbr="article_title" axis="col3" class=""><div style="text-align: left; width: 50px;" class="">层级</div></th><th align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 100px;" class="">拼团价格</div></th><th align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 120px;" class="">拼团人数</div></th><th align="left" axis="col1" class="handle"><div style="text-align: center; width: 240px;">操作</div></th><th style="width:100%" axis="col7"><div></div></th></tr></thead></table></div></div>'
-                        + '<p class="notic">最多可设置10个阶梯。</p></dd>';
-                break;
-            }
-            case 3:{
-                expression = '<dt class="tit"><label><em>*</em>代金券</label></dt><dd class="opt"><select name="expression">'
-                        + '<tpshop sql="select * from __PREFIX__coupon where type=0 AND use_end_time gt $template_now_time" item="v"><option value="{$v.id}" <if condition="$v[id] eq $info[expression]">selected</if>>{$v.name}</option></tpshop></select>'
-                        + '</dd>';
-                break;
-            }
-            case 4:{
-                expression = '';
-                break;
-            }
-        }
-        $("#expression_dl").html(expression);
-    });
+	function radioClick(level,name) {
+          //定义一个变量show，show获取的是被选中的radio对应的值
+          var show="";
+		  
+          //取到所有的单选
+          var apm = document.getElementsByName(name);
+          //遍历
+          for(var i=0;i < apm.length;i++){
+          //取到所选中的值checked
+              if(apm[i].checked)
+                  show = apm[i].value;
+          }
+		  if(level==0){
+			//接下来就是对取到的值，进行显示和隐藏操作。
+			switch (show){
+				case '0':
+					document.getElementById("casea").style.display="block";
+					document.getElementById("contentinpt").style.display="none";
+					document.getElementById("jieti").style.display="none";
+					document.getElementById("p_num").style.display="none";
+					document.getElementById("b_num").style.display="none";
+					break;
+				case '1':
+					document.getElementById("casea").style.display="none";
+					document.getElementById("contentinpt").style.display="block";
+					document.getElementById("jieti").style.display="none";
+					break;
+				case '2':
+					document.getElementById("casea").style.display="none";
+					document.getElementById("contentinpt").style.display="none";
+					document.getElementById("jieti").style.display="block";
+					document.getElementById("p_num").style.display="none";
+					document.getElementById("b_num").style.display="none";
+					break;
+
+				default:
+					document.getElementById("casea").style.display="none";
+					document.getElementById("contentinpt").style.display="none";
+					document.getElementById("jieti").style.display="none";
+					break;
+			}
+		  }else if(level==1){
+          		//接下来就是对取到的值，进行显示和隐藏操作。
+				switch (show){
+					case '0':
+						document.getElementById("disc").style.display="block";
+						
+						break;
+					case '1':
+						document.getElementById("disc").style.display="none";
+						
+						break;
+					default:
+						document.getElementById("disc").style.display="block";
+						break;
+				}                   
+		  }else{
+          	//接下来就是对取到的值，进行显示和隐藏操作。
+			switch (show){
+				case '0':
+					document.getElementById("p_num").style.display="block";
+					document.getElementById("b_num").style.display="none";
+					break;
+				case '1':
+					document.getElementById("p_num").style.display="none";
+					document.getElementById("b_num").style.display="block";
+					break;
+				default:
+					document.getElementById("casea").style.display="none";
+					document.getElementById("contentinpt").style.display="none";
+					break;
+			}
+		  }
+
+
+    }
+
 
 </script>
 </body>

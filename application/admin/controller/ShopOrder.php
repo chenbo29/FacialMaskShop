@@ -25,13 +25,7 @@ class ShopOrder extends Base {
         parent::_initialize();
     }
 
-    /**
-     * 订单列表
-     */
-    public function index(){
-        header("Content-type: text/html; charset=utf-8");
-exit("请联系智丰网络客服购买高级版支持此功能");
-    }
+  
 
     /**
      * 核销页

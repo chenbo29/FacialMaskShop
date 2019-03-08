@@ -216,6 +216,7 @@ body {
 }
 
 .content {
+	position: relative;
 	margin:0 .21333rem
 }
 .content:before,.content:after {

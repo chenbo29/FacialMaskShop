@@ -135,4 +135,10 @@ return	array(
 					array('name' => '平台支出记录','act'=>'expense_log','op'=>'Report'),
 			)),
 	)),
+
+	'pickup'=>array('name'=>'门店','child'=>array(
+			array('name' => '门店管理','child' => array(
+					array('name'=>'门店管理','act'=>'store','op'=>'Pickup'),
+			)),
+	)),
 );

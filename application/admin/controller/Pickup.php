@@ -13,49 +13,64 @@ class Pickup extends Base {
 		return $this->fetch('pickup');
 	}
 
-	public function pickup_list(){
+	// public function pickup_list(){
 
-		$Pickup =  M('offline_pickup'); 
-		$res = $Pickup->order('id desc')->select();
-  		$this->assign('res',$res);
+	// 	$Pickup =  M('offline_pickup'); 
+	// 	$res = $Pickup->order('id desc')->select();
+ //  		$this->assign('res',$res);
 
 
-		return $this->fetch();
-	}
+	// 	return $this->fetch();
+	// }
+	public function stay(){
 
-	public function pickupHandle()
-    {
-        $data = I('post.');
-        $data['pickup_time'] = strtotime($data['pickup_time']);
-        $result = $this->validate($data, 'Pickup.'.$data['act'], [], true);
-        if ($result !== true) {
-            $this->ajaxReturn(['status' => 0, 'msg' => '参数错误', 'result' => $result]);
-        }
-        $where['id']=$data['id'];
-        // $where['title']=$data['title'];
-        if($data['act']=='edit'){
-            $where['user_id']=array('neq',$data['user_id']);
-        }
-        $find = db('pickup')->where($where)->select();
-        if($find){
-            $this->ajaxReturn(['status' => 0, 'msg' => '此分类下已存在该标题']);
-        }
-        if ($data['act'] == 'add') {
-            $data['click'] = mt_rand(1000,1300);
-        	$data['add_time'] = time(); 
-            $r = M('pickup')->add($data);
-        } elseif ($data['act'] == 'edit') {
-            $r = M('pickup')->where('user_id='.$data['user_id'])->save($data);
-        } elseif ($data['act'] == 'del') {
-        	$r = M('pickup')->where('user_id='.$data['user_id'])->delete(); 	
-        }
-        
-        if (!$r) {
-            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
-        }
-            
-        $this->ajaxReturn(['status' => 1, 'msg' => '操作成功']);
+        $Pickup =  M('order'); 
+        $res = $Pickup->order('order_id desc')->select();
+        $this->assign('res',$res);
+
+
+        return $this->fetch();
     }
+	
+
+	
+    public function off(){
+
+
+
+        return $this->fetch();
+
+    }
+
+    public function statistic(){
+
+
+    	
+        return $this->fetch();
+
+    }
+
+    public function index(){
+
+        $Pickup =  M('order');
+        $res = $Pickup->order('order_id desc')->select();
+        $this->assign('res',$res);
+
+
+        return $this->fetch();
+    }
+
+    public function store(){
+
+        $Pickup =  M('shop'); 
+        $res = $Pickup->order('shop_id desc')->select();
+        $this->assign('res',$res);
+
+
+        return $this->fetch();
+    }
+
+	
 
 	public function verification(){
 		$Pickup =  M('offline_pickup'); 
@@ -67,4 +82,15 @@ class Pickup extends Base {
 		return $this->fetch();
 	}
 }
+
+// 	public function place(){
+// 		$Pickup =  M(''); 
+// 		$res = $Pickup->order('id desc')->select();
+//   		$this->assign('res',$res);
+
+		
+		
+// 		return $this->fetch();
+// 	}
+// }
 

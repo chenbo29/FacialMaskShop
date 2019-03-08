@@ -12,7 +12,7 @@ class Seckill extends MobileBase
     /**
      * 秒杀
      */
-    public function index()
+    public function index_zp()
     {
        
         return $this->fetch();

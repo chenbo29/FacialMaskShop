@@ -13,7 +13,11 @@ class Sign extends MobileBase {
 
     public function index(){     
         
+        //$user_id = session('user.user_id');
         
+        $user_id = 1;
+        
+        $this->assign('user_id',$user_id);
 
         return $this->fetch();
     }
@@ -25,6 +29,32 @@ class Sign extends MobileBase {
         return $this->fetch();
     }
   
+
+    /**
+     * 签到
+     */
+    public function sign(){
+        $user_id = I('user_id');
+        if(!$user_id){
+            return $this->ajaxReturn(['status'=>-1,'msg'=>'签到user_id不能为空']);
+        }
+
+        $con['sign_day'] = array('like',date('Y-m-d',time()).'%');
+        $cunzai = M('sign_log')->where(['user_id'=>$user_id])->where($con)->find();
+
+        if($cunzai){
+            return $this->ajaxReturn(['status'=>1,'msg'=>'今日已签到']);
+        }else{
+            $r = M('sign_log')->save(['user_id'=>$user_id,'sign_day'=>date('Y-m-d H:i:s')]);
+            if($r){
+                if($r){
+                    return $this->ajaxReturn(['status'=>1,'msg'=>'签到成功']);
+                }else{
+                    return $this->ajaxReturn(['status'=>-1,'msg'=>'签到失败']);
+                }
+            }
+        }
+    }
 
 
     /**

@@ -58,7 +58,7 @@
 		
 		<script>
 			$(document).ready(function(){
-				/*签到请求*/
+				/*签到记录请求*/
 				$.ajax({
 					type: "GET",
 					url: "/mobile/sign/get_sign_day?user_id=" + {$user_id},
@@ -101,9 +101,22 @@
 						
 					},
 					error: function(error){
-						console.log('请求错误！');
+						console.log('报错',error);
 					}
 				});
+				
+				/*签到请求*/
+				$.ajax({
+					type: "GET",
+					url: "/mobile/sign/sign?user_id=" + {$user_id},
+					async: true,
+					success: function(_received){
+						console.log(_received);
+					},
+					error: function(error){ 
+						console.log('报错',error);
+					}
+				})
 				
 				
 			})

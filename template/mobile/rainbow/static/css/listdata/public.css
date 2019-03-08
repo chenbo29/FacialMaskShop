@@ -1,12 +1,16 @@
 /*头部 wepa*/
 .headWrap_lb {
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
 	padding-left: .76rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	width: 7.5rem;
 	height: .8rem;
+	    box-shadow: 0 .03rem 0.1rem #ccc;
 	background-color: #fff;
 }
 .returnBut_lb {

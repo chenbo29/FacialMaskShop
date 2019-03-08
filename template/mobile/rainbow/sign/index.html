@@ -58,6 +58,24 @@
 		
 		<script>
 			$(document).ready(function(){
+				/*用户是否签到*/
+				var stateD = false;
+				/*判读用户是否签到*/
+				$.ajax({
+					type: "GET",
+					url: "/mobile/sign/check_sign?user_id=" + {$user_id},
+					async: true,
+					success: function(_re){
+						if(_re['status'] == 1 && _re['data']){
+							$('.signInBut').find('span').html('已签到');
+							stateD = true;
+						}
+					},
+					error: function(error){ 
+						console.log('报错',error);
+					}
+				})
+				
 				/*签到记录请求*/
 				$.ajax({
 					type: "GET",
@@ -106,17 +124,27 @@
 				});
 				
 				/*签到请求*/
-				$.ajax({
-					type: "GET",
-					url: "/mobile/sign/sign?user_id=" + {$user_id},
-					async: true,
-					success: function(_received){
-						console.log(_received);
-					},
-					error: function(error){ 
-						console.log('报错',error);
+				$('.signInBut').on('click',function(){
+					/*判断用户签到状态*/
+					if(!stateD){
+						$.ajax({
+							type: "GET",
+							url: "/mobile/sign/sign?user_id=" + {$user_id},
+							async: true,
+							success: function(_received){
+								console.log(_received);
+								alert(_received.msg);
+								$('.signInBut').find('span').html('已签到');
+							},
+							error: function(error){ 
+								console.log('报错',error);
+							}
+						})
+					}else {
+						alert("今天已签到！");
 					}
 				})
+				
 				
 				
 			})

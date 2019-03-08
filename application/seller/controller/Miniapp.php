@@ -58,10 +58,10 @@ class Miniapp extends Base
 //		halt($this->appService);
 		$miniapp = MiniappModel::get(['user_id' => $this->appService['user_id'], 'miniapp_id' => $this->appService['miniapp_id']]);
 		if (!$miniapp) {
-			$this->error('小程序不存在', 'admin/Miniapp/index');
+			$this->error('小程序不存在', 'seller/Miniapp/index');
 		}
 		if($miniapp['is_auth'] != 1){
-			$this->error('小程序未绑定', 'admin/Miniapp/index');
+			$this->error('小程序未绑定', 'seller/Miniapp/index');
 		}
 
 		$logic = new MiniappLogic();
@@ -82,10 +82,10 @@ class Miniapp extends Base
 	{
 		$miniapp = MiniappModel::get(['user_id' => $this->appService['user_id'], 'miniapp_id' => $this->appService['miniapp_id']], 'appService');
 		if (!$miniapp) {
-			$this->error('小程序不存在', 'admin/Miniapp/index');
+			$this->error('小程序不存在', 'seller/Miniapp/index');
 		}
 		if($miniapp['is_auth'] != 1){
-			$this->error('小程序未绑定', 'admin/Miniapp/index');
+			$this->error('小程序未绑定', 'seller/Miniapp/index');
 		}
 		if (!$templates = MiniappTemplate::all(['is_on_sale'=> 1, 'app_id' => $this->appService->app_id])) {
 			$this->error('暂无模板可使用，联系客服');
@@ -103,10 +103,10 @@ class Miniapp extends Base
 	{
 		$miniapp = MiniappModel::get(['user_id' => $this->appService['user_id'], 'miniapp_id' => $this->appService['miniapp_id']]);
 		if (!$miniapp) {
-			$this->error('小程序不存在', 'admin/Miniapp/index');
+			$this->error('小程序不存在', 'seller/Miniapp/index');
 		}
 		if($miniapp['is_auth'] != 1){
-			$this->error('小程序未绑定', 'admin/Miniapp/index');
+			$this->error('小程序未绑定', 'seller/Miniapp/index');
 		}
 
 		$this->assign('miniapp', $miniapp);
@@ -150,10 +150,10 @@ class Miniapp extends Base
 	{
 		$miniapp = MiniappModel::get(['user_id' => $this->appService['user_id'], 'miniapp_id' => $this->appService['miniapp_id']]);
 		if (!$miniapp) {
-			$this->error('小程序不存在', 'admin/Miniapp/index');
+			$this->error('小程序不存在', 'seller/Miniapp/index');
 		}
 		if($miniapp['is_auth'] != 1){
-			$this->error('小程序未绑定', 'admin/Miniapp/index');
+			$this->error('小程序未绑定', 'seller/Miniapp/index');
 		}
 
 		if (!UserMiniapp::get(['user_id' => $this->appService['user_id'], 'status' => UserMiniapp::STATUS_TEST])) {

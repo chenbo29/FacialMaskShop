@@ -116,8 +116,11 @@ class Base extends Controller {
     	}
     }
     
-    public function ajaxReturn($data,$type = 'json'){                        
-         exit(json_encode($data));
+    public function ajaxReturn($data,$type = 'json'){
+        if($type == 'json'){
+            header('Content-Type:application/json; charset=utf-8');
+        }                
+         exit(json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
     /**

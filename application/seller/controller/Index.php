@@ -13,6 +13,7 @@ use think\Db;
 class Index extends Base {
 
     public function index(){
+	
 		$this->assign('menu',getMenuArr());//首页导航查询
 		
 		

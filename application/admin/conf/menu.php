@@ -12,7 +12,6 @@ return array(
     'system' => array('name' => '设置', 'child' => array(
         array('name' => '系统', 'child' => array(
             array('name' => '商城设置', 'act' => 'index', 'op' => 'System'),
-
             //array('name'=>'支付方式','act'=>'index1','op'=>'System'),
             array('name' => '地区&配送', 'act' => 'region', 'op' => 'Tools'),
             array('name' => '短信模板', 'act' => 'index', 'op' => 'SmsTemplate'),
@@ -42,6 +41,7 @@ return array(
             //array('name' => '淘宝csv导入', 'act'=>'taobao', 'op'=>'Tools'),
             //array('name' => 'SQL查询', 'act'=>'log', 'op'=>'Admin'),
         )),
+
     )),
 
     // 'decorate'=>array('name'=>'装修','child'=>array(
@@ -179,14 +179,14 @@ return array(
 
     'pickup' => array('name' => '线下取货', 'child' => array(
         array('name' => '线下取货', 'child' => array(
-            array('name' => '取货列表', 'act' => 'pickup_list', 'op' => 'Pickup'),
-
+            // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
+            array('name' => '自提订单', 'act' => 'index', 'op' => 'Pickup'),
+            array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
+            // array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
         )),
-        array('name' => '在线核销', 'child' => array(
-            array('name' => '取货码核销', 'act' => 'verification', 'op' => 'Pickup'),
-
-        ))
-
+        // array('name' => '在线核销','child' => array(
+        // 		array('name' => '取货码核销', 'act'=>'verification', 'op'=>'Pickup'),
+        // ))
     )),
 
     'seller' => array('name' => '商家管理', 'child' => array(

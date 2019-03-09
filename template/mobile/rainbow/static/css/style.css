@@ -1259,7 +1259,6 @@ footer .flool3 p {
 	border: 1px solid #666;
 	border-radius: 9px;
   outline: none;
-  background: #ff4200;
   
 }
 .loginsingup-input .lsu .zjy_input{
@@ -1268,10 +1267,10 @@ footer .flool3 p {
 	margin-left: -3rem;
 	text-indent: 0 !important;
 }
-.v-code-input{
+/*.v-code-input{
 	margin-left: -1.8rem;
 	text-indent: 2px !important;
-}
+}*/
 .left{
 	position: relative;
     left:0 !important;

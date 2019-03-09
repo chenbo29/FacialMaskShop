@@ -42,20 +42,12 @@
 				<div class="swiper-container swiper-container_lb">
 					<div class="swiper-wrapper">
 						<!--（循环）轮播-项-->
-					  <div class="swiper-slide">
-					  		<img class="sowingMapImgL" src="__STATIC__/images/public_lb/00002.png"  alt=""/>
-					 	</div>
-					 	<!--删-->
-					 	<div class="swiper-slide">
-					  		<img class="sowingMapImgL" src="__STATIC__/images/public_lb/00001.png"  alt=""/>
-					 	</div>
-					 	<div class="swiper-slide">
-					  		<img class="sowingMapImgL" src="__STATIC__/images/public_lb/00002.png"  alt=""/>
-					 	</div>
-					 	<div class="swiper-slide">
-					  		<img class="sowingMapImgL" src="__STATIC__/images/public_lb/00001.png"  alt=""/>
-					 	</div>					 	
-					 	<!--删-->
+						<volist name="goodsImg" id="item">
+							<div class="swiper-slide">
+								<img class="sowingMapImgL" src="{$item.image_url}"  alt="{$team.goods_name}"/>
+							</div>
+						</volist>
+
 					</div>
 					<!-- Add Pagination -->
 					<div class="swiper-pagination swiper-pagination_lb"></div>
@@ -72,13 +64,13 @@
 					<p class="timeBoxTimeL publicEllipsis">距离结束还有00:10:00</p>
 				</div>
 				<!--商品title-->
-				<p class="commTitleL">Dior /迪奥 黑色羊毛真丝排扣夹克</p>
+				<p class="commTitleL">{$team.goods_name}</p>
 				<!--价格，运费-->
 				<div class="priceFreightBoxL">
 					<!--价格-->
 					<div class="priceBoxL">
-						<p class="priceBoxLeftL">￥279起</p>
-						<p class="priceBoxRightL">￥379起</p>
+						<p class="priceBoxLeftL">￥{$team.shop_price}起</p>
+						<p class="priceBoxRightL">￥{$team.market_price}起</p>
 					</div>
 					<!--运费-->
 					<p class="freightBoxL">运费: 免运费</p>
@@ -98,10 +90,11 @@
 					<!--user评价 wrap-->
 					<div class="commentBoxUserWrap">
 						<!--（循环）项-->
+						<volist name="comList" id="item">
 						<div class="comBUserTermL clearfloat">
 							<div class="comBUserTermTopL">
 								<p class="comBUserTermTopLeftL">
-									<span>皮卡丘</span>
+									<span>{$item.username}</span>
 									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
 									<!--删-->
 									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
@@ -113,36 +106,7 @@
 								<p class="comBUserTermTopRightL">2019-02-21</p>
 							</div>
 							<!--text-->
-							<p class="comBUTermTextL">东西收到了，衣服超级好看，特别适合我，也不掉毛凸显出了黑色的高贵跟高雅，特别适合我非常感谢店家五星好评。</p>
-							<!--图片集 box-->
-							<div class="comBUTermImgBox">
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-							</div>
-							
-						
-						</div>
-						<!--000-->
-						<div class="comBUserTermL clearfloat">
-							<div class="comBUserTermTopL">
-								<p class="comBUserTermTopLeftL">
-									<span>皮卡丘</span>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<!--删-->
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<!--删-->
-								</p>
-								<p class="comBUserTermTopRightL">2019-02-21</p>
-							</div>
-							<!--text-->
-							<p class="comBUTermTextL">东西收到了，衣服超级好看，特别适合我，也不掉毛凸显出了黑色的高贵跟高雅，特别适合我非常感谢店家五星好评。</p>
+							<p class="comBUTermTextL">{$item.content}</p>
 							<!--图片集 box-->
 							<div class="comBUTermImgBox">
 								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
@@ -153,8 +117,7 @@
 								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
 							</div>
 						</div>
-						<!--000-->
-						
+						</volist>
 					</div>
 					
 				</div>
@@ -238,11 +201,11 @@
 					</div>
 				</div>
 				<div class="purchaseWrapMiddle purchasePublicNum">
-					￥279<br />
+					￥{$team.shop_price}<br />
 					<span class="purchasePublicText">单独购买</span>
 				</div>
 				<div class="purchaseWrapRight purchasePublicNum">
-					￥139<br />
+					￥{$team.group_price}<br />
 					<span class="purchasePublicText">发起拼单</span>
 				</div>
 			</div>

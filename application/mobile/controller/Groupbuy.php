@@ -7,37 +7,62 @@ namespace app\mobile\controller;
 use think\Db;
 use app\common\model\WxNews;
 use app\common\model\TeamActivity;
- 
+use app\common\model\GoodsImages;
+use app\common\model\Comment;
+use think\Page;
+use app\common\model\Goods;
 class Groupbuy extends MobileBase
 {
-    /**
-     * 拼团（弹窗）
-     * 拼团详情页
-     * 选择款式
-     */
-    public function detail()
-    {
-       
-        return $this->fetch();
-    }
 
     /**
-     * 拼团 列表
+     * 拼团列表
      */
     public function groupList()
     {
         $teamAct = new TeamActivity();
         $time = time();
-        $count = $teamAct->where('deleted',0)->where('end_time','<',$time)->count();
-        $Page = new Page($count, 10);
-        $list = $teamAct->where('deleted',0)>where('end_time','<',$time)->order('team_id desc')
-                ->Join('test_paper_user u',"u.paper_id=p.id and u.deleted=0 and u.is_finish=0 and u.user_id='".$Session['user_id']."'")
-                ->field('p.id,p.title,p.description,p.img')
-                ->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $count = $teamAct->where('deleted',0)->where('end_time','>',$time)->count();
+        $Page = new Page($count, 15);
+        $list = $teamAct->where('deleted',0)->where('end_time','>',$time)->order('team_id desc')
+            ->alias('t')
+            ->Join('goods g',"g.goods_id=t.goods_id",'LEFT')
+            ->field('t.team_id,t.act_name,t.goods_name,t.goods_id,t.group_price,t.start_time,t.end_time,t.group_number,t.purchase_qty,g.shop_price,g.market_price,g.original_img')
+            ->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $this->assign('list', $list);
         $this->assign('page', $Page);
         return $this->fetch();
     }
+
+    /*
+     * 拼团详情页
+     *
+     **/
+    public function detail()
+    {
+        $data = I('get.');
+        $teamAct = new TeamActivity();
+        $team = $teamAct->where('deleted',0)->where('team_id',$data['team_id'])
+            ->alias('t')
+            ->Join('goods g',"g.goods_id=t.goods_id",'LEFT')
+            ->field('t.team_id,t.act_name,t.goods_name,t.goods_id,t.group_price,t.start_time,t.end_time,t.group_number,t.purchase_qty,g.shop_price,g.market_price,g.original_img')
+            ->find();
+
+        $goodsImg = new GoodsImages();
+        $gImg = $goodsImg->where('goods_id',$data['goods_id'])
+            ->field('image_url,img_id')
+            ->select();
+
+        $common = new Comment();
+        $comList = $common->where('goods_id',$data['goods_id'])
+                    ->field('comment_id,goods_id,username,content,img,add_time,user_id,goods_rank,service_rank,rec_id')->limit(3)
+                    ->select();
+
+        $this->assign('team', $team);
+        $this->assign('goodsImg', $gImg);
+        $this->assign('comList', $comList);
+        return $this->fetch();
+    }
+
 
 
      /**

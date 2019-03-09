@@ -180,3 +180,20 @@ a{
 	border: none;
 	outline: none;
 }
+.recept .zjy_cheock{
+	display: inline-block;
+	width: .6rem;
+	height: .6rem;
+	vertical-align: bottom;
+}
+.recept {
+	font-size:.512rem;
+	color:#666666;
+	vertical-align:middle;
+	text-align:center;
+}
+.recept a {
+	vertical-align:top;
+	text-decoration:underline;
+	color:#e30000
+}

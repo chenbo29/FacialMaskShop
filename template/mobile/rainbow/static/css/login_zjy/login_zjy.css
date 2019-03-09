@@ -30,34 +30,25 @@ a{
 	bottom: 0;
 	left: 7.3rem;
 }
-.login_yanz p{
-	font-size: .5rem;
-	margin-top: .2rem;
-}
 #verify_code_img{
 	position: relative;
-	top: .3rem;
+	top: 14px;
 }
-
 .zjy_login_zhuce{
-	width: 60%;
+	width: 80%;
 	height: 8rem;
 	background: #fff;
 	border-radius: 9px;
 	position: absolute;
 	top: 30%;
 	z-index: 666;
-	left: 20%;
+	left: 10%;
 	text-align: center;
 	color: #000;
 }
-.zjy_login_zhuce p{
-	width: 100%;
-}
-
 .zjy_login_zhuce .zjy_gxdl{
 	font-size: .6rem;
-	margin-bottom: 1rem;
+	margin-bottom: .8rem;
 }
 .zjy_login_zhuce .zjy_djdl{
 	font-size: .6rem;
@@ -65,10 +56,9 @@ a{
 }
 .zjy_login_zhuce .zjy_djdl span{
 	display: inline-block;
-	width: 3.5rem;
-	line-height: 1.5rem;
-	background-color:#ff4081 ;
-	border-radius: 5px;
+	width: 2rem;
+	line-height: 1rem;
+	background-color: ;
 }
 .zjy_login_bgs{
 	width: 100%;

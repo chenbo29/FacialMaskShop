@@ -38,27 +38,22 @@ class BonusLogic extends Model
 
 	public function bonusModel()
 	{
-		//判断用户是否登录
-		$user = session('user.user_id');
-		if(!$user){
-			return ['bool'=>false,'msg'=>"该用户还没登录"];
-		}
-
 		//判断商品是否是分销商品或者代理商品
 		$good = M('goods')
 				->where('goods_id', $this->goodId)
-				->field('is_distribut', 'is_agent')
-				->find();
+				->field('is_distribut,is_agent')
+                ->find();
 
 		if(($good['is_distribut'] == 1) && ($good['is_agent'] == 1)){
-			distribution();
-			theAgent();
+			$this->distribution();
+			$this->theAgent();
 		}else if($good['is_distribut'] == 1){
-			distribution();
+			$this->distribution();
 		}else if($good['is_agent'] == 1){
-			theAgent();
+			$this->theAgent();
 		}else{
-			return ['bool'=>false,'msg'=>"该商品不是指定的分销或者代理商品"];
+            // return ['bool'=>false,'msg'=>"该商品不是指定的分销或者代理商品"];
+            echo '不是代理商品';
 		}	
 	}
 
@@ -68,7 +63,7 @@ class BonusLogic extends Model
 	public function distribution()
 	{
 		//判断用户是否已经是分销商
-		$distributor = M('users')->where('user_id', $userId)->value('is_distribut');
+        $distributor = M('users')->where('user_id', $userId)->value('is_distribut');
 
 		if($distributor){
 			//是分销商
@@ -86,9 +81,11 @@ class BonusLogic extends Model
 		//判断用户是否已经是代理
 		$agent = M('agent_info')->where('uid', $userId)->find();
 		if($agent){
-			//是代理
+            //是代理
+            
 		}else{
-			//不是代理
+            //不是代理
+            
 		}
 	}
 }

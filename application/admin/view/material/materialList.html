@@ -32,10 +32,12 @@
       <div class="sDiv">
         <div class="sDiv2">
           <select  name="cat_id" class="select">
-            <option value="1">标题搜索</option>
-			<option value="2">类型搜索</option>
+            <option value="">选择素材类别</option>
+            <foreach name="cats" item="vo">
+            <option value="{$vo.cat_id}" <if condition="$vo[cat_id] eq $cat_id">selected</if>>{$vo.cat_name}</option>
+            </foreach>            
           </select>
-          <input type="text" size="30" name="title" class="qsbox" placeholder="模糊搜索...">
+          <input type="text" size="30" name="keywords" class="qsbox" placeholder="搜索相关数据...">
           <input type="submit" class="btn" value="搜索">
         </div>
       </div>
@@ -59,11 +61,8 @@
                 <div style="text-align: center; width: 80px;" class="">发布</div>
               </th>
               <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 160px;" class="">上传时间</div>
+                <div style="text-align: center; width: 160px;" class="">发布时间</div>
               </th>
-			  <th align="center" abbr="article_time" axis="col6" class="">
-			    <div style="text-align: center; width: 60px;" class="">浏览量</div>
-			  </th>
               <th align="center" axis="col1">
                 <div style="text-align: center; width: 280px;">操作</div>
               </th>
@@ -94,10 +93,10 @@
                   <div style="width: 24px;"><i class="ico-check"></i></div>
                 </td>
                 <td align="left" class="">
-                  <div style="text-align: left; width: 240px;">{$vo.title}</div>
+                  <div style="text-align: left; width: 240px;">{$vo.title|getSubstr=0,33}</div>
                 </td>
                 <td align="left" class="">
-                  <div style="text-align: left; width: 150px;">{$vo.cat_name}</div>
+                  <div style="text-align: left; width: 150px;">{$vo.category}</div>
                 </td>
                 <td align="center" class="">
                   <div style="text-align: center; width: 80px;">
@@ -109,11 +108,8 @@
                   </div>
                 </td>
                 <td align="center" class="">
-                  <div style="text-align: center; width: 160px;">{$vo.add_time|date="Y-m-d H:i:s",###}</div>
+                  <div style="text-align: center; width: 160px;">{$vo.publish_time|date="Y-m-d",###}</div>
                 </td>
-				<td align="center" class="">
-				  <div style="text-align: center; width: 60px;">{$vo.click}</div>
-				</td>
                 <!-- <td align="center" class="">
                   <div style="text-align: center; width: 160px; color:red;">{$vo.tags}</div>
                 </td> -->
@@ -123,9 +119,10 @@
 
                     <!--a class="btn blue" target="_blank" href="{:U('Home/Article/detail',array('article_id'=>$vo['article_id']))}"><i class="fa fa-search"></i>查看</a-->
 
-                    <a class="btn red"  href="javascript:void(0)" data-url="{:U('Material/mdel')}" data-id="{$vo.material_id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a> 
-                    
-                    <a href="{:U('Material/mOperate',array('material_id'=>$vo['material_id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a> 
+                    <notin name="vo.article_id" value="$article_able_id"> <a class="btn red"  href="javascript:void(0)" data-url="{:U('Material/aticleHandle')}" data-id="{$vo.material_id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a> 
+                    </notin>
+                    <in name="vo.article_id" value="$article_able_id"> <a class="btn red"  href="javascript:;" onclick="layer.alert('系统素材不得删除!',{icon:2});"><i class="fa fa-trash-o"></i>删除</a> </in>
+                    <a href="{:U('Material/mOperate',array('act'=>'edit','material_id'=>$vo['material_id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a> 
                   </div>
                 </td>
                 <td align="" class="" style="width: 100%;">
@@ -139,7 +136,7 @@
       <div class="iDiv" style="display: none;"></div>
     </div>     
     <!--分页位置--> 
-    {$page} </div>
+    <!-- {//$pager->show()} --> </div>
 </div>
 <script>
     $(document).ready(function(){	
@@ -164,14 +161,14 @@
         $.ajax({
           type: 'post',
           url: $(obj).attr('data-url'),
-          data: {act: 'del', material_id: $(obj).attr('data-id')},
+          data: {act: 'del', article_id: $(obj).attr('data-id')},
           dataType: 'json',
           success: function (data) {
             layer.closeAll();
-            if (data.status==1) {
+            if (data) {
               $(obj).parent().parent().parent().remove();
             } else {
-              layer.msg(data.msg, {icon: 2, time: 2000});  //alert('删除失败');
+              layer.alert('删除失败', {icon: 2});  //alert('删除失败');
             }
           }
         })

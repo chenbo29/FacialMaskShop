@@ -1212,37 +1212,13 @@ footer .flool3 p {
 	color:#333;
 	font-size:.64rem;
 }
-.loginsingup-input .lsu {
-	border-bottom:1px solid #dbdbdb;
-	height:2.133333rem;
-	padding:.853333rem .64rem .426667rem;
-}
-.loginsingup-input input {
-	border:0;
-	outline:none;
-}
-.loginsingup-input .lsu  input {
-	float:left;
-	width:8.96rem;
-	height:.853333rem;
-	padding:0 .426667rem;
-	line-height:.853333rem;
-	font-size:.554667rem;
-	color:#333;
-}
+
 .z-submits {
 	width:10.96rem !important;
 	background:#EC6909 !important;
 	color:#fff !important;
 }
-.loginsingup-input .lsu .ico {
-	float:left;
-	width:.853333rem;
-	height:.853333rem;
-	background-image:url(../images/ico-login-m.png);
-	background-repeat:no-repeat;
-	background-size:.853333rem 5.973331rem;
-}
+
 .loginsingup-input .ico-username {
 	background-position:0 0;
 }
@@ -1381,16 +1357,6 @@ input:-ms-input-placeholder {
 	float:right;
 	width:4.266667rem;
 	height:.853333rem;
-}
-.loginsingup-input .btn-text-message {
-	float:right;
-	height:.853333rem;
-	line-height:.853333rem;
-	font-size:.512rem;
-	padding:0 .213333rem;
-	color:#e02015;
-	border:1px solid #e02015;
-	border-radius:.426667rem;
 }
 .loginsingup-input .lsu-submit {
 	padding:.853333rem 0;
@@ -1602,17 +1568,7 @@ input:-ms-input-placeholder {
 .singupphone .content30 .signup-find {
 	padding-top:.42667rem
 }
-.recept {
-	font-size:.512rem;
-	color:#666666;
-	vertical-align:middle;
-	text-align:left
-}
-.recept a {
-	vertical-align:top;
-	text-decoration:underline;
-	color:#e30000
-}
+
 .findpassword .content30 .bk span {
 	border-right:0
 }

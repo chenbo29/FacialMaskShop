@@ -165,8 +165,30 @@
 	width: 7.5rem;
 	height: auto;
 }
-.term_box {
+/*项*/
+.publicTerm_box {
+	margin: 0 auto;
 	width: 7.1rem;
+	height: auto;
+}
+.publicTerm_boxTitle {
+	position: relative;
+	width: 100%;
+	height: .58rem;
+	font-size: .16rem;
+	line-height: .7rem;
+	color: #151515;
+	letter-spacing: .01rem;
+	border-bottom: .01rem solid #cdcdcd;
+}
+.publicTerm_box_delBut {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	width: .64rem;
+	height: .57rem;
+	background: darkgray; /*0*/
 }
 
 /*public 显示box*/

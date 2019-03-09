@@ -1,5 +1,4 @@
 <include file="public/header" title="设置支付密码" body=""/>
-<include file="public/header_nav" title="设置支付密码"  href="javascript:history.back(-1)"/>
 <style>
     /*.fetchcode{
         background-color: #ec5151;
@@ -21,7 +20,7 @@
 <if condition="$step eq 1">
     <div class="loginsingup-input">
         <form method="post" >
-            <div class="reset-pwd-title">短信修改支付密码</div>
+            <div class="reset-pwd-title"><a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>短信修改支付密码</div>
             <div class="lsu">
                 <span class="ico ico-telephone"></span>
                 <input type="text" name="mobile" id="tel" value="{$user.mobile}" disabled placeholder="请输入您的手机号" onBlur="checkMobilePhone(this.value);"/>

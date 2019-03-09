@@ -967,7 +967,9 @@ footer .flool3 p {
 	height:.78933rem
 }
 .classreturn .content .search {
-	font-size:.59733rem
+	font-size:.8rem;
+	color: #0F0F0F;
+	padding-top: 0.4rem;
 }
 .classreturn .content .search .sear-input {
 	width:12.544rem;
@@ -1213,6 +1215,71 @@ footer .flool3 p {
 	font-size:.64rem;
 }
 
+.loginsingup-input .lsu {
+	text-align: center;
+	margin: 1rem 0;
+	position: relative;
+	
+}
+.loginsingup-input .zjy_Loginfoos{
+	width: 100%;
+	text-align: center;
+}
+.loginsingup-input .zjy_Loginfoos .recept{
+	padding-left: 20%;
+	vertical-align: middle;
+	
+}
+.loginsingup-input .zjy_Loginfoos .recept span{
+	vertical-align: top;
+}
+.loginsingup-input .zjy_Loginfoos .recept .zjy_cheock{
+	display: inline-block;
+	width: .5rem;
+	height: .5rem;
+}
+.loginsingup-input .lsu .zjy_reg{
+	position: absolute;
+	left: -.6rem;
+	top: .6rem;
+}
+.loginsingup-input .lsu  .zjt_regIpunt{
+	width: 80% !important;
+	margin-left:2rem ;
+	text-indent: 6px !important;
+}
+.text_indent{
+	text-indent: 6px !important;
+}
+.loginsingup-input .lsu  input {
+	width:100%;
+	height: 1.6rem;
+	font-size:.554667rem;
+	color:#333;
+	border: 1px solid #666;
+	border-radius: 9px;
+  outline: none;
+  background: #ff4200;
+  
+}
+.loginsingup-input .lsu .zjy_input{
+	text-align: left;
+	width: 40%;
+	margin-left: -3rem;
+	text-indent: 0 !important;
+}
+.v-code-input{
+	margin-left: -1.8rem;
+	text-indent: 2px !important;
+}
+.left{
+	position: relative;
+    left:0 !important;
+}
+#verify_code_img{
+	position: relative;
+}
+
 .z-submits {
 	width:10.96rem !important;
 	background:#EC6909 !important;
@@ -1367,10 +1434,16 @@ input:-ms-input-placeholder {
 	height:1.87733rem;
 	line-height:1.87733rem;
 	color:#fff;
+
+	background-color:#ff4200;
+	border-radius:.3rem;
+	border: none;
+
 	background-color:#e12c20;
 	border-radius:.938667rem;
 	-webkit-box-shadow:0 2px 30px rgba(225,44,32,1);
 	box-shadow:0 2px 30px rgba(225,44,32,1);
+  outline: none;
 }
 .signup-find .note {
 	line-height:1;
@@ -1389,6 +1462,14 @@ input:-ms-input-placeholder {
 	line-height:2.986667rem;
 	text-align:center;
 	font-size:.768rem;
+}
+
+.reset-pwd-title img{width: 0.45rem;height: 0.75rem;}
+
+.reset-pwd-title a{
+	position: relative;
+	left: -3.5rem;
+	top: 0.1rem;
 }
 .reset-pwd-cont {
 	height:1.28rem;
@@ -1422,6 +1503,7 @@ input:-ms-input-placeholder {
 	height:1.28rem;
 	padding:.128rem;
 	border:1px solid #e5e8eb;
+		margin-bottom: 2rem;
 }
 .v-identity .v-cont-wrap>input {
 	float:left;
@@ -1430,6 +1512,35 @@ input:-ms-input-placeholder {
 	line-height:.981333rem;
 	padding-left:.256rem;
 	font-size:.512rem;
+
+	border: 1px solid #999;
+	outline: none;
+	padding-left: 0.1rem;
+	border-radius: 9px;
+
+}
+.zjy_lut_foot input{
+	width: 50%;
+    height: 1.6rem;
+    font-size: .554667rem;
+    color: #333;
+    text-indent: 1.3rem;
+    border: 1px solid #666;
+    border-radius: 9px;
+    text-indent: 6px !important;
+}
+.zjy_lut_foot button{
+	display: inline-block;
+	width: 40%;
+    height: 1.6rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #7d7d7d;
+    border-radius: 5px;
+    margin-left: 1rem;
+	
 }
 .v-identity .v-cont-wrap>.m_phone {
 	float:right;
@@ -1438,6 +1549,7 @@ input:-ms-input-placeholder {
 	font-size:.512rem;
 	padding:0 .256rem;
 	background-color:#e5e8eb;
+	text-decoration: none;
 }
 .show-center-box {
 	position:absolute;

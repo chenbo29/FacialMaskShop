@@ -123,63 +123,16 @@ class Sign extends MobileBase {
 
         //当前积分
         $points = M('users')->where(['user_id'=>$user_id])->value('pay_points');
-
-        $add_point = 10;
-
-        //连续签到几天
-        $continue_sign = $this->continue_sign($user_id);
-
-        //累计签到几天
-        $accumulate_day = count($data);
-
-        $rule = '规则';
-
-        return $this->ajaxReturn(
-            ['status'=>1,
-            'msg'=>'获取成功',
-            'data'=>$data,
-            'today_sign'=>$today_sign,
-            'points'=>$points,
-            'add_point'=>$add_point,
-            'continue_sign'=> $continue_sign,
-            'accumulate_day'=>$accumulate_day,
-                'note'=>$rule
-
-            ]);
-    }
-    //在签到的时候通过传值的方式再次调用
-    public function get_again_sign_day($user_id){
-//        $user_id = I('user_id');
-        if(!$user_id){
-            return $this->ajaxReturn(['status'=>-1,'msg'=>'user_id不能为空','data'=>'']);
-        }
-        $list = M('sign_log')->where(['user_id'=>$user_id])->field('sign_day')->select();
-        foreach($list as $k => $v){
-            $data[$k] = $this->deal_time($v['sign_day']);
-        }
-
-
-        $con['sign_day'] = array('like',date('Y-m-d',time()).'%');
-        $cunzai = M('sign_log')->where(['user_id'=>$user_id])->where($con)->find();
-
-        if($cunzai){
-            $today_sign = true;
-        }else{
-            $today_sign = false;
-        }
-
-        //当前积分
-        $points = M('users')->where(['user_id'=>$user_id])->value('pay_points');
-
-        $add_point = 10;
+        //签到积分
+        $add_point = M('config')->where(['name'=>'sign_point'])->value('value');
+        //签到规则
+        $rule = M('config')->where(['name'=>'sign_rule'])->value('value');
 
         //连续签到几天
         $continue_sign = $this->continue_sign($user_id);
 
         //累计签到几天
         $accumulate_day = count($data);
-
-        $rule = '这里是规则这里是规则这里是规则这里是规则这里是规则这里是规则这里是规则这里是规则';
 
         return $this->ajaxReturn(
             ['status'=>1,

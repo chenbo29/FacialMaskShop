@@ -1,6 +1,7 @@
 <?php
 
 namespace app\mobile\controller;
+header("Content-type: text/html; charset=utf-8");
 
 use app\common\logic\ActivityLogic;
 use app\common\logic\GoodsLogic;
@@ -23,59 +24,88 @@ class Goods extends MobileBase
     /**
      * 分类列表显示
      */
-    public function categoryList()
-    {
-        $categoryGoods = new GoodsCategory;
-        
-        $category = $categoryGoods->where('level', 1)->where('is_show',1)->order('sort_order','asc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
-        
-        $parentId = array_column($category, 'id');
-        
-        $firstLevel = $categoryGoods->where('level', 2)->where('parent_id','in',$parentId)->where('is_show',1)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+//    public function categoryList()
+//    {
+//        $categoryGoods = new GoodsCategory;
+//
+//        $category = $categoryGoods->where('level', 1)->where('is_show',1)->order('sort_order','asc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+//
+//        $parentId = array_column($category, 'id');
+//
+//        $firstLevel = $categoryGoods->where('level', 2)->where('parent_id','in',$parentId)->where('is_show',1)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+//
+//        $childId = array_column($firstLevel, 'id');
+//
+//        $secondLevel = $categoryGoods->where('level', 3)->where('is_show',1)->where('parent_id','in',$childId)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
+//
+//        // $goods = array_map(function($secondLevel){
+//        //     $result = array(
+//        //         'id' => $secondLevel['id'],
+//        //         'name' => $secondLevel['name'],
+//        //         'moblie_name' => $secondLevel['mobile_name'],
+//        //         'parent_id' => $secondLevel['parent_id'],
+//        //         'parent_id_path' => $secondLevel['parent_id_path'],
+//        //         'level' => $secondLevel['level'],
+//        //         'image' => "<img src='".$secondLevel['image']."'/>"
+//        //     );
+//        //     // return $result;
+//        // },$secondLevel);
+//
+//
+//        // $firstLevel = $categoryGoods->getParentListAttr(1,['parent_id_path'=>"0_12_13_17"]);
+//        // foreach ($firstLevel as $key => $value) {
+//        //     $secondLevel[] = $categoryGoods->getParentListAttr(1,['parent_id_path'=>$value['parent_id_path']]);
+//        // }
+//
+//        // $secondLevel = array_map(function($sLevel){
+//        //     $sLevel['image'] = "<img src='".$sLevel['image']."'/>";
+//        //     return $sLevel;
+//        // },$secondLevel);
+//
+//        // for ($i=0; $i < count($firstLevel); $i++) {
+//        //     for ($i=0; $i < count($secondLevel); $i++) {
+//        //         if ($secondLevel['parent_id'] == $firstLevel['id']) {
+//        //             $result[] = $firstLevel[$i];
+//        //         }
+//        //     }
+//        // }
+//
+//        $this->assign('category', $category);
+//        $this->assign('first_level', $firstLevel);
+//        $this->assign('second_level', $secondLevel);
+//        // $this->assign('img', $img);
+//
+//        return $this->fetch();
+//    }
 
-        $childId = array_column($firstLevel, 'id');
+    public function categoryList(){
 
-        $secondLevel = $categoryGoods->where('level', 3)->where('is_show',1)->where('parent_id','in',$childId)->order('sort_order desc,is_hot desc')->column('id,name,mobile_name,parent_id,parent_id_path,level,image');
-       
-        // $goods = array_map(function($secondLevel){
-        //     $result = array(
-        //         'id' => $secondLevel['id'],
-        //         'name' => $secondLevel['name'],
-        //         'moblie_name' => $secondLevel['mobile_name'],
-        //         'parent_id' => $secondLevel['parent_id'],
-        //         'parent_id_path' => $secondLevel['parent_id_path'],
-        //         'level' => $secondLevel['level'],
-        //         'image' => "<img src='".$secondLevel['image']."'/>"
-        //     );
-        //     // return $result;
-        // },$secondLevel);
+        //获取要访问的一级分类的ID  如果没有传ID默认展示为你推荐栏目
+//        $id=I(id,31);
 
-       
-        // $firstLevel = $categoryGoods->getParentListAttr(1,['parent_id_path'=>"0_12_13_17"]);
-        // foreach ($firstLevel as $key => $value) {
-        //     $secondLevel[] = $categoryGoods->getParentListAttr(1,['parent_id_path'=>$value['parent_id_path']]);
-        // }
+        $category=new GoodsCategory();
 
-        // $secondLevel = array_map(function($sLevel){
-        //     $sLevel['image'] = "<img src='".$sLevel['image']."'/>";
-        //     return $sLevel;
-        // },$secondLevel);
-        
-        // for ($i=0; $i < count($firstLevel); $i++) { 
-        //     for ($i=0; $i < count($secondLevel); $i++) { 
-        //         if ($secondLevel['parent_id'] == $firstLevel['id']) {
-        //             $result[] = $firstLevel[$i];
-        //         }
-        //     }
-        // }
-        
-        $this->assign('category', $category);
-        $this->assign('first_level', $firstLevel);
-        $this->assign('second_level', $secondLevel);
-        // $this->assign('img', $img);
-
+        //获取所有要展示的一级分类
+        $categoryList = $category->get_first_level_category();
+        //获取当前要展示的分类的2，3级信息
+        $ids=array_column($categoryList,'id');
+        //创建数组包含所有的2，3级分类
+//        var_dump($ids);
+        $categorys=array();
+        foreach($ids as $k=>$v){
+            $categorys[$k]=$category->get_children_category($v);
+//            $cids=array_column($categorys[$k],'id');
+            foreach($categorys[$k] as $ke=>$va){
+                $categorys[$k][$ke]['child']=$category->get_children_category($va['id']);
+            }
+        }
+//        var_dump(array_column($categorys[0],'id'));
+        $this->assign('categoryList',$categoryList);
+        $this->assign('categorys',$categorys);
+//        print_r($categorys[0]);die;
         return $this->fetch();
     }
+
 
     /**
      * 商品列表页

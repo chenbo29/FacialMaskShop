@@ -986,7 +986,9 @@ footer .flool3 p {
 	margin-left: -1.25rem;
 }
 .classreturn .content .search {
-	font-size:.59733rem
+	font-size:.8rem;
+	color: #0F0F0F;
+	padding-top: 0.4rem;
 }
 .classreturn .content .search .sear-input {
 	width:12.544rem;
@@ -1296,7 +1298,7 @@ footer .flool3 p {
 	text-indent: 1.3rem;
 	border: 1px solid #666;
 	border-radius: 9px;
-
+  outline: none;
 }
 .loginsingup-input .lsu .zjy_input{
 	text-align: left;
@@ -1504,8 +1506,7 @@ input:-ms-input-placeholder {
 	color:#fff;
 	background-color:#ff4200;
 	border-radius:.3rem;
-	-webkit-box-shadow:0 2px 30px rgba(225,44,32,1);
-	box-shadow:0 2px 30px rgba(225,44,32,1);
+	border: none;
 }
 .signup-find .note {
 	line-height:1;
@@ -1525,10 +1526,12 @@ input:-ms-input-placeholder {
 	text-align:center;
 	font-size:.768rem;
 }
+.reset-pwd-title img{width: 0.45rem;height: 0.75rem;}
+
 .reset-pwd-title a{
 	position: relative;
 	left: -3.5rem;
-	top: -.1rem;
+	top: 0.1rem;
 }
 .reset-pwd-cont {
 	height:1.28rem;
@@ -1561,6 +1564,7 @@ input:-ms-input-placeholder {
 	width:100%;
 	height:1.6rem;
 	border:1px solid #e5e8eb;
+		margin-bottom: 2rem;
 }
 .v-identity .v-cont-wrap>input {
 	float:left;
@@ -1569,6 +1573,10 @@ input:-ms-input-placeholder {
 	line-height:.981333rem;
 	font-size:.512rem;
 	border: 1px solid #999;
+	outline: none;
+	padding-left: 0.1rem;
+	border-radius: 9px;
+
 }
 .zjy_lut_foot input{
 	width: 50%;
@@ -1600,6 +1608,7 @@ input:-ms-input-placeholder {
 	font-size:.512rem;
 	padding:0 .256rem;
 	background-color:#e5e8eb;
+	text-decoration: none;
 }
 .show-center-box {
 	position:absolute;

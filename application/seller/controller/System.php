@@ -147,7 +147,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
             else
                 DB::name("Navigation")->add(I('post.'));
 
-            $this->success("操作成功!!!",U('Admin/System/navigationList'));
+            $this->success("操作成功!!!",U('seller/System/navigationList'));
             exit;
         }
         // 点击过来编辑时
@@ -223,7 +223,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
         }else{
             DB::name("Navigation")->add($data);
         }
-        $this->ajaxReturn(['status'=>1,'msg'=>"操作成功！！",'url'=>U('Admin/System/navigationList')]);
+        $this->ajaxReturn(['status'=>1,'msg'=>"操作成功！！",'url'=>U('seller/System/navigationList')]);
     }
     
     /**
@@ -233,7 +233,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
     {     
         // 删除导航
         M('Navigation')->where("id",I('id'))->delete();
-        $this->success("操作成功!!!",U('Admin/System/navigationList'));
+        $this->success("操作成功!!!",U('seller/System/navigationList'));
     }
 	
 
@@ -247,7 +247,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
 			if($quick == 1){
 				$script = "<script>parent.layer.msg('缓存清除成功', {time:3000,icon: 1});window.parent.location.reload();</script>";
 			}else{
-				$script = "<script>parent.layer.msg('缓存清除成功', {time:3000,icon: 1});window.location='/index.php?m=Admin&c=Index&a=welcome';</script>";
+				$script = "<script>parent.layer.msg('缓存清除成功', {time:3000,icon: 1});window.location='/index.php?m=seller&c=Index&a=welcome';</script>";
 			}
            	exit($script);
         }
@@ -507,17 +507,17 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
             unset($data['id']);
             $data['update_time'] = time();
             Db::name('poster')->where(['id'=>I('id')])->save($data);
-            $this->ajaxReturn(['status'=>1,'msg'=>'更新成功','url'=>U('Admin/System/posterList')]);
+            $this->ajaxReturn(['status'=>1,'msg'=>'更新成功','url'=>U('seller/System/posterList')]);
         }else{
             $data['add_time'] = time();
             Db::name('poster')->add($data);
-            $this->ajaxReturn(['status'=>1,'msg'=>'添加成功','url'=>U('Admin/System/posterList')]);
+            $this->ajaxReturn(['status'=>1,'msg'=>'添加成功','url'=>U('seller/System/posterList')]);
         }
     }
         
     /**
      * 清空演示数据 用完切记删除
-     * http://www.xxx.com/Admin/system/truncate_demo_data
+     * http://www.xxx.com/seller/system/truncate_demo_data
      */
     public function truncate_demo_data(){
         /*

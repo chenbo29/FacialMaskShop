@@ -55,12 +55,12 @@
         $('#admincpNavTabs_' + _modules).show().find('dl').removeClass('active').first().addClass('active').find('dd').find('li > a:first').click();
     });
     
-    if ($.cookie('workspaceParam') == null) {
+    if ($.cookie('workspaceParamShop') == null) {
         // 默认选择第一个菜单
         //$('.nc-module-menu').find('li:first > a').click();
-        openItem('welcome|Index');
+        openItem('index|Shop');
     } else {
-        openItem($.cookie('workspaceParam'));
+        openItem($.cookie('workspaceParamShop'));
     }
     // 导航菜单  显示
     $('a[tptype="map_on"],a[class="add-menu"]').click(function(){
@@ -120,8 +120,8 @@ function openItem(param) {
     $('li[data-param="' + data_str[1] + '"]').addClass('active');
     //$('li[data-param="' + data_str[0] + '"]').addClass('active');
     $this.parent().addClass('active').parents('dl:first').addClass('active').parents('div:first').show();
-    $('#workspace').attr('src','/index.php?m=Seller&c=' + data_str[1] + '&a=' + data_str[0]);
-    $.cookie('workspaceParam', data_str[0] + '|' + data_str[1], { expires: 1 ,path:"/"});
+    $('#workspace').attr('src','/index.php?m=seller&c=' + data_str[1] + '&a=' + data_str[0]);
+    $.cookie('workspaceParamShop', data_str[0] + '|' + data_str[1], { expires: 1 ,path:"/"});
 }
 
 /* 显示Ajax表单 */

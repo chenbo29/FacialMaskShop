@@ -14,6 +14,8 @@ ALTER TABLE `tp_team_activity` ADD `activity_rule` TEXT COMMENT '活动规则';
 ALTER TABLE `tp_team_activity` ADD `goods_intro` TEXT COMMENT '商品简介';
 ALTER TABLE `tp_team_activity` ADD `create_time` datetime DEFAULT NULL COMMENT '创建时间';
 ALTER TABLE `tp_team_activity` ADD `update_time` datetime DEFAULT NULL COMMENT '更新时间';
+ALTER TABLE `tp_team_activity` ADD `start_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '开始时间';
+ALTER TABLE `tp_team_activity` ADD `end_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '结束时间';
 #tp_team_goods_item表增加和修改字段
 ALTER TABLE `tp_team_goods_item` ADD `sku` varchar(60) DEFAULT '' COMMENT 'SKU' AFTER `item_id`;
 ALTER TABLE `tp_team_goods_item` ADD `goods_price` decimal(10,2) DEFAULT '0.00' COMMENT '商品原价' AFTER `sku`;

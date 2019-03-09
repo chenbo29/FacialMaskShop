@@ -30,6 +30,53 @@ class Sign extends MobileBase {
     }
   
 
+    /**
+     * 判断今天是否签到
+     */
+    public function check_sign(){
+        $user_id = I('user_id');
+        if(!$user_id){
+            return $this->ajaxReturn(['status'=>-1,'msg'=>'user_id不能为空']);
+        }
+        
+        $con['sign_day'] = array('like',date('Y-m-d',time()).'%');
+        $cunzai = M('sign_log')->where(['user_id'=>$user_id])->where($con)->find();
+
+        if($cunzai){
+            return $this->ajaxReturn(['status'=>1,'msg'=>'今日已签到','data' => true]);
+        }else{
+            return $this->ajaxReturn(['status'=>-1,'msg'=>'今日未签到','data' => false]);
+
+        }
+
+    }
+
+    /**
+     * 签到
+     */
+    public function sign(){
+        $user_id = I('user_id');
+        if(!$user_id){
+            return $this->ajaxReturn(['status'=>-1,'msg'=>'签到user_id不能为空']);
+        }
+
+        $con['sign_day'] = array('like',date('Y-m-d',time()).'%');
+        $cunzai = M('sign_log')->where(['user_id'=>$user_id])->where($con)->find();
+
+        if($cunzai){
+            return $this->ajaxReturn(['status'=>1,'msg'=>'今日已签到']);
+        }else{
+            $r = M('sign_log')->save(['user_id'=>$user_id,'sign_day'=>date('Y-m-d H:i:s')]);
+            if($r){
+                if($r){
+                    return $this->ajaxReturn(['status'=>1,'msg'=>'签到成功']);
+                }else{
+                    return $this->ajaxReturn(['status'=>-1,'msg'=>'签到失败']);
+                }
+            }
+        }
+    }
+
 
     /**
      * 获取签到的日期列表

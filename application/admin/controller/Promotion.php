@@ -532,6 +532,20 @@ class Promotion extends Base
         return $this->fetch();
     }
 
+    public function search_goods2()
+    {
+        $tpl = input('tpl', 'search_goods');
+        
+        return $this->fetch($tpl);
+    }
+
+    public function search_goods1()
+    {
+        $tpl = input('tpl', 'search_goods');
+        
+        return $this->fetch($tpl);
+    }
+
     public function search_goods()
     {
         $goods_id = input('goods_id');

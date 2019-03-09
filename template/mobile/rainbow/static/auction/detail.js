@@ -1,6 +1,6 @@
 $(function(){
 	
-	
+	var step=20
 	document.getElementById("myprice").onclick=function(){
 		
 		$('#mask').show();
@@ -20,6 +20,28 @@ $(function(){
 		$("#mask3").hide()
 	
 	};
+	document.getElementById("jian").onclick=function(){
+		
+		
+		
+        $("#mmer").val($("#mmer").val()*1-step);
+        if($("#mmer").val()*1<0){
+			
+		    $("#mmer").val(0);	
+			
+		}
+       
+	};
+	document.getElementById("jia").onclick=function(){
+		
+        $("#mmer").val($("#mmer").val()*1+step);
+       
+	};
+	
+	
+	
+	
+	
 	
 		
 })

@@ -743,4 +743,85 @@ class Goods extends Base {
         ajaxReturn($html);
     }
 
+    /**
+     * 商城 - 门店 - 门店管理
+     */
+    public function store_list()
+    {
+        $list = array();
+        $keywords = I('keywords/s');
+        if (empty($keywords)) {
+            $res = D('kf_store')->select();
+        } else {
+            $res = DB::name('kf_store')->where(['store_name|webid|phone|address|city' => ['like', '%' . $keywords . '%']])->order('store_id')->select();
+        }
+        $region = DB::name('region')->getField('id,name');
+        if ($region && $res) {
+            foreach ($res as $val) {
+                $val['province_city_district'] = $region[$val['province']].' '.$region[$val['city']].' '.$region[$val['district']];
+                $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
+                $list[] = $val;
+            }
+        }
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店
+     */
+    public function store_info()
+    {
+        $store_id = I('get.store_id/d', 0);
+        if ($store_id) {
+            $info = Db::name('kf_store')->where("store_id", $store_id)->find();
+            $info['password'] = "";
+            $this->assign('info', $info);
+            $city =  M('region')->where(array('parent_id'=>$info['province']))->select();
+            $area =  M('region')->where(array('parent_id'=>$info['city']))->select();
+            $this->assign('city',$city);
+            $this->assign('area',$area);
+        }
+        $act = empty($store_id) ? 'add' : 'edit';
+        $province = M('region')->where(array('parent_id'=>0))->select();
+        $this->assign('province',$province);
+        $this->assign('act', $act);
+        return $this->fetch();
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
+     */
+    public function sellerHandle()
+    {
+        $data = I('post.');
+        if (empty($data['province'])) {
+            unset($data['province']);
+        }
+        if (empty($data['city'])) {
+            unset($data['city']);
+        }
+        if (empty($data['district'])) {
+            unset($data['district']);
+        }
+        if ($data['act'] == 'add') {
+            unset($data['store_id']);
+            $data['avatar'] = "";
+            $data['auditing'] = 1;
+            $data['is_delete'] = 1;
+            $data['add_time'] = time();
+            $r = D('kf_store')->add($data);
+        }
+        if ($data['act'] == 'edit') {
+            $r = D('kf_store')->where('store_id', $data['store_id'])->save($data);
+        }
+        if ($data['act'] == 'del' && $data['store_id'] > 1) {
+            $r = D('kf_store')->where('store_id', $data['store_id'])->delete();
+        }
+        if ($r) {
+            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Goods/store_list')]);
+        } else {
+            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
+        }
+    }
 }

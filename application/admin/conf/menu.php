@@ -80,6 +80,9 @@ return array(
             array('name' => '拼团订单', 'act' => 'order_list', 'op' => 'Team'),
             array('name' => '上门自提', 'act' => 'index', 'op' => 'ShopOrder'),
         )),
+        array('name' => '门店', 'child' => array(
+            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
+        )),
         array('name' => '广告', 'child' => array(
             array('name' => '广告列表', 'act' => 'adList', 'op' => 'Ad'),
             array('name' => '广告位置', 'act' => 'positionList', 'op' => 'Ad'),
@@ -192,7 +195,7 @@ return array(
     'seller' => array('name' => '商家管理', 'child' => array(
         array('name' => '商家管理', 'child' => array(
             array('name' => '商家列表', 'act' => 'seller_list', 'op' => 'SellerManagement'),
-            array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
+            //array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
         ))
     )),
 );

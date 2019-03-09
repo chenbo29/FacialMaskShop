@@ -2,6 +2,7 @@
 	font-family: 'PingFangBold';
 	src:url("/template/mobile/rainbow/static/font/PingFangMedium.ttf")
 }
+
 .wrapper{
 	width: 100%;
 	height: 100%;
@@ -102,7 +103,7 @@
 }
 .user-list-item .tit-zp{
 	height: 0.7rem;
-	border-bottom: 0.01rem solid #c1c1c1;
+	border-bottom: 0.01rem solid #f4f4f4;
 	display: flex;
 	align-items: center;
 	justify-content:space-between;

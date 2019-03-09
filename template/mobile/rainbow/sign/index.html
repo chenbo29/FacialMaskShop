@@ -63,11 +63,8 @@
 					<p class="white">今日签到成功</p>
 					<p class="add-score">+<span>0</span>积分</p>
 					<div class="rule_box">
-						<p class="rule_box_title">签到规则</p>
-						<span>
-							连续签到3天可以领取指定产品
-							连续签到10天可以领取指定产品(免费)，偏远地区还是需要。
-						</span>
+						<p class="rule_box_title">签到奖励</p>
+						<span><!--签到规则--></span>
 					</div>
 					
 				</div>
@@ -89,6 +86,8 @@
 				var signObj = {
 					/*用户是否签到*/
 					stateD: false,
+					/*总积分(后台)*/
+					totalNUm: 0,
 					/*签到奖励的积分（后台）*/
 					signNumVal: null,
 					/*连续签到（后台）*/
@@ -96,7 +95,7 @@
 					/*积累签到（后天）*/
 					accumulate: 0,
 				}
-				/*签到记录、积分、连续天数、对应的规则、请求*/
+				/*签到记录、积分、连续天数、对应的规则等请求*/
 				$.ajax({
 					type: "GET",
 					url: "/mobile/sign/get_sign_day?user_id=" + {$user_id},
@@ -139,10 +138,12 @@
 								$('.signInBut').find('span').html('已签到');
 								signObj['stateD'] = true;
 							}
+							/*总积分-obj*/
+							signObj['totalNUm'] = data['points'];
 							/*页面-总积分*/
-							$('.integralL').find('span').html(data['points']);
+							$('.integralL').find('span').html(signObj['totalNUm']);
 							/*弹框-总积分*/
-							$('.dialog-sign-zp .score span').html(data['points']);
+							$('.dialog-sign-zp .score span').html(signObj['totalNUm']);
 							/*积累签到-obj*/
 							signObj['accumulate'] = data['accumulate_day'];
 							/*积累签到*/
@@ -157,7 +158,7 @@
 							signObj['signNumVal'] = data['add_point'];
 							$('.add-score').find('span').html(signObj['signNumVal']);
 							console.log('签到积分',signObj['signNumVal']);
-							
+							$('.rule_box span').html(data['note']);
 							
 						}else {
 							console.log('无数据');
@@ -171,21 +172,22 @@
 				
 				/*签到请求*/
 				$('.signInBut').on('click',function(){
-					/*判断用户签到状态*/
-					if(signObj['stateD']){
+					/*判断用户签到状态=>ajax*/
+					if(!signObj['stateD']){
 						$.ajax({
 							type: "GET",
 							url: "/mobile/sign/sign?user_id=" + {$user_id},
 							async: true,
-							success: function(_received){
-								console.log('点击签到:',_received);
+							success: function(_re){
+								console.log('点击签到:',_re);
+								/*存-今天签日期*/
+								var todayState = _re['date'];
 								$('.signInBut').find('span').html('已签到');
 								/*新总积分 = 签到积分+原来的总积分*/
-								var totalNum = Number($('.dialog-sign-zp .score span').html());
 								/*页面-总积分*/
-								$('.integralL').find('span').html(totalNum+signObj['signNumVal']);
+								$('.integralL').find('span').html(signObj['totalNUm']+signObj['signNumVal']);
 								/*弹框-总积分*/
-								$('.dialog-sign-zp .score span').html(totalNum+signObj['signNumVal']);
+								$('.dialog-sign-zp .score span').html(signObj['totalNUm']+signObj['signNumVal']);
 								/*新的连续签到 = 今天+原来的连续签到*/
 								/*页面-连续签到*/
 								$('.recordBox').find('.continuityNum').html(signObj['evenNum']+1);
@@ -193,6 +195,21 @@
 								$('.dialog-sign-zp .time span').html(signObj['evenNum']+1);
 								/*页面-积累签到*/
 								$('.recordBox .dayNum').html(signObj['accumulate']+1);
+								/*在日历盖章=>把后台数据转换: "2019/03/09" =>"2019/3/9"*/
+								console.log('后台数据:',todayState);
+								todayState = todayState.split('/')[0] + '/' + Number(todayState.split('/')[1]) + '/' + Number(todayState.split('/')[2])
+								console.log("转换后:",todayState);
+								
+								/*.getMonth()=>获取当前月份(0-11,0代表1月)*/
+								for(var i = 0; i < $('.date-marker-body li').length; i++) {
+									/**传过来的数据-不要在月份和日期前加0 =>'2019/3/6' **/
+									if($('.date-marker-body li').eq(i).attr('data-markdate') == todayState) {
+										$('.date-marker-body li').eq(i).append(`
+											<img class="signInIconL" src="/template/mobile/rainbow/static/images/sign/signInIconS.png" />
+										`);
+									}
+								}
+								
 							},
 							error: function(error){ 
 								console.log('报错',error);
@@ -204,7 +221,7 @@
 					$(".dialog-sign-zp").show(100);
 				})
 				
-				/*关闭弹窗*/
+				/*关闭-签到弹窗*/
 				$(".model").on('click',function(){
 					$(".model").hide()
 					$(".dialog-sign-zp").hide(100)

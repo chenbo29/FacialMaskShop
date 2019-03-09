@@ -143,7 +143,7 @@ class Goods extends Base {
                     $return_arr = array(
                         'status' => 1,
                         'msg'   => '操作成功',
-                        'data'  => array('url'=>U('Admin/Goods/categoryList')),
+                        'data'  => array('url'=>U('seller/Goods/categoryList')),
                     );
                     $this->ajaxReturn($return_arr);
 
@@ -166,14 +166,14 @@ class Goods extends Base {
         $goods_count > 0 && $this->ajaxReturn(['status' => -1,'msg' =>'该分类下有商品不得删除!']);
         // 删除分类
         DB::name('goods_category')->where('id',$ids)->delete();
-        $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','url'=>U('Admin/Goods/categoryList')]);
+        $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','url'=>U('seller/Goods/categoryList')]);
     }
     
     
     /**
      *  商品列表
      */
-    public function goodsList(){      
+    public function goodsList(){     
         $GoodsLogic = new GoodsLogic();        
         $brandList = $GoodsLogic->getSortBrands();
         $categoryList = $GoodsLogic->getSortCategory();
@@ -186,8 +186,8 @@ class Goods extends Base {
      *  商品列表
      */
     public function ajaxGoodsList(){            
-        
-        $where = ' 1 = 1 '; // 搜索条件                
+        $seller_id = session('seller_id');
+        $where = "seller_id='".$seller_id."'"; // 搜索条件                
         I('intro')    && $where = "$where and ".I('intro')." = 1" ;        
         I('brand_id') && $where = "$where and brand_id = ".I('brand_id') ;
         (I('is_on_sale') !== '') && $where = "$where and is_on_sale = ".I('is_on_sale') ;                
@@ -592,7 +592,7 @@ class Goods extends Base {
         M("goods_attr")->whereIn('goods_id',$goods_ids)->delete();  //商品属性
         M("goods_collect")->whereIn('goods_id',$goods_ids)->delete();  //商品收藏
 
-        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/goods/goodsList")]);
+        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("seller/goods/goodsList")]);
     }
     /**
      * 品牌列表
@@ -656,7 +656,7 @@ class Goods extends Base {
         }
         $res=Db::name('Brand')->whereIn('id',$brind_ids)->delete();
         if($res){
-            $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/goods/brandList")]);
+            $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("seller/goods/brandList")]);
         }
         $this->ajaxReturn(['status' => -1,'msg' => '操作失败','data'  =>'']);
     }      
@@ -743,4 +743,100 @@ class Goods extends Base {
         ajaxReturn($html);
     }
 
+    /**
+     * 商城 - 门店 - 门店管理
+     */
+    public function store_list()
+    {
+        $list = array();
+        $keywords = I('keywords/s');
+        if (empty($keywords)) {
+            $res = D('seller_store')->select();
+        } else {
+            $seller_key = DB::name('seller')->where(['user_name|seller_name' => ['like', '%' . $keywords . '%']])->getField('seller_id,seller_name');
+            if (empty($seller_key)) {
+                $res = DB::name('seller_store')->where(['store_name|webid|phone|address|city' => ['like', '%' . $keywords . '%']])->order('seller_id')->select();
+            } else {
+                $res = DB::name('seller_store')->where(['store_name|webid|phone|address|city' => ['like', '%' . $keywords . '%']])->whereOr(['seller_id' => ['in', array_keys($seller_key)]])->order('seller_id')->select();
+            }
+        }
+        $seller = DB::name('seller')->getField('seller_id,seller_name');
+        if ($seller && $res) {
+            foreach ($res as $val) {
+                $val['seller_name'] = $seller[$val['seller_id']];
+                $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
+                $list[] = $val;
+            }
+        }
+        $this->assign('list', $list);
+        return $this->fetch();
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店
+     */
+    public function store_info()
+    {
+        $seller_id = I('get.seller_id/d', 0);
+        if ($seller_id) {
+            $info = Db::name('seller')->where("seller_id", $seller_id)->find();
+            $info['password'] = "";
+            $this->assign('info', $info);
+        }
+        $act = empty($seller_id) ? 'add' : 'edit';
+        $this->assign('act', $act);
+        return $this->fetch();
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
+     */
+    public function sellerHandle()
+    {
+        $data = I('post.');
+        if (empty($data['seller_phone'])) {
+            unset($data['seller_phone']);
+        }
+        if (empty($data['seller_mobile'])) {
+            unset($data['seller_mobile']);
+        }
+        if (empty($data['password'])) {
+            unset($data['password']);
+        } else {
+            $data['password'] = encrypt($data['password']);
+        }
+        if ($data['act'] == 'add') {
+            $count = D('seller')->where('user_name', $data['user_name'])->count();
+            if ($count) {
+                $this->ajaxReturn(['status' => -1, 'msg' => '此商家登录名已存在，请更换']);
+            }
+            $count = D('seller')->where('seller_name', $data['seller_name'])->count();
+            if ($count) {
+                $this->ajaxReturn(['status' => -1, 'msg' => '此商家名称已被使用，请更换']);
+            }
+            unset($data['seller_id']);
+            $data['status'] = 10;
+            $data['add_time'] = time();
+            $r = D('seller')->add($data);
+        }
+        if ($data['act'] == 'edit') {
+            $count = D('seller')->where(['user_name' => $data['user_name'], 'seller_id' => ['neq', $data['seller_id']]])->count();
+            if ($count) {
+                $this->ajaxReturn(['status' => -1, 'msg' => '此商家登录名已存在，请更换']);
+            }
+            $count = D('seller')->where(['seller_name' => $data['seller_name'], 'seller_id' => ['neq', $data['seller_id']]])->count();
+            if ($count) {
+                $this->ajaxReturn(['status' => -1, 'msg' => '此商家名称已被使用，请更换']);
+            }
+            $r = D('seller')->where('seller_id', $data['seller_id'])->save($data);
+        }
+        if ($data['act'] == 'del' && $data['seller_id'] > 1) {
+            $r = D('seller')->where('seller_id', $data['seller_id'])->delete();
+        }
+        if ($r) {
+            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/SellerManagement/seller_list')]);
+        } else {
+            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
+        }
+    }
 }

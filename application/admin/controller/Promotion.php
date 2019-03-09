@@ -19,6 +19,7 @@ namespace app\admin\controller;
 use app\common\model\FlashSale;
 use app\common\model\GoodsActivity;
 use app\common\model\GroupBuy;
+use app\common\model\Auction;
 use app\admin\logic\GoodsLogic;
 use app\common\model\Goods;
 use app\common\model\PromGoods;
@@ -276,11 +277,13 @@ class Promotion extends Base
 
     public function prom_order_save()
     {
+        // 收集数据
         $data = I('post.');
         $data['start_time'] = strtotime($data['start_time']);
         $data['end_time'] = strtotime($data['end_time']);
         $data['group'] = $data['group'] ? implode(',', $data['group']) : '';
         $prom_id = $data['id'];
+        //验证
         $promOrderValidate = Loader::validate('PromOrder');
         if(!$promOrderValidate->scene($data['act'])->batch()->check($data)){
             $error = '';
@@ -289,12 +292,15 @@ class Promotion extends Base
             }
             $this->ajaxReturn(['status' => -1,'msg'=>$error]);
         }
+        // 编辑或者添加
         $promOrderModel = new PromOrder();
         if ($data['act']=='edit') {
             $promOrderModel->where("id=$prom_id")->save($data);
             adminLog("管理员id【 ".$this->admin_id." 】修改了订单促销 ID【".$data['id']."】");
         } else {
+            // 插入数据并且返回自增id
             $add_id = $promOrderModel->insertGetId($data);
+            // 日志记录
             adminLog("管理员id【 ".$this->admin_id." 】添加了订单促销 ID【".$add_id."】");
             if($data['mmt_message_switch'] == 1) {
 
@@ -339,7 +345,9 @@ class Promotion extends Base
                     'message_val' => [],
                     'prom_id' => $add_id
                 ];
+                // 发短信
                 $messageFactory = new MessageFactory();
+                // new MessageActivityLogic($message);
                 $messageLogic = $messageFactory->makeModule($send_data);
                 $messageLogic->sendMessage();
             }
@@ -524,7 +532,6 @@ class Promotion extends Base
         $this->assign('goodsList', $goodsList);
         return $this->fetch();
     }
-
     public function search_goods()
     {
         $goods_id = input('goods_id');
@@ -631,10 +638,8 @@ class Promotion extends Base
         if (IS_POST) {
             $data = I('post.');
             $data['start_time'] = strtotime($data['start_time']);
-            $data['end_time'] = $data['start_time'];
+            $data['end_time'] = strtotime($data['end_time']);
             // $flashSaleValidate = Loader::validate('FlashSale');
-            // // var_dump($flashSaleValidate);//exit;
-
             // if ($flashSaleValidate->batch()->check($data)) {
             //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
             //     $this->ajaxReturn($return);
@@ -643,10 +648,10 @@ class Promotion extends Base
                 $flashSaleInsertId = Db::name('flash_sale')->insertGetId($data);
                 if($data['item_id'] > 0){
                     //设置商品一种规格为活动
-                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 1]);
-                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 1));
+                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 2]);
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 2));
                 }else{
-                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $flashSaleInsertId, 'prom_type' => 1));
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $flashSaleInsertId, 'prom_type' => 2));
                 }
                 adminLog("管理员添加抢购活动 " . $data['name']);
                 if ($flashSaleInsertId !== false) {
@@ -705,6 +710,7 @@ class Promotion extends Base
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
+            // dump($info);exit;
             $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
             $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
         }
@@ -717,6 +723,7 @@ class Promotion extends Base
         //     $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
         //     $info['start_time_h'] = date('H',$info['start_time']);
         // }
+        // dump($info);exit;
         $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
         return $this->fetch();
@@ -766,15 +773,134 @@ class Promotion extends Base
         $this->assign("URL_Home", "");
     }
 	
-	//竞拍
-	public function auction_list(){
-		
+	//竞拍管理
+	public function auction_list()
+    {
+        $condition = array();
+        // $FlashSale = new FlashSale();
+        $Auction = new Auction();
+        $count = $Auction->where($condition)->count();
+        $Page = new Page($count, 10);
+        $show = $Page->show();
+
+        $prom_list = DB::name("auction")
+        ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
+        ->limit($Page->firstRow.','.$Page->listRows)->select();
+        // dump($prom_list);
+
+        $this->assign('prom_list', $prom_list);
+        $this->assign('page', $show);// 赋值分页输出
+        $this->assign('pager', $Page);		
 		return $this->fetch();
 	}
 	//竞拍管理操作
-	public function auction_list_info(){
+	public function auction_list_info()
+    {
+        if (IS_POST) {
+            $data = I('post.');
+            $data['preview_time'] = strtotime($data['preview_time']);
+            $data['start_time'] = strtotime($data['start_time']);
+            // $flashSaleValidate = Loader::validate('FlashSale');
+            // // var_dump($flashSaleValidate);//exit;
+            // if ($flashSaleValidate->batch()->check($data)) {
+            //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
+            //     $this->ajaxReturn($return);
+            // }
+
+            if (empty($data['id'])) {
+                $auctionInsertId = Db::name('auction')->insertGetId($data);
+                if($data['item_id'] > 0){
+                    //设置商品一种规格为活动
+                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $auctionInsertId, 'prom_type' => 8]);
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 8));
+                }else{
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $auctionInsertId, 'prom_type' => 8));
+                }
+                adminLog("管理员添加竞拍活动 " . $data['name']);
+                if ($auctionInsertId !== false) {
+                    $this->ajaxReturn(['status' => 1, 'msg' => '添加竞拍活动成功', 'result' => '']);
+                } else {
+                    $this->ajaxReturn(['status' => 0, 'msg' => '添加竞拍活动失败', 'result' => '']);
+                }
+            } else {
+                // dump(2222);exit;
+                $r = M('auction')->where("id=" . $data['id'])->save($data);
+                M('goods')->where(['prom_type' => 8, 'prom_id' => $data['id']])->save(array('prom_id' => 0, 'prom_type' => 0));
+                if($data['item_id'] > 0){
+                    //设置商品一种规格为活动
+                    Db::name('spec_goods_price')->where(['prom_type' => 8, 'prom_id' => $data['item_id']])->update(['prom_id' => 0, 'prom_type' => 0]);
+                    Db::name('spec_goods_price')->where('item_id', $data['item_id'])->update(['prom_id' => $data['id'], 'prom_type' => 8]);
+                    M('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => 0, 'prom_type' => 8));
+                }else{
+                    M('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $data['id'], 'prom_type' => 8));
+                }
+                if ($r !== false) {
+                    $this->ajaxReturn(['status' => 1, 'msg' => '编辑竞拍活动成功', 'result' => '']);
+                } else {
+                    $this->ajaxReturn(['status' => 0, 'msg' => '编辑竞拍活动失败', 'result' => '']);
+                }
+            }
+        }
+
+        $id = I('id');
+        $now_time = date('H');
+        if ($now_time % 2 == 0) {
+            $auction_now_time = $now_time;
+        } else {
+            $auction_now_time = $now_time - 1;
+        }
+        $auction_now_time = strtotime(date('Y-m-d') . " " . $auction_now_time . ":00:00");
+        $info['start_time'] = date("Y-m-d H:i:s", $auction_now_time);
+        $info['preview_time'] = date("Y-m-d H:i:s", $auction_now_time);
+
+        if ($id > 0) {
+            // dump($id);//exit;
+            $Auction = new Auction();
+            $info = $Auction->with('specGoodsPrice,goods')->find($id);
+        }
+
+        // $info = DB::name("auction")
+        //     ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
+        //     ->limit($Page->firstRow.','.$Page->listRows)->select();
+        // $info = Db::query("SELECT * FROM
+        //     tp_auction , tp_goods , tp_spec_goods_price
+        //     WHERE tp_auction.goods_id = tp_goods.goods_id 
+        //     AND
+        //     tp_goods.goods_id = tp_spec_goods_price.goods_id");
+        $this->assign('min_date', date('Y-m-d'));
+        $this->assign('info', $info);
 		
 		return $this->fetch();
 	}
 	
+    public function auction_list_del()
+    {
+        $id = I('del_id/d');
+        if ($id) {
+            $spec_goods = Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->find();
+            //有活动商品规格
+            if($spec_goods){
+                Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
+                //商品下的规格是否都没有活动
+                $goods_spec_num = Db::name('spec_goods_price')->where(['prom_type' => 1, 'goods_id' => $spec_goods['goods_id']])->find();
+                if(empty($goods_spec_num)){
+                    //商品下的规格都没有活动,把商品回复普通商品
+                    Db::name('goods')->where(['goods_id' => $spec_goods['goods_id']])->save(array('prom_id' => 0, 'prom_type' => 0));
+                }
+            }else{
+                //没有商品规格
+                Db::name('goods')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
+            }
+            M('auction')->where(['id' => $id])->delete();
+            // 删除抢购消息
+            $messageFactory = new MessageFactory();
+            $messageLogic = $messageFactory->makeModule(['category' => 1]);
+            $messageLogic->deletedMessage($id, 1);
+
+
+            exit(json_encode(1));
+        } else {
+            exit(json_encode(0));
+        }
+    }
 }

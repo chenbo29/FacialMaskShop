@@ -485,17 +485,7 @@ header .sea-box input {
 .footer ul li a .icon {
 	margin-top:.128rem
 }
-.zjy_login{
-	width: 100%;
-	height: 28.5rem;
-	background: url("../images/login_bg.png")no-repeat;
-	background-size:cover ;
-}
-.zjy_bgHide{
-	width: 100%;
-	height: 28.5rem;
-	background:none;
-}
+
 @media screen and (min-width:1300px) {
 	.footer ul li a .icon {
 	margin-top:.04267rem
@@ -1312,9 +1302,7 @@ footer .flool3 p {
 	position: relative;
     left:0 !important;
 }
-#verify_code_img{
-	position: relative;
-}
+
 .z-submits {
 	width:10.96rem !important;
 	background:#EC6909 !important;
@@ -1467,14 +1455,7 @@ input:-ms-input-placeholder {
 	width:3.413333rem;
 	height:.853333rem;
 }
-.loginsingup-input .login_yanz{
-	width: 40%;
-	display: inline-block;
-	border: 1px solid #666;
-	position: absolute;
-	bottom: 0;
-	left: 7.3rem;
-}
+
 
 .loginsingup-input .v-code-pic {
 	/*float:right;*/

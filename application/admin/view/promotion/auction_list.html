@@ -62,13 +62,13 @@
 							<div style="text-align: center; width: 100px;" class="">活动轮次</div>
 						</th>
 						<th align="center" abbr="delay_time" axis="col6" class="">
-							<div style="text-align: center; width: 100px;" class="">延时周期</div>
+							<div style="text-align: center; width: 50px;" class="">延时周期(分钟)</div>
 						</th>
 						<th align="center" abbr="preview_time" axis="col6" class="">
-							<div style="text-align: center; width: 100px;" class="">预展开始时间</div>
+							<div style="text-align: center; width: 150px;" class="">预展开始时间</div>
 						</th>
 						<th align="center" abbr="start_time" axis="col6" class="">
-							<div style="text-align: center; width: 100px;" class="">开始时间</div>
+							<div style="text-align: center; width: 150px;" class="">开始时间</div>
 						</th>
 						<th align="center" abbr="payment_time" axis="col6" class="">
 							<div style="text-align: center; width: 100px;" class="">货到付款时间</div>
@@ -115,10 +115,10 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 150px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a>{$vo.activity_name}</div>
+								<div style="text-align: left; width: 100px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a>{$vo.activity_name}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 50px;">{$vo.goods_name}</div>
+								<div style="text-align: left; width: 100px;">{$vo.goods_name}</div>
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 100px;">{$vo.start_price}</div>
@@ -130,13 +130,13 @@
 								<div style="text-align: center; width: 100px;">{$vo.activity_round}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.delay_time}</div>
+								<div style="text-align: center; width: 50px;">{$vo.delay_time}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.preview_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 150px;">{$vo.preview_time|date='Y-m-d H:i:s',###}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.start_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 150px;">{$vo.start_time|date='Y-m-d H:i:s',###}</div>
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 100px;">{$vo.payment_time}</div>

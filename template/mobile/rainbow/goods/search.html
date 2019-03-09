@@ -37,7 +37,7 @@
             <!-- <div class="ds-in-bl menu">
                 <a href="javascript:void(0);"><img src="__STATIC__/images/class1.png" alt="菜单"></a>
             </div> -->
-            <div  class="storenav p search_list_dump"  style="float:right;margin-left:-0.1rem;">
+            <div  class="storenav p search_list_dump"  style="float:right;margin-left:-0.1rem;position: absolute;right: 0;top: -0.35rem;float: right;margin-left: -0.1rem;">
                 <ul><li style="background: #fafafa;opacity:0.5"><i class="listorimg"></i></li></ul>
                    
             </div>
@@ -104,6 +104,9 @@
                                     <div class="prices">
                                         <p class="sc_pri fl"><span>￥</span><b>{$vo[shop_price]}元</b></p>
                                     </div>
+                                    <!-- <div class="moda">
+                                        <span>MODA专营店<img src="/template/mobile/rainbow/static/images/Back@2x.png"></span>
+                                    </div> -->
                                     <p class="weight">
                                     	<span>{$vo[comment_count]}条评价</span>
                                         <span class="proli-eva">{$vo['comment_statistics']['high_rate']}%好评</span>
@@ -433,6 +436,7 @@
 
     //综合
     lb.click(function(){
+
         fil.show();
         cover();
         cs.addClass('pore');

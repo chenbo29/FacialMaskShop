@@ -137,4 +137,17 @@ class Team extends Base
             $this->ajaxReturn(['status' => 0,'msg' =>'操作失败','result' =>'']);
         }
     }
+
+
+    public function search_goods1()
+    {
+        $tpl = input('tpl', 'search_goods');
+        return $this->fetch($tpl);
+    }
+    public function search_goods2()
+    {
+        $tpl = input('tpl', 'search_goods');
+        return $this->fetch($tpl);
+    }
+
 }

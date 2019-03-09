@@ -34,16 +34,16 @@ class Base extends Controller {
      */
     public function _initialize()
     {
-        Saas::instance()->checkSso();
+        // Saas::instance()->checkSso();
 
         //过滤不需要登陆的行为 
         if (!in_array(ACTION_NAME, array('login', 'vertify'))) {
-            if (session('admin_id') > 0) {
-                $this->check_priv();//检查管理员菜单操作权限
-                $this->admin_id = session('admin_id');
+            if (session('seller_id') > 0) {
+               // $this->check_priv();//检查管理员菜单操作权限
+                $this->seller_id = session('seller_id');
             }else {
-                (ACTION_NAME == 'index') && $this->redirect( U('Admin/Admin/login'));
-                $this->error('请先登录', U('Admin/Admin/login'), null, 1);
+                (ACTION_NAME == 'index') && $this->redirect( U('seller/Admin/login'));
+                $this->error('请先登录', U('seller/Admin/login'), null, 1);
             }
         }
         $this->public_assign();

@@ -4,17 +4,20 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<title>p_details</title>
+		<title>编辑个人资料</title>
 		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
 		<script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="__STATIC__/js/public/rem.js"></script>
+		
+		
 	</head>
 
 	<body>
 		<div class="lj_top">
 			<div class="lj_wrap">
+
 				<div class="lj_top_left">
-					<a href="javascript:history.go(-1);"><img src="__STATIC__/image/lj_top_left.png" /></a>
+					<a href="{:U('mobile/user/personal')}"><img src="__STATIC__/image/lj_top_left.png" /></a>
 				</div>
 				<div class="lj_top_right">
 					<p>编辑个人资料</p>
@@ -23,49 +26,62 @@
 		</div>
 
 		<div class="lj_wrap">
+
 			<div class="lj_main_d">
 				<ul>
 					<li>
-						<p>头像</p>
-						<form id="head_pic" method="post" enctype="multipart/form-data">
-							<label class="file" style="cursor:pointer;">
-									<div class="around" id="fileList">
-										<img class="lj_list_r_img1" src="{$user.head_pic|default='__STATIC__/image/p_details.png'}"/>
-									<input  type="file" accept="image/*" name="head_pic"  onchange="handleFiles(this)" style="display:none">
+						<div class="lj_main_d_div">
+							<p>头像</p>
+							<form id="head_pic" method="post" enctype="multipart/form-data">
+								<label class="file" style="cursor:pointer;">
+										<div class="around" id="fileList">
+											<img class="lj_list_r_img1" src="{$user.head_pic}"/>
+										<input  type="file" accept="image/*" name="head_pic"  onchange="handleFiles(this)" style="display:none">
+									</div>
+								</label>
+							</form>	
+							<img class="lj_list_r_img3" src ="__STATIC__/image/lj_userinfo_r.png" />
+						</div>
+						
+					</li>
+					<li>
+						<p>手机号</p>
+						<div class="lj_list_r">
+							<p>{$user.mobile}</p>
+						</div>
+					</li>
+					<li>
+						<a href="modify.html">
+							<div class="lj_main_d_div">
+								<p>名称</p>
+								<div class="lj_list_r">
+									<p>{$user.nickname}</p>
+									<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
 								</div>
-							
-							</label>
-						</form>
-						<img class="lj_list_r_img2" src ="__STATIC__/image/lj_userinfo_r.png" />
+							</div>
+						</a>
 					</li>
 					<li>
-						<p>用户名</p>
-						<div class="lj_list_r">
-							<p>4852364853</p>
-						</div>
-					</li>
-					<li>
-						<p>名称</p>
-						<div class="lj_list_r">
-							<p>Tony</p>
-							<a href="modify.html"><img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" /></a>
-						</div>
-					</li>
-					<li>
-						<p>性别</p>
-						<div class="lj_list_r">
-							<p>保密</p>
-							<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
-						</div>
+						<a href="{:U('Mobile/User/userinfo',array('action'=>'sex'))}">
+							<div class="lj_main_d_div">
+								<p>性别</p>
+								<div class="lj_list_r">
+									<p>{$sex[$user.sex]}</p>
+									<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
+								</div>
+							</div>
+						</a>						
 					</li>
 					<li>
 						<p>出生日期</p>
 						<div class="lj_list_r">
-							<p>2005-2-14</p>
+                           
+							<p>{$user.birthday}</p>
 							<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
 						</div>
 					</li>
 				</ul>
+				
 			</div>
 		</div>
 		<script>

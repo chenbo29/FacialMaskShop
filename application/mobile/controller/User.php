@@ -107,6 +107,12 @@ class User extends MobileBase
 
 	public function personal()
     {
+    	
+    	$user_id = session('user.user_id');
+        $user = M('users')->where(['user_id'=>$user_id])->find();
+       
+        $this->assign('user',$user);
+        
         return $this->fetch();
     }
     
@@ -122,6 +128,7 @@ class User extends MobileBase
     
     public function p_details()
     {
+
     	$userLogic = new UsersLogic();
     	 if (IS_POST) {
         	if ($_FILES['head_pic']['tmp_name']) {
@@ -144,11 +151,19 @@ class User extends MobileBase
             if (!$userLogic->update_info($this->user_id, $post))
                 $this->error("保存失败");
             setcookie('uname',urlencode($post['nickname']),null,'/');
-            $this->success("操作成功",U('User/p_details'));
+            $this->redirect(U('User/p_details'));
             exit;
         }
         
-        
+         $this->assign('sex', C('SEX'));
+         
+		$user_id = session('user.user_id');
+        $user = M('users')->where(['user_id'=>$user_id])->find();
+        $user['birthday'] = date('Y-m-d',$user['birthday']);
+
+        $this->assign('user',$user);
+
+
         return $this->fetch();
     }
     
@@ -722,7 +737,7 @@ class User extends MobileBase
             if (!$userLogic->update_info($this->user_id, $post))
                 $this->error("保存失败");
             setcookie('uname',urlencode($post['nickname']),null,'/');
-            $this->success("操作成功",U('User/userinfo'));
+            $this->redirect(U('User/p_details'));
             exit;
         }
         //  获取省份

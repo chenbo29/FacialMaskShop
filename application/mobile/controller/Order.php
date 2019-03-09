@@ -52,6 +52,16 @@ class Order extends MobileBase
         $this->assign('order_status_coment', $order_status_coment);
     }
 
+ 	public function order_new()
+    {
+    	return $this->fetch();
+    }
+
+	public function guanzhu()
+    {
+    	return $this->fetch();
+    }
+
     /**
      * 订单列表
      * @return mixed

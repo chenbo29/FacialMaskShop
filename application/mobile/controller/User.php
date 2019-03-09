@@ -122,6 +122,13 @@ class User extends MobileBase
     
     public function p_details()
     {
+
+        $user = session('user');
+        $user['birthday'] = date('Y-m-d',$user['birthday']);
+
+        $this->assign('user',$user);
+
+
         return $this->fetch();
     }
     

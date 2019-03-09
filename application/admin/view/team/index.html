@@ -60,7 +60,10 @@
 							<div style="text-align: center; width: 50px;" class="">状态</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 150px;" class="">开团人数/购买数量</div>
+							<div style="text-align: center; width: 100px;" class="">开团人数</div>
+						</th>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 100px;" class="">购买数量</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 70px;" class="">购买限制数</div>
@@ -117,34 +120,31 @@
 							<td align="left" class="">
 								<div style="text-align: left; width: 100px;"><a href="{:U('Mobile/Team/info',['team_id'=>$team.team_id, 'item_id'=>$team['team_goods_item'][0]['item_id']])}" target="_blank" >{$team.goods_name|getSubstr=0,20}</a></div>
 							</td>
-							<!-- <td align="left" class="">
-								<div style="text-align: center; width: 240px;">
-									<a href="{:U('Mobile/Goods/goodsInfo',['id'=>$team.goods_id, 'item_id'=>$team['team_goods_item'][0]['item_id']])}" target="_blank">
-										{$team.goods_name|getSubstr=0,20}
-									</a>
-								</div>
-							</td> -->
+
 							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.group_type}</div>
+								<div style="text-align: center; width: 80px;">{$team.start_time}</div>
+							</td>	
+							<td align="left" class="">
+								<div style="text-align: center; width: 80px;">{$team.cluster_type}</div>
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 80px;">{$team.status}</div>
-							</td>	
-							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.price}</div>
-							</td>
-							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.min_buy_num}</div>
 							</td>									
 							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.limit_buy}</div>
+								<div style="text-align: center; width: 80px;">{$team.group_price}</div>
 							</td>								
 							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.max_group}</div>
-							</td>							
+								<div style="text-align: center; width: 80px;">{$team.group_number}</div>
+							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 80px;">{$team.re_group}</div>
-							</td>									
+								<div style="text-align: center; width: 80px;">{$team.purchase_qty}</div>
+							</td>
+							<td align="left" class="">
+								<div style="text-align: center; width: 80px;">{$team.max_open_num}</div>
+							</td>
+							<td align="left" class="">
+								<div style="text-align: center; width: 80px;">0</div>
+							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 80px;">
 									<if condition='$team[status] eq 1'>

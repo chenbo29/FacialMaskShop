@@ -256,8 +256,7 @@
 
                 </div>
             </div>
-
-            <!-- 结算上拉框 style="display:none;" -->
+             <!-- 结算上拉框 style="display:none;" -->
            <div class="fr_box" style="display:none;">
                 <div class="terde">
                     <div>
@@ -339,6 +338,98 @@
                  </div>
 			</div>
             
+            <!--提交栏-e-->
+            <div class="put-box" style="display:none;">
+              <div class="put_mode">
+                  <div class="put-title">前选择支付方式 </div>
+                  <div class="put-close">
+                      <img src="__STATIC__/images/close-area.png" alt="">
+                  </div>
+              </div>
+               <div class="put-info put-list">
+                   <div class="put-time put-item">
+                       请在0小时30分钟内完成支付&nbsp金额
+                       <span class="r-red"></span>
+                       元
+                   </div>
+               </div>
+               <div class="put-bankCard put-list selects active">
+                <div class="put-card put-item">
+                    <span class="put-name card">银行卡快捷支付</span>
+                    <span class="put-select" >
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>                 
+                </div>
+            </div>
+              <div class="put-NeteasePay put-list selects">
+                <div class="put-Netease put-item">
+                    <span class="put-name Netease">网易支付</span>
+                    <span class="put-select" style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-Alipay put-list selects">
+                <div class="put-Alibb put-item">
+                    <span class="put-name Alibb">支付宝</span>
+                    <span class="put-select" style="display: none"> 
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-WeChat put-list selects">
+                <div class="put-tecn put-item">
+                    <span class="put-name tecn">微信支付</span>
+                    <span class="put-select" style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="put-remaining put-list selects ">
+                <div class="put-balance put-item">
+                    <span class="put-name balance">余额</span>
+                    <span class="put-select " style="display: none">
+                        <img src="__STATIC__/image/duihao.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <div class="loactionAdd-btn">
+                <button class="btn-add">提交订单</button>
+            </div>
+            </div>
+            <script type="text/javascript">
+              $(function(){
+                /* 地址默认选中样式*/
+                $(".tacitly-opt").click(function(){
+                    if(!$(this).children().hasClass("active")){
+                        $(this).children().addClass("active").removeClass("select")
+                    }else{
+                        $(this).children().removeClass("active").addClass("select")
+                    }
+                })
+                /*支付方式*/
+               $(".selects").click(function(){
+                   if(!$(this).hasClass("active")){
+                    $(this).addClass("active")
+                           .siblings()
+                           .removeClass("active")
+                    $(this).children().children(":last-child").show()
+                    if($(this).children().children(":last-child").is(":visible")){
+                        $(this).siblings().children().children(".put-select").hide()
+                    }
+                   }else{
+                    $(this).removeClass("active")
+                    $(this).children().children(":last-child").hide()
+                   }
+               })
+
+            /*关闭支付方式*/
+            $(".put-close,.shadow").click(function(){
+                    $(".put-box").hide()
+            })
+              })
+            
+            </script>
             <!--提交栏-e-->
             <div class="put-box" style="display:none;">
               <div class="put_mode">
@@ -550,6 +641,7 @@
         for(var i = 0; i < cart_list.length; i++){
             $('#cart_'+cart_list[i].id+'_goods_price').empty().html('￥'+Number(cart_list[i]['goods_price']).toFixed(2));
             $('#cart_'+cart_list[i].id+'_total_price').empty().html('￥'+cart_list[i].total_fee.toFixed(2));
+            $(".r-red").html('￥'+cart_list[i].total_fee.toFixed(2))
             $('#cart_'+cart_list[i].id+'_market_price').empty().html('￥'+cart_list[i].member_goods_price*cart_list[i].goods_num.toFixed(2)); //活动价格
             $('#cart_'+cart_list[i].id+'_save_price').empty().html(cart_list[i].cut_fee.toFixed(2));
             $('#changeQuantity_'+cart_list[i].id).val(cart_list[i].goods_num); //数量

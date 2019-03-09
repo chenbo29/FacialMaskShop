@@ -1,4 +1,4 @@
-#2019-03-08 
+# 2019-03-08 
 #tp_team_activity增加和修改字段
 ALTER TABLE `tp_team_activity` ADD `cluster_type` TINYINT(2) DEFAULT 0 COMMENT '团购类型：1小团，2大团，3 阶梯团' AFTER `team_type`;
 ALTER TABLE `tp_team_activity` MODIFY `status` TINYINT(1) DEFAULT 0 COMMENT '是否开启拼团：0否，1是';
@@ -32,8 +32,8 @@ CREATE TABLE `tp_team_ladder` (
 ) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='阶梯团表';
 
 
-
-
+# 2019-03-09 
+ALTER TABLE `tp_team_found` ADD `discount_price` decimal(10,2) DEFAULT '0.00' COMMENT '不免单时团长折扣价' AFTER `price`;
 
 
 

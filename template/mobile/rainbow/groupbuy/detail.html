@@ -95,26 +95,19 @@
 							<div class="comBUserTermTopL">
 								<p class="comBUserTermTopLeftL">
 									<span>{$item.username}</span>
+									<?php for ($i=1;$i<$item.goods_rank;$i+=1){?>
 									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<!--删-->
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<img class="starsIconL" src="__STATIC__/images/public_lb/starsIcon.png"/>
-									<!--删-->
+									<?php } ?>
 								</p>
-								<p class="comBUserTermTopRightL">2019-02-21</p>
+								<p class="comBUserTermTopRightL">{$item.add_time}</p>
 							</div>
 							<!--text-->
 							<p class="comBUTermTextL">{$item.content}</p>
 							<!--图片集 box-->
 							<div class="comBUTermImgBox">
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
-								<img class="comBUTermImg" src="__STATIC__/images/public_lb/00003.png"/>
+								<?php //foreach($item['img'] as $v){ ?>
+								<img class="comBUTermImg" src="<?php //echo $v?>" />
+								<?php //} ?>
 							</div>
 						</div>
 						</volist>

@@ -69,6 +69,64 @@ a{
 	position: absolute;
 	top: 0;
 	z-index: 555;
+	display: none;
+}
+.third-login-list img{
+	margin: 0 .5rem;
+	width: 1.2rem;
+	height: 1.2rem;
+
+}
+
+.reg_width{
+	width: 100%;
+	line-height: 1.5rem;
+	margin: .8rem 0;
+}
+.reg_width input{
+	width: 80%;
+	line-height: 1.5rem;
+	border: 1px solid #666;
+	border-radius: 9px;
+	text-align: left;
+}
+.zjy_yanzma_reg #mobile_code{
+	width: 40%;
+	line-height: 1.5rem;
+	border-radius: 9px;
+	border:1px solid #666;
+}
+.zjy_yanzma_reg .btn-text-message{
+	width: 39%;
+	background: #646464;
+	color: #fff;
+	text-align: center;
+	line-height: 1.5rem;
+	display: inline-block;
+	border-radius: 9px;
+}
+.lsu_psaw {
+	width: 100%;
+	line-height: 1.5rem;
+	margin: .8rem 0;
+	border: 1px solid #666;
+	border-radius: 9px;
+}
+.lsu_psaw input{
+	border: none;
+	outline: none;
+}
+.recept .zjy_cheock{
+	display: inline-block;
+	width: .6rem;
+	height: .6rem;
+	vertical-align: bottom;
+}
+.recept {
+	font-size:.512rem;
+	color:#666666;
+	vertical-align:middle;
+	text-align:center;
 }
 .recept a {
 	vertical-align:top;

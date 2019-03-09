@@ -17,7 +17,7 @@
 	<!--背景-->
 	<div class="zjy_login_bgs"></div>
 	<!--登录成功-->
-	<div class="zjy_login_zhuce">
+	<div class="zjy_login_zhuce" style="display:none;">
 		<p><img class="zjy_login_shanchu" src="__STATIC__/images/zjy_login_shanchu.png"/></p>
 		<p><img  src="__STATIC__/images/zjy_login_gx.png"/></p>
 		<p class="zjy_gxdl">恭喜您，注册成功</p>
@@ -117,7 +117,7 @@
         }
     }
     function countdown(obj) {
-        var s = {$tpshop_config['sms_sms_time_out']|default=60};
+        var s = "{$tpshop_config['sms_sms_time_out']|default=60}";
         //改变按钮状态
         obj.disabled = true;
         callback();

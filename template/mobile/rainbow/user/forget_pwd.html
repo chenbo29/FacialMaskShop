@@ -1,18 +1,16 @@
 <include file="public/header" title="找回密码" body=""/>
 <include file="public/header_nav" title="找回密码" href="javascript:history.back(-1)"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/login_zjy/login_zjy.css"/>
-
 <div class="reset-pwd-steps">
     <img src="__STATIC__/images/pic-reset-psw1.jpg" alt="" />
 </div>
 <div class="loginsingup-input">
     <form  method="post" id="fpForm">
         <div class="reset-pwd-title">账号验证</div>
-        <div class="lsu_psaw">
+        <div class="lsu">
             <span class="ico ico-username"></span>
             <input type="text" name="username" id="username" value="" placeholder="请输入账号"/>
         </div>
-        <div class="">
+        <div class="lsu">
             <span class="ico ico-v-code"></span>
             <input class="v-code-input left" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码"/>
             <img class="v-code-pic" src="/index.php?m=Mobile&c=User&a=verify&type=forget" id="verify_code_img" onclick="verify()">

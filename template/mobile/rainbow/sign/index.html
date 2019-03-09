@@ -8,7 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<title>签到</title>
 		<script src="__STATIC__/js/public/rem.js" ></script>
-		<link rel="stylesheet" href="__STATIC__/css/reset.css"/>
 		<link rel="stylesheet" href="__STATIC__/css/sign/index.css"/>
 		<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
 		<!--日历 css-->
@@ -45,19 +44,6 @@
 				<div class="calendarWrapL">
 					<!--标签=>dateMarker.js中的'构建日历骨架'改，-->
 					<div class="date"></div>
-				</div>
-				
-			</div>
-			
-			
-			<!--遮罩层-->
-			<div class="model" style="display: block;">
-				<!--签到成功弹出-->
-				<div class="dialog-sign-zp" style="display: block;">
-					<p class="score">总分1342</p>
-					<p class="time">已经连续签到257天</p>
-					<p class="white">今日签到成功</p>
-					<p class="add-score">+10积分</p>
 				</div>
 				
 			</div>
@@ -163,19 +149,5 @@
 				
 			})
 		</script>
-		
-		 <script type="text/javascript">
-		$(function(){
-			$(".sign-in-zp").click(function(){
-				$(".model").show();
-				$(".dialog-sign-zp").show(100)
-			})
-			$(".model").click(function(){
-				$(".model").hide()
-				$(".dialog-sign-zp").hide(100)
-			})
-		})
-	</script>
-		
 	</body>
 </html>

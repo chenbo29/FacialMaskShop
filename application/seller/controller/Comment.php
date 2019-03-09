@@ -80,9 +80,9 @@ class Comment extends Base {
             $row = M('comment')->where('comment_id', 'IN', $comment_ids)->save(['is_show' => 0]);
         }
         if($row !== false){
-            $this->ajaxReturn(['status' => 1,'msg' => '操作完成','url'=>U('Admin/Comment/index')]);
+            $this->ajaxReturn(['status' => 1,'msg' => '操作完成','url'=>U('seller/Comment/index')]);
         }else{
-            $this->ajaxReturn(['status' => -1,'msg' => '操作失败','url'=>U('Admin/Comment/index')]);
+            $this->ajaxReturn(['status' => -1,'msg' => '操作失败','url'=>U('seller/Comment/index')]);
         }
     }
 
@@ -196,9 +196,9 @@ class Comment extends Base {
             $row = M('goods_consult')->where('id', 'IN', $selected_id)->save(array('is_show' => 0));
         }
         if($row !== false){
-            $this->ajaxReturn(['status' => 1,'msg' => '操作完成','url'=>U('Admin/Comment/ask_list')]);
+            $this->ajaxReturn(['status' => 1,'msg' => '操作完成','url'=>U('seller/Comment/ask_list')]);
         }else{
-            $this->ajaxReturn(['status' => -1,'msg' => '操作失败','url'=>U('Admin/Comment/ask_list')]);
+            $this->ajaxReturn(['status' => -1,'msg' => '操作失败','url'=>U('seller/Comment/ask_list')]);
         }
     }
 }

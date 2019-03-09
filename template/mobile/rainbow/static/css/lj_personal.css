@@ -217,7 +217,10 @@ margin-bottom: 0.1rem;}
 }
 
 .lj_s_banner{text-align: center;}
-.lj_top_sign{position: relative; width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;line-height: 0.88rem;}
+
+.lj_top_sign{position: relative; width: 100%;height: 4.3rem;background: url(../image/lj_top_sign.jpg)no-repeat;background-size: 100% 100%;line-height: 0.88rem;}
+
+
 
 .lj_sign_tl{float: left; width: 0.16rem;height: 0.25rem;}
 .lj_sign_tl img{vertical-align: middle;}
@@ -242,14 +245,14 @@ margin-bottom: 0.1rem;}
 .lj_s_lxqd{line-height: 0.3rem;}
 .lj_s_banner p{font-size: 0.24rem;color: #ffffff;}
 
-.lj_integral{margin-bottom: 0.6rem; background: url(../image/lj_top_sign.jpg) no-repeat;width: 100%;height: 4.3rem;position: relative;}
-.lj_in_x{border-top: 2px solid #ffffff;position: absolute;top: 0.88rem;left: 0;width: 100%;}
+.lj_qd_bg{border-bottom: 2px solid #fff; background: url(../image/lj_qd_gd.png)no-repeat;background-size: 100% 100%; position: fixed;top: 0; width: 100%;height: 0.88rem;}
+.lj_integral{margin-bottom: 0.6rem; background: url(../image/lj_top_sign.jpg) no-repeat;background-size: 100% 100%;width: 100%;height: 4.3rem;}
 .lj_in_l{float: left;width: 0.15rem;height: 0.25rem;line-height: 0.88rem;}
 .lj_in_l img{vertical-align: middle;}
 .lj_in_r{text-align: center;line-height: 0.88rem;}
 .lj_in_r p{font-size: 0.23rem;color: #ffffff;}
 
-.lj_in_banner{text-align: center;margin-top: 0.36rem;margin-bottom: 0.85rem;}
+.lj_in_banner{text-align: center;padding-top: 1.2rem;box-sizing: border-box; margin-bottom: 0.85rem;}
 .lj_in_banner p{font-size: 0.3rem;color: #ffffff;line-height: 0.48rem;}
 
 
@@ -263,15 +266,69 @@ margin-bottom: 0.1rem;}
 .lj_main2{background: #ffd7bb;}
 
 
+
+
+
+.lj_fill_banner{padding-top: 0.88rem;height: 1.5rem;background: #fff;}
+.lj_fill_banner em{width: 100%;height: 1px;background: #f5f5f5;display: block;z-index: 1000;margin-bottom: 0.2rem;}
+
+.lj_f_b_l{width: 5.5rem;float: left;}
+.lj_f_b_l p{font-size: 0.3rem;color: #494949;line-height: 0.55rem;}
+.lj_f_b_l span:nth-child(1){padding-left: 0.37rem;}
+.lj_f_b_l span:nth-child(2){padding-left: 0.09rem;}
+.lj_f_b_l p:nth-child(1){padding-left: 0.43rem;}
+.lj_f_b_l p:nth-child(2) img{width: 0.24rem;height: 0.3rem;}
+
+.lj_f_b_r{float: right;line-height: 1.5rem;}
+.lj_f_b_r img{width: 0.19rem;height: 0.32rem;}
+
+.lj_fill_item1{height: 2.5rem;background: #fff;margin-top: 0.3rem;margin-bottom: 0.3rem;}
+.lj_fill_item1 h2{font-size: 0.31rem;color: #333333;padding-top: 0.19rem;font-weight:inherit;}
+
+
+.lj_f_item1_c{margin-top: 0.2rem;}
+.lj_f_item1_l{width: 5.5rem;float: left;}
+.lj_f_item1_l img{float: left;padding-top: 0.04rem;width: 1.38rem;height: 1.38rem;}
+
+.lj_f_item1_l p{padding-left: 1.61rem;line-height: 0.29rem;}
+.lj_f_item1_l_p1{font-size: 0.23rem;padding-top: 0rem;width: 3.55rem;height: 0.5rem;}
+.lj_f_item1_l_p2{font-size: 0.21rem;color: #999999;margin-top: 0.58rem;}
+
+.lj_f_item1_r {float: right;}
+.lj_f_item1_r p{text-align: right;}
+.lj_f_item1_r p:nth-child(1){font-size: 0.19rem;color: #e60b30;}
+.lj_f_item1_r p:nth-child(2){font-size: 0.16rem;color: #999999;margin-top: 0.17rem;}
+.lj_f_item1_r p:nth-child(3){font-size: 0.18rem;color: #666666;margin-top: 0.54rem;}
+
+
+.lj_f_main2_c{line-height: 0.8rem; height: 0.8rem;background: #fff;border-bottom: 2px solid #f5f5f5;}
+
+.lj_f_main2_c_l p{float: left;font-size: 0.3rem;color: #333333;}
+.lj_f_main2_c_r p{float: right;font-size: 0.25rem;color: #ff5722;}
+.lj_f_xbx{border: none;}
+
+.lj_f_footer{background: url(../image/lj_f_footer.png)no-repeat;background-size: 100% 100%; width: 100%;height: 0.85rem;margin-top: 0.5rem;text-align: center;line-height: 0.85rem;}
+.lj_f_footer a{font-size: 0.31rem;color: #fff;}
+
+
+
+
 @media only screen and (max-width: 320px) {
 	.lj_team_nav ul li{width: 2.48rem;}
 	.lj_t_bor label{top: 0.06rem;}
 	.lj_t_bor em{top: 0.06rem;}
 	.lj_edit_p2{margin-left: 0.2rem !important;}
+	.lj_f_item1_r p:nth-child(3){margin-top: 0.24rem !important;}
 }
+
+
 @media only screen and (max-width: 750px) {
 	.lj_team_nav ul li{width: 2.49rem;}
 	.lj_t_bor label{top: 0.08rem;}
 	.lj_t_bor em{top: 0.08rem;}
 	.lj_edit_p2{margin-left: 0.3rem !important;}
+	.lj_f_item1_r p:nth-child(3){margin-top: 0.54rem ;}
+}
+@media only screen and (max-width: 550px) {
+	.lj_edit_p2{margin-left: 0.2rem !important;}
 }

@@ -82,6 +82,10 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+ public function wtf_Goodson(){
+        return $this->fetch();
+    }
+
 
     
     public function wallet(){
@@ -139,6 +143,11 @@ class User extends MobileBase
         return $this->fetch();
     }
       public function edit_Consignee()
+    {
+        return $this->fetch();
+    }
+    
+     public function myinterest()
     {
         return $this->fetch();
     }

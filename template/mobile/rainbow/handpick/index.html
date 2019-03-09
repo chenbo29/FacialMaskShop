@@ -16,14 +16,16 @@
     <!-- 头部 -->
    <div class="headerBox">
          <div class="goleft">
+            <a href="javascript:history.back(-1);">
              <img src="__STATIC__/images/zuojiantou@2x.png" alt="" class="headerImg">
+            </a>
          </div>
          <p class="headerTitle">
                 精选地区馆
          </p>
          <div class="Imgbox">
                 <div class="goleft fenx">
-                        <img src="__STATIC__/images/zjy_zhuanfa.png" alt="" class="headerImg">
+                        <img src="__STATIC__/images/fenxiang.png" alt="" class="headerImg">
                 </div>
                 <div class="goleft class">
                         <img src="__STATIC__/images/class1.png" alt="" class="headerImg">
@@ -37,44 +39,64 @@
    <!-- 十宫格 -->
    <div class="GongGe">
         <div class="GongGe-list">
+            <a href="">
             <img src="__STATIC__/images/handpick/guoqi1.png" alt="" class="guoqi">
             <p class="p-tit">韩国馆</p>
+        </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi2.png" alt="" class="guoqi">
                 <p class="p-tit">泰国馆</p>
+                </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi3.png" alt="" class="guoqi">
                 <p class="p-tit">日本馆</p>
+            </a>
             </div>
         <div class="GongGe-list">
+                <a href="">
                     <img src="__STATIC__/images/handpick/guoqi4.png" alt="" class="guoqi">
                     <p class="p-tit">法国馆</p>
+                </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi5.png" alt="" class="guoqi">
                 <p class="p-tit">美国馆</p>
+            </a>
             </div>
         <div class="GongGe-list">
+                <a href="">
                     <img src="__STATIC__/images/handpick/guoqi6.png" alt="" class="guoqi">
                     <p class="p-tit">芬兰馆</p>
+                </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi7.png" alt="" class="guoqi">
                 <p class="p-tit">加拿大馆</p>
+            </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi8.png" alt="" class="guoqi">
                 <p class="p-tit">新加坡馆</p>
+            </a>
             </div>
         <div class="GongGe-list">
+                <a href="">
                     <img src="__STATIC__/images/handpick/guoqi9.png" alt="" class="guoqi">
                     <p class="p-tit">南欧馆</p>
+                </a>
         </div>
         <div class="GongGe-list">
+                <a href="">
                 <img src="__STATIC__/images/handpick/guoqi10.png" alt="" class="guoqi">
                 <p class="p-tit">英国馆</p>
+            </a>
             </div>
 
    </div>
@@ -183,8 +205,29 @@
            <p></p>
        </div>
    </div> 
-   <!--层叠轮播图 -->
-    <div class="swiperBox">
+   <!--轮播图 -->
+   <div class="swiperBox">
+        <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                            <a>
+                                    <img src="__STATIC__/images/handpick/haibao3.jpg" alt="">
+                                </a>
+                    </div>
+                    <div class="swiper-slide">
+                            <a>
+                                    <img src="__STATIC__/images/handpick/haibao4.jpg" alt="">
+                                </a>
+                    </div>
+                    <div class="swiper-slide">
+                            <a>
+                                    <img src="__STATIC__/images/handpick/haibao5.jpg" alt="">
+                                </a>
+                    </div>
+                </div>    
+            </div>
+   </div>
+    <!-- <div class="swiperBox">
        <div class="Cooldog_content">
            <ul>
                <li class="p1" >
@@ -192,7 +235,7 @@
                 <img src="__STATIC__/images/handpick/haibao3.jpg" alt="">
             </a>
                </li>
-            <li class="p2"> 
+            <li class="p2 active"> 
                 <a>
                     <img src="__STATIC__/images/handpick/haibao4.jpg" alt="">
                 </a>
@@ -204,12 +247,27 @@
             </li>   
            </ul>
        </div>
-   </div>
+   </div> -->
    <!--加载中 -->
+   
    <div class="loding">
-    <img src="__STATIC__/images/handpick/loding1.png" alt="" class="loding1">
+    <img src="__STATIC__/images/handpick/loding.gif" alt="" class="loding1">
     <span>正在加载中... ... </span>
    </div>
 </div>
+<script type="text/javascript">
+  $(function(){
+      
+  var mySwiper = new Swiper ('.swiper-container', {
+    loop: true, 
+    
+  })  
+  $(".handpickListImg>ul>li").click(function(event){
+    event.preventDefault();
+      $(this).addClass("active").siblings().removeClass("active")
+  })      
+  })
+  
+</script>
 </body>
 </html>

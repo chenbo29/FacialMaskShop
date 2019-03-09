@@ -206,12 +206,6 @@ class Distribut extends Base {
         }
         $this->ajaxReturn($return);
     }
-
-    public function rebate_log()
-    {
-        
-        return $this->fetch();
-    }
     
     /**
      * 分成日志列表
@@ -271,5 +265,5 @@ class Distribut extends Base {
     }
    
     
->>>>>>> c271b4c3ed208f9af7570aada88ed5f4c1978e76
+
 }

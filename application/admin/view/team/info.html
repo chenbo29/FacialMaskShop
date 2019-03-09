@@ -22,6 +22,11 @@
 		<input type="hidden" name="id" value="{$info.id}">
 		<input type="hidden" name="act" value="{$act}">
 		<input type="hidden" name="item_id" value="{$info.item_id}">
+
+		
+		<input type="hidden" name="act" value="{$act}">
+
+
         <div class="ncap-form-default">
             <dl class="row">
                 <dt class="tit">
@@ -132,13 +137,13 @@
 											<div style="width: 24px;"><i class="ico-check"></i></div>
 										</td>
 										<td align="left" class="">
-											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}">b </a></div>
 										</td>
 										<td align="left" class="">
-											<div style="text-align: left; width: 100px;"> </div>
+											<div style="text-align: left; width: 100px;">c </div>
 										</td>
 										<td align="left" class="">
-											<div style="text-align: center; width: 100px;"> </div>
+											<div style="text-align: center; width: 100px;">d </div>
 										</td>
 
 										<td align="left" class="handle">
@@ -236,9 +241,6 @@
 			        		<table cellspacing="0" cellpadding="0">
 			        			<thead>
 			        			<tr>
-			        				<th class="sign" axis="col0">
-			        					<div style="width: 24px;"><i class="ico-check"></i></div>
-			        				</th>
 			        				<th align="left" abbr="article_title" axis="col3" class="">
 			        					<div style="text-align: left; width: 50px;" class="">层级</div>
 			        				</th>
@@ -263,8 +265,8 @@
 							<div class="tDiv2">
 								
 									<div class="fbutton">
-										<div title="添加活动" class="add">
-											<span><a onclick="selectGoods1()"><i class="fa fa-plus"></i></a>添加活动</span>
+										<div title="添加层级" class="add">
+											<span><a onclick="selectLevel()"><i class="fa fa-plus"></i></a>添加层级</span>
 										</div>
 									</div>
 								
@@ -274,40 +276,35 @@
 					</div>
 					<div class="bDiv" style="height: auto;">
 						<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
-							<table>
-								<tbody>
-								<foreach name="prom_list" item="vo" key="k" >
+							<table  id="selected_le">
+								<!-- <tbody>
 									<tr>
-										<td class="sign">
-											<div style="width: 24px;"><i class="ico-check"></i></div>
+										<td align="left" abbr="article_title" axis="col3" class="">
+											<div style="text-align: left; width: 50px;" class="">1</div>
 										</td>
-										<td align="left" class="">
-											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+										<td align="left" abbr="ac_id" axis="col4" class="">
+											<div style="text-align: center; width: 100px;" class="">2</div>
 										</td>
-										<td align="left" class="">
-											<div style="text-align: left; width: 100px;"> </div>
+										<td align="left" abbr="ac_id" axis="col4" class="">
+											<div style="text-align: center; width: 120px;" class="">3</div>
 										</td>
-										<td align="left" class="">
-											<div style="text-align: center; width: 100px;"> </div>
-										</td>
-					
-										<td align="left" class="handle">
-											<div style="text-align: left; width: 150px; max-width:170px;">
+										<td align="left" axis="col1" class="handle">
+											<div style="text-align: center; width: 240px;">
 												<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
 												<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
 											</div>
-										</td>
-										<td align="" class="" style="width: 100%;">
-											<div>&nbsp;</div>
-										</td>
+										</td>					
 									</tr>
-								</foreach>
-								</tbody>
+								</tbody> -->
+								
 							</table>
 						</div>
 						<div class="iDiv" style="display: none;"></div>
 					</div>
-					<p class="notic">最多可设置10个阶梯。</p>
+
+					
+
+					<p class="notic">最多可设置10个阶梯!</p>
                 </dd>
 			</dl>	
 
@@ -321,28 +318,6 @@
 							  <input type="radio" name="identity" value="1"/>是
                 </dd>
 			</dl>
-
-            <!-- <dl class="row">
-					<dt class="tit">
-						<label>团长是否免单</label>
-					</dt>
-					<dd class="opt">
-								  <input type="radio" name="is_free" value="0" onclick="radioClick(1,this.name)" checked='true'/>否
-								  <input type="radio" name="is_free" value="1" onclick="radioClick(1,this.name)"/>是	
-								  <p class="notic">可设置团长是否允许免单或固定价（设置0或空按拼团价来计算)</p>		
-					</dd>
-			</dl>				
-
-            <dl class="row" id="disc">
-					<dt class="tit">
-						<label>折扣价:</label>
-					</dt>
-					<dd class="opt">
-							<input type="text" name="identity" value=""/>
-							
-					</dd>
-			</dl>			 -->
-
 
 			<dl class="row">
 			    <dt class="tit">
@@ -498,8 +473,8 @@
     }
 
 
-    function selectGoods1(){
-        var url = "{:U('Team/search_goods1',array('tpl'=>'add_active','prom_type'=>6,'prom_id'=>$info[id]))}";
+    function selectLevel(){
+        var url = "{:U('Team/selectLevel',array('tpl'=>'add_level','prom_type'=>6,'prom_id'=>$info[id]))}";
         layer.open({
             type: 2,
             title: '选择商品',
@@ -548,25 +523,15 @@
 	
     function call_back1(goodsItem){
         $('#goods_id').val(goodsItem.goods_id);
+		// alert(goodsItem.level);
         var html = '';
-        if(goodsItem.spec != null){
-            //有规格
-            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
-                    '<img style="width: 162px;height: 162px" src="'+goodsItem.spec.spec_img+'"/></div> <div class="goods-name"> ' +
-                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+goodsItem.spec.key_name+'</a> </div>' +
-                    ' <div class="goods-price">商城价：￥'+goodsItem.spec.price+'库存:'+goodsItem.spec.store_count+'</div> </div>';
-            $('input[name=item_id]').val(goodsItem.spec.item_id)
-            $('input[name=goods_name]').val(goodsItem.goods_name + goodsItem.spec.key_name);
-        }else{
-            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
-                    '<img style="width: 162px;height: 162px" src="'+goodsItem.goods_image+'"/></div> <div class="goods-name"> ' +
-                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+'</a> </div>' +
-                    ' <div class="goods-price">商城价：￥'+goodsItem.goods_price+'库存:'+goodsItem.store_count+'</div> </div>';
-            $('input[name=goods_name]').val(goodsItem.goods_name);
-        }
-        $('#select_goods_button').attr('data-goods-id',goodsItem.goods_id);
-        $('#selected_group_goods').empty().html(html);
-        $('.selected-group-goods').show();
+            html = '<tbody><tr><td align="left" abbr="article_title" axis="col3" class=""><div style="text-align: left; width: 50px;" class="">'+goodsItem.level+'</div></td>'+
+				   '<td align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 100px;" class="">'+goodsItem.team_price+'</div></td>'+
+				   '<td align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 120px;" class="">'+goodsItem.team_p+'</div></td>'+
+				   '<td align="left" axis="col1" class="handle"><div style="text-align: center; width: 240px;">'+
+				   '<a class="btn blue" onclick="selectLevel()"><i class="fa fa-pencil-square-o"></i>编辑</a>'+
+				   '<a class="btn red" href="javascript:void(0)" data-url="" data-id="" onClick=""><i class="fa fa-trash-o"></i>删除</a></div></td></tr></tbody>';        
+        $('#selected_le').append(html);
         layer.closeAll('iframe');
     }
 

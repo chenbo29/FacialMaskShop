@@ -139,9 +139,9 @@ class Team extends Base
     }
 
 
-    public function search_goods1()
+    public function selectLevel()
     {
-        $tpl = input('tpl', 'search_goods');
+        $tpl = input('tpl', 'add_level');
         return $this->fetch($tpl);
     }
     public function search_goods2()

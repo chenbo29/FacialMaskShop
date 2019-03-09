@@ -94,6 +94,8 @@ em{
 	height: .48rem;
 	line-height: .4rem;
 	outline: none;
+	border: none;
+	background-color: transparent;
 }
 /*月份 => select*/
 .date-marker-month {
@@ -107,6 +109,9 @@ em{
 	min-width: 1.2rem;
 	height: .48rem;
 	line-height: .4rem;
+	outline: none;
+	border: none;
+	background-color: transparent;
 }
 /*ul*/
 .date-marker-body {

@@ -112,7 +112,7 @@
                                         <!--<span class="<if condition="$cart[selected] eq 1">check_t</if>">-->
                                         <span onClick="checkGoods(this)" <if condition="$cart[selected] eq 1" >class="che check_t"<else/>class="che"</if>>
                                         <i class="dapei_icon_s">
-                                        <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" <if condition="$cart[selected] eq 1">checked="checked"</if>> 
+                                        <input name="checkItem" type="checkbox" style="display:none;" value="{$cart.id}" <if condition="$cart[selected] eq 1">checked="checked"</if>>
                                         </i>
                                         </span>
                              <!--<i>-->
@@ -249,15 +249,11 @@
                         </div>
                     </div>
                     <div class="fr">
-                        <a>去结算</a>
-                        <!-- <a href="javascript:void(0);" onclick="cart_submit();">去结算</a> -->
+                        <a href="javascript:void(0);" onclick="cart_submit();">去结算</a>
                     </div>
-                    
-
                 </div>
             </div>
-
-            <!-- 结算上拉框 style="display:none;" -->
+             <!-- 结算上拉框 style="display:none;" -->
            <div class="fr_box" style="display:none;">
                 <div class="terde">
                     <div>
@@ -350,7 +346,7 @@
                <div class="put-info put-list">
                    <div class="put-time put-item">
                        请在0小时30分钟内完成支付&nbsp金额
-                       <span class="r-red">&nbsp￥1476.00</span>
+                       <span class="r-red"></span>
                        元
                    </div>
                </div>
@@ -431,6 +427,7 @@
               })
             
             </script>
+            <!--提交栏-e-->
             <script type="text/javascript">
                 $(document).ready(function(){
                     initDecrement();
@@ -440,7 +437,7 @@
          </notempty>
     </div>
 <!--看看热卖-start-->
-<!-- <div class="hotshop seehotsho">
+<div class="hotshop seehotsho">
     <div class="thirdlogin">
         <h4>看看热卖</h4>
     </div>
@@ -456,7 +453,7 @@
                             <span class="similar-product-text">{$good[goods_name]|getsubstr=0,20}</span>
                                 <span class="similar-product-price">
                                     ¥<span class="big-price">{$good[shop_price]}</span>
-                                    <span class="small-price">.00</span>
+                                    <!--<span class="small-price">.00</span>-->
                                 </span>
                         </div>
                     </a>
@@ -465,7 +462,7 @@
         </ul>
     </div>
     <div class="add">热卖商品实时更新，常回来看看哟~</div>
-</div> -->
+</div>
 <!--看看热卖-end-->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -550,6 +547,7 @@
         for(var i = 0; i < cart_list.length; i++){
             $('#cart_'+cart_list[i].id+'_goods_price').empty().html('￥'+Number(cart_list[i]['goods_price']).toFixed(2));
             $('#cart_'+cart_list[i].id+'_total_price').empty().html('￥'+cart_list[i].total_fee.toFixed(2));
+            $(".r-red").html('￥'+cart_list[i].total_fee.toFixed(2))
             $('#cart_'+cart_list[i].id+'_market_price').empty().html('￥'+cart_list[i].member_goods_price*cart_list[i].goods_num.toFixed(2)); //活动价格
             $('#cart_'+cart_list[i].id+'_save_price').empty().html(cart_list[i].cut_fee.toFixed(2));
             $('#changeQuantity_'+cart_list[i].id).val(cart_list[i].goods_num); //数量

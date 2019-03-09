@@ -14,13 +14,15 @@
 			<div class="user-head-zp">
 				<div class="user-top-zp">
 					<div class="user-info-zp">
-						<div class="user-avatar-zp">
-							<img src="{$user['head_pic']}"/>
-						</div>
+						<a href="/mobile/User/personal">
+							<div class="user-avatar-zp">
+								<img src="{$user['head_pic']}"/>
+							</div>
+						</a>
 						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
-					<div class="sign-wrap-zp">
+					<div class="sign-wrap-zp" style="display: none;">
 						<span class="sign-in-zp"><i></i> 签到</span>
 						<span class="receive-zp">10天签到领取礼品</span>
 					</div>
@@ -224,20 +226,7 @@
 					</div>
 				</div>
 				
-			</div>
-			
-			<!--遮罩层-->
-			<div class="model">
-				<!--签到成功弹出-->
-				<div class="dialog-sign-zp">
-					<p class="score">总分1342</p>
-					<p class="time">已经连续签到257天</p>
-					<p class="white">今日签到成功</p>
-					<p class="add-score">+10积分</p>
-				</div>
-				
-			</div>
-			
+			</div>	
 			<!--底部导航-start-->
     		<include file="public/footer_nav"/>
     		
@@ -245,17 +234,6 @@
 	</div>
 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-		$(function(){
-			$(".sign-in-zp").click(function(){
-				$(".model").show();
-				$(".dialog-sign-zp").show(100)
-			})
-			$(".model").click(function(){
-				$(".model").hide()
-				$(".dialog-sign-zp").hide(100)
-			})
-		})
-	</script>
+   
 </body>
 </html>

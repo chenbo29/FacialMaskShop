@@ -17,172 +17,161 @@ namespace app\admin\controller;
 
 use think\Page;
 use think\Db;
-use app\admin\logic\MaterialLogic;
+// use app\admin\logic\MaterialLogic;
 
 class Material extends Base {
 	public function materialList(){//素材列表
-	$Article =  M('material'); 
-	$res = $list = array();
-	$p = empty($_REQUEST['p']) ? 1 : $_REQUEST['p'];
-	$size = empty($_REQUEST['size']) ? 20 : $_REQUEST['size'];
-	
-	$where = " 1 = 1 ";
-	$keywords = trim(I('keywords'));
-	$keywords && $where.=" and title like '%$keywords%' ";
-	$cat_id = I('cat_id',0);
-	$cat_id && $where.=" and cat_id = $cat_id ";
-	$res = $Article->where($where)->order('material_id desc')->page("$p,$size")->select();
-	$count = $Article->where($where)->count();// 查询满足要求的总记录数
-	$pager = new Page($count,$size);// 实例化分页类 传入总记录数和每页显示的记录数
-	//$page = $pager->show();//分页显示输出
-	
-	$ArticleCat = new MaterialLogic();
-	$cats = $ArticleCat->article_cat_list(0,0,false);
-	if($res){
-		foreach ($res as $val){
-			$val['category'] = $cats[$val['cat_id']]['cat_name'];
-			$val['add_time'] = date('Y-m-d H:i:s',$val['add_time']);        		
-			$list[] = $val;
+	if($_POST){
+		$act = input('cat_id/s');
+		$title = input('title/s');
+		if($act==1){
+			$where = "and title like '%$title%'";
+		}else{
+			$where = "and cat_name like '%$title%'";
 		}
 	}
-	
-	$material_tag=config('NEWS_TAG');
-	foreach ($list as $k => $v) {
-	    if($v['tags']){
-	        $str='';
-	        $tmp=explode(',', $v[tags]);
-	        foreach ($tmp as $k2 => $v2) {
-	            $str.='['.$material_tag[$v2].']'.' ';
-	        }
-	        $list[$k]['tags']=$str;
-	    }
-	}
-	
-	$admin_info=getAdminInfo(session('admin_id'));
-	$this->assign('cats',$cats);
-	$this->assign('cat_id',$cat_id);
-	$this->assign('list',$list);// 赋值数据集
-	$this->assign('pager',$pager);// 赋值分页输出
+	$count = Db::name('material')->count();
+	$page = new Page($count,10); 
+	// print_r($page->firstRow.','.$page->listRows);exit;
+	$list = Db::query("select * from tp_material,tp_material_cat where tp_material.cat_id=tp_material_cat.cat_id $where order by tp_material.material_id desc limit $page->firstRow,$page->listRows");
+	$this->assign('page',$page);
+	$this->assign('list',$list);
 	return $this->fetch();
 	}
+	
 	public function materialClass(){//素材分类列表
-	$ArticleCat = new MaterialLogic(); 
-	$cat_list = $ArticleCat->article_cat_list(0, 0, false);
-	$this->assign('cat_list',$cat_list);
-		return $this->fetch();
+	$count = Db::name('material_cat')->count();
+	$page = new Page($count,10); 
+	$list = Db::query("select * from tp_material_cat limit $page->firstRow,$page->listRows");
+	// print_r($list);exit;
+	$this->assign('page',$page);
+	$this->assign('list',$list);
+	return $this->fetch();
 	}
 	
-	public function mOperate(){//素材操作列表
-		 $ArticleCat = new MaterialLogic();
-		$act = I('GET.act','add');
-		$info = array();
-		$info['add_time'] = time()+3600*24;
-		if(I('GET.material_id')){
-		   $material_id = I('GET.material_id');
-		   $info = M('material')->where('material_id='.$material_id)->find();
+	public function mOperate($material_id=""){//素材操作列表
+		$class = M('material_cat')->select();
+		$this->assign('class',$class);
+		if($material_id>0){
+			$material = M('material')->where('material_id',$material_id)->select();
+			$this->assign('material',$material[0]);
 		}
-		if($info['tags']){
-		    $info['tags_arr']=explode(',', $info['tags']);
+		
+		if(IS_POST){
+			$material_id = I('material_id');
+			
+			$title = I('title');
+			$cat_id = I('cat_id');
+			$add_time = time();
+			$is_open = I('is_open');
+			$describe = I('describe');
+			$content = I('content');
+			$thumb = I('thumb');
+			$video = I('video');
+			$video_type = I('video_type');
+			$data = array(
+				'title' => $title,
+				'cat_id' => $cat_id,
+				'is_open' => $is_open,
+				'describe' => $describe,
+				'content' => $content,
+				'thumb' => $thumb,
+				'video' => $video,
+				'video_type' => $video_type
+			);
+			if($title==""){
+				$this->ajaxReturn(['status' => 0, 'msg' => '请填写标题！']);
+			}elseif($cat_id==0){
+				$this->ajaxReturn(['status' => 0, 'msg' => '请选择分类，没有请先添加！']);
+			}
+			elseif($video!="" && $video_type==0){
+				$this->ajaxReturn(['status' => 0, 'msg' => '添加视频,请选择视频类别！']);
+			}else{
+				if($material_id>0){
+					$res = M('material')->data($data)->where('material_id='.$material_id)->save();
+					$msg = '您没有修改信息！';
+				}else{
+					$data['add_time'] = $add_time;
+					$res = Db::name('material')->insert($data);
+					$msg = '操作失败，请联系官方!';
+				}
+				if($res){
+					$this->ajaxReturn(['status' => 1, 'msg' => '操作成功！']);
+				}else{
+					$this->ajaxReturn(['status' => 0, 'msg' => $msg]);
+				}
+			}
 		}
-		//dump($info);exit();
-		
-		
-		$tag=config('NEWS_TAG');
-		$admin_info=getAdminInfo(session('admin_id'));
-		
-		$cats = $ArticleCat->article_cat_list(0,$info['cat_id']);
-		$this->assign('cat_select',$cats);
-		$this->assign('act',$act);
-		$this->assign('info',$info);
-		$this->assign('tags',$tag);
-		$this->assign('role_id',$admin_info['role_id']);
 		return $this->fetch();
 	}
-	
-	public function mClassadd(){//素材分类操作表
-	$ArticleCat = new MaterialLogic();
-	$act = I('get.act', 'add');
-	$cat_id = I('get.cat_id/d');
-	
-	$parent_id = I('get.parent_id/d');
-	if ($cat_id) {
-	    $cat_info = M('material_cat')->where('cat_id=' . $cat_id)->find();
-	    $parent_id = $cat_info['parent_id'];
-	    $this->assign('cat_info', $cat_info);
+	public function mdel(){//素材删除
+		$material_id = I('post.material_id');
+		if($material_id>0){
+			$del = Db::name('material')->where('material_id',$material_id)->delete();
+			$this->ajaxReturn(['status' => 1]);
+		}else{
+			$this->ajaxReturn(['status' => 0, 'msg' => '操作失败，请联系官方!']);
+		}
 	}
-	$cats = $ArticleCat->article_cat_list(0, $parent_id, true);
-	$this->assign('act', $act);
-	$this->assign('cat_select', $cats);
-		return $this->fetch();
+	
+	public function mClassadd($cat_id=""){//素材分类操作表
+	if($cat_id>0){
+		$red = Db::name('material_cat')->where('cat_id',$cat_id)->select();
+		$this->assign('red',$red);
 	}
-	public function aticleHandle()
-	{
-	    $data = I('post.');
-	    $data['add_time'] = strtotime($data['add_time']);
-	    
-	    $result = $this->validate($data, 'News.'.$data['act'], [], true);
-	    if ($result !== true) {
-	        $this->ajaxReturn(['status' => 0, 'msg' => '参数错误', 'result' => $result]);
-	    }
-	    
 	
-	    if($data['tags']){
-	        $data['tags']=implode(',', $data['tags']);
-	    }else{
-	        $data['tags']='';
-	    }
-	    
-	    if ($data['act'] == 'add') {
-	        $data['click'] = mt_rand(1000,1300);
-	    	$data['add_time'] = time();
-	        $r = M('material')->add($data);
-	    } elseif ($data['act'] == 'edit') {
-	        $r = M('material')->where('material_id='.$data['material_id'])->save($data);
-	    } elseif ($data['act'] == 'del') {
-	    	$r = M('material')->where('material_id='.$data['material_id'])->delete(); 	
-	    }
-	    
-	    if (!$r) {
-	        $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
-	    }
-	
-	    $this->ajaxReturn(['status' => 1, 'msg' => '操作成功']);
+	if(IS_POST){
+		$cat_id = I('cat_id');
+		// $this->ajaxReturn(['status' => 0, 'msg' => $cat_id]);
+		$cat_name =I('cat_name');
+		$show_in_nav = I('show_in_nav');
+		$sort_order =I('sort_order');
+		$cat_desc = I('cat_desc');
+		if($sort_order==''){
+			$sort_order =50;
+		}
+		$data = array(
+			'cat_name' => $cat_name, 
+			'show_in_nav' => $show_in_nav,
+			'sort_order' => $sort_order,
+			'cat_desc' => $cat_desc
+		);
+		if($cat_name ==""){
+			$this->ajaxReturn(['status' => 0, 'msg' => '请填写分类名称！']);
+		}else{
+			if($cat_id>0){
+				$add = M('material_cat')->data($data)->where('cat_id='.$cat_id)->save();
+				$msg = '您没有修改信息！';
+			}else{
+				$add = Db::name('material_cat')->insert($data);
+				// print_r($data);exit;
+				$msg = '操作失败，请联系官方!';
+			}
+			if($add){
+				$this->ajaxReturn(['status' => 1, 'msg' => '操作成功!']);
+			}else{
+				$this->ajaxReturn(['status' => 0, 'msg' => $msg]);
+			}
+			
+		}
+		
 	}
-	public function categoryHandle()
-	    {
-	    	$data = I('post.');
-	        
-	        $result = $this->validate($data, 'NewsCategory.'.$data['act'], [], true);
-	        if ($result !== true) {
-	            $this->ajaxReturn(['status' => 0, 'msg' => '参数错误', 'result' => $result]);
-	        }
+	return $this->fetch();
+	}
 	
-	        if ($data['act'] == 'add') {
-	            $r = M('material_cat')->add($data);
-	        } elseif ($data['act'] == 'edit') {
-	        	$cat_info = M('material_cat')->where("cat_id",$data['cat_id'])->find();
-	        	if($cat_info['cat_type'] == 1 && $data['parent_id'] > 1){
-	        		$this->ajaxReturn(['status' => -1, 'msg' => '可更改系统预定义分类的上级分类']);
-	        	}
-	        	$r = M('material_cat')->where("cat_id",$data['cat_id'])->save($data);
-	        } elseif ($data['act'] == 'del') {
-	/*        	if($data['cat_id']<9){
-	        		$this->ajaxReturn(['status' => -1, 'msg' => '系统默认分类不得删除']);
-	        	}*/
-	        	if (M('material_cat')->where('parent_id', $data['cat_id'])->count()>0)
-	        	{
-	        		$this->ajaxReturn(['status' => -1, 'msg' => '还有子分类，不能删除']);
-	        	}
-	        	if (M('material')->where('cat_id', $data['cat_id'])->count()>0)
-	        	{
-	        		$this->ajaxReturn(['status' => -1, 'msg' => '该分类下有文章，不允许删除，请先删除该分类下的文章']);
-	        	}
-	        	$r = M('material_cat')->where('cat_id', $data['cat_id'])->delete();
-	        }
-	        
-	        if (!$r) { 
-	            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
-	        } 
-	        $this->ajaxReturn(['status' => 1, 'msg' => '操作成功']);
-	    }
+	public function delclass(){//分类删除
+		$act = I('post.cat_id');
+		if($act>0){
+			$res = Db::query("SELECT count(*) as num from tp_material as a,tp_material_cat as b where a.cat_id=b.cat_id and b.cat_id=$act");
+			if($res['num']>0){
+				$this->ajaxReturn(['status' => -1, 'msg' => '该分类下有文章，不允许删除，请先删除该分类下的文章']);
+			}else{
+				$del = Db::name('material_cat')->where('cat_id',$act)->delete();
+				$this->ajaxReturn(['status' => 1, 'msg' => '操作成功!']);
+			}
+		}else{
+			$this->ajaxReturn(['status' => 0, 'msg' => '操作失败，请联系官方!']);
+		}
+	}
+	
 }

@@ -29,6 +29,7 @@ class System extends Base
 	{
 		/*配置列表*/
 		$group_list = [
+            
             'shop_info' => '店铺信息',
             'basic'     => '基本设置',
             'sms'       => '短信设置',
@@ -37,9 +38,9 @@ class System extends Base
             'water'     => '水印设置',
             'push'      => '推送设置',
             'oss'       => '对象存储',
-            'express'	=> '物流设置',
-            'poster'	=> '海报设置'
-        ];		
+            'express'	=> '物流设置'
+           
+        ];
 		$this->assign('group_list',$group_list);
 		$inc_type =  I('get.inc_type','shop_info');
 		$this->assign('inc_type',$inc_type);
@@ -240,7 +241,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
         /**
          * 清空系统缓存
          */
-        public function cleanCache(){          
+        public function cleanCache(){
 			delFile(RUNTIME_PATH);
             clearCache();
 			$quick = I('quick',0);
@@ -548,6 +549,5 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
         echo "数据已清空,请立即删除这个方法";
         */ 
          
-    }        
-        
+    }
 }

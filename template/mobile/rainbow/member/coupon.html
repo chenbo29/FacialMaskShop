@@ -45,6 +45,7 @@
                 <!-- 优惠卷列表 -->
                <div class="copon-listBox ">  
                 <!-- 未使用 -->
+                <div class="unused ">
                 <div class="copon-list">
                     <div class="list-headerColor"></div>
                     <div class="list-info">
@@ -70,8 +71,35 @@
                            </div>
                     </div>
                 </div>
+                <div class="copon-list">
+                        <div class="list-headerColor"></div>
+                        <div class="list-info">
+                            <div class="info-price">
+                                <div class="price">
+                                  ¥<span>8</span>
+                                </div>
+                                <div class="satisfy">满120元可用</div>
+                            </div>
+                            <div class="info-class">
+                                <div class="info-discount">
+                                    <div class="discount"> • 智丰卷</div>
+                                    <div class="discount-name ">全品类</div>
+                                </div>
+                                <div class="info-time">
+                                    使用时间: <span>2019-10-20-2019-12-20</span>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-use">
+                            <div class="immediately-use">
+                                <button class="btn">立即使用</button>
+                               </div>
+                        </div>
+                    </div>
+            </div>
                 <!-- 使用记录 -->
-                <div class="copon-list hide">
+                <div class="record hide">
+                <div class="copon-list ">
                         <div class="list-headerColor employ"></div>
                         <div class="list-info">
                             <div class="info-price">
@@ -96,8 +124,10 @@
                                </div>
                         </div>
                     </div>
+                </div>
                 <!-- 已过期 -->
-                <div class="copon-list hide">
+                <div class="past hide">
+                <div class="copon-list ">
                         <div class="list-headerColor past"></div>
                         <div class="list-info">
                             <div class="info-price">
@@ -122,9 +152,10 @@
                                </div>
                         </div>
                     </div>
+                </div>
             </div>
 			 <!-- 优惠码卷二维码 -->
-			<div class="cover hide">
+			<div class="cover "style="display: none;">
 			 <div class="copon-codeBox"></div>
 			    <div class="codeBox"> 
 			        <div class="codeBox-num">卷码:13722222222</div>
@@ -149,17 +180,17 @@
            
            $(".btn").click(function(){
                if($(".cover").is(":hidden")){
-                $(".cover").removeClass("hide")
+                $(".cover").show()
                }else{
-                $(".cover").addClass("hide")
+                $(".cover").hide()
                }
            })
 
            $(".copon-codeBox").click(function(){
             if($(".cover").is(":visible")){
-                $(".cover").addClass("hide")
+                $(".cover").hide()
                }else{
-                $(".cover").removeClass("hide")
+                $(".cover").show()
                }
            })
          })

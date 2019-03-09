@@ -1,6 +1,6 @@
 @font-face{
 	font-family: 'PingFangBold';
-	src:url("../../font/PingFangBold.ttf")
+	src:url("/template/mobile/rainbow/static/font/PingFangMedium.ttf")
 }
 .wrapper{
 	width: 100%;

@@ -19,8 +19,8 @@
 	<div class="zjy_login_bgs"></div>
 	<!--登录成功-->
 	<div class="zjy_login_zhuce">
-		<p><img src="__STATIC__/images/zjy_login_shanchu.png"/></p>
-		<p><img src="__STATIC__/images/zjy_login_gx.png"/></p>
+		<p><img class="zjy_login_shanchu" src="__STATIC__/images/zjy_login_shanchu.png"/></p>
+		<p><img  src="__STATIC__/images/zjy_login_gx.png"/></p>
 		<p class="zjy_gxdl">恭喜您，注册成功</p>
 		<p class="zjy_djdl"><span>点击登录</span></p>
 	</div>
@@ -232,32 +232,32 @@
             if ($("#username").val() =="") {
                 alert("请输入账号")
             }else{
-                time(60)
+                var num =60;
+                time = setInterval(() => {
+                   num--;
+                   $(".btn-text-message").html("重新发送"+(num))
+                   if(num == 0){
+                       num++;
+                     $(".btn-text-message").html("发送验证码")                       
+                   }
+               }, 1000);
+            
             }
         })
+        $(".lsu-submit").on("click",function(){
+            $(".zjy_login_zhuce").show()
+            $(".zjy_login_bgs").show()
+        })
+        $(".zjy_login_bgs").on("click",function(){
+            $(this).hide()
+            $(".zjy_login_zhuce").hide()
+
+        })
+        $(".zjy_login_shanchu").on("click",function(){
+            $(".zjy_login_zhuce").hide()
+            $(".zjy_login_bgs").hide()
+        })
     })
-    var intDiff = parseInt(60);//倒计时总秒数量
-    function time(parseInt){
-            var pase =setInterval(function(){
-                var day=0,
-                    hour=0,
-                    minute=0,
-                    second=0;//时间默认值        
-                if(intDiff > 0){
-                day = Math.floor(intDiff / (60 * 60 * 24));
-                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-                minute =minute<=9?"0"+minute:minute;
-                second =second<=9?"0"+second:second;
-            }
-                $(".btn-text-message").html(minute+":"+second)
-                intDiff--;
-                if(minute ==0 && second==0){
-                    $(".btn-text-message").html("验证码已发送")   
-                }
-            },1000)
-        }
 </script>
 </body>
 </html>

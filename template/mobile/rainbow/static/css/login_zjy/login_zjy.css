@@ -127,6 +127,7 @@ a{
 	line-height: 1.5rem;
 	background-color:#ff4081 ;
 	border-radius: 5px;
+	color: #fff;
 }
 .zjy_login_bgs{
 	width: 100%;
@@ -196,4 +197,9 @@ a{
 	vertical-align:top;
 	text-decoration:underline;
 	color:#e30000
+}
+.zjy_login_shanchu{
+	position:relative;
+	top:-2rem;
+	right:-4rem;
 }

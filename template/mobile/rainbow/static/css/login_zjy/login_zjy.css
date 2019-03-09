@@ -1,4 +1,3 @@
-input{padding-left: 0.2rem;}
 .zjy_login{
 	width: 100%;
 	height: 28.5rem;
@@ -22,7 +21,6 @@ input{padding-left: 0.2rem;}
 .loginsingup-input .lsu input{
 	position: absolute;
 	top: .1rem;
-	left: 1.4rem;
 	width:8.96rem;
 	height:1.5rem;
 	padding:0 .426667rem;
@@ -82,24 +80,20 @@ a{
 .loginsingup-input .login_yanz{
 	width: 40%;
 	height: 1.7rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	border-radius: 9px;
-	/*display: inline-block;*/
+	display: inline-block;
 	border: 1px solid #666;
 	position: absolute;
 	bottom: 0;
 	left: 7.3rem;
-	background: #f3fbfe;
 }
 .login_yanz p{
 	font-size: .5rem;
 	margin-top: .2rem;
 }
 #verify_code_img{
-	/*position: relative;
-	top: 0;*/
+	position: relative;
+	top: 0;
 }
 
 .zjy_login_zhuce{
@@ -186,7 +180,6 @@ a{
 .lsu_psaw input{
 	border: none;
 	outline: none;
-	
 }
 .recept .zjy_cheock{
 	display: inline-block;
@@ -210,3 +203,268 @@ a{
 	top:-2rem;
 	right:-4rem;
 }
+
+
+
+/* 结算上拉框 */
+.fr_box{
+	width: 100%;
+	height: 13.8rem;
+	position: absolute;
+	bottom: 0;
+	background: #fff;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.427rem 0.427rem 0rem 0rem;
+}
+.fr_box .terde div {
+	flex: 1;
+	font-size: .6rem;
+	position: relative;
+	margin: .2rem 0;
+	line-height: 1.8rem;
+	font-weight: 550;
+	border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+.fr_box .terde div p{
+	display: inline-block;
+}
+.fr_box .terde div p:nth-child(1){
+	margin-left: 5%;
+}
+.fr_box .terde div p:nth-child(2){
+	position: absolute;	
+	right: 2rem;
+}
+.fr_box .terde div span{
+	position: absolute;
+	right: .8rem;
+	display: inline-block;
+	width: 2%;
+	font-size: 0;
+	transform: rotate(90deg);
+}
+.fr_box .terde div span img {
+	width: 100%;
+}
+.fr_box .terde div .money {
+	font-size: .85rem;
+	color: #ee4141;
+	font-weight: 600;
+}
+.fr_box .terde .no {
+	height: 1.3rem;
+	line-height: .95rem
+}
+.fr_box .terde .no i {
+	margin: 0 1% 0 3%; 
+	display: inline-block;
+	width: .725rem;
+	height: .725rem;
+	border: 1px solid #000;
+	border-radius: 50%; 
+	vertical-align: middle;
+}
+
+.fr_box .fr_post{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2.2rem;
+	/* background-color: #FF5722; */
+	background: #d9d9d9;
+	text-align: center;
+	line-height: 2.2rem;
+	font-size: .85rem;
+	font-weight: 600;
+	color: #fff;
+}
+
+.shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5)
+}
+
+/* 用户上拉地址栏 */
+.dz_box{
+	height: 15.6rem;
+	background-color:#ffffff;
+	width: 16rem;
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+	border-radius: 0.472rem 0.472rem 0 0;
+}
+
+.user-location,.put_mode{
+	width:100%;
+	height:1.88rem;
+	border-bottom: .01rem solid #f4f4f4;
+	display: flex;
+    flex-wrap:nowrap;
+	text-align: center;
+}
+
+.user-location .location-gobak,.put_mode .put-close{
+	width:1.8rem;
+	height: 1.8rem;
+}
+
+.user-location .location-gobak>img,.put_mode .put-close>img{
+	width: 0.36rem;
+	height:.52rem;
+    margin:.64rem .6rem .72rem .6rem;
+}
+
+.location-title,.put-box .put-title{
+	width: 100%;
+	font-size:.85rem;
+	padding-right:1.8rem;
+	line-height: 1.88rem;
+}
+
+.dz_box .location-list{
+	width:100%;
+	height:2.44rem;
+}
+
+.location-list .input-info{
+   padding:.64rem .44rem 0rem .44rem;
+}
+
+.location-list .input-info>input{
+	height:1.8rem;
+	width:100%;
+	border-radius: 0.3rem;
+	background-color:#f2f2f2;
+	font-size:.5rem;
+	padding-left:.56rem;
+	border:0;
+}
+
+.loaction-tacitly{
+	height:2.12rem;
+	width:100%;
+	display: flex;
+    flex-wrap:nowrap;
+	text-align: center;
+}
+
+.loaction-tacitly .tacitly-opt,.loaction-tacitly .tacitly-explain{
+	-webkit-align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+	justify-content: center;
+}
+
+.loaction-tacitly .tacitly-opt{
+	width:1.84rem;
+}
+
+.loaction-tacitly .tacitly-opt .select{
+  width:.76rem;
+  height:.76rem;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.loaction-tacitly .tacitly-opt .active{
+	background: url("../../images/chec1.png") no-repeat 50%;
+	width:.76rem;
+	height:.76rem;
+	background-size: 101%;
+	background-position: -2px 4px;
+  }
+
+.loaction-tacitly .tacitly-explain{
+	font-size:.6rem;
+}
+
+.loactionAdd-btn{
+	width:100%;
+	height:2rem;
+}
+
+.loactionAdd-btn .btn-add{
+	width:100%;
+	height:2rem;
+	border:0;
+	background-color:#ff5a27;
+	font-size:.7rem;
+	color:#ffffff;
+	line-height: 2rem;
+}
+/* 用户上拉地址栏结束*/
+
+/* 用户支付方式 */
+.put-box{
+	height: 14.76rem;
+	background-color:#ffffff;
+    width: 16rem;
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    border-radius: 0.472rem 0.472rem 0 0;
+}
+
+.put-box .put-title{
+ padding-left:1.8rem;
+ padding-right:0;
+}
+
+.put_mode .put-close>img {
+    width: 0.60rem;
+	height: .60rem;
+}
+
+.put-list{
+	height: 1.84rem;
+	width:100%;
+	line-height: 1.84rem;
+}
+
+.put-list .put-item{
+  padding-left:.6rem;
+  color:#0f0f0f;
+  font-size: .6rem;
+  position: relative;
+}
+
+.put-list .put-time{
+	color:#666666;
+	font-size:.6rem;
+}
+
+.put-list .put-item .r-red{
+	color:#ef5353;
+}
+
+.put-select{
+	height: 0.68rem;
+	width:0.68rem;
+	position: absolute;
+	right:0;
+	right:1.52rem;
+}
+
+.put-select>img{
+	height: 0.68rem;
+	width:0.68rem;
+}
+
+.put-box .selects.active{
+	background-color:#f4f4f4;
+}
+/* 支付方式 */

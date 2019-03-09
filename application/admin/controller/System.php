@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -30,6 +30,7 @@ class System extends Base
 		/*配置列表*/
 		$group_list = [
             'shop_info' => '店铺信息',
+            'sign'	=> '签到设置',
             'basic'     => '基本设置',
             'sms'       => '短信设置',
             'shopping'  => '购物流程设置',
@@ -38,7 +39,7 @@ class System extends Base
             'push'      => '推送设置',
             'oss'       => '对象存储',
             'express'	=> '物流设置',
-            'poster'	=> '海报设置'
+            // 'poster'	=> '海报设置'
         ];		
 		$this->assign('group_list',$group_list);
 		$inc_type =  I('get.inc_type','shop_info');
@@ -79,7 +80,7 @@ class System extends Base
     public function user_center_menu()
     {
 		header("Content-type: text/html; charset=utf-8");
-exit("请联系TPshop官网客服购买高级版支持此功能");
+exit("请联系智丰网络客服购买高级版支持此功能");
     }
 
     public function user_center_menu_save(){
@@ -172,7 +173,7 @@ exit("请联系TPshop官网客服购买高级版支持此功能");
             }
         }
         $system_nav = array(
-            'http://www.tpshop.cn' => 'tpshop官网',
+            'http://www.zhifengwangluo.com' => '智丰网络',
             'http://www.99soubao.com' => '搜豹公司',
             '/index.php?m=Home&c=Activity&a=promoteList' => '促销活动',
             '/index.php?m=Home&c=Activity&a=flash_sale_list' => '限时抢购',

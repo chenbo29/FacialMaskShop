@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>p_details</title>
+		<link rel="stylesheet" href="__STATIC__/css/lj_personal.css" />
+		<script type="text/javascript" src="__STATIC__/js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="__STATIC__/js/public/rem.js" ></script>
+	</head>
+	<body>
+		<div class="lj_top">
+			<div class="lj_wrap">
+				<a href="{:U('Mobile/User/index')}">
+					<div class="lj_top_left">
+						<img src="__STATIC__/image/lj_top_left.png" />
+					</div>
+				</a>
+				<div class="lj_top_right">
+					<p>个人资料</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="lj_wrap">
+				<div class="lj_main_d">
+					<ul>
+						<li>
+							<p>头像</p>
+							<div class="lj_list_r">
+								<img class="lj_list_r_img" src="{$user['head_pic']}" />
+								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
+							</div>
+						</li>
+						<li>
+							<p>用户名</p>
+							<div class="lj_list_r">
+								<p>{$user['nickname']}</p>
+							</div>
+						</li>
+						<li>
+							<p>名称</p>
+							<div class="lj_list_r">
+								<p>{$user['nickname']}</p>
+								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
+							</div>
+						</li>
+						<li>
+							<p>性别</p>
+							<div class="lj_list_r">
+								<p>保密</p>
+								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
+							</div>
+						</li>
+						<li>
+							<p>出生日期</p>
+							<div class="lj_list_r">
+								<p>{$user['birthday']}</p>
+								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+	</body>
+</html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -87,7 +87,7 @@ class News extends Base {
         $this->assign('cats',$cats);
         $this->assign('cat_id',$cat_id);
         $this->assign('list',$list);// 赋值数据集
-        $this->assign('pager',$pager);// 赋值分页输出        
+        $this->assign('pager',$pager);// 赋值分页输出
 		return $this->fetch('newsList');
     }
     

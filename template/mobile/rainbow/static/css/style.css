@@ -1,4 +1,4 @@
-﻿
+
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize *//*! normalize.css v3.0.0 | HTML5 Display Definitions | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
 	display:block
@@ -20,14 +20,14 @@ audio:not([controls]) {
 	-ms-text-size-adjust:100%
 }
 body {
-	margin:0;
+	margin:0
 }
 /*! normalize.css v3.0.0 | Links | MIT License | git.io/normalize */a {
 	background:transparent
 }
-/* a:active,a:hover {
+a:active,a:hover {
 	outline:0
-} */
+}
 /*! normalize.css v3.0.0 | Typography | MIT License | git.io/normalize */abbr[title] {
 	border-bottom:1px dotted
 }
@@ -167,8 +167,7 @@ body {
 	font-size:.34133rem;
 	line-height:1;
 	color:#232326;
-	overflow-x:hidden;
-	overflow-y: hidden;
+	overflow-x:hidden
 }
 ul,li {
 	list-style:none
@@ -209,93 +208,6 @@ span,img {
 .fr {
 	float:right
 }
-
-/* 结算上拉框 */
-.fr_box{
-	width: 100%;
-	height: 13.8rem;
-	position: absolute;
-	bottom: 0;
-	background: #fff;
-	z-index: 100;
-	display: flex;
-	flex-direction: column;
-	border-radius: 0.427rem 0.427rem 0rem 0rem;
-}
-.fr_box .terde div {
-	flex: 1;
-	font-size: .6rem;
-	position: relative;
-	margin: .2rem 0;
-	line-height: 1.8rem;
-	font-weight: 550;
-	border-bottom: 1px solid rgba(0,0,0,0.5);
-}
-.fr_box .terde div p{
-	display: inline-block;
-}
-.fr_box .terde div p:nth-child(1){
-	margin-left: 5%;
-}
-.fr_box .terde div p:nth-child(2){
-	position: absolute;	
-	right: 2rem;
-}
-.fr_box .terde div span{
-	position: absolute;
-	right: .8rem;
-	display: inline-block;
-	width: 2%;
-	font-size: 0;
-	transform: rotate(90deg);
-}
-.fr_box .terde div span img {
-	width: 100%;
-}
-.fr_box .terde div .money {
-	font-size: .85rem;
-	color: #ee4141;
-	font-weight: 600;
-}
-.fr_box .terde .no {
-	height: 1.3rem;
-	line-height: .95rem
-}
-.fr_box .terde .no i {
-	margin: 0 1% 0 3%; 
-	display: inline-block;
-	width: .725rem;
-	height: .725rem;
-	border: 1px solid #000;
-	border-radius: 50%; 
-	vertical-align: middle;
-}
-
-.fr_box .fr_post{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 2.2rem;
-	/* background-color: #FF5722; */
-	background: #d9d9d9;
-	text-align: center;
-	line-height: 2.2rem;
-	font-size: .85rem;
-	font-weight: 600;
-	color: #fff;
-}
-
-.shadow {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.5)
-}
-
 .g5 {
 	background:#f3f5f7
 }
@@ -1084,9 +996,7 @@ footer .flool3 p {
 	right:.42667rem
 }
 .classreturn .content .menu a {
-	/* display:block */
-	font-size: 0.68rem;
-	font-weight: bold;
+	display:block
 }
 .classreturn .content .menu img {
 	width:.85333rem
@@ -1302,37 +1212,13 @@ footer .flool3 p {
 	color:#333;
 	font-size:.64rem;
 }
-.loginsingup-input .lsu {
-	border-bottom:1px solid #dbdbdb;
-	height:2.133333rem;
-	padding:.853333rem .64rem .426667rem;
-}
-.loginsingup-input input {
-	border:0;
-	outline:none;
-}
-.loginsingup-input .lsu  input {
-	float:left;
-	width:8.96rem;
-	height:.853333rem;
-	padding:0 .426667rem;
-	line-height:.853333rem;
-	font-size:.554667rem;
-	color:#333;
-}
+
 .z-submits {
 	width:10.96rem !important;
 	background:#EC6909 !important;
 	color:#fff !important;
 }
-.loginsingup-input .lsu .ico {
-	float:left;
-	width:.853333rem;
-	height:.853333rem;
-	background-image:url(../images/ico-login-m.png);
-	background-repeat:no-repeat;
-	background-size:.853333rem 5.973331rem;
-}
+
 .loginsingup-input .ico-username {
 	background-position:0 0;
 }
@@ -1471,16 +1357,6 @@ input:-ms-input-placeholder {
 	float:right;
 	width:4.266667rem;
 	height:.853333rem;
-}
-.loginsingup-input .btn-text-message {
-	float:right;
-	height:.853333rem;
-	line-height:.853333rem;
-	font-size:.512rem;
-	padding:0 .213333rem;
-	color:#e02015;
-	border:1px solid #e02015;
-	border-radius:.426667rem;
 }
 .loginsingup-input .lsu-submit {
 	padding:.853333rem 0;
@@ -1692,17 +1568,7 @@ input:-ms-input-placeholder {
 .singupphone .content30 .signup-find {
 	padding-top:.42667rem
 }
-.recept {
-	font-size:.512rem;
-	color:#666666;
-	vertical-align:middle;
-	text-align:left
-}
-.recept a {
-	vertical-align:top;
-	text-decoration:underline;
-	color:#e30000
-}
+
 .findpassword .content30 .bk span {
 	border-right:0
 }

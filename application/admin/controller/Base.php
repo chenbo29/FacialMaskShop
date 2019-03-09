@@ -1,7 +1,7 @@
 <?php
 
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -116,8 +116,11 @@ class Base extends Controller {
     	}
     }
     
-    public function ajaxReturn($data,$type = 'json'){                        
-         exit(json_encode($data));
+    public function ajaxReturn($data,$type = 'json'){
+        if($type == 'json'){
+            header('Content-Type:application/json; charset=utf-8');
+        }                
+         exit(json_encode($data,JSON_UNESCAPED_UNICODE));
     }
 
     /**

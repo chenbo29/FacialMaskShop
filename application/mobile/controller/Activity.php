@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -15,6 +15,7 @@ namespace app\mobile\controller;
 use app\common\logic\GoodsLogic;
 use app\common\model\FlashSale;
 use app\common\model\GroupBuy;
+use app\common\model\Auction;
 use app\common\model\PreSell;
 use think\Db;
 use think\Page;
@@ -129,7 +130,12 @@ class Activity extends MobileBase {
     public function flash_sale_list()
     {
         $time_space = flash_sale_time_space();
+        // $prom_list = DB::name("flash_sale")
+        // ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+        // ->limit($Page->firstRow.','.$Page->listRows)->select();
+        // dump($time_space);
         $this->assign('time_space', $time_space);
+        // $this->assign('prom_list',$prom_list);
         return $this->fetch();
     }
 
@@ -156,6 +162,40 @@ class Activity extends MobileBase {
         $this->assign('flash_sale_goods',$flash_sale_goods);
         return $this->fetch();
     }
+
+
+    /**
+     * 竞拍
+     */
+    public function auction_list()
+    {
+        $commodity = M('Auction')->order('preview_time desc')->select();
+        $this->assign('commodity', $commodity);
+        return $this->fetch();
+    }
+
+    /**
+     * 竞拍活动列表ajax
+     */
+    public function ajax_auction()
+    {
+        $p = I('p',1);
+        $where = array(
+            'g.is_on_sale'=>1,
+            'fl.is_end'=>0
+        );
+        $Auction = new Auction();
+        $auction_goods = $Auction->alias('fl')->join('__GOODS__ g', 'g.goods_id = fl.goods_id')->with(['specGoodsPrice','goods'])
+            ->field('fl.*,100*(FORMAT(buy_num/1,2)) as percent')
+            ->where($where)
+            ->page($p,10)
+            ->select();
+
+        $this->assign('auction_goods',$auction_goods);
+        return $this->fetch();
+    }
+
+
 
     public function coupon_list()
     {

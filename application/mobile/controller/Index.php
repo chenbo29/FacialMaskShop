@@ -1,16 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 采用最新Thinkphp5助手函数特性实现单字母函数M D U等简写方式
- * ============================================================================
- * $Author: 当燃 2016-01-09
- */
+
 namespace app\mobile\controller;
 
 use Think\Db;
@@ -59,37 +48,16 @@ class Index extends MobileBase {
             ->join('flash_sale f','g.goods_id = f.goods_id','LEFT')
             ->join('__SPEC_GOODS_PRICE__ s','s.prom_id = f.id AND g.goods_id = s.goods_id','LEFT')
             ->where("start_time >= $start_time and end_time <= $end_time and f.is_end=0")
-            ->limit(3)->select();
+            ->limit(10)->select();
         $this->assign('flash_sale_list',$flash_sale_list);
         $this->assign('start_time',$start_time);
         $this->assign('end_time',$end_time);
         $this->assign('favourite_goods',$favourite_goods);
+       
         return $this->fetch();
     }
 
-    public function index2(){
-        $id=I('get.id');  
-        $role=I('get.role'); 
-
-        if($role){
-            $arr=M('industry_template')->where('id='.$id)->field('template_html,block_info')->find();
-        }else{
-            if($id){
-                $arr=M('mobile_template')->where('id='.$id)->field('template_name ,template_html,block_info,is_index')->find();
-            }else{
-                $arr=M('mobile_template')->order('id DESC')->limit(1)->field('template_name ,template_html,block_info,is_index')->find();
-            } 
-        }
-
-        $html=htmlspecialchars_decode($arr['template_html']);
-        $logo=tpCache('shop_info.wap_home_logo');
-        $this->assign('wap_logo',$logo);
-        $this->assign('html',$html);
-        $this->assign('is_index',$arr['is_index']); //是否为首页, 如果不是首页, 则显示"返回"按钮
-        $this->assign('info',$arr['block_info']);
-        $this->assign('template_name',$arr['template_name']);
-        return $this->fetch();
-    }
+ 
 
     //商品列表板块参数设置
     public function goods_list_block(){
@@ -170,25 +138,6 @@ class Index extends MobileBase {
 
 
     /**
-     * 分类列表显示
-     */
-    public function categoryList(){
-        return $this->fetch();
-    }
-
-    /**
-     * 模板列表
-     */
-    public function mobanlist(){
-        $arr = glob("D:/wamp/www/svn_tpshop/mobile--html/*.html");
-        foreach($arr as $key => $val)
-        {
-            $html = end(explode('/', $val));
-            echo "<a href='http://www.php.com/svn_tpshop/mobile--html/{$html}' target='_blank'>{$html}</a> <br/>";            
-        }        
-    }
-
-    /**
      * 门店列表
      * province,如果有省名，传省名字
      * lng,lat,search_radius，经伟度，查找半径范围内的门店
@@ -261,12 +210,9 @@ class Index extends MobileBase {
     public function ajaxGetMore(){
     	$p = I('p/d',1);
         $where = [
-            'is_recommend' => 1,
-            'exchange_integral'=>0,  //积分商品不显示
-            'is_on_sale' => 1,
-            'virtual_indate' => ['exp', ' = 0 OR virtual_indate > ' . time()]
+            'is_on_sale' => 1
         ];
-    	$favourite_goods = Db::name('goods')->where($where)->order('sort DESC')->page($p,C('PAGESIZE'))->cache(true,TPSHOP_CACHE_TIME)->select();//首页推荐商品
+    	$favourite_goods = Db::name('goods')->where($where)->order('sort DESC')->page($p,C('PAGESIZE'))->select();//首页推荐商品
     	$this->assign('favourite_goods',$favourite_goods);
     	return $this->fetch();
     }

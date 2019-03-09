@@ -1,6 +1,6 @@
 <?php
 /**
- * tpshop
+ * 智丰网络
  * ============================================================================
  * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
  * 网站地址: http://www.tp-shop.cn
@@ -50,6 +50,16 @@ class Order extends MobileBase
             'WAITCCOMMENT' => '待评价', //订单查询状态 待评价
         );
         $this->assign('order_status_coment', $order_status_coment);
+    }
+
+ 	public function order_new()
+    {
+    	return $this->fetch();
+    }
+
+	public function guanzhu()
+    {
+    	return $this->fetch();
     }
 
     /**

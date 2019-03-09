@@ -4,7 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=2">
+	<link rel="stylesheet" href="__STATIC__/css/swiper.min.css?v=1">
+
+	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__STATIC__/js/swiper.min.js"></script>
 	<title>首页</title>
 	<link rel="stylesheet" href="__STATIC__/css/index.css?v=2">
 </head>
@@ -13,9 +18,11 @@
 	<div class="wrapper">
 		<!-- 头部 -->
 		<header class="header-box">
-			<div class="headerClass">
-				<img src="__STATIC__/images/class1.png" alt="">
-			</div>
+			<a href="/mobile/Goods/categoryList.html">
+				<div class="headerClass">
+					<img src="__STATIC__/images/class1.png" alt="">
+				</div>
+			</a>
 			<div class="headerInput">
 				<div class="search">
 					
@@ -89,7 +96,7 @@
 				</a>
 			</div>
 			<div class="choiceness gongGeItem">
-				<a href="">
+				<a href="{:U('Mobile/Material/index')}">
 					<img src="__STATIC__/images/t_11.png" alt="">
 					<p class="gongGeItemTit">素材区</p>
 				</a>
@@ -107,7 +114,7 @@
 		<div class="msgHeadline">
 			<h4 class="Headline">智丰头条</h4>
 			<a href="">
-				<p class="shopRed">雪山旗舰店入送卷了</p> v   
+				<p class="shopRed">雪山旗舰店入送卷了</p>  
 			</a>
 			<a href="">
 				<p class="shopMove">| 更多</p>
@@ -124,12 +131,14 @@
 					<span class="countTimeImg">
 						<img src="__STATIC__/images/t_8.png" alt="">
 					</span>
-					<span class="tiemNum hour">12</span>:
-					<span class="tiemNum branch">22</span>:
-					<span class="tiemNum second">00</span>
+					<!-- <span class="tiemNum">{:date('H',$start_time)}</span>:
+					<span class="tiemNum">{:date('m',$start_time)}</span>:
+					<span class="tiemNum">{:date('s',$start_time)}</span> -->
+					<span class="hms"></span>
+
 				</div>
 				<div class="more">
-					<a href="/mobile/seckill/index">
+					<a href="{:U('Mobile/Activity/flash_sale_list')}">
 						<span class="moreGood">更多好货</span>
 						<span class="gomore">
 							<img src="__STATIC__/images/t_15.png" alt=""></span>
@@ -139,51 +148,16 @@
 			<!-- 左滑 -->
 			<div class="goodList">
 				<ul>
+                <foreach name="flash_sale_list" item="v">
 					<li class="hot-single-goods">
-						<a href="/mobile/seckill/index">
-							<img src="__STATIC__/images/t_24.png" alt="" class="goods-img">
+						<a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$v[goods_id],'item_id'=>$v[item_id]))}">
+							<img src="{$v[goods_id]|goods_thum_images=200,200}" alt="" class="goods-img">
 							<div class="goods-pic">
-								<p class="goods-redSize">￥</p>
-								<p>358</p>
+								<p class="goods-redSize">￥<span>{$v[price]}</span>元</p>
 							</div>
 						</a>
 					</li>
-					<li class="hot-single-goods">
-						<a href="/mobile/seckill/index">
-							<img src="__STATIC__/images/t_25.png" alt="" class="goods-img">
-							<div class="goods-pic">
-								<p class="goods-redSize">￥</p>
-								<p>3358</p>
-							</div>
-						</a>
-					</li>
-					<li class="hot-single-goods">
-						<a href="/mobile/seckill/index">
-							<img src="__STATIC__/images/t_26.png" alt="" class="goods-img">
-							<div class="goods-pic">
-								<p class="goods-redSize">￥</p>
-								<p>3928</p>
-							</div>
-						</a>
-					</li>
-					<li class="hot-single-goods">
-						<a href="/mobile/seckill/index">
-							<img src="__STATIC__/images/t_27.png" alt="" class="goods-img">
-							<div class="goods-pic">
-								<p class="goods-redSize">￥</p>
-								<p>4990</p>
-							</div>
-						</a>
-					</li>
-					<li class="hot-single-goods">
-						<a href="/mobile/auction/index">
-							<img src="__STATIC__/images/t_24.png" alt="" class="goods-img">
-							<div class="goods-pic">
-								<p class="goods-redSize">￥</p>
-								<p>358</p>
-							</div>
-						</a>
-					</li>
+				</foreach>					
 				</ul>
 			</div>
 		</div>
@@ -228,10 +202,30 @@
 		<include file="public/footer_nav" />
 	</div>
 	<script type="text/javascript" src="__STATIC__/js/sourch_submit.js"></script>
-	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-	<script src="__STATIC__/js/swiper.min.js"></script>
 	<script>
+		/**
+     	* 秒杀模块倒计时
+     	* */
+    	function GetRTime(end_time){
+        	var NowTime = new Date();
+        	var t = (end_time*1000) - NowTime.getTime();
+        	var d=Math.floor(t/1000/60/60/24);
+        	var h=Math.floor(t/1000/60/60%24);
+        	var m=Math.floor(t/1000/60%60);
+        	var s=Math.floor(t/1000%60);
+        	if(s >= 0)
+            	return (d * 24 + h) + '时' + m + '分' +s+'秒';
+    	}
+    	function GetRTime2(){
+        	var text = GetRTime('{$end_time}');
+        	if (text== 0){
+            	$(".hms").text('活动已结束');
+        	}else{
+            	$(".hms").text(text);
+        	}
+    	}
+    	setInterval(GetRTime2,1000);
+
 		$(document).ready(function () {
 			var mySwiper = new Swiper('.swiper-container', {
 				//   direction: 'vertical', // 垂直切换选项

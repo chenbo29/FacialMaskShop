@@ -14,9 +14,11 @@
 			<div class="user-head-zp">
 				<div class="user-top-zp">
 					<div class="user-info-zp">
-						<div class="user-avatar-zp">
-							<img src="{$user['head_pic']}"/>
-						</div>
+						<a href="/mobile/User/p_details.html">
+							<div class="user-avatar-zp">
+								<img src="{$user['head_pic']}"/>
+							</div>
+						</a>
 						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
@@ -161,7 +163,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="###">
+								<a href="{:U('mobile/seckill/index_zp')}">
 									<img src="__STATIC__/images/user_zp/PT@2x.png"/>
 									<p>拼团</p>
 								</a>

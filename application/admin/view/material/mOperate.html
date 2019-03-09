@@ -21,14 +21,14 @@ html, body {overflow: visible;}
       </div>
     </div>
   </div>
-  <form class="form-horizontal" action="{:U('Article/aticleHandle')}" id="add_post" method="post">    
+  <form class="form-horizontal" action="{:U('Material/aticleHandle')}" id="add_post" method="post">    
     <div class="ncap-form-default">
       <dl class="row">
         <dt class="tit">
           <label><em>*</em>素材标题</label>
         </dt>
         <dd class="opt">
-          <input type="text" value="{$info.title}" name="title" class="input-txt">
+          <input type="text" value="{$material.title}" name="title" class="input-txt">
           <span class="err" id="err_title"></span>
           <p class="notic"></p>
         </dd>
@@ -40,11 +40,51 @@ html, body {overflow: visible;}
         <dd class="opt">
         <select class="small form-control" name="cat_id" id="cat_id">
             <option value="0">选择分类</option>
-            {$cat_select} 
+						<volist name="class" id="vo">
+						<option <if condition="$vo['cat_id'] eq $material['cat_id']"> selected </if> value="{$vo.cat_id}">{$vo.cat_name}</option>
+						</volist>
         </select>        
           <span class="err" id="err_cat_id"></span>
         </dd>
-      </dl>     
+      </dl>
+			
+			<dl class="row">
+			    <dt class="tit">
+			        <label>视频上传</label>
+			    </dt>
+			    <dd class="opt">
+						<select class="small form-control" name="video_type" id="video_type">
+						    <option value="0">选择视频分类</option>
+								<if condition="$material['video_type'] eq 1">
+									<option  value="1" selected>广告区</option>
+									<option  value="2">学习区</option>
+									<elseif condition="$material['video_type'] eq 2" />
+									<option  value="1">广告区</option>
+									<option  value="2" selected>学习区</option>
+									<else/>
+									<option  value="1">广告区</option>
+									<option  value="2">学习区</option>
+								</if>
+						</select>
+			        <div class="input-file-show">
+			            <span class="type-file-box">
+			                <input type="text" id="videotext" name="video" value="{$material.video}" class="type-file-text">
+			                <span id="video_button">
+			                    <if condition="$material.video">
+			                        <input type="button" onclick="delupload()" value="删除视频" class="type-file-button">
+			                        <else/>
+			                        <input type="button" name="button" id="videobutton1" value="选择上传..." class="type-file-button">
+			                        <input class="type-file-file" onClick="GetUploadify(1,'','goods','video_call_back','Flash')"
+			                               size="30" title="点击按钮选择文件并提交表单后上传生效">
+			                    </if>
+			                </span>
+			            </span>
+			        </div>
+			        <span class="err"></span>
+			
+			        <p class="notic">请上传视频格式文件</p>
+			    </dd>
+			</dl>
       <!-- <dl class="row">
         <dt class="tit">
           <label for="articleForm">链接</label>
@@ -55,38 +95,16 @@ html, body {overflow: visible;}
           <p class="notic">当填写"链接"后点击素材标题将直接跳转至链接地址，不显示素材内容。链接格式请以http://开头</p>
         </dd>
       </dl> -->
-			<dl class="row">
-        <dt class="tit">
-          <label for="articleForm">seo关键字</label>
-        </dt>
-        <dd class="opt">
-          <input type="text" name="keywords" value="" class="input-txt">
-          <span class="err"></span>
-          <p class="notic">用于seo 搜索引擎友好</p>
-        </dd>
-      </dl>
-	  <dl class="row">
-        <dt class="tit">
-          <label for="articleForm">发布时间</label>
-        </dt>
-        <dd class="opt">
-            <input type="text" class="input-txt" id="publish_time" name="publish_time" value="">
-            <span class="add-on input-group-addon">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-            </span> 
-          <span class="err"></span>
-        </dd>
-      </dl>       
       <dl class="row">
         <dt class="tit">
           <label>发布</label>
         </dt>
         <dd class="opt">
           <div class="onoff">
-            <label for="article_show1" class="cb-enable <if condition="$info[is_open] eq 1">selected</if>">是</label>
-            <label for="article_show0" class="cb-disable <if condition="$info[is_open] eq 0">selected</if>">否</label>
-            <input id="article_show1" name="is_open" value="1" type="radio" <if condition="$info[is_open] eq 1"> checked="checked"</if>>
-            <input id="article_show0" name="is_open" value="0" type="radio" <if condition="$info[is_open] eq 0"> checked="checked"</if>>
+            <label for="article_show1" class="cb-enable <if condition="$material[is_open] eq 1">selected</if>">是</label>
+            <label for="article_show0" class="cb-disable <if condition="$material[is_open] eq 0">selected</if>">否</label>
+            <input id="article_show1" name="is_open" value="1" type="radio" <if condition="$material[is_open] eq 1"> checked="checked"</if>>
+            <input id="article_show0" name="is_open" value="0" type="radio" <if condition="$material[is_open] eq 0"> checked="checked"</if>>
           </div>
           <p class="notic"></p>
         </dd>
@@ -94,48 +112,49 @@ html, body {overflow: visible;}
       <dl class="row">
         <dt class="tit">素材描述</dt>
         <dd class="opt">
-	      <textarea class="input-txt" id="post_description" name="description" title="">{$info.description}</textarea>
+	      <textarea class="input-txt" id="post_description" name="describe" title="">{$material.description}</textarea>
           <span class="err"></span>
           <p class="notic"></p>
         </dd>
       </dl>
+			<dl class="row">
+			    <dt class="tit">
+			        <label>素材图片</label>
+			    </dt>
+			    <dd class="opt">
+			        <div class="input-file-show">
+			                <span class="show">
+			                    <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="{$material.thumb}">
+			                        <i id="img_i" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$material.thumb}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
+			                    </a>
+			                </span>
+			   	            <span class="type-file-box">
+			                    <input type="text" id="thumb" name="thumb" value="{$material.thumb}" class="type-file-text">
+			                    <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
+			                    <input class="type-file-file" onClick="GetUploadify(1,'','article','img_call_back')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+			                </span>
+			        </div>
+			        <span class="err"></span>
+			        <p class="notic">请上传图片格式文件</p>
+			    </dd>
+			</dl>
       <dl class="row">
         <dt class="tit">
           <label><em>*</em>素材内容</label>
         </dt>
         <dd class="opt">
-            <textarea class="span12 ckeditor" id="post_content" name="content" title="">
-                {$info.content}
+            <textarea class="span12 ckeditor" id="post_content" name="content" title="" required="required">
+                {$material.content}
             </textarea>
         </dd>
       </dl>
-        <dl class="row">
-            <dt class="tit">
-                <label>素材导图</label>
-            </dt>
-            <dd class="opt">
-                <div class="input-file-show">
-                        <span class="show">
-                            <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="{$info.thumb}">
-                                <i id="img_i" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$info.thumb}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
-                            </a>
-                        </span>
-           	            <span class="type-file-box">
-                            <input type="text" id="thumb" name="thumb" value="{$info.thumb}" class="type-file-text">
-                            <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
-                            <input class="type-file-file" onClick="GetUploadify(1,'','article','img_call_back')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
-                        </span>
-                </div>
-                <span class="err"></span>
-                <p class="notic">请上传图片格式文件</p>
-            </dd>
-        </dl>
+        
 
 
       <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">提交修改</a></div>
     </div>
-        <input type="hidden" name="act" value="{$act}">
-        <input type="hidden" name="article_id" value="{$info.article_id}">
+        <!-- <input type="hidden" name="act" value="{$act}"> -->
+        <input type="hidden" name="material_id" value="{$material.material_id}">
   </form>
 </div>
 <script type="text/javascript">
@@ -159,7 +178,7 @@ html, body {overflow: visible;}
 		    serverUrl :url,
 		    zIndex: 999,
 		    initialFrameWidth: "80%", //初化宽度
-		    initialFrameHeight: 300, //初化高度            
+		    initialFrameHeight: 300, //初化高度 
 		    focus: false, //初始化时，是否让编辑器获得焦点true或false
 		    maximumWords: 99999, removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',//允许的最大字符数 'fullscreen',
 		    pasteplain:false, //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
@@ -173,7 +192,7 @@ html, body {overflow: visible;}
         $('span.err').hide();
         $.ajax({
             type: "POST",
-            url: "{:U('Material/aticleHandle')}",
+            url: "{:U('Material/mOperate')}",
             data: $('#add_post').serialize(),
             dataType: "json",
             error: function () {
@@ -184,26 +203,46 @@ html, body {overflow: visible;}
                     layer.msg(data.msg, {icon: 1,time: 1000}, function() {
                         location.href = "{:U('Admin/Material/materialList')}";
                     });
-                } else if(data.status === 0) {
-                    layer.msg(data.msg, {icon: 2,time: 1000});
-                    $.each(data.result, function(index, item) {
-                        $('#err_' + index).text(item).show();
-                    });
                 } else {
-                    layer.msg(data.msg, {icon: 2,time: 1000});
+                    layer.msg(data.msg, {icon: 2,time: 3000});
                 }
             }
         });
     }
-
-
     function img_call_back(fileurl_tmp)
     {
         $("#thumb").val(fileurl_tmp);
         $("#img_a").attr('href', fileurl_tmp);
         $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
-    
+     //删除上传图片事件
+    function delupload() {
+        $.ajax({
+            url: "{:U('Uploadify/delupload')}",
+            data: {url: $('#videotext').val()},
+            success: function (data) {
+                if (data == 1) {
+                    layer.msg('删除成功！', {icon: 1});
+                    $('#videotext').val('');
+                    var html = '<input type="button" name="button" id="videobutton1" value="选择上传..." class="type-file-button"> <input class="type-file-file" onClick="GetUploadify(1,\'\',\'goods\',\'video_call_back\',\'Flash\')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击按钮选择文件并提交表单后上传生效">';
+                    $('#video_button').html(html);
+                } else {
+                    layer.msg('删除失败', {icon: 2});
+                }
+            },
+            error: function () {
+                layer.msg('网络繁忙，请稍后再试!', {icon: 2});
+            }
+        })}
+				//上传视频回调事件
+				function video_call_back(fileurl_tmp) {
+				    $("#videotext").val(fileurl_tmp);
+				    $("#video_a").attr('href', fileurl_tmp);
+				    $("#video_i").attr('onmouseover', "layer.tips('<img src=" + fileurl_tmp + ">',this,{tips: [1, '#fff']});");
+				    if (typeof(fileurl_tmp) != 'undefined') {
+				        $('#video_button').html('<input type="button" onclick="delupload()" value="删除视频" class="type-file-button" >');
+				    }
+				}
 </script>
 </body>
 </html>

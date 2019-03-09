@@ -1,6 +1,6 @@
 $(function(){
 	
-	
+	var step=20
 	document.getElementById("myprice").onclick=function(){
 		
 		$('#mask').show();
@@ -20,17 +20,28 @@ $(function(){
 		$("#mask3").hide()
 	
 	};
-	 //定义方法  
-	    $(document).ready(function () {  
-	        //定义参数 显示出GetRTime()方法 1000毫秒以后启动  
-	        var timer_rt = window.setInterval("GetRTime(2018,3,8)", 1000);          
-	    });  
-	    
-	    
-	    
-	    
-	    
-
+	document.getElementById("jian").onclick=function(){
+		
+		
+		
+        $("#mmer").val($("#mmer").val()*1-step);
+        if($("#mmer").val()*1<0){
+			
+		    $("#mmer").val(0);	
+			
+		}
+       
+	};
+	document.getElementById("jia").onclick=function(){
+		
+        $("#mmer").val($("#mmer").val()*1+step);
+       
+	};
+	
+	
+	
+	
+	
 	
 		
 })

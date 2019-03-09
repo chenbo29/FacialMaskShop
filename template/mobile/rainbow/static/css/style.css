@@ -419,36 +419,35 @@ span,img {
 	font-family:"\5b8b\4f53"
 }
 header {
-	width:16rem;
-	position:fixed;
-	left:50%;
-	top:0;
-	margin-left:-8rem;
-	z-index:999;
-	height:1.87733rem;
-	background:-webkit-linear-gradient(rgba(0,0,0,0.3),rgba(255,255,255,0));
-	background:linear-gradient(rgba(0,0,0,0.3),rgba(255,255,255,0));
-	-webkit-transition:-webkit-transform 3s,opacity 4s,background 10s;
+	width:100%;
+	height: 1rem;
+	background: #f75922;
 }
 @media screen and (min-width:1300px) {
 	header {
-	height:.93867rem
+		height:.93867rem
+	}
 }
-}header .content {
-	padding-top:.29867rem;
-	margin:0;
-}
+
 @media screen and (min-width:1300px) {
 	header .content {
 	padding-top:.128rem
 }
-}header .logo {
+}
+header .logo {
 	float:left;
-	width:1.024rem;
-	height:1.024rem;
-	margin:.106667rem .384rem;
+	width:.5rem;
+	height:.4rem;
+	margin:.55rem .384rem;
 	border-radius:50%;
 	overflow:hidden;
+}
+header .cont .inp {
+	float: left;
+	width: 4.85rem;
+	height: .55rem;
+	border: 1px solid #fff;
+	border-radius: 100px; 
 }
 header .logo img {
 	width:100%
@@ -544,7 +543,7 @@ header .sea-box input {
 }
 }.footer {
 	height:2.13333rem;
-	background:#fff;
+	background:#f0f0f0;
 	position:fixed;
 	z-index:999;
 	bottom:0;
@@ -593,13 +592,14 @@ header .sea-box input {
 	font-size:.29867rem;
 	margin-top:.08533rem
 }
-}.banner img {
+}
+.banner img {
 	width:100%
 }
 .dh nav {
 	margin-top:.42667rem;
 	margin-bottom:.42667rem;
-	overflow:hidden
+	overflow:hidden;
 }
 .dh nav a {
 	display:block;

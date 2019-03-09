@@ -56,6 +56,7 @@ class Team extends Base
             $group_info['end_time'] = date('Y-m-d H:i:s', $group_info['end_time']);
             $act = 'edit';
         }
+
         $this->assign('min_date', date('Y-m-d H:i:s'));
         $this->assign('info', $group_info);
         $this->assign('act', $act);
@@ -70,6 +71,7 @@ class Team extends Base
 	public function teamHandle()
     {
         $data = I('post.');
+        dump($data);
         $data['create_time'] = date('Y-m-d H:i:s',time());
         $data['start_time'] = strtotime($data['start_time']);
         $data['end_time'] = strtotime($data['end_time']);
@@ -123,9 +125,17 @@ class Team extends Base
     }
 
 
-    public function search_goods1()
+    public function selectLevel()
     {
-        $tpl = input('tpl', 'search_goods');
+        $status = input('status');
+        $level = input('level');
+        // dump($level);
+        $tpl = input('tpl', 'add_level');
+        // if(status=='add'){
+            
+        // }else{
+
+        // }        
         return $this->fetch($tpl);
     }
     public function search_goods2()

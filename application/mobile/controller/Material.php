@@ -22,12 +22,16 @@ use think\Page;
 
 class Material extends MobileBase {
 
-    public function index(){      
+    public function index(){  
+        // 获取分类渲染到页面
+        $where = " show_in_nav=1";
+        $category = M('material_cat')->field('cat_id, cat_name')->where($where)->order('sort_order')->select();   
+        $this->assign('category', $category);
         return $this->fetch();
     }
 
     /**
-     * 默认分享区数据列表
+     * 默认获取分享区数据列表
      * @author C
      * @time2019-3
      */
@@ -43,6 +47,20 @@ class Material extends MobileBase {
         //     return $this->fetch('ajax_promote_goods');
         // }
         // return $this->fetch();
+
+        $where = " is_open = 1";
+        $count = M('material')->where($where)->count(); // 查询满足需求的总记录数
+        $pagesize = C('PAGESIZE'); // 每页显示数
+        $page = new Page($count, $pagesize); // 分页类
+        $material = M('material')->where($where)->limit($page->firstRow.','.$page->listRows)->select(); // 查询已发布的列表
+        $this->assign('material', $material);
+        // if(I('is_ajax')){
+        //     return $this->fetch('ajax_share_list');
+        // }
+        return $this->fetch('Material/index');
+
+
+
     }
 
 

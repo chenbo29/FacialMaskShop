@@ -4,9 +4,6 @@ return	array(
 			array('name' => '概览','child' => array(
 					array('name' => '模板设置', 'act'=>'index', 'op'=>'index'),
 			)),
-			array('name' => '导航','child' => array(
-				array('name'=>'PC端导航栏','act'=>'navigationList','op'=>'System'),
-			)),
 	)),
 
 	'system'=>array('name'=>'设置','child'=>array(
@@ -50,17 +47,20 @@ return	array(
 
 	)),
 		
-	// 'decorate'=>array('name'=>'装修','child'=>array(
-	// 	array('name' => '模板','child'=>array(
-	// 			array('name' => '模板分类管理', 'act'=>'template_class', 'op'=>'block', 'admin_saas'=>1),
-	// 			//array('name' => '首页装修', 'act'=>'templateList', 'op'=>'Template'),
-	// 			array('name' => '首页装修', 'act'=>'templateList', 'op'=>'block'),
-	// 			array('name' => '行业模板设置', 'act'=>'templateList2', 'op'=>'block',  'admin_saas'=>1),
-	// 			array('name' => '自定义页面', 'act'=>'pageList', 'op'=>'Block'),
-	// 			array('name' => '会员中心自定义', 'act'=>'user_center_menu', 'op'=>'System'),
-	// 			array('name' => '模板切换', 'act'=>'change', 'op'=>'Template'),
-	// 	))
-	// )),
+	'decorate'=>array('name'=>'装修','child'=>array(
+		array('name' => '模板','child'=>array(
+				array('name' => '模板分类管理', 'act'=>'template_class', 'op'=>'block', 'admin_saas'=>1),
+				//array('name' => '首页装修', 'act'=>'templateList', 'op'=>'Template'),
+				array('name' => '首页装修', 'act'=>'templateList', 'op'=>'block'),
+				array('name' => '行业模板设置', 'act'=>'templateList2', 'op'=>'block',  'admin_saas'=>1),
+				array('name' => '自定义页面', 'act'=>'pageList', 'op'=>'Block'),
+				array('name' => '会员中心自定义', 'act'=>'user_center_menu', 'op'=>'System'),
+				array('name' => '模板切换', 'act'=>'change', 'op'=>'Template'),
+		)),
+		array('name' => '导航','child' => array(
+			array('name'=>'PC端导航栏','act'=>'navigationList','op'=>'System'),
+		)),
+	)),
 
 
 	'shop'=>array('name'=>'商城','child'=>array(
@@ -192,7 +192,7 @@ return	array(
 			array('name' => '线下取货','child' => array(
 					// array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
 					array('name' => '自提订单', 'act'=>'index', 'op'=>'Pickup'),
-					array('name'=>'门店管理','act'=>'store','op'=>'Pickup'),
+					
 					// array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
 					
 			)),
@@ -202,14 +202,4 @@ return	array(
 			// ))
            
 	)),
-
-
-	'seller'=>array('name'=>'商家管理','child'=>array(
-		array('name' => '商家管理','child' => array(
-				array('name' => '商家列表', 'act'=>'seller_list', 'op'=>'SellerManagement'),
-				
-		))
-		
-	   
-)),
 );

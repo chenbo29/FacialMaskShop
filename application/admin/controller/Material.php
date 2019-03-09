@@ -34,7 +34,7 @@ class Material extends Base {
 	$page = new Page($count,10); 
 	// print_r($page->firstRow.','.$page->listRows);exit;
 	$list = Db::query("select * from tp_material,tp_material_cat where tp_material.cat_id=tp_material_cat.cat_id $where order by tp_material.material_id desc limit $page->firstRow,$page->listRows");
-	$this->assign('page',$page->show());
+	$this->assign('page',$page);
 	$this->assign('list',$list);
 	return $this->fetch();
 	}
@@ -44,7 +44,7 @@ class Material extends Base {
 	$page = new Page($count,10); 
 	$list = Db::query("select * from tp_material_cat limit $page->firstRow,$page->listRows");
 	// print_r($list);exit;
-	$this->assign('page',$page->show());
+	$this->assign('page',$page);
 	$this->assign('list',$list);
 	return $this->fetch();
 	}

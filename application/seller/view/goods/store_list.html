@@ -29,7 +29,7 @@
                 <h5>(共{$list|count}条记录)</h5>
             </div>
             <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
-            <form class="navbar-form form-inline" action="{:U('SellerManagement/store_list')}" method="get">
+            <form class="navbar-form form-inline" action="{:U('Goods/store_list')}" method="get">
                 <div class="sDiv">
                     <div class="sDiv2">
                         <input type="text" size="30" name="keywords" class="qsbox" placeholder="搜索相关数据...">
@@ -96,7 +96,7 @@
         <div class="tDiv">
             <div class="tDiv2">
                 <div class="fbutton">
-                    <a href="{:U('System/store_info')}">
+                    <a href="{:U('Goods/store_info')}">
                         <div class="add" title="添加商铺门店">
                             <span><i class="fa fa-plus"></i>添加商铺门店</span>
                         </div>
@@ -160,11 +160,11 @@
                             </td>
                             <td align="center" class="handle">
                                 <div style="text-align: center; width: 170px; max-width:170px;">
-                                    <a href="{:U('SellerManagement/seller_info',array('seller_id'=>$vo['seller_id']))}"
+                                    <a href="{:U('Goods/seller_info',array('seller_id'=>$vo['seller_id']))}"
                                        class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
                                     <if condition="$vo['seller_id'] gt 1">
                                         <a class="btn red" href="javascript:void(0)"
-                                           data-url="{:U('SellerManagement/sellerHandle')}" data-id="{$vo.seller_id}"
+                                           data-url="{:U('Goods/sellerHandle')}" data-id="{$vo.seller_id}"
                                            onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
                                     </if>
                                 </div>

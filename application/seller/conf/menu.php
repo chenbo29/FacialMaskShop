@@ -6,29 +6,10 @@ return array(
         )),
     )),
 
-    /*'system' => array('name' => '设置', 'child' => array(
-        array('name' => '系统', 'child' => array(
-            array('name' => '商城设置', 'act' => 'index', 'op' => 'System'),
-            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'System'),
-            //array('name'=>'支付方式','act'=>'index1','op'=>'System'),
-            // array('name'=>'地区&配送','act'=>'region','op'=>'Tools'),
-            // array('name'=>'短信模板','act'=>'index','op'=>'SmsTemplate'),
-            // array('name'=>'消息通知','act'=>'index','op'=>'MessageTemplate'),
-            //array('name'=>'接口对接','act'=>'index3','op'=>'System'),
-            //array('name'=>'验证码设置','act'=>'index4','op'=>'System'),
-            // array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
-            array('name' => '清除缓存', 'act' => 'cleanCache', 'op' => 'System'),
-            // array('name' => '运费模板', 'act'=>'index', 'op'=>'Freight'),
-            // array('name' => '快递公司', 'act'=>'index', 'op'=>'Shipping'),
-        )),
-
-         array('name' => '支付','child'=>array(
-            array('name' => '支付配置', 'act'=>'index', 'op'=>'Plugin'),
-        )),
-    )),*/
-
-
     'shop' => array('name' => '商城', 'child' => array(
+        array('name' => '门店', 'child' => array(
+            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
+        )),
         array('name' => '商品', 'child' => array(
             array('name' => '商品列表', 'act' => 'goodsList', 'op' => 'Goods'),
             // array('name' => '淘宝导入', 'act'=>'index', 'op'=>'Import'),
@@ -54,7 +35,6 @@ return array(
         )),
     )),
 
-
     'data' => array('name' => '数据', 'child' => array(
         array('name' => '统计', 'child' => array(
             array('name' => '销售概况', 'act' => 'index', 'op' => 'Report'),
@@ -67,9 +47,9 @@ return array(
         )),
     )),
 
-     'pickup'=>array('name'=>'门店','child'=>array(
+     /*'pickup'=>array('name'=>'门店','child'=>array(
      		array('name' => '门店管理','child' => array(
      				array('name'=>'门店管理','act'=>'store','op'=>'Pickup'),
      		)),
-     )),
+     )),*/
 );

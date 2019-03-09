@@ -41,37 +41,33 @@
                                     </dd>
                             </dl>
                     
-                    <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+                    <div class="bot"><a onclick="select_goods()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
                 </div>
             </form>
         </div>
 <script type="text/javascript">
-    function verifyForm(){
-        $('span.err').hide();
-        $.ajax({
-            type: "POST",
-            url: "{:U('Team/save')}",
-            data: $('#handleposition').serialize(),
-            dataType: "json",
-            error: function () {
-                layer.alert("服务器繁忙, 请联系管理员!");
-            },
-            success: function (data) {
-                if (data.status == 1) {
-                    layer.msg(data.msg, {
-                        icon: 1,
-                        time: 1000
-                    }, function(){
-                        location.href = "{:U('Team/index')}";
-                    });
-                } else {
-                    layer.msg(data.msg, {icon: 2,time: 1000});
-                    $.each(data.result, function (index, item) {
-                        $('#err_' + index).text(item).show();
-                    });
-                }
+    function select_goods()
+    {
+        var input = $("input[type='radio']:checked");
+        if (input.length == 0) {
+            layer.alert('请选择商品', {icon: 2}); //alert('请选择商品');
+            return false;
+        }
+        var goods_id = input.data('id');
+        var spec = $('#spec_goods_id_'+goods_id);
+        var goodsItem = null;
+        if(spec.length == 0){
+            goodsItem = new GoodsItem(input.data('id'), input.data('name'),input.data('count'), input.data('price'),input.data('cost-price'),input.data('img'), null);
+        }else{
+            var spec_a = spec.find('.ncap-btn-green');
+            if(spec_a.length == 0){
+                layer.alert('请选择要参与活动的商品规格', {icon: 2}); //alert('请选择商品');
+            }else{
+                var goodsSpecItem = new GoodsSpecItem(spec_a.data('item-id'),spec_a.data('key-name'),spec_a.data('store-count'),spec_a.data('price'),spec_a.data('spec-img'));
+                goodsItem = new GoodsItem(input.data('id'), input.data('name'), input.data('count'),input.data('price'),input.data('cost-price'), input.data('img'), goodsSpecItem);
             }
-        });
+        }
+        window.parent.call_back(goodsItem);
     }
 
 </script>

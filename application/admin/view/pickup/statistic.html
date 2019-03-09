@@ -18,7 +18,7 @@
 			<ul class="tab-base nc-row">
 				<li><a href="{:U('pickup/off')}"><span>核销提货码</span></a></li>
 				<li><a href="{:U('pickup/index')}"><span>全部自提订单</span></a></li>
-				<li><a href="{:U('pickup/index',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
+				<li><a href="{:U('pickup/stay',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
 				<li><a href="{:U('pickup/statistic')}" class="current"><span>数据统计</span></a></li>
 			</ul>
 		</div>
@@ -105,14 +105,14 @@
 			<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
 				<table>
 					<tbody>
-					<empty name="shop_order_sum_list">
+					<empty name="res">
 						<tr data-id="0">
 							<td class="no-data" align="center" axis="col0" colspan="50">
 								<i class="fa fa-exclamation-circle"></i>没有订单记录
 							</td>
 						</tr>
 					</empty>
-					<volist name="shop_order_sum_list" id="order">
+					<volist name="res" id="order">
 						<tr>
 							<td class="sign">
 								<div style="width: 24px;"><i class="ico-check"></i></div>
@@ -125,7 +125,7 @@
 							</td>
 							<td align="center" class="handle">
 								<div style="text-align: center; width: 170px; max-width:170px;">
-									<a href="{:U('ShopOrder/index',array('shop_id'=>$Request.param.shop_id, 'take_time_start'=>$order['date'].' 00:00:00','take_time_end'=>$order['date'].' 23:59:59','statistic'=>1))}" class="btn blue"><i class="fa fa-search"></i>查看订单列表</a>
+									<a href="{:U('pickup/index',array('shop_id'=>$Request.param.shop_id, 'take_time_start'=>$order['date'].' 00:00:00','take_time_end'=>$order['date'].' 23:59:59','statistic'=>1))}" class="btn blue"><i class="fa fa-search"></i>查看订单列表</a>
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">

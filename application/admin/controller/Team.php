@@ -42,16 +42,6 @@ class Team extends Base
 		return $this->fetch();
 	}
 
-    public function team_activity_list()
-    {
-        $teamAct = new TeamActivity();
-        $count = $teamAct->where('deleted',0)->count();
-        $Page = new Page($count, 10);
-        $list = $teamAct->where('deleted',0)->order('team_id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        $this->assign('list', $list);
-        $this->assign('page', $Page);
-        return $this->fetch();
-    }
 	public function info(){
         $act = I('GET.act', 'add');
         $groupbuy_id = I('get.id/d');

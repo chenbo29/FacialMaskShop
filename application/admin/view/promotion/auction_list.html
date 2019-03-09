@@ -46,30 +46,31 @@
 						<th class="sign" axis="col0">
 							<div style="width: 24px;"><i class="ico-check"></i></div>
 						</th>
-						<th align="left" abbr="activity_name" axis="col3" class="">
-							<div style="text-align: left; width: 100px;" class="">活动名称</div>
+						<th align="left" abbr="article_title" axis="col3" class="">
+							<div style="text-align: left; width: 240px;" class="">商品</div>
 						</th>
-						<th align="left" abbr="goods_name" axis="col6" class="">
-							<div style="text-align: left; width: 100px;" class="">商品</div>
+						<th align="left" abbr="article_time" axis="col6" class="">
+							<div style="text-align: left; width: 50px;" class="">原价</div>
 						</th>
-						<th align="left" abbr="start_price" axis="col4" class="">
-							<div style="text-align: left; width: 100px;" class="">起拍价</div>
+						<th align="left" abbr="ac_id" axis="col4" class="">
+							<div style="text-align: left; width: 100px;" class="">秒杀价</div>
 						</th>
-						<th align="center" abbr="deposit" axis="col5" class="">
-							<div style="text-align: center; width: 50px;" class="">保证金</div>
+						<th align="center" abbr="article_show" axis="col5" class="">
+							<div style="text-align: center; width: 50px;" class="">秒杀数量</div>
 						</th>
-						<th align="center" abbr="activity_round" axis="col6" class="">
-							<div style="text-align: center; width: 100px;" class="">活动轮次</div>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">剩余数量</div>
 						</th>
-						<th align="center" abbr="delay_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">延时周期(分钟)</div>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">没人限购</div>
 						</th>
-						<th align="center" abbr="preview_time" axis="col6" class="">
-							<div style="text-align: center; width: 150px;" class="">预展开始时间</div>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">开始时间</div>
 						</th>
-						<th align="center" abbr="start_time" axis="col6" class="">
-							<div style="text-align: center; width: 150px;" class="">开始时间</div>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 120px;" class="">结束时间</div>
 						</th>
+<<<<<<< HEAD
 						<th align="center" abbr="payment_time" axis="col6" class="">
 							<div style="text-align: center; width: 100px;" class="">货款支付时间</div>
 						</th>
@@ -84,6 +85,10 @@
 						</th>
 						<th align="center" abbr="auction_status" axis="col6" class="">
 							<div style="text-align: center; width: 50px;" class="">是否上架</div>
+=======
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">活动状态</div>
+>>>>>>> 0e6711b76be4174fe435867f89b5321a4b3bd674
 						</th>
 						<th align="left" axis="col1" class="handle">
 							<div style="text-align: center; width: 150px;">操作</div>
@@ -98,7 +103,7 @@
 		</div>
 		<div class="tDiv">
 			<div class="tDiv2">
-				<a href="{:U('Promotion/auction_list_info')}">
+				<a href="{:U('Promotion/flash_sale_info')}">
 					<div class="fbutton">
 						<div title="添加活动" class="add">
 							<span><i class="fa fa-plus"></i>添加活动</span>
@@ -118,40 +123,31 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 100px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a>{$vo.activity_name}</div>
+								<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 100px;">{$vo.goods_name}</div>
+								<div style="text-align: left; width: 50px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.start_price}</div>
+								<div style="text-align: center; width: 100px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.deposit}</div>
+								<div style="text-align: center; width: 50px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.activity_round}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.delay_time}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 150px;">{$vo.preview_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 150px;">{$vo.start_time|date='Y-m-d H:i:s',###}</div>
+								<div style="text-align: center; width: 120px;"> </div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.payment_time}</div>
-							</td>
-							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$vo.reserve_price}</div>
-							</td>
-							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.increase_price}</div>
-							</td>
-							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$vo.is_send}</div>
+								<div style="text-align: center; width: 50px;"> </div>
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 50px;">{$vo.auction_status}</div>
@@ -159,8 +155,8 @@
 
 							<td align="left" class="handle">
 								<div style="text-align: left; width: 150px; max-width:170px;">
-									<a class="btn blue" href="{:U('Promotion/auction_list_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-									<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/auction_list_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+									<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+									<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">

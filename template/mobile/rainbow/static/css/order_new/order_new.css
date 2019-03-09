@@ -130,7 +130,7 @@
 	-moz-box-pack: space-around;
 	-webkit-box-pack: space-around;
 	box-pack: space-around;
-	box-shadow: 0 .06rem .6rem #eee;
+	/*box-shadow: 0 .06rem .6rem #eee;*/
 	background-color: #fff;
 	
 }
@@ -162,13 +162,17 @@
 /*public 选项卡对应(指定)的 内容 box*/
 .tabAppointContentBoxMT {
 	display: none;
+	padding-left: .2rem;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	width: 7.5rem;
 	height: auto;
 }
 /*项*/
 .publicTerm_box {
-	margin: 0 auto;
-	width: 7.1rem;
+	position: relative;
+	width: 7.3rem;
 	height: auto;
 }
 .publicTerm_boxTitle {
@@ -176,19 +180,30 @@
 	width: 100%;
 	height: .58rem;
 	font-size: .16rem;
-	line-height: .7rem;
+	line-height: .16rem;
 	color: #151515;
 	letter-spacing: .01rem;
+}
+/*底部线*/
+.publicTerm_boxTitle:before {
+	content: " ";
+	width: 7.1rem;
+	height: .01rem;
 	border-bottom: .01rem solid #cdcdcd;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
 }
 .publicTerm_box_delBut {
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: 1;
-	width: .64rem;
+	float: right;
+	width: .67rem;
 	height: .57rem;
 	background: darkgray; /*0*/
+}
+.stateText {
+	float: right;
+	color: #f20c0c;
 }
 
 /*public 显示box*/

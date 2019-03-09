@@ -25,7 +25,7 @@
       <div class="mDiv">
         <div class="ftitle">
           <h3>素材分类列表</h3>
-          <h5></h5>
+          <h5>(共{$page->totalRows}条记录)</h5>
         </div>
       </div>
       <div class="hDiv">
@@ -114,6 +114,7 @@
       </div>
     </div>
   </form>
+	{$page->show()}
   <script>
 		
  function delfun(obj) {

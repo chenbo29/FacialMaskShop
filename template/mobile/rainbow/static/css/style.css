@@ -954,6 +954,12 @@ footer .flool3 p {
 	text-align:center;
 	line-height:1.87733rem
 }
+.classreturn .content {
+	width: 100%;
+	background: #fff;
+	z-index: 99;
+	position: fixed;
+}
 .classreturn .content .return {
 	position:absolute;
 	left:.42667rem
@@ -967,7 +973,9 @@ footer .flool3 p {
 	height:.78933rem
 }
 .classreturn .content .search {
-	font-size:.59733rem
+	font-size:.8rem;
+	color: #0F0F0F;
+	padding-top: 0.4rem;
 }
 .classreturn .content .search .sear-input {
 	width:12.544rem;
@@ -1213,6 +1221,70 @@ footer .flool3 p {
 	font-size:.64rem;
 }
 
+.loginsingup-input .lsu {
+	text-align: center;
+	margin: 1rem 0;
+	position: relative;
+	
+}
+.loginsingup-input .zjy_Loginfoos{
+	width: 100%;
+	text-align: center;
+}
+.loginsingup-input .zjy_Loginfoos .recept{
+	padding-left: 20%;
+	vertical-align: middle;
+	
+}
+.loginsingup-input .zjy_Loginfoos .recept span{
+	vertical-align: top;
+}
+.loginsingup-input .zjy_Loginfoos .recept .zjy_cheock{
+	display: inline-block;
+	width: .5rem;
+	height: .5rem;
+}
+.loginsingup-input .lsu .zjy_reg{
+	position: absolute;
+	left: -.6rem;
+	top: .6rem;
+}
+.loginsingup-input .lsu  .zjt_regIpunt{
+	width: 80% !important;
+	margin-left:2rem ;
+	text-indent: 6px !important;
+}
+.text_indent{
+	text-indent: 6px !important;
+}
+.loginsingup-input .lsu  input {
+	width:100%;
+	height: 1.6rem;
+	font-size:.554667rem;
+	color:#333;
+	border: 1px solid #666;
+	border-radius: 9px;
+  outline: none;
+  
+}
+.loginsingup-input .lsu .zjy_input{
+	text-align: left;
+	width: 40%;
+	margin-left: -3rem;
+	text-indent: 0 !important;
+}
+/*.v-code-input{
+	margin-left: -1.8rem;
+	text-indent: 2px !important;
+}*/
+.left{
+	position: relative;
+    left:0 !important;
+}
+#verify_code_img{
+	position: relative;
+}
+
 .z-submits {
 	width:10.96rem !important;
 	background:#EC6909 !important;
@@ -1367,10 +1439,16 @@ input:-ms-input-placeholder {
 	height:1.87733rem;
 	line-height:1.87733rem;
 	color:#fff;
+
+	background-color:#ff4200;
+	border-radius:.3rem;
+	border: none;
+
 	background-color:#e12c20;
 	border-radius:.938667rem;
 	-webkit-box-shadow:0 2px 30px rgba(225,44,32,1);
 	box-shadow:0 2px 30px rgba(225,44,32,1);
+  outline: none;
 }
 .signup-find .note {
 	line-height:1;
@@ -1389,6 +1467,14 @@ input:-ms-input-placeholder {
 	line-height:2.986667rem;
 	text-align:center;
 	font-size:.768rem;
+}
+
+.reset-pwd-title img{width: 0.45rem;height: 0.75rem;}
+
+.reset-pwd-title a{
+	position: relative;
+	left: -3.5rem;
+	top: 0.1rem;
 }
 .reset-pwd-cont {
 	height:1.28rem;
@@ -1422,6 +1508,7 @@ input:-ms-input-placeholder {
 	height:1.28rem;
 	padding:.128rem;
 	border:1px solid #e5e8eb;
+		margin-bottom: 2rem;
 }
 .v-identity .v-cont-wrap>input {
 	float:left;
@@ -1430,6 +1517,35 @@ input:-ms-input-placeholder {
 	line-height:.981333rem;
 	padding-left:.256rem;
 	font-size:.512rem;
+
+	border: 1px solid #999;
+	outline: none;
+	padding-left: 0.1rem;
+	border-radius: 9px;
+
+}
+.zjy_lut_foot input{
+	width: 50%;
+    height: 1.6rem;
+    font-size: .554667rem;
+    color: #333;
+    text-indent: 1.3rem;
+    border: 1px solid #666;
+    border-radius: 9px;
+    text-indent: 6px !important;
+}
+.zjy_lut_foot button{
+	display: inline-block;
+	width: 40%;
+    height: 1.6rem;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #7d7d7d;
+    border-radius: 5px;
+    margin-left: 1rem;
+	
 }
 .v-identity .v-cont-wrap>.m_phone {
 	float:right;
@@ -1438,6 +1554,7 @@ input:-ms-input-placeholder {
 	font-size:.512rem;
 	padding:0 .256rem;
 	background-color:#e5e8eb;
+	text-decoration: none;
 }
 .show-center-box {
 	position:absolute;
@@ -4542,9 +4659,25 @@ input:-ms-input-placeholder {
 .edit_gtfix .ttrebu img {
 	width:16rem
 }
+.getmore .packeg{
+	border-bottom: 0.0313rem solid #ccc;
+}
+.getmore .packeg .fl p span{
+	margin-left: 0.3125rem;
+	vertical-align: top;
+}
+.getmore .packeg .fr img{
+	width: 1rem !important;
+	height: 1rem !important;
+	margin-left: 0.3125rem;
+}
+.getmore .packeg,.getmore .packeg .maleri30>*,.getmore .packeg .maleri30 .fr>*{
+	height: 1.25rem;
+	line-height: 1.25rem;
+}
 .packeg {
 	background-color:white;
-	height:2.13333rem;
+	height:2.1333rem;
 	position:relative
 }
 .packeg .fl {
@@ -4943,8 +5076,9 @@ input:-ms-input-placeholder {
 }
 .sc_list .deleshow .deletes {
 	overflow:hidden;
-	clear:both
-}
+	clear:both;
+	margin-top: 0.3125rem;
+}	
 .sc_list .deleshow .deletes .similar-product-text {
 	width:7.89333rem;
 	padding:0
@@ -4956,6 +5090,11 @@ input:-ms-input-placeholder {
 	margin-top:.256rem;
 	width:.72533rem;
 	height:.72533rem
+}
+.sc_list .deleshow .sc_num {
+	font-size:.55467rem;
+    color:#999;
+	overflow:hidden;
 }
 .sc_list .deleshow .weight {
 	font-size:.55467rem;
@@ -6189,7 +6328,7 @@ span.mp_mp {
 	width:10.51733rem;
 }
 .se_sclist .deleshow .prices {
-	margin-top:0;
+	margin-top:0.3125rem;
 }
 .se_sclist .deleshow .prices .sc_pri {
 	margin-top:0
@@ -6441,6 +6580,216 @@ span.mp_mp {
 .returntolist .list-top-re .red {
 	color:#f23030
 }
+.attention-classify-wrap{
+	width: 100%;
+	height: 1.875rem;
+	background: #f5f5f5;
+	border-bottom: 2px solid #CCC
+}
+.attention-classify ul{
+	display: flex;
+	justify-content: flex-start;
+	font-size: 0.5625rem;
+	padding: 0 .625rem
+}
+.attention-classify ul li{
+	margin-top: 0.525rem;
+	height: 0.85rem;
+	margin-right:0.9375rem; 
+	line-height: 0.85rem
+}
+.attention-classify ul li:nth-child(1),.attention-classify ul li:nth-child(2){
+	color: #FF5600
+}
+.attention-classify ul li:nth-child(3),.attention-classify ul li:nth-child(4),.attention-classify ul li:nth-child(5){
+	background-color: #e6e6e6;
+	padding: 0 0.3125rem;
+	border-radius:0.5rem
+}
+.attention-shoppay-compile{
+	display: flex;
+	justify-content: space-between;
+	padding:0.3125rem  0.625rem 0;
+	margin-bottom: 0.3125rem; 
+	font-size: 0.5625rem
+}
+.attention-shoppay-compile span{
+	color: #E51C23;
+	padding: 0 0.3125rem
+}
+/* .attention-shoppay-compile p{
+	line-height: 1.21rem
+} */
+.attention-shoppay-compile button{
+	border: 0 none;
+	outline: none;
+	background: none;
+	/* padding: 0.3125rem 0.625rem;
+	background: #E51C23;
+	color: white;
+	border-radius: 0.625rem */
+}
+.deleshow .pinfo{
+	font-size: .41000rem;
+	display: flex;
+	justify-content: flex-start;
+}
+.deleshow .pinfo p{
+	padding: 0.625rem 0 0.3125rem;
+	margin-right: 0.3125rem
+}
+.deleshow .prices .sc_pri strong{
+	margin-left: 0.3125rem;
+	color: #646464;
+	font-size: .51000rem;
+	text-decoration: line-through
+}
+.deleshow .prices{
+	display: flex;
+	justify-content: space-between
+}
+.deleshow .prices>span{
+	font-size: .51000rem;
+	padding: 0.125rem 0.125rem;
+	border: 0.0625rem solid #2673E8;
+	border-radius:0.625rem; 
+	color: #2673E8
+}
+.guess-shop{
+	width: 100%;
+	padding: 0.3125rem 0;
+	font-size: .51000rem;
+	background-color: #f5f5f5;
+}
+.guess-shop-title{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0.3125rem
+}
+.guess-shop-title span:nth-child(2){
+	margin: 0 0.3125rem;
+}
+.guess-shop-content{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.guess-shop-info{
+	width:7.3rem;
+	height:9rem;
+	box-sizing: border-box;
+	padding: 0.3125rem;
+	background: #fff;
+	margin-bottom: 0.3125rem
+}
+.guess-shop-info .shopimg img{
+	width: 100%;
+	height: 6.5rem;
+}
+.not-load{
+	line-height: 1.25rem;
+	font-size: .51000rem;
+	display: flex;
+	justify-content: center;
+}
+.not-load img{
+	width: 1.25rem;
+	height: 1.25rem;
+	margin-right: 0.3125rem;
+}
+.guess-shop-info .pname p{
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.guess-shop-info .prices p{
+	margin-top: 0.3125rem;
+	color: #f60808;
+}
+.deletes .label{
+	font-size: .51000rem;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0.3125rem 0
+}
+.deletes .label p{
+	margin-right:0.3125rem;
+	border: 1px solid #f72c0b;
+	color: #f72c0b;
+	padding: 0.125rem;
+}
+.deleshow .skip{
+	padding: 0.3125rem 0;
+	font-size: .51000rem;
+}
+.deleshow .skip p img{
+	vertical-align: top;
+	margin-left: 0.3125rem
+}
+.guess-store-info{
+	width: 100%;
+	margin-bottom: 0.3125rem
+}
+.guess-store-info .store-top{
+	background: #fff;
+	padding: 0 0.3125rem;
+	display: flex;
+	justify-content: flex-start;
+	border-bottom:2px solid #f4f4f4; 
+}
+.guess-store-info .store-top .storeimg{
+	padding: 0.3125rem 0;
+	width: 2.25rem;
+	height: 2.25rem;
+	margin-right: 0.625rem;
+}
+.guess-store-info .store-top .storeimg img{
+	width: 100%;
+	height: 100%;
+}
+.guess-store-info .store-top .store-info{
+	margin-right: 3.2rem;
+	padding: 0.3125rem 0
+}
+.guess-store-info .store-top .store-info>*{
+	padding-bottom: 0.3125rem
+}
+.guess-store-info .store-top .store-info>p:nth-child(2){
+	color: #f96a5c;
+}
+.guess-store-info .store-top .store-info div{
+	display: flex;
+	justify-content: flex-start;
+}
+.guess-store-info .store-top .store-info div>*{
+	border: 1px solid #f72c0b;
+	color: #f72c0b;
+	padding: 0.125rem 0.1875rem;
+	margin-right: 0.3125rem;
+}
+.guess-store-info .store-top .store-skip{
+	margin-top: 1.5rem;
+	height: 1rem;
+	line-height: .8rem;
+	padding: 0.125rem 0.3125rem;
+	background: #ffe5e3;
+	border-radius:0.625rem; 
+}
+.guess-store-info .store-top .store-skip img{
+	margin-left: 0.1875rem
+}
+.guess-store-info .store-btm{
+	padding: 0.3125rem 0 0.3125rem 0.3125rem;
+	background: #fff;
+}
+.guess-store-info .store-btm .store-btmimg img{
+	width: 30%;
+	margin-right: 0.3125rem
+}
 .attention-shoppay .orderlistshpop {
 	background-color:white
 }
@@ -6492,9 +6841,55 @@ span.mp_mp {
 	width:2.77333rem;
 	height:2.77333rem
 }
+.top_search_wrap{
+	width: 100%;
+	position: fixed;
+	background: #f4f4f4;
+	z-index: 99;
+	padding: 0.3125rem 0.3125rem;
+}
+.top_search{
+	width: 100%;
+	height: 1rem;
+	background:#fff;
+	border-radius:0.625rem; 
+}
+.top_search img{
+	width: .7rem;
+	height: .7rem;
+	margin: 0.125rem;
+	vertical-align: top;
+}
+.top_search input{
+	width: 90%;
+	height: 100%;
+	border: 0 none;
+	outline: none;
+	background: #fff;
+	font-size: .5rem;
+}
+.search_btn{
+    position: absolute;
+    top: 0.3rem;
+    right: .5rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    color: #939393;
+	padding: 0 .25rem;
+	font-size: .5rem;
+    border: 0.0625rem solid #a7a7a7;
+	background: #fff;
+}
+.top_search .search_img{
+	position: absolute;
+    top: 0.3rem;
+    right: 2.8rem;
+}
 .tit-flash-sale {
+	margin-top: 1.65rem;
 	background-color:#333333;
-	overflow:hidden
+	overflow:hidden;
 }
 .tit-flash-sale ul li {
 	float:left;
@@ -6699,10 +7094,12 @@ p.nike-price .throughli {
 }
 .price-alln {
 	font-size:.55467rem;
-	margin:.384rem;
-	float:right;
-	width:100%;
+	margin:.384rem 0;
+	float: left;;
 	position:relative;
+}
+.price-alln a{
+	float: right;
 }
 .qxatten-ions {
 	right:0px;
@@ -6719,11 +7116,13 @@ p.nike-price .throughli {
 }
 .shop-rebuy {
 	float:right;
+	color:#ff6e33 ;
 	padding:.36267rem .53333rem;
 	margin-right:.33333rem;
 	border:1px solid #e2e2e2;
 	font-size:.55467rem;
-	border-radius:.21333rem
+	border-radius:.21333rem;
+	background: #fddecf
 }
 .paysoon {
 	color:white;
@@ -10323,7 +10722,7 @@ div.layui-m-layerbtn span {
 }
 .mytit_flash ul li {
 	color:#222222;
-	width:25%
+	width:20%
 }
 .mytit_flash ul .red {
 	color:#f23030

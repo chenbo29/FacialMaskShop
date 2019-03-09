@@ -143,16 +143,16 @@ img{
      margin-right:0;
      display: inline-block;
      box-sizing: border-box;
-     /* animation: loading1 1s linear infinite; */
+     animation: loading1 1s linear infinite;
  }
- /* @keyframes loading1{
+ @keyframes loading1{
     0%{
         transform: rotate(0deg);
     }
     100%{
         transform: rotate(360deg);
     }
-} */
+}
  .loding>span{
      position: absolute;
      left:48%;

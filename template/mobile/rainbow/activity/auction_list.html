@@ -1,0 +1,82 @@
+<!-- 竞拍 页面 -->
+	
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link  rel="stylesheet" href="__STATIC__/auction/index.css"  />
+		<script src="__STATIC__/js/rem.js"></script>
+	</head>
+	<body>
+		
+		
+		<div class="big">
+			
+			<!--1-->
+			<div class="section">
+		
+				<div class='time'>12月24号  16:00:00开枪</div>
+				<img src="__STATIC__/images/category/pro-img08.jpg" class="img"/>
+				<div class="priceear">
+					<p class="name">海尔（Haier）BCD-251WDGW 251升 无霜两门冰箱（白色）</p>
+					<p style="display: inline-block;" class="price">￥72</p><span>起拍</span>
+				</div>
+				<div class="joinauction">
+					参与竞拍
+				</div>
+					
+			</div>
+			
+			
+
+		</div>
+
+		<script src="__STATIC__/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			$(function(){
+				ajax_sourch_submit()
+			})
+
+			var page = 0;//页数
+
+			/**
+			 * ajax加载更多商品
+			 */
+			function ajax_sourch_submit()
+			{
+				++page;
+				$.ajax({
+					type : "GET",
+					url: "/index.php?m=Mobile&c=Activity&a=ajax_flash_sale&p=" + page,
+					success: function(data){
+						if ($.trim(data)) {
+							$(".section").append(data);
+						} else {
+							return false;
+						}
+					}
+				});
+			}
+			//滚动加载更多
+			$(window).scroll(
+					function() {
+						var scrollTop = $(this).scrollTop();
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if (scrollTop + windowHeight == scrollHeight) {
+							ajax_sourch_submit();//调用加载更多
+						}
+					}
+			);
+		</script>
+		
+
+		
+		
+		
+	</body>
+</html>
+
+	

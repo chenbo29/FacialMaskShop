@@ -42,16 +42,6 @@ class Team extends Base
 		return $this->fetch();
 	}
 
-    public function team_activity_list()
-    {
-        $teamAct = new TeamActivity();
-        $count = $teamAct->where('deleted',0)->count();
-        $Page = new Page($count, 10);
-        $list = $teamAct->where('deleted',0)->order('team_id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        $this->assign('list', $list);
-        $this->assign('page', $Page);
-        return $this->fetch();
-    }
 	public function info(){
         $act = I('GET.act', 'add');
         $groupbuy_id = I('get.id/d');
@@ -79,7 +69,6 @@ class Team extends Base
 	 */
 	public function teamHandle()
     {
-
         $data = I('post.');
         $data['create_time'] = date('Y-m-d H:i:s',time());
         $data['start_time'] = strtotime($data['start_time']);
@@ -114,11 +103,11 @@ class Team extends Base
                 }
 
             }
-            if($result){
-                $this->success('提交成功', 'team/index');
+            if ($team_id !== false) {
+
+                $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','result' => '']);
             } else {
-                //错误页面的默认跳转页面是返回前一页，通常不需要设置
-                $this->error('提交失败');
+                $this->ajaxReturn(['status' => 0,'msg' =>'操作失败','result' =>'']);
             }
 
         }
@@ -130,12 +119,7 @@ class Team extends Base
             Db::table('team_ladder')->where('team_id', $data['team_id'])->insert($data_ladder);
         }
 
-        if ($result !== false)
-        {
-            $this->ajaxReturn(['status' => 1,'msg' =>'操作成功','result' => '']);
-        } else {
-            $this->ajaxReturn(['status' => 0,'msg' =>'操作失败','result' =>'']);
-        }
+
     }
 
 

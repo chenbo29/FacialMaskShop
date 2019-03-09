@@ -14,14 +14,16 @@
 			<div class="user-head-zp">
 				<div class="user-top-zp">
 					<div class="user-info-zp">
-						<div class="user-avatar-zp">
-							<img src="{$user['head_pic']}"/>
-						</div>
+						<a href="/mobile/User/p_details.html">
+							<div class="user-avatar-zp">
+								<img src="{$user['head_pic']}"/>
+							</div>
+						</a>
 						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
-					<div class="sign-wrap-zp">
-						<!--<span class="sign-in-zp"><i></i> 签到</span>-->
+					<div class="sign-wrap-zp" style="display: none;">
+						<span class="sign-in-zp"><i></i> 签到</span>
 						<span class="receive-zp">10天签到领取礼品</span>
 					</div>
 				</div>

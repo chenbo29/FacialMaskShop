@@ -11,9 +11,11 @@
 	<body>
 		<div class="lj_top">
 			<div class="lj_wrap">
-				<div class="lj_top_left">
-					<img src="__STATIC__/image/lj_top_left.png" />
-				</div>
+				<a href="{:U('Mobile/User/index')}">
+					<div class="lj_top_left">
+						<img src="__STATIC__/image/lj_top_left.png" />
+					</div>
+				</a>
 				<div class="lj_top_right">
 					<p>个人资料</p>
 				</div>
@@ -26,20 +28,20 @@
 						<li>
 							<p>头像</p>
 							<div class="lj_list_r">
-								<img class="lj_list_r_img" src="__STATIC__/image/p_details.png" />
+								<img class="lj_list_r_img" src="{$user['head_pic']}" />
 								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
 							</div>
 						</li>
 						<li>
 							<p>用户名</p>
 							<div class="lj_list_r">
-								<p>4852364853</p>
+								<p>{$user['nickname']}</p>
 							</div>
 						</li>
 						<li>
 							<p>名称</p>
 							<div class="lj_list_r">
-								<p>Tony</p>
+								<p>{$user['nickname']}</p>
 								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
 							</div>
 						</li>
@@ -53,7 +55,7 @@
 						<li>
 							<p>出生日期</p>
 							<div class="lj_list_r">
-								<p>2005-2-14</p>
+								<p>{$user['birthday']}</p>
 								<img class="lj_list_r_img2" src="__STATIC__/image/lj_userinfo_r.png" />
 							</div>
 						</li>

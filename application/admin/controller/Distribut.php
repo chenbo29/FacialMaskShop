@@ -6,6 +6,8 @@ use think\Page;
 use think\Db;
 use think\Loader;
 
+use app\common\logic\BonusLogic;
+
 class Distribut extends Base {
 
     public function goods_list(){
@@ -103,9 +105,9 @@ class Distribut extends Base {
 
         if ($data) {
             if ($distribut) {
-                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
+                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'update_time'=>time()]);
             } else {
-                M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
+                M('distribut')->insert(['rate'=>$data['rate'],'create_time'=>time(),'update_time'=>time()]);
             }
         }
 
@@ -120,7 +122,7 @@ class Distribut extends Base {
     **/
     public function agent_grade_list()
     {
-         $Ad = M('user_level');
+        $Ad = M('user_level');
         $p = $this->request->param('p');
         $res = $Ad->order('level_id')->page($p . ',10')->select();
         if ($res) {
@@ -263,7 +265,5 @@ class Distribut extends Base {
         $this->assign('detail', $detail);
         return $this->fetch();
     }
-   
-    
 
 }

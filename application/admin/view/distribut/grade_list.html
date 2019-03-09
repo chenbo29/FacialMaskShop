@@ -32,7 +32,7 @@
 	        <input type="hidden" name="form_submit" value="ok" />
 	        <input type="hidden" name="inc_type" value="cash">
 	        <div class="ncap-form-default">
-	            <dl class="row">
+	            <!-- <dl class="row">
 	                <dt class="tit">开关</dt>
 	                <dd class="opt">
 	                    <div class="onoff">
@@ -42,8 +42,8 @@
 	                        <input type="radio" onclick="$('#switch_on_off').hide();" id="switch0" name="switch" value="0" <if condition="$config['switch'] eq 0">checked="checked"</if> >
 	                    </div>
 	                </dd>
-	            </dl>
-	            <div id="switch_on_off" <if condition="$config['switch'] eq 0">style="display: none;"</if>>
+	            </dl> -->
+	            <!-- <div id="switch_on_off" <if condition="$config['switch'] eq 0">style="display: none;"</if>> -->
 		             <!-- <dl class="row">
 		                <dt class="tit">
 		                    <label>成为分销商条件</label>
@@ -54,8 +54,8 @@
 		                    <input type="radio" name="condition" value="2" <if condition="$config[condition] eq 2">checked="checked"</if>>需提交申请审核 &nbsp;&nbsp;&nbsp;&nbsp;
 		                </dd>
 		            </dl> -->
-		            <dl class="row">
-		                <!-- <dt class="tit">
+		            <!-- <dl class="row">
+		                <dt class="tit">
 		                    <label for="distribut_date">分销模式</label>
 		                </dt>
 		                <dd class="opt">
@@ -119,7 +119,7 @@
 		                    <p class="notic">购买者推荐人的上上级占商品分销金比例    单位：%</p>
 		                </dd>
 		            </dl> -->
-		            <dl class="row">
+		            <!-- <dl class="row">
 		                <dt class="tit">
 		                    <label for="distribut_date">分成时间</label>
 		                </dt>
@@ -131,7 +131,7 @@
 		                    </select>
 		                    <p class="notic">订单收货确认后多少天可以分成</p>
 		                </dd>
-		            </dl>
+		            </dl> -->
 		            <!-- <dl class="row"><dt class="tit"><label><b>二维码相关设定</b></label></dt></dl>
 		            <dl class="row">
 		                <dt class="tit">
@@ -191,7 +191,7 @@
 		                    <p class="notic">用户在微信中输入的文本，响应‘我的二维码’图片</p>
 		                </dd>
 		            </dl> -->
-	            </div>
+	            <!-- </div> -->
 	            <div class="bot">
 	                <input type="hidden" name="inc_type" value="{$inc_type}">
 	                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onclick="adsubmit()">确认提交</a>

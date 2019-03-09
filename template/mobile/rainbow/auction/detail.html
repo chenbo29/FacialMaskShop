@@ -25,7 +25,10 @@
 			</div>
 		</div>
 
-		<img src="__STATIC__/auction/pic.png" class="img" />
+		<div class="fu">
+			<img src="__STATIC__/auction/pic.png" class="img" />
+		</div>
+		
 		<p class="desc">-17 Super Rugby Highlanders Jersey高地人橄榄球衣055 16款 S</p>
 
 
@@ -70,15 +73,15 @@
 
 		</div>
 
-
+   <!--onClick="javascript:this.form.amount.value--;"-->
 		<div class="number">
 			<form id="form" style="margin-left: .5rem; display: inline-block">
-				<input type=button value="-" onClick="javascript:this.form.amount.value--;"
-					style="background: #FFFFFF; border-radius: 50%;width:.5rem;border: 1px solid black;outline: none;">
+				<input type=button value="-" 
+					style="background: #FFFFFF; border-radius: 50%;width:.5rem;border: 1px solid black;outline: none;" id="jian">
 				<input type=text name=amount value=1
-					style="width: .4rem; border: none;text-align: center;outline: none;">
+					style="width: .4rem; border: none;text-align: center;outline: none;" id="mmer">
 				<input type=button value="+" onClick="javascript:this.form.amount.value++;"
-					style="background:#FFFFFF; color: white;width: .5rem;border-radius: 50%;border: 1px solid black;color: black;outline: none;">
+					style="background:#FFFFFF; color: white;width: .5rem;border-radius: 50%;border: 1px solid black;color: black;outline: none;" id="jia">
 			</form>
 			<div id="myprice"
 				style="margin-top:.07rem;background:#FB5926 ;color: white; display: inline-block;width:1.2rem; height: .8rem; border-radius: .03rem;font-size: .25rem; text-align: center; line-height: .8rem;border-radius:20%;margin-left:3.2rem;">

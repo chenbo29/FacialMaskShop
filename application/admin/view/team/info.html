@@ -81,8 +81,87 @@
 					</p>
 				</dd>
 			</dl>
-			
-            <dl class="row">
+
+			<dl class="row">
+				<dt class="tit">
+					<label>SKU拼团价:</label>
+				</dt>
+				<dd class="opt">
+					<a onclick="selectGoods2()" class="ncap-btn">编辑拼团sku价格</a>
+				</dd>
+			</dl>
+			<dl class="row">
+				<dd class="opt">
+					<div class="hDiv" style="margin-left: 15%;">
+						<div class="hDivBox">
+							<table cellspacing="0" cellpadding="0">
+								<thead>
+								<tr>
+									<th class="sign" axis="col0">
+										<div style="width: 24px;"><i class="ico-check"></i></div>
+									</th>
+									<th align="left" abbr="article_title" axis="col3" class="">
+										<div style="text-align: left; width: 50px;" class="">sku</div>
+									</th>
+									<th align="left" abbr="ac_id" axis="col4" class="">
+										<div style="text-align: center; width: 100px;" class="">原价</div>
+									</th>
+									<th align="left" abbr="ac_id" axis="col4" class="">
+										<div style="text-align: center; width: 120px;" class="">现价</div>
+									</th>
+									<th align="left" axis="col1" class="handle">
+										<div style="text-align: center; width: 240px;">拼团价</div>
+									</th>
+									<th style="width:100%" axis="col7">
+										<div></div>
+									</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+
+
+					<div class="bDiv" style="height: auto;">
+						<div id="level" cellpadding="0" cellspacing="0" border="0">
+							<table>
+								<tbody>
+								<foreach name="prom_list" item="vo" key="k" >
+									<tr>
+										<td class="sign">
+											<div style="width: 24px;"><i class="ico-check"></i></div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: left; width: 100px;"> </div>
+										</td>
+										<td align="left" class="">
+											<div style="text-align: center; width: 100px;"> </div>
+										</td>
+
+										<td align="left" class="handle">
+											<div style="text-align: left; width: 150px; max-width:170px;">
+												<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+												<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+											</div>
+										</td>
+										<td align="" class="" style="width: 100%;">
+											<div>&nbsp;</div>
+										</td>
+									</tr>
+								</foreach>
+								</tbody>
+							</table>
+						</div>
+						<div class="iDiv" style="display: none;"></div>
+					</div>
+					<p style="margin-left: 30%;">暂无数据</p>
+				</dd>
+			</dl>
+
+			<dl class="row">
                 <dt class="tit">
                     <label><em>*</em>促销活动类型</label>
                 </dt>
@@ -149,7 +228,7 @@
 
             <dl class="row" id="jieti" style="display:none">
                 <dt class="tit">
-                    <label><em>*</em>阶梯团:</label>
+                    <label>阶梯团:</label>
                 </dt>
                 <dd class="opt" >
 			        <div class="hDiv">
@@ -232,108 +311,20 @@
                 </dd>
 			</dl>	
 
+
             <dl class="row">
                 <dt class="tit">
-                    <label>SKU拼团价:</label>
-                </dt>
-                <dd class="opt">
-					<a onclick="selectGoods2()" class="ncap-btn">编辑拼团sku价格</a>
-                </dd>
-			</dl>
-            <dl class="row">
-                <dd class="opt">
-						<div class="hDiv" style="margin-left: 15%;">
-								<div class="hDivBox">
-									<table cellspacing="0" cellpadding="0">
-										<thead>
-										<tr>
-											<th class="sign" axis="col0">
-												<div style="width: 24px;"><i class="ico-check"></i></div>
-											</th>
-											<th align="left" abbr="article_title" axis="col3" class="">
-												<div style="text-align: left; width: 50px;" class="">sku</div>
-											</th>
-											<th align="left" abbr="ac_id" axis="col4" class="">
-												<div style="text-align: center; width: 100px;" class="">原价</div>
-											</th>
-											<th align="left" abbr="ac_id" axis="col4" class="">
-												<div style="text-align: center; width: 120px;" class="">现价</div>
-											</th>
-											<th align="left" axis="col1" class="handle">
-												<div style="text-align: center; width: 240px;">拼团价</div>
-											</th>
-											<th style="width:100%" axis="col7">
-												<div></div>
-											</th>
-										</tr>
-										</thead>
-									</table>
-								</div>
-							</div>
-							
-							<!-- <div class="tDiv">
-								<div class="tDiv2">
-									<a href="{:U('Promotion/spike_list_info')}">
-										<div class="fbutton">
-											<div title="添加活动" class="add">
-												<span><i class="fa fa-plus"></i>添加活动</span>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div style="clear:both"></div>
-							</div> -->
-							<div class="bDiv" style="height: auto;">
-								<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
-									<table>
-										<tbody>
-										<foreach name="prom_list" item="vo" key="k" >
-											<tr>
-												<td class="sign">
-													<div style="width: 24px;"><i class="ico-check"></i></div>
-												</td>
-												<td align="left" class="">
-													<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
-												</td>
-												<td align="left" class="">
-													<div style="text-align: left; width: 100px;"> </div>
-												</td>
-												<td align="left" class="">
-													<div style="text-align: center; width: 100px;"> </div>
-												</td>
-							
-												<td align="left" class="handle">
-													<div style="text-align: left; width: 150px; max-width:170px;">
-														<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-														<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
-													</div>
-												</td>
-												<td align="" class="" style="width: 100%;">
-													<div>&nbsp;</div>
-												</td>
-											</tr>
-										</foreach>
-										</tbody>
-									</table>
-								</div>
-								<div class="iDiv" style="display: none;"></div>
-							</div>
-							<p style="margin-left: 30%;">暂无数据</p>							
-                </dd>
-            </dl>			
-            <dl class="row">
-                <dt class="tit">
-                    <label><em>*</em>是否返佣</label>
+                    <label>是否返佣</label>
                 </dt>
                 <dd class="opt">
 							  <input type="radio" name="identity" value="0"/>否
-							  <input type="radio" name="identity" value="1"/>是			
+							  <input type="radio" name="identity" value="1"/>是
                 </dd>
 			</dl>
 
             <!-- <dl class="row">
 					<dt class="tit">
-						<label><em>*</em>团长是否免单</label>
+						<label>团长是否免单</label>
 					</dt>
 					<dd class="opt">
 								  <input type="radio" name="is_free" value="0" onclick="radioClick(1,this.name)" checked='true'/>否
@@ -355,7 +346,7 @@
 
 			<dl class="row">
 			    <dt class="tit">
-			        <label><em>*</em>限购:</label>
+			        <label>限购:</label>
 			    </dt>
 			    <dd class="opt">
 			        <input type="text" name="act_name" value="" class="input-txt">
@@ -365,7 +356,7 @@
 			
 			<dl class="row">
 			    <dt class="tit">
-			        <label><em>*</em>活动规则:</label>
+			        <label>活动规则:</label>
 			    </dt>
 			    <dd class="opt">
 			        <textarea type="text" name="act_name" class="input-txt"></textarea>
@@ -373,7 +364,7 @@
 			</dl>
 			<dl class="row">
 			    <dt class="tit">
-			        <label><em>*</em>商品简介:</label>
+			        <label>商品简介:</label>
 			    </dt>
 			    <dd class="opt">
 			        <textarea type="text" name="act_name" class="input-txt"></textarea>
@@ -382,7 +373,7 @@
 			</dl>
 			<dl class="row">
 			    <dt class="tit">
-			        <label><em>*</em>分享标题:</label>
+			        <label>分享标题:</label>
 			    </dt>
 			    <dd class="opt">
 			        <input type="text" name="act_name" value="我买了【商品标题】，求凑单！！！" class="input-txt">
@@ -469,7 +460,7 @@
         $('span.err').hide();
         $.ajax({
             type: "POST",
-            url: "{:U('Team/save')}",
+            url: "{:U('Team/teamHandle')}",
             data: $('#handleposition').serialize(),
             dataType: "json",
             error: function () {

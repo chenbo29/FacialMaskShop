@@ -1,0 +1,80 @@
+.zjy_login{
+	width: 100%;
+	height: 28.5rem;
+	background: url("../../images/login_bg.png")no-repeat;
+	background-size:cover ;
+	position: relative;
+}
+.zjy_bgHide{
+	width: 100%;
+	height: 28.5rem;
+	background:none;
+}
+.zjy_head h3{
+	color: #000;
+}
+.fr{
+	float: right;
+}
+a{
+	color: #666;
+	text-decoration: none;
+}
+.loginsingup-input .login_yanz{
+	width: 40%;
+	height: 1.7rem;
+	border-radius: 9px;
+	display: inline-block;
+	border: 1px solid #666;
+	position: absolute;
+	bottom: 0;
+	left: 7.3rem;
+}
+.login_yanz p{
+	font-size: .5rem;
+	margin-top: .2rem;
+}
+#verify_code_img{
+	position: relative;
+	top: .3rem;
+}
+
+.zjy_login_zhuce{
+	width: 60%;
+	height: 8rem;
+	background: #fff;
+	border-radius: 9px;
+	position: absolute;
+	top: 30%;
+	z-index: 666;
+	left: 20%;
+	text-align: center;
+	color: #000;
+}
+.zjy_login_zhuce p{
+	width: 100%;
+}
+
+.zjy_login_zhuce .zjy_gxdl{
+	font-size: .6rem;
+	margin-bottom: 1rem;
+}
+.zjy_login_zhuce .zjy_djdl{
+	font-size: .6rem;
+	
+}
+.zjy_login_zhuce .zjy_djdl span{
+	display: inline-block;
+	width: 3.5rem;
+	line-height: 1.5rem;
+	background-color:#ff4081 ;
+	border-radius: 5px;
+}
+.zjy_login_bgs{
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,.4);
+	position: absolute;
+	top: 0;
+	z-index: 555;
+}

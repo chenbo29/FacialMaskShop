@@ -21,11 +21,19 @@ use think\Db;
 
 class Material extends Base {
 	public function materialList(){//素材列表
-	
+	if($_POST){
+		$act = input('cat_id/s');
+		$title = input('title/s');
+		if($act==1){
+			$where = "and title like '%$title%'";
+		}else{
+			$where = "and cat_name like '%$title%'";
+		}
+	}
 	$count = Db::name('material')->count();
 	$page = new Page($count,10); 
 	// print_r($page->firstRow.','.$page->listRows);exit;
-	$list = Db::query("select * from tp_material,tp_material_cat where tp_material.cat_id=tp_material_cat.cat_id order by tp_material.material_id desc limit $page->firstRow,$page->listRows");
+	$list = Db::query("select * from tp_material,tp_material_cat where tp_material.cat_id=tp_material_cat.cat_id $where order by tp_material.material_id desc limit $page->firstRow,$page->listRows");
 	$this->assign('page',$page->show());
 	$this->assign('list',$list);
 	return $this->fetch();
@@ -54,25 +62,30 @@ class Material extends Base {
 			
 			$title = I('title');
 			$cat_id = I('cat_id');
-			$link = I('link');
 			$add_time = time();
 			$is_open = I('is_open');
 			$describe = I('describe');
 			$content = I('content');
 			$thumb = I('thumb');
+			$video = I('video');
+			$video_type = I('video_type');
 			$data = array(
 				'title' => $title,
 				'cat_id' => $cat_id,
-				'link' => $link,
 				'is_open' => $is_open,
 				'describe' => $describe,
 				'content' => $content,
-				'thumb' => $thumb
+				'thumb' => $thumb,
+				'video' => $video,
+				'video_type' => $video_type
 			);
 			if($title==""){
 				$this->ajaxReturn(['status' => 0, 'msg' => '请填写标题！']);
 			}elseif($cat_id==0){
-				$this->ajaxReturn(['status' => 0, 'msg' => '请选择类型！']);
+				$this->ajaxReturn(['status' => 0, 'msg' => '请选择分类，没有请先添加！']);
+			}
+			elseif($video!="" && $video_type==0){
+				$this->ajaxReturn(['status' => 0, 'msg' => '添加视频,请选择视频类别！']);
 			}else{
 				if($material_id>0){
 					$res = M('material')->data($data)->where('material_id='.$material_id)->save();
@@ -149,8 +162,13 @@ class Material extends Base {
 	public function delclass(){//分类删除
 		$act = I('post.cat_id');
 		if($act>0){
-			$del = Db::name('material_cat')->where('cat_id',$act)->delete();
-			$this->ajaxReturn(['status' => 1, 'msg' => '删除成功']);
+			$res = Db::query("SELECT count(*) as num from tp_material as a,tp_material_cat as b where a.cat_id=b.cat_id and b.cat_id=$act");
+			if($res['num']>0){
+				$this->ajaxReturn(['status' => -1, 'msg' => '该分类下有文章，不允许删除，请先删除该分类下的文章']);
+			}else{
+				$del = Db::name('material_cat')->where('cat_id',$act)->delete();
+				$this->ajaxReturn(['status' => 1, 'msg' => '操作成功!']);
+			}
 		}else{
 			$this->ajaxReturn(['status' => 0, 'msg' => '操作失败，请联系官方!']);
 		}

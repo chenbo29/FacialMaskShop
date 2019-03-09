@@ -460,7 +460,7 @@
         $('span.err').hide();
         $.ajax({
             type: "POST",
-            url: "{:U('Team/save')}",
+            url: "{:U('Team/teamHandle')}",
             data: $('#handleposition').serialize(),
             dataType: "json",
             error: function () {

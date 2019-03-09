@@ -10,8 +10,65 @@
 	height: 28.5rem;
 	background:none;
 }
+.loginsingup-input .lsu {
+	height: 1.7rem;
+	border: 1px solid #999;
+	margin: .8rem 0;
+	border-radius:9px; 
+	position: relative;
+    padding: .853333rem .64rem .426667rem;
+}
+.loginsingup-input .lsu input{
+	position: absolute;
+	top: .1rem;
+	width:8.96rem;
+	height:1.5rem;
+	padding:0 .426667rem;
+	font-size:.554667rem;
+	color:#333;
+	border:0;
+	outline:none;
+}
+.loginsingup-input .lsu .ico {
+	float:left;
+	width:.853333rem;
+	height:.853333rem;
+	background-image:url(../../images/ico-login-m.png);
+	background-repeat:no-repeat;
+	background-size:.853333rem 5.973331rem;
+	position: relative;
+	top: -.5rem;
+}
+.lsuss_zjyss{
+	width: 100%;
+	height: 1.7rem;
+	position: relative;
+}
+.loginsingup-input .login_yanz{
+	width: 100%;
+	text-align: center;
+}
+#verify_code{
+	width: 50%;
+	height: 1.7rem;
+	border: none;
+	outline: none;
+	border: 1px solid #666;
+	border-radius: 9px;
+
+
+}
+.zjy_login .zjy_head{
+	width: 100%;
+	line-height: 3rem;
+	font-size: .8rem;
+	color: #666;
+	text-align: center;
+}
+
 .zjy_head h3{
-	color: #000;
+	color: #151515;
+	font-size: .8rem;
 }
 .fr{
 	float: right;
@@ -30,25 +87,35 @@ a{
 	bottom: 0;
 	left: 7.3rem;
 }
+.login_yanz p{
+	font-size: .5rem;
+	margin-top: .2rem;
+}
 #verify_code_img{
 	position: relative;
-	top: 14px;
+	top: 0;
 }
+
 .zjy_login_zhuce{
-	width: 80%;
+	width: 60%;
 	height: 8rem;
 	background: #fff;
 	border-radius: 9px;
 	position: absolute;
 	top: 30%;
 	z-index: 666;
-	left: 10%;
+	left: 20%;
 	text-align: center;
 	color: #000;
+	display: none;
 }
+.zjy_login_zhuce p{
+	width: 100%;
+}
+
 .zjy_login_zhuce .zjy_gxdl{
 	font-size: .6rem;
-	margin-bottom: .8rem;
+	margin-bottom: 1rem;
 }
 .zjy_login_zhuce .zjy_djdl{
 	font-size: .6rem;
@@ -56,9 +123,10 @@ a{
 }
 .zjy_login_zhuce .zjy_djdl span{
 	display: inline-block;
-	width: 2rem;
-	line-height: 1rem;
-	background-color: ;
+	width: 3.5rem;
+	line-height: 1.5rem;
+	background-color:#ff4081 ;
+	border-radius: 5px;
 }
 .zjy_login_bgs{
 	width: 100%;
@@ -67,4 +135,65 @@ a{
 	position: absolute;
 	top: 0;
 	z-index: 555;
+	display: none;
+}
+.third-login-list img{
+	margin: 0 .5rem;
+
+}
+
+.reg_width{
+	width: 100%;
+	line-height: 1.5rem;
+	margin: .8rem 0;
+}
+.reg_width input{
+	width: 80%;
+	line-height: 1.5rem;
+	border: 1px solid #666;
+	border-radius: 9px;
+	text-align: left;
+}
+.zjy_yanzma_reg #mobile_code{
+	width: 40%;
+	line-height: 1.5rem;
+	border-radius: 9px;
+	border:1px solid #666;
+}
+.zjy_yanzma_reg .btn-text-message{
+	width: 39%;
+	background: #646464;
+	color: #fff;
+	text-align: center;
+	line-height: 1.5rem;
+	display: inline-block;
+	border-radius: 9px;
+}
+.lsu_psaw {
+	width: 100%;
+	line-height: 1.5rem;
+	margin: .8rem 0;
+	border: 1px solid #666;
+	border-radius: 9px;
+}
+.lsu_psaw input{
+	border: none;
+	outline: none;
+}
+.recept .zjy_cheock{
+	display: inline-block;
+	width: .6rem;
+	height: .6rem;
+	vertical-align: bottom;
+}
+.recept {
+	font-size:.512rem;
+	color:#666666;
+	vertical-align:middle;
+	text-align:center;
+}
+.recept a {
+	vertical-align:top;
+	text-decoration:underline;
+	color:#e30000
 }

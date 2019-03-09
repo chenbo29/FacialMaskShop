@@ -29,13 +29,14 @@
 				<!--Tab, data-tab="1"=>从零开始-->
 				<div class="headTab_lb" data-tab="1">
 					<!--页面跳转=>pageJump("路径")-->
-					<p class="headTabTerm_lb" onclick="pageJump('路径url')">竞拍</p>
-					<p class="headTabTerm_lb" onclick="pageJump('路径url')">拼团</p>
-					<p class="headTabTerm_lb" onclick="pageJump('路径url')">秒杀</p>
+					<p class="headTabTerm_lb" onclick="pageJump('/mobile/Auction/index')">竞拍</p>
+					<p class="headTabTerm_lb" onclick="pageJump('/mobile/Groupbuy/listdata')">拼团</p>
+					<p class="headTabTerm_lb" onclick="pageJump('/mobile/Seckill/index_zp')">秒杀</p>
 				</div>
 			</div>
 			<!--商品 列表-->
 			<div class="commodityListL clearfloat">
+				<volist name="list" id="team">
 				<!--商品 项-->
 				<div class="comListTerm">
 					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
@@ -75,9 +76,9 @@
 					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
 					<p class="comListTermPrice">￥26</p>
 				</div>
-				<!--删除-->
+				</volist>
 			</div>
-			
+
 		</div>
 		
 		<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>

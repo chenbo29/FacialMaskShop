@@ -1,4 +1,5 @@
 <?php
+
 return array(
     'index' => array('name' => '首页', 'child' => array(
         array('name' => '概览', 'child' => array(
@@ -198,4 +199,5 @@ return array(
             //array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
         ))
     )),
+
 );

@@ -15,7 +15,7 @@ function returnFun(){
 /*页面跳转*/
 function pageJump(_url){
 	/*页面跳转*/
-	console.log(_url);
+    window.location.href = _url;
 }
 
 $(document).ready(function(){

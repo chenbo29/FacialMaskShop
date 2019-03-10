@@ -533,12 +533,14 @@ class Promotion extends Base
     }
     public function search_goods()
     {
+//        var_dump($_GET);die;
         $goods_id = input('goods_id');
         $intro = input('intro');
         $cat_id = input('cat_id');
         $brand_id = input('brand_id');
         $keywords = input('keywords');
         $prom_id = input('prom_id');
+        $sign_user = input('sign_user');
         $tpl = input('tpl', 'search_goods');
         $where = ['is_on_sale' => 1, 'store_count' => ['gt', 0],'exchange_integral'=>0];
         $prom_type = input('prom_type/d',0);
@@ -607,6 +609,8 @@ class Promotion extends Base
         $this->assign('categoryList', $categoryList);
         $this->assign('page', $Page);
         $this->assign('goodsList', $goodsList);
+        $this->assign('sign_user', $sign_user);
+//        echo $tpl."`````````````".$sign_user;die;
         return $this->fetch($tpl);
     }
 

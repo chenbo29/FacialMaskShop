@@ -138,6 +138,7 @@ img{
     font-size:.2rem;
     background-color:#ffffff;
     line-height: .55rem;
+    color:#cdcdcd;
 }
 
 .searchMsg{
@@ -422,24 +423,24 @@ img{
     margin: -.3rem 0 0  -.3rem;
     width: .5rem;
     height: .5rem;
-    /* border: .1rem solid;
+    border: .1rem solid;
     border-color: #333 #333 transparent;
     border-radius: 50%;
     box-sizing: border-box;
-    animation: loading 1s linear infinite; */
+    animation: loading 1s linear infinite;
 }
-/* @keyframes loading{
+@keyframes loading{
     0%{
         transform: rotate(0deg);
     }
     100%{
         transform: rotate(360deg);
     }
-} */
+}
 
 .p-zai{
     padding-top:.2rem;
-    color:#cdcdcd;
+    color:#333;
 }
 
 

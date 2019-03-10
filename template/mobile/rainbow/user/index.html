@@ -14,7 +14,7 @@
 			<div class="user-head-zp">
 				<div class="user-top-zp">
 					<div class="user-info-zp">
-						<a href="/mobile/User/p_details.html">
+						<a href="/mobile/User/personal">
 							<div class="user-avatar-zp">
 								<img src="{$user['head_pic']}"/>
 							</div>
@@ -22,10 +22,10 @@
 						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
-					<div class="sign-wrap-zp" style="display: none;">
+					<!-- <div class="sign-wrap-zp">
 						<span class="sign-in-zp"><i></i> 签到</span>
 						<span class="receive-zp">10天签到领取礼品</span>
-					</div>
+					</div> -->
 				</div>
 				<div class="user-down-zp">
 					<ul class="user-down-list">
@@ -222,11 +222,20 @@
 									<p>我的分销</p>
 								</a>
 							</li>
+							<li>
+								<a href="{:U('mobile/User/store')}">
+									<img src="__STATIC__/images/user_zp/zt26@2x.png"/>
+									<p>门店管理</p>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 				
-			</div>	
+			</div>
+			
+			
+			
 			<!--底部导航-start-->
     		<include file="public/footer_nav"/>
     		
@@ -234,6 +243,17 @@
 	</div>
 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
-   
+    <script type="text/javascript">
+		$(function(){
+			$(".sign-in-zp").click(function(){
+				$(".model").show();
+				$(".dialog-sign-zp").show(100)
+			})
+			$(".model").click(function(){
+				$(".model").hide()
+				$(".dialog-sign-zp").hide(100)
+			})
+		})
+	</script>
 </body>
 </html>

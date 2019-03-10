@@ -1,5 +1,11 @@
 <include file="public/header" title="我的订单" body="g4"/>
 <include file="public/header_nav" title="我的订单" href="{:U('/Mobile/User/index')}"/>
+<div class="top_search_wrap">
+    <div class="top_search">
+        <img src="__STATIC__/images/t_12.png">
+        <input class="Search" type="text" placeholder="商品名称/商品编号/订单号">
+    </div>
+</div>
 <div class="tit-flash-sale p mytit_flash">
     <div class="maleri30">
         <ul class="">
@@ -12,7 +18,7 @@
             <li id="WAITSEND" <if condition="$Request.param.type eq 'WAITSEND'">class="red"</if>>
                 <a href="{:U('/Mobile/Order/order_list',array('type'=>'WAITSEND'))}"  class="tab_head">待发货</a>
             </li>
-            <!-- <li id="WAITRECEIVE"><a href="{:U('/Mobile/User/order_list',array('type'=>'WAITRECEIVE'))}"  class="tab_head <if condition="$Request.param.type eq 'WAITRECEIVE'">on</if>">待收货</a></li> -->
+            <li id="WAITRECEIVE"><a href="{:U('/Mobile/User/order_list',array('type'=>'WAITRECEIVE'))}"  class="tab_head <if condition="$Request.param.type eq 'WAITRECEIVE'">on</if>">待收货</a></li>
             <li id="WAITCCOMMENT"  <if condition="$Request.param.type eq 'FINISH'">class="red"</if>>
                 <a href="{:U('/Mobile/Order/order_list',array('type'=>'FINISH'))}" class="tab_head">已完成</a>
             </li>
@@ -44,10 +50,12 @@
                     <div class="maleri30">
                         <div class="fl">
                             <h1><span></span><span class="bgnum"></span></h1>
-                            <p class="bgnum"><span>订单编号:</span><span>{$order.order_sn}</span></p>
+                            <!-- <p class="bgnum"><span>订单编号:</span><span>{$order.order_sn}</span></p> -->
+                            <p>2019/03/07<span>00:00:00</span></p>
                         </div>
                         <div class="fr">
                             <span>{$order['order_status_detail']}</span>
+                            <img onclick="deleteElement(this)" src="__STATIC__/images/delete.png">
                         </div>
                     </div>
                 </div>
@@ -68,11 +76,12 @@
                                     </div>
                                     <div class="prices  wiconfine">
                                         <p class="sc_pri"><span>￥</span><span>{$goods[member_goods_price]}</span></p>
+                                        <p class="sc_num"><span>数量</span>&nbsp;<span>{$goods[goods_num]}</span></p>                                        
                                     </div>
-                                    <div class="qxatten  wiconfine">
+                                    <!-- <div class="qxatten  wiconfine">
                                         <p class="weight"><span>数量</span>&nbsp;<span>{$goods[goods_num]}</span></p>
                                        
-                                    </div>
+                                    </div> -->
                                     <div class="buttondde">
                                         <notempty name="goods['return_goods']">
                                             <a class="applyafts">已申请售后</a>
@@ -92,7 +101,8 @@
                     <div class="maleri30">
                 <span class="price-alln">
                     <!--<span class="red">￥{$list['order_amount']}</span><span class="threel">共{$list.goods_list|count}件</span>-->
-                    <span class="red">￥{$order['total_amount']}</span><span class="threel" id="goodsnum">共{$order.count_goods_num}件</span>
+
+                        <span class="threel" id="goodsnum">共{$order.count_goods_num}件 应付总额</span><span class="red">￥{$order['total_amount']}</span>      
                     <!--if condition="$list['pay_code'] eq 'cod'"><i class="tits-ions qxatten-ions">货到付款</i></if -->
                 </span>
                         <if condition="$order.pay_btn eq 1">
@@ -180,6 +190,36 @@
             }
         });
     }
+    /*
+    **删除列表
+    */
+    function deleteElement(Obj){
+        if(confirm("确定删除该商品?")){
+            //点击确定后操作　　
+            Obj.parentNode.parentNode.parentNode.parentNode.remove();
+        }
+    }
+    /*
+    **搜索框
+    */
+     //输入框正在输入时
+     $(".Search").on('input',function(){
+        $('.search_btn').css({'background':'#f23030','color':'#fff','border': 'none'})
+        $('.search_btn').html('搜索');
+    })
+     //输入框得到焦点时
+    $(".Search").on('focus',function(){
+        $('.top_search').css("width", "85%");
+        $('.top_search_wrap').append('<div class="search_btn">取消</div>')
+        $('.top_search').append('<img class="search_img" src="__STATIC__/images/category/close.png"></img>')
+    })
+    //输入框失去焦点时
+    $(".Search").on('blur',function(){
+        $('.top_search').css("width", "100%");
+        $('.search_btn').remove();
+        $('.search_img').remove();
+        $(".Search").val('')
+    })
 </script>
 </body>
 </html>

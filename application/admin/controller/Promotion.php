@@ -19,7 +19,6 @@ namespace app\admin\controller;
 use app\common\model\FlashSale;
 use app\common\model\GoodsActivity;
 use app\common\model\GroupBuy;
-use app\common\model\Auction;
 use app\admin\logic\GoodsLogic;
 use app\common\model\Goods;
 use app\common\model\PromGoods;
@@ -173,7 +172,6 @@ class Promotion extends Base
                 }
             }
         }
-
 
         $save_data = [];
         $n = 0;
@@ -621,11 +619,9 @@ class Promotion extends Base
         $Page = new Page($count, 10);
         $show = $Page->show();
         // $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
-
         $prom_list = DB::name("flash_sale")
         ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
         ->limit($Page->firstRow.','.$Page->listRows)->select();
-        // dump($prom_list);
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
@@ -639,19 +635,19 @@ class Promotion extends Base
             $data = I('post.');
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time'] = strtotime($data['end_time']);
-            // $flashSaleValidate = Loader::validate('FlashSale');
-            // if ($flashSaleValidate->batch()->check($data)) {
-            //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
-            //     $this->ajaxReturn($return);
-            // }
+            $flashSaleValidate = Loader::validate('FlashSale');
+            if (!$flashSaleValidate->batch()->check($data)) {
+                 $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
+                 $this->ajaxReturn($return);
+            }
             if (empty($data['id'])) {
                 $flashSaleInsertId = Db::name('flash_sale')->insertGetId($data);
                 if($data['item_id'] > 0){
                     //设置商品一种规格为活动
-                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 2]);
-                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 2));
+                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $flashSaleInsertId, 'prom_type' => 1]);
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 1));
                 }else{
-                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $flashSaleInsertId, 'prom_type' => 2));
+                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $flashSaleInsertId, 'prom_type' => 1));
                 }
                 adminLog("管理员添加抢购活动 " . $data['name']);
                 if ($flashSaleInsertId !== false) {
@@ -710,7 +706,6 @@ class Promotion extends Base
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-            // dump($info);exit;
             $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
             $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
         }
@@ -723,7 +718,6 @@ class Promotion extends Base
         //     $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
         //     $info['start_time_h'] = date('H',$info['start_time']);
         // }
-        // dump($info);exit;
         $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
         return $this->fetch();
@@ -772,12 +766,11 @@ class Promotion extends Base
         $this->assign("URL_getMovie", U('Admin/Ueditor/getMovie', array('savepath' => 'promotion')));
         $this->assign("URL_Home", "");
     }
-	
+
 	//竞拍管理
 	public function auction_list()
     {
         $condition = array();
-        // $FlashSale = new FlashSale();
         $Auction = new Auction();
         $count = $Auction->where($condition)->count();
         $Page = new Page($count, 10);
@@ -786,7 +779,6 @@ class Promotion extends Base
         $prom_list = DB::name("auction")
         ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
         ->limit($Page->firstRow.','.$Page->listRows)->select();
-        // dump($prom_list);
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
@@ -800,12 +792,11 @@ class Promotion extends Base
             $data = I('post.');
             $data['preview_time'] = strtotime($data['preview_time']);
             $data['start_time'] = strtotime($data['start_time']);
-            // $flashSaleValidate = Loader::validate('FlashSale');
-            // // var_dump($flashSaleValidate);//exit;
-            // if ($flashSaleValidate->batch()->check($data)) {
-            //     $return = ['status' => 0, 'msg' => '操作失败', 'result' => $flashSaleValidate->getError()];
-            //     $this->ajaxReturn($return);
-            // }
+            $AuctionValidate = Loader::validate('Auction');
+            if (!$AuctionValidate->batch()->check($data)) {
+                 $return = ['status' => 0, 'msg' => '操作失败', 'result' => $AuctionValidate->getError()];
+                 $this->ajaxReturn($return);
+            }
 
             if (empty($data['id'])) {
                 $auctionInsertId = Db::name('auction')->insertGetId($data);
@@ -823,7 +814,6 @@ class Promotion extends Base
                     $this->ajaxReturn(['status' => 0, 'msg' => '添加竞拍活动失败', 'result' => '']);
                 }
             } else {
-                // dump(2222);exit;
                 $r = M('auction')->where("id=" . $data['id'])->save($data);
                 M('goods')->where(['prom_type' => 8, 'prom_id' => $data['id']])->save(array('prom_id' => 0, 'prom_type' => 0));
                 if($data['item_id'] > 0){
@@ -854,53 +844,15 @@ class Promotion extends Base
         $info['preview_time'] = date("Y-m-d H:i:s", $auction_now_time);
 
         if ($id > 0) {
-            // dump($id);//exit;
             $Auction = new Auction();
             $info = $Auction->with('specGoodsPrice,goods')->find($id);
         }
 
-        // $info = DB::name("auction")
-        //     ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
-        //     ->limit($Page->firstRow.','.$Page->listRows)->select();
-        // $info = Db::query("SELECT * FROM
-        //     tp_auction , tp_goods , tp_spec_goods_price
-        //     WHERE tp_auction.goods_id = tp_goods.goods_id 
-        //     AND
-        //     tp_goods.goods_id = tp_spec_goods_price.goods_id");
         $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
+
 		
 		return $this->fetch();
 	}
 	
-    public function auction_list_del()
-    {
-        $id = I('del_id/d');
-        if ($id) {
-            $spec_goods = Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->find();
-            //有活动商品规格
-            if($spec_goods){
-                Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
-                //商品下的规格是否都没有活动
-                $goods_spec_num = Db::name('spec_goods_price')->where(['prom_type' => 1, 'goods_id' => $spec_goods['goods_id']])->find();
-                if(empty($goods_spec_num)){
-                    //商品下的规格都没有活动,把商品回复普通商品
-                    Db::name('goods')->where(['goods_id' => $spec_goods['goods_id']])->save(array('prom_id' => 0, 'prom_type' => 0));
-                }
-            }else{
-                //没有商品规格
-                Db::name('goods')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
-            }
-            M('auction')->where(['id' => $id])->delete();
-            // 删除抢购消息
-            $messageFactory = new MessageFactory();
-            $messageLogic = $messageFactory->makeModule(['category' => 1]);
-            $messageLogic->deletedMessage($id, 1);
-
-
-            exit(json_encode(1));
-        } else {
-            exit(json_encode(0));
-        }
-    }
 }

@@ -1,43 +1,62 @@
 <?php
 /**
- * 智丰网络
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * ============================================================================
- * Author: IT宇宙人
- * Date: 2015-09-09
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/7/31
+ * Time: 11:59
  */
+
 namespace app\common\model;
+
+
 use think\Model;
-class Auction extends Model {
-    public function goods(){
-        return $this->hasOne('goods','goods_id','goods_id');
-    }
-    public function specGoodsPrice(){
-        return $this->hasOne('specGoodsPrice','item_id','item_id');
-    }
-    //剩余团购库存
-    public function getStoreCountAttr($value, $data)
-    {
-        return $data['goods_num'] - $data['buy_num'];
-    }
-    //状态描述
-    public function getStatusDescAttr($value, $data)
-    {
-        if($data['is_end'] == 1){
-            return '已结束';
-        }else{
-            if($data['start_time'] > time()){
-                return '未开始';
-            }else if ($data['start_time'] < time() && $data['end_time'] > time()) {
-                return '进行中';
-            }else{
-                return '已过期';
-            }
-        }
-    }
+
+class Auction extends Model
+{
+
+<<<<<<< HEAD
+	public function specGoodsPrice()
+	{
+		return $this->hasOne('specGoodsPrice','goods_id','goods_id');
+	}
+
+	public function goods()
+	{
+		return $this->hasOne('goods','goods_id','goods_id');
+	}
+
+	//状态描述
+	public function getStatusDescAttr($value, $data)
+	{
+		if($data['id_end'] == 1){
+			return '已结束';
+		}else{
+			if($data['buy_num'] >= $data['goods_num']){
+				return '已告罄';
+			}else if($data['start_time'] > time()){
+				return '未开始';
+			}else if($data['start_time'] <time() && $data['ene_time'] > tiem()){
+				return '进行中';
+			}else{
+				return '已结束';
+			}
+		}
+	}
+
+
+	/**
+	*是否编辑
+	*@param $value
+	*@param $data
+	*@param $int
+	*/
+	public function getIsEditAttr($value, $data)
+	{
+		if($data['is_end'] == 1 || $data['start_time'] < time()){
+			return 0;
+		}
+		return 1;
+	}
+=======
+>>>>>>> 0e6711b76be4174fe435867f89b5321a4b3bd674
 }

@@ -23,10 +23,10 @@ use think\Db;
  */
 class BonusLogic extends Model
 {
-	private $userId;
-	private $leaderId;
-	private $goodId;
-	private $goodNum;
+	private $userId;//用户id
+	private $leaderId;	//上级id
+	private $goodId;//商品id
+	private $goodNum;//商品数量
 
 	public function __construct($userId, $leaderId, $goodId, $goodNum)
 	{	
@@ -45,15 +45,18 @@ class BonusLogic extends Model
                 ->find();
 
 		if(($good['is_distribut'] == 1) && ($good['is_agent'] == 1)){
-			$this->distribution();
-			$this->theAgent();
+			$dist = $this->distribution();
+			$agent = $this->theAgent();
+			return [$dist,$agent];
 		}else if($good['is_distribut'] == 1){
-			$this->distribution();
+			$dist = $this->distribution();
+			return $dist;
 		}else if($good['is_agent'] == 1){
-			$this->theAgent();
+			$agent = $this->theAgent();
+			return $agent;
 		}else{
             // return ['bool'=>false,'msg'=>"该商品不是指定的分销或者代理商品"];
-            echo '不是代理商品';
+            return false;
 		}	
 	}
 
@@ -63,14 +66,45 @@ class BonusLogic extends Model
 	public function distribution()
 	{
 		//判断用户是否已经是分销商
-        $distributor = M('users')->where('user_id', $userId)->value('is_distribut');
+        $distributor = $this->users($this->userId);
+        
+		//判断上级用户是否为分销商
+        if (!$distributor['is_distribut'])
+        	return false;
 
-		if($distributor){
-			//是分销商
+        $goods = $this->goods();
 
-		}else{
-			//不是分销商
-		}
+        $distribut = M('distribut')->find();
+        $commission = $goods['shop_price'] * ($distribut['rate'] / 100) * $this->goodNum;
+
+        $is_true =  M('users')->where('user_id',$distributor['first_leader'])->setInc('distribut_money',$commission);
+
+        if ($is_true !== false) {
+        	return true;
+        } else {
+        	return false;
+        }
+
+	}
+
+	//商品信息
+	public function goods(){
+		$goods = M('goods')->field("shop_price,cat_id")->where(['goods_id'=>$this->goodId])->find();
+		return $goods;
+	}
+
+	//查询用户信息
+	public function users($user_id){
+
+		$users = M('users')->where(['user_id'=>$user_id])->find();
+		return $users;
+	}
+
+	//查询用户上级信息
+	public function first_leader($user_id){
+
+		$users = M('users')->where(['user_id'=>$user_id])->find();
+		return $users;
 	}
 
 	/**

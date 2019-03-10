@@ -13,8 +13,6 @@ use think\Model;
 
 class Auction extends Model
 {
-
-<<<<<<< HEAD
 	public function specGoodsPrice()
 	{
 		return $this->hasOne('specGoodsPrice','goods_id','goods_id');
@@ -57,6 +55,5 @@ class Auction extends Model
 		}
 		return 1;
 	}
-=======
->>>>>>> 0e6711b76be4174fe435867f89b5321a4b3bd674
+
 }

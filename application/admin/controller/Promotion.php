@@ -581,6 +581,7 @@ class Promotion extends Base
                 $query->where('prom_type',0);
             }
         })->count();
+//        var_dump($count);die;
         $Page = new Page($count, 10);
         $goodsList = $Goods->with('specGoodsPrice')->where($where)->where(function ($query) use ($prom_type, $prom_id) {
             if(in_array($prom_type,[3,6])){

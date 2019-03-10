@@ -31,9 +31,9 @@ function sign(&$params, $cert_path, $cert_pwd) {
 		$log->LogInfo ( "签名串为 >" . $signature_base64 );
 		$params ['signature'] = $signature_base64;
 	} else {
-		$log->LogInfo ( ">>>>>签名失败<<<<<<<" );
+		$log->LogInfo ( "签名失败" );
 	}
-	$log->LogInfo ( '=====签名报文结束======' );
+	$log->LogInfo ( '签名报文结束' );
 }
 
 /**

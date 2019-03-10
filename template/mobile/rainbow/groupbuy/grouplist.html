@@ -36,46 +36,21 @@
 			</div>
 			<!--商品 列表-->
 			<div class="commodityListL clearfloat">
-				<volist name="list" id="team">
-				<!--商品 项-->
-				<div class="comListTerm">
-					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
-					<!--title-->
-					<p class="comListTermTitle">强泰家居用品创意(透明)</p>
-					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
-					<p class="comListTermPrice">￥26</p>
-				</div>
-				
-				<!--删除-->
-				<!--商品 项-->
-				<div class="comListTerm">
-					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
-					<!--title-->
-					<p class="comListTermTitle">强泰家居用品创意(透明)</p>
-					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
-					<p class="comListTermPrice">￥26</p>
-				</div>
-				<div class="comListTerm">
-					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
-					<!--title-->
-					<p class="comListTermTitle">强泰家居用品创意(透明)</p>
-					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
-					<p class="comListTermPrice">￥26</p>
-				</div>
-				<div class="comListTerm">
-					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
-					<!--title-->
-					<p class="comListTermTitle">强泰家居用品创意(透明)</p>
-					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
-					<p class="comListTermPrice">￥26</p>
-				</div>
-				<div class="comListTerm">
-					<img class="comListTermImg" src="__STATIC__/images/public_lb/00001.png"/>
-					<!--title-->
-					<p class="comListTermTitle">强泰家居用品创意(透明)</p>
-					<p class="comListTermText">居家生活实用厨房用品用具<br />小百货东西 (透明)</p>
-					<p class="comListTermPrice">￥26</p>
-				</div>
+				<volist name="list" id="item">
+					<!--商品 项-->
+					<div class="comListTerm">
+						<a href="/mobile/Groupbuy/detail?team_id={$item.team_id}&goods_id={$item.goods_id}">
+							<img class="comListTermImg" alt="{$item.goods_name}" src="{$item.original_img}"/>
+						</a>
+						<!--title-->
+						<p class="comListTermTitle">
+							<a style="color: #000;text-decoration:none;" href="/mobile/Groupbuy/detail?team_id={$item.team_id}&goods_id={$item.goods_id}">{$item.goods_name|mb_substr=0,8,'utf-8'}...</a>
+						</p>
+						<p class="comListTermText">{$item.goods_name}</p>
+						<p class="comListTermPrice">￥{$item.shop_price}</p>
+
+					</div>
+
 				</volist>
 			</div>
 

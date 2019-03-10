@@ -182,7 +182,7 @@ return array(
         array('name' => '线下取货', 'child' => array(
             // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
             array('name' => '自提订单', 'act' => 'index', 'op' => 'Pickup'),
-            array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
+            // array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
             // array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
         )),
         // array('name' => '在线核销','child' => array(

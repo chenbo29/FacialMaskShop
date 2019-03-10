@@ -52,14 +52,14 @@
                         <th align="left" abbr="ac_id" axis="col3" class="">
                             <div style="text-align: left; width: 100px;" class="">状态</div>
                         </th>
-                        <th align="left" abbr="ac_id" axis="col4" class="">
+                        <!--<th align="left" abbr="ac_id" axis="col4" class="">
                             <div style="text-align: left; width: 100px;" class="">商家名称</div>
-                        </th>
+                        </th>-->
                         <th align="center" abbr="article_show" axis="col5" class="">
                             <div style="text-align: left; width: 100px;" class="">门店名称</div>
                         </th>
                         <th align="center" abbr="article_show" axis="col3" class="">
-                            <div style="text-align: left; width: 100px;" class="">门店状态</div>
+                            <div style="text-align: left; width: 100px;" class="">门店营业状态</div>
                         </th>
                         <th align="center" abbr="article_show" axis="col5" class="">
                             <div style="text-align: left; width: 100px;" class="">门店头像</div>
@@ -124,9 +124,9 @@
                                         <i style="color:#0fff0f">审核通过</i></if>
                                 </div>
                             </td>
-                            <td align="left" class="">
+                            <!--<td align="left" class="">
                                 <div style="text-align: left; width: 100px;">{$vo.seller_name}</div>
-                            </td>
+                            </td>-->
                             <td align="left" class="">
                                 <div style="text-align: left; width: 100px;">{$vo.store_name}</div>
                             </td>
@@ -147,24 +147,25 @@
                                 <div style="text-align: left; width: 100px;">{$vo.phone}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 100px;">{$vo.city}</div>
+                                <div style="text-align: left; width: 100px;">{$vo.province_city_district}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: left; width: 100px;">{$vo.address}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 200px;">{$vo.email}</div>
+                                <div style="text-align: left; width: 100px;">{$vo.email}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 200px;">{$vo.add_time}</div>
+                                <div style="text-align: left; width: 100px;">{$vo.add_time}</div>
                             </td>
                             <td align="center" class="handle">
                                 <div style="text-align: center; width: 170px; max-width:170px;">
-                                    <a href="{:U('Goods/seller_info',array('seller_id'=>$vo['seller_id']))}"
+                                    <a href="{:U('Goods/store_info',array('store_id'=>$vo['store_id']))}"
                                        class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
-                                    <if condition="$vo['seller_id'] gt 1">
+                                    <if condition="$vo['store_id'] gt 0">
                                         <a class="btn red" href="javascript:void(0)"
-                                           data-url="{:U('Goods/sellerHandle')}" data-id="{$vo.seller_id}"
+                                           data-url="{:U('Goods/sellerHandle')}"
+                                           data-id="{$vo.store_id}"
                                            onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
                                     </if>
                                 </div>

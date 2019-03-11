@@ -24,7 +24,8 @@ img{max-width: 100%;}
 	-moz-box-sizing: border-box;
 }
 .lj_userinfo{background: #fff;margin-top:0.4rem;border-radius: 0.1rem;}
-.lj_userinfo_img{float: left;margin: 0.2rem 0.3rem 0rem 0.3rem;width: 1.2rem;height: 1.2rem;}
+.lj_userinfo_img{float: left;margin: 0.2rem 0.3rem 0rem 0.3rem;}
+.lj_userinfo_img img{width: 1.2rem;height: 1.2rem;border-radius: 50%;}
 .lj_userinfo_con{ padding-top: 0.38rem;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;

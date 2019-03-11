@@ -70,6 +70,21 @@
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">结束时间</div>
 						</th>
+						<th align="center" abbr="payment_time" axis="col6" class="">
+							<div style="text-align: center; width: 100px;" class="">货款支付时间</div>
+						</th>
+						<th align="center" abbr="reserve_price" axis="col6" class="">
+							<div style="text-align: center; width: 100px;" class="">保留价</div>
+						</th>
+						<th align="center" abbr="increase_price" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">加价幅度</div>
+						</th>
+						<th align="center" abbr="is_send" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">是否发货</div>
+						</th>
+						<th align="center" abbr="auction_status" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">是否上架</div>
+						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 50px;" class="">活动状态</div>
 						</th>
@@ -86,7 +101,7 @@
 		</div>
 		<div class="tDiv">
 			<div class="tDiv2">
-				<a href="{:U('Promotion/flash_sale_info')}">
+				<a href="{:U('Promotion/auction_list_info')}">
 					<div class="fbutton">
 						<div title="添加活动" class="add">
 							<span><i class="fa fa-plus"></i>添加活动</span>
@@ -132,11 +147,14 @@
 							<td align="left" class="">
 								<div style="text-align: center; width: 50px;"> </div>
 							</td>
+							<td align="left" class="">
+								<div style="text-align: center; width: 50px;">{$vo.auction_status}</div>
+							</td>
 
 							<td align="left" class="handle">
 								<div style="text-align: left; width: 150px; max-width:170px;">
-									<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-									<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+									<a class="btn blue" href="{:U('Promotion/auction_list_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+									<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/auction_list_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">

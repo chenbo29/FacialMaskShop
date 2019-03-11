@@ -16,8 +16,9 @@
             </div>
         </div>
     </div>
-    <form class="form-horizontal" id="handleposition" method="post" onsubmit="return false;">
-        <input type="hidden" name="team_id" value="{$teamActivity.team_id}">
+	<form class="form-horizontal" id="handleposition" method="post" onsubmit="return false;">
+		<!-- 选择商品隐藏数据 -->
+        <!-- <input type="hidden" name="team_id" value="{$teamActivity.team_id}"> -->
 		<input type="hidden" id="goods_id" name="goods_id" value="{$info.goods_id}">
 		<input type="hidden" name="id" value="{$info.id}">
 		<input type="hidden" name="act" value="{$act}">
@@ -235,9 +236,6 @@
 			        		<table cellspacing="0" cellpadding="0">
 			        			<thead>
 			        			<tr>
-			        				<th class="sign" axis="col0">
-			        					<div style="width: 24px;"><i class="ico-check"></i></div>
-			        				</th>
 			        				<th align="left" abbr="article_title" axis="col3" class="">
 			        					<div style="text-align: left; width: 50px;" class="">层级</div>
 			        				</th>
@@ -258,54 +256,50 @@
 			        		</table>
 			        	</div>
 			        </div>					
-						<div class="tDiv">
+					<div class="tDiv">
 							<div class="tDiv2">
 								
 									<div class="fbutton">
-										<div title="添加活动" class="add">
-											<span><a onclick="selectGoods1()"><i class="fa fa-plus"></i></a>添加活动</span>
+										<div title="添加层级" class="add">
+											<span><a onclick="selectLevel()"><i class="fa fa-plus"></i></a>添加层级</span>
 										</div>
 									</div>
 								
-							</div>						
-
-						<div style="clear:both"></div>
+							</div>	
+									<!-- 层级隐藏数据 -->
+							<div id="level_box">
+									<!-- <input type="text" class="lev" name="team_level" id="team_level" value="1-100-20"> -->
+									
+							</div>
+					<div style="clear:both"></div>
 					</div>
-					<div class="bDiv" style="height: auto;">
-						<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
-							<table>
-								<tbody>
-								<foreach name="prom_list" item="vo" key="k" >
-									<tr>
-										<td class="sign">
-											<div style="width: 24px;"><i class="ico-check"></i></div>
-										</td>
-										<td align="left" class="">
-											<div style="text-align: left; width: 240px;"><a href="{:U('Home/Goods/goodsInfo',['id'=>$vo[goods_id],'item_id'=>$vo[item_id]])}"> </a></div>
-										</td>
-										<td align="left" class="">
-											<div style="text-align: left; width: 100px;"> </div>
-										</td>
-										<td align="left" class="">
-											<div style="text-align: center; width: 100px;"> </div>
-										</td>
-					
-										<td align="left" class="handle">
-											<div style="text-align: left; width: 150px; max-width:170px;">
-												<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-												<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
-											</div>
-										</td>
-										<td align="" class="" style="width: 100%;">
-											<div>&nbsp;</div>
-										</td>
-									</tr>
-								</foreach>
-								</tbody>
-							</table>
-						</div>
-						<div class="iDiv" style="display: none;"></div>
+				<div class="bDiv" style="height: auto;">
+					<div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
+						<table  id="selected_le">
+							<!-- <tbody>
+								<tr>
+									<td align="left" abbr="article_title" axis="col3" class="">
+										<div style="text-align: left; width: 50px;" class="">1</div>
+									</td>
+									<td align="left" abbr="ac_id" axis="col4" class="">
+										<div style="text-align: center; width: 100px;" class="">2</div>
+									</td>
+									<td align="left" abbr="ac_id" axis="col4" class="">
+										<div style="text-align: center; width: 120px;" class="">3</div>
+									</td>
+									<td align="left" axis="col1" class="handle">
+										<div style="text-align: center; width: 240px;">
+											<a class="btn blue" href="{:U('Promotion/flash_sale_info',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+											<a class="btn red" href="javascript:void(0)" data-url="{:U('Promotion/flash_sale_del')}" data-id="{$vo.id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+										</div>
+									</td>					
+								</tr>
+							</tbody> -->
+							
+						</table>
 					</div>
+					<div class="iDiv" style="display: none;"></div>
+				</div>
 					<p class="notic">最多可设置10个阶梯。</p>
                 </dd>
 			</dl>	
@@ -496,16 +490,31 @@
     }
 
 
-    function selectGoods1(){
-        var url = "{:U('Team/search_goods1',array('tpl'=>'add_active','prom_type'=>6,'prom_id'=>$info[id]))}";
-        layer.open({
-            type: 2,
-            title: '选择商品',
-            shadeClose: true,
-            shade: 0.2,
-            area: ['30%', '50%'],
-            content: url,
-        });
+    function selectLevel(level){
+		if(level){
+        //    编辑层级
+				var url = "{:U('Team/selectLevel',array('tpl'=>'add_level','status'=>'edit','level'=>'level'))}";
+					layer.open({
+						type: 2,
+						title: '选择层级',
+						shadeClose: true,
+						shade: 0.2,
+						area: ['30%', '50%'],
+						content: url,
+					});
+		}else{
+			// 添加层级
+			var url = "{:U('Team/selectLevel',array('tpl'=>'add_level','status'=>'add'))}";
+			layer.open({
+				type: 2,
+				title: '选择层级',
+				shadeClose: true,
+				shade: 0.2,
+				area: ['30%', '50%'],
+				content: url,
+			});
+		}
+
     }
 
 
@@ -520,6 +529,7 @@
             content: url,
         });
     }
+	// 商品显示
     function call_back(goodsItem){
         $('#goods_id').val(goodsItem.goods_id);
         var html = '';
@@ -543,31 +553,36 @@
         $('.selected-group-goods').show();
         layer.closeAll('iframe');
 	}
-	
-    function call_back1(goodsItem){
-        $('#goods_id').val(goodsItem.goods_id);
-        var html = '';
-        if(goodsItem.spec != null){
-            //有规格
-            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
-                    '<img style="width: 162px;height: 162px" src="'+goodsItem.spec.spec_img+'"/></div> <div class="goods-name"> ' +
-                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+goodsItem.spec.key_name+'</a> </div>' +
-                    ' <div class="goods-price">商城价：￥'+goodsItem.spec.price+'库存:'+goodsItem.spec.store_count+'</div> </div>';
-            $('input[name=item_id]').val(goodsItem.spec.item_id)
-            $('input[name=goods_name]').val(goodsItem.goods_name + goodsItem.spec.key_name);
-        }else{
-            html = '<div style="float: left;margin: 10px auto;" class="selected-group-goods"><div class="goods-thumb">' +
-                    '<img style="width: 162px;height: 162px" src="'+goodsItem.goods_image+'"/></div> <div class="goods-name"> ' +
-                    '<a target="_blank" href="/index.php?m=Home&c=Goods&a=goodsInfo&id='+goodsItem.goods_id+'">'+goodsItem.goods_name+'</a> </div>' +
-                    ' <div class="goods-price">商城价：￥'+goodsItem.goods_price+'库存:'+goodsItem.store_count+'</div> </div>';
-            $('input[name=goods_name]').val(goodsItem.goods_name);
-        }
-        $('#select_goods_button').attr('data-goods-id',goodsItem.goods_id);
-        $('#selected_group_goods').empty().html(html);
-        $('.selected-group-goods').show();
-        layer.closeAll('iframe');
-    }
 
+	
+	//层级显示 
+    function call_back1(goodsItem){
+        // alert(goodsItem);
+        // var next_data = null;
+        // next_data = new GoodsItem(goodsItem.level,goodsItem.team_price,goodsItem.team_p);
+        
+        $('#goods_id').val(goodsItem.goods_id);
+		// alert(goodsItem.level);
+        var html = '';
+            html = '<tbody><tr><td align="left" abbr="article_title" axis="col3" class=""><div style="text-align: left; width: 50px;" class="">'+goodsItem.level+'</div></td>'+
+				   '<td align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 100px;" class="">'+goodsItem.team_price+'</div></td>'+
+				   '<td align="left" abbr="ac_id" axis="col4" class=""><div style="text-align: center; width: 120px;" class="">'+goodsItem.team_p+'</div></td>'+
+				   '<td align="left" axis="col1" class="handle"><div style="text-align: center; width: 240px;">'+
+				   '<a class="btn blue" onclick="selectLevel()"><i class="fa fa-pencil-square-o"></i>编辑</a>'+
+				   '<a class="btn red" href="javascript:void(0)" data-url="" data-id="" onClick=""><i class="fa fa-trash-o"></i>删除</a></div></td></tr></tbody>';        
+        // 把gooditem里的数据连接,放input框隐藏
+		var link_data = goodsItem.level+'-'+goodsItem.team_price+'-'+goodsItem.team_p;
+		var hid = '';
+		    hid = '<input type="text" class="lev" name="team_hid" id="team_hid" value="'+link_data+'">';
+			$('#level_box').append(hid);
+        
+		$('#team_level').val(goodsItem.level);
+		$('#team_price').val(goodsItem.team_price);
+		$('#team_person').val(goodsItem.team_p);
+		$('#selected_le').append(html);
+        layer.closeAll('iframe');
+
+    }
 
     function img_call_back(fileurl_tmp)
     {
@@ -591,19 +606,19 @@
 		  if(level==0){
 			//接下来就是对取到的值，进行显示和隐藏操作。
 			switch (show){
-				case '0':
+				case '1':
 					document.getElementById("casea").style.display="block";
 					document.getElementById("contentinpt").style.display="none";
 					document.getElementById("jieti").style.display="none";
 					document.getElementById("p_num").style.display="none";
 					document.getElementById("b_num").style.display="none";
 					break;
-				case '1':
+				case '2':
 					document.getElementById("casea").style.display="none";
 					document.getElementById("contentinpt").style.display="block";
 					document.getElementById("jieti").style.display="none";
 					break;
-				case '2':
+				case '3':
 					document.getElementById("casea").style.display="none";
 					document.getElementById("contentinpt").style.display="none";
 					document.getElementById("jieti").style.display="block";

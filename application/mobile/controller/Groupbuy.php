@@ -56,10 +56,20 @@ class Groupbuy extends MobileBase
         $comList = $common->where('goods_id',$data['goods_id'])
                     ->field('comment_id,goods_id,username,content,img,add_time,user_id,goods_rank,service_rank,rec_id')->limit(3)
                     ->select();
+        $info = [];
+        foreach ($comList as $k => $v){
+            $info[$k]['goods_id'] = $v['goods_id'];
+            $info[$k]['username'] = $v['username'];
+            $info[$k]['content'] = $v['content'];
+            $info[$k]['add_time'] = date('Y-m-d',time());
+            $info[$k]['goods_rank'] = $v['goods_rank'];
+            $info[$k]['img'] = unserialize($v['img']);
+        }
+
 
         $this->assign('team', $team);
         $this->assign('goodsImg', $gImg);
-        $this->assign('comList', $comList);
+        $this->assign('comList', $info);
         return $this->fetch();
     }
 

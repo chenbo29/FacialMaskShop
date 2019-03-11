@@ -383,11 +383,12 @@ a{
 }
 
 .loaction-tacitly .tacitly-opt .active{
-	background: url("../../images/chec1.png") no-repeat 50%;
-	width:.76rem;
-	height:.76rem;
-	background-size: 101%;
-	background-position: -2px 4px;
+	background: url("../../images/check.png") no-repeat 102%;
+    width: .76rem;
+    height: .76rem;
+    background-size: 223%;
+    /* background-position: -2px 4px;
+    background-position-x: -.8rem; */
   }
 
 .loaction-tacitly .tacitly-explain{

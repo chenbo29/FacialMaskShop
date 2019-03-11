@@ -563,6 +563,14 @@ class Promotion extends Base
         if($keywords){
             $where['goods_name|keywords'] = ['like','%'.$keywords.'%'];
         }
+        //排除已经成为对应分销和代理的签到商品不再显示
+        if($sign_user){
+            //先查询已有的签到商品id
+            $sign_goods_ids=db('sign_goods')->where(['sign_user'=>$sign_user])->column('gid');
+            $where['goods_id']=['not in',implode(',',$sign_goods_ids)];
+//            var_dump($sign_goods_ids);die;
+//            $where=1?2:3;
+        }
         $Goods = new Goods();
         $count = $Goods->where($where)->where(function ($query) use ($prom_type, $prom_id) {
             if(in_array($prom_type,[3,6])){
@@ -624,7 +632,7 @@ class Promotion extends Base
         $count = $FlashSale->where($condition)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        // $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+//        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $prom_list = DB::name("flash_sale")
         ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
         ->limit($Page->firstRow.','.$Page->listRows)->select();
@@ -709,6 +717,7 @@ class Promotion extends Base
         $flash_sale_time = strtotime(date('Y-m-d') . " " . $flash_now_time . ":00:00");
         $info['start_time'] = date("Y-m-d H:i:s", $flash_sale_time);
         $info['end_time'] = date("Y-m-d H:i:s", $flash_sale_time + 7200);
+        $info['is_edit'] = 1;
         if ($id > 0) {
             $FlashSale = new FlashSale();
             $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
@@ -772,94 +781,6 @@ class Promotion extends Base
         $this->assign("URL_getMovie", U('Admin/Ueditor/getMovie', array('savepath' => 'promotion')));
         $this->assign("URL_Home", "");
     }
-
-//	//竞拍管理
-//	public function auction_list()
-//    {
-//        $condition = array();
-//        $Auction = new Auction();
-//        $count = $Auction->where($condition)->count();
-//        $Page = new Page($count, 10);
-//        $show = $Page->show();
-//
-//        $prom_list = DB::name("auction")
-//        ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
-//        ->limit($Page->firstRow.','.$Page->listRows)->select();
-//
-//        $this->assign('prom_list', $prom_list);
-//        $this->assign('page', $show);// 赋值分页输出
-//        $this->assign('pager', $Page);
-//		return $this->fetch();
-//	}
-//	//竞拍管理操作
-//	public function auction_list_info()
-//    {
-//        if (IS_POST) {
-//            $data = I('post.');
-//            $data['preview_time'] = strtotime($data['preview_time']);
-//            $data['start_time'] = strtotime($data['start_time']);
-//            $AuctionValidate = Loader::validate('Auction');
-//            if (!$AuctionValidate->batch()->check($data)) {
-//                 $return = ['status' => 0, 'msg' => '操作失败', 'result' => $AuctionValidate->getError()];
-//                 $this->ajaxReturn($return);
-//            }
-//
-//            if (empty($data['id'])) {
-//                $auctionInsertId = Db::name('auction')->insertGetId($data);
-//                if($data['item_id'] > 0){
-//                    //设置商品一种规格为活动
-//                    Db::name('spec_goods_price')->where('item_id',$data['item_id'])->update(['prom_id' => $auctionInsertId, 'prom_type' => 8]);
-//                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id'=>0,'prom_type' => 8));
-//                }else{
-//                    Db::name('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $auctionInsertId, 'prom_type' => 8));
-//                }
-//                adminLog("管理员添加竞拍活动 " . $data['name']);
-//                if ($auctionInsertId !== false) {
-//                    $this->ajaxReturn(['status' => 1, 'msg' => '添加竞拍活动成功', 'result' => '']);
-//                } else {
-//                    $this->ajaxReturn(['status' => 0, 'msg' => '添加竞拍活动失败', 'result' => '']);
-//                }
-//            } else {
-//                $r = M('auction')->where("id=" . $data['id'])->save($data);
-//                M('goods')->where(['prom_type' => 8, 'prom_id' => $data['id']])->save(array('prom_id' => 0, 'prom_type' => 0));
-//                if($data['item_id'] > 0){
-//                    //设置商品一种规格为活动
-//                    Db::name('spec_goods_price')->where(['prom_type' => 8, 'prom_id' => $data['item_id']])->update(['prom_id' => 0, 'prom_type' => 0]);
-//                    Db::name('spec_goods_price')->where('item_id', $data['item_id'])->update(['prom_id' => $data['id'], 'prom_type' => 8]);
-//                    M('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => 0, 'prom_type' => 8));
-//                }else{
-//                    M('goods')->where("goods_id", $data['goods_id'])->save(array('prom_id' => $data['id'], 'prom_type' => 8));
-//                }
-//                if ($r !== false) {
-//                    $this->ajaxReturn(['status' => 1, 'msg' => '编辑竞拍活动成功', 'result' => '']);
-//                } else {
-//                    $this->ajaxReturn(['status' => 0, 'msg' => '编辑竞拍活动失败', 'result' => '']);
-//                }
-//            }
-//        }
-//
-//        $id = I('id');
-//        $now_time = date('H');
-//        if ($now_time % 2 == 0) {
-//            $auction_now_time = $now_time;
-//        } else {
-//            $auction_now_time = $now_time - 1;
-//        }
-//        $auction_now_time = strtotime(date('Y-m-d') . " " . $auction_now_time . ":00:00");
-//        $info['start_time'] = date("Y-m-d H:i:s", $auction_now_time);
-//        $info['preview_time'] = date("Y-m-d H:i:s", $auction_now_time);
-//
-//        if ($id > 0) {
-//            $Auction = new Auction();
-//            $info = $Auction->with('specGoodsPrice,goods')->find($id);
-//        }
-//
-//        $this->assign('min_date', date('Y-m-d'));
-//        $this->assign('info', $info);
-//
-//
-//		return $this->fetch();
-//	}
 
     //竞拍管理
     public function auction_list()
@@ -936,6 +857,7 @@ class Promotion extends Base
         $auction_now_time = strtotime(date('Y-m-d') . " " . $auction_now_time . ":00:00");
         $info['start_time'] = date("Y-m-d H:i:s", $auction_now_time);
         $info['preview_time'] = date("Y-m-d H:i:s", $auction_now_time);
+        $info['is_edit'] = 1;
 
         if ($id > 0) {
             $Auction = new Auction();

@@ -1013,6 +1013,7 @@ footer .flool3 p {
 .classreturn .content .menu {
 	position:absolute;
 	right:.42667rem;
+	top: 0.5rem;
 	/* margin-top:-.15rem; */
 }
 .radio:checked + .label {

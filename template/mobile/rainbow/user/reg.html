@@ -229,20 +229,16 @@
     
     $(document).ready(function(){
         $(".btn-text-message").on("click",function(){
-            if ($("#username").val() =="") {
-                alert("请输入账号")
-            }else{
-                var num =60;
-                time = setInterval(() => {
+        	var num =60;
+        	time = setInterval(() => {
                    num--;
                    $(".btn-text-message").html("重新发送"+(num))
                    if(num == 0){
-                       num++;
+                   	clearInterval(time)
                      $(".btn-text-message").html("发送验证码")                       
                    }
                }, 1000);
-            
-            }
+ 
         })
         $(".lsu-submit").on("click",function(){
             $(".zjy_login_zhuce").show()

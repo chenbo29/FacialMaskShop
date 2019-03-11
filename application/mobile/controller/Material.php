@@ -25,7 +25,7 @@ class Material extends MobileBase {
     public $user_id = 0;
     public $user = array();
 
- /*    public function _initialize()
+    public function _initialize()
     {
         parent::_initialize();
         if (session('?user')) {
@@ -40,14 +40,7 @@ class Material extends MobileBase {
             header("location:" . U('User/login'));
             exit;
         }
-        $order_status_coment = array(
-            'WAITPAY' => '待付款 ', //订单查询状态 待支付
-            'WAITSEND' => '待发货', //订单查询状态 待发货
-            'WAITRECEIVE' => '待收货', //订单查询状态 待收货
-            'WAITCCOMMENT' => '待评价', //订单查询状态 待评价
-        );
-        $this->assign('order_status_coment', $order_status_coment);
-    } */
+    }
     
     /**
      * 默认获取分享区数据列表
@@ -59,63 +52,54 @@ class Material extends MobileBase {
         $catWhere = " show_in_nav=1";
         $category = M('material_cat')->field('cat_id, cat_name')->where($catWhere)->order('sort_order')->select();   
         $this->assign('category', $category);
-
-        $userInfo = session('user'); // 获取用户信息
+        // $userInfo = session('user'); // 获取用户信息
         $where = " is_open = 1 and cat_id=9";
         $count = M('material')->where($where)->count(); // 查询满足需求的总记录数
         $pagesize = C('PAGESIZE'); // 每页显示数
         $page = new Page($count, $pagesize); // 分页类
         $material = M('material')->field('material_id,title,keywords,add_time,describe,thumb')->where($where)->limit($page->firstRow.','.$page->listRows)->select(); // 查询已发布的列表
         // 循环向数组加入用户信息
-        if($material){
-            foreach ($material as $k => $v) {
-                foreach ($category as $ks => $vs) {
-                    if($v['cat_id']=$vs['cat_id']){
-                        $material[$k]['cat_name'] = $vs['cat_name'];
-                    }
-                }
-                $material[$k]['nickname'] = $userInfo['nickname'];
-                $material[$k]['head_pic'] = $userInfo['head_pic'];
-            }
-        }
+        // if($material){
+        //     foreach ($material as $k => $v) {
+        //         foreach ($category as $ks => $vs) {
+        //             if($v['cat_id']=$vs['cat_id']){
+        //                 $material[$k]['cat_name'] = $vs['cat_name'];
+        //             }
+        //         }
+        //         $material[$k]['nickname'] = $userInfo['nickname'];
+        //         $material[$k]['head_pic'] = $userInfo['head_pic'];
+        //     }
+        // }
         $this->assign('material', $material);
         return $this->fetch();
     }
 
     /**
-    * 内容显示
+    * 点击列表显示内容
     */
     public function getDetail(){
-        
+    
+        // 获取列表对应ID
+        $atID = intval(input('atID'));
+        if(!$atID){
+            return json(['code'=>'-1', 'msg'=>'请传入ID']);
+        }
+        // 根据id获取对应内容
+        $atDetail = M('material')->field('material_id, cat_id, title, keywords, add_time, describe, content, click, thumb')->where('material_id', $atID)->find();
+        if(!$atDetail){
+            return json(['code'=>'-1', 'msg'=>'获取的内容不存在']);
+        }
+        // 获取推广链接生成二维码
+        $url = $this->urlCodes(session('user.user_id'));
+        $this->assign('atDetail', $atDetail);
+        return $this->fetch('Material/detail');
     }
 
-    /**
-     * 默认获取分享区数据列表
-     * @author C
-     * @time 2019-3
-     */
-   /*  public function share_list(){
-
-        $userInfo = session('user'); // 获取用户信息
-        $where = " is_open = 1";
-        $count = M('material')->where($where)->count(); // 查询满足需求的总记录数
-        $pagesize = C('PAGESIZE'); // 每页显示数
-        $page = new Page($count, $pagesize); // 分页类
-        $material = M('material')->where($where)->limit($page->firstRow.','.$page->listRows)->select(); // 查询已发布的列表
-        // 循环向数组加入用户信息
-        if($material){
-            foreach ($material as $k => $v) {
-                $material[$k]['nickname'] = $userInfo['nickname'];
-                $material[$k]['head_pic'] = $userInfo['head_pic'];
-            }
-        }
-        $this->assign('material', $material);
-        // if(I('is_ajax')){
-        //     return $this->fetch('ajax_share_list');
-        // }
-        return $this->fetch('Material/index');
-    } */
-
-
-    
+    /* 
+    * 生成带uid的个人二维码推广链接
+    */ 
+    public function urlCodes($uid){ 
+		$url = 'http://'.$_SERVER['HTTP_HOST'].'/mobile/User/login?uid='.$uid;
+		return $url;
+	}
 }

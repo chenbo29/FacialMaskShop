@@ -52,7 +52,7 @@ class Material extends Base {
 	$class = M('material_cat')->select();
 	$this->assign('class',$class);
 	if($material_id>0){
-		$gain = M('material')->select();
+		$gain = M('material')->where('material_id',$material_id)->select();
 		$this->assign('info',$gain[0]);
 	}
 	

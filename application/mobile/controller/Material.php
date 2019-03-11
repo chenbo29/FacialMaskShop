@@ -26,6 +26,10 @@ class Material extends MobileBase {
         return $this->fetch();
     }
 
+    public function detail(){      
+        return $this->fetch();
+    }
+
     /**
      * 默认分享区数据列表
      * @author C

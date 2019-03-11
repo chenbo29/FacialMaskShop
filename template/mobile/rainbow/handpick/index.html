@@ -16,7 +16,9 @@
     <!-- 头部 -->
    <div class="headerBox">
          <div class="goleft">
+             <a href="javascript:history.back(-1)">
              <img src="__STATIC__/images/zuojiantou@2x.png" alt="" class="headerImg">
+            </a>
          </div>
          <p class="headerTitle">
                 精选地区馆
@@ -219,7 +221,7 @@
     loop: true, 
     
   })
-  
+
             $(".handpickListImg>ul>li").click(function(event){
                 event.preventDefault();
                 $(this).addClass("active").siblings().removeClass("active")

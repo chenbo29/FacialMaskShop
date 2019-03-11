@@ -91,6 +91,10 @@
         img {
             width: 100%;
         }
+        a{ 
+            text-decoration:none; 
+            color:#333; 
+        } 
     </style>
 </head>
 
@@ -100,32 +104,27 @@
             <a href="javascript:history.back(-1)"></a>
             <p>分享区</p>
         </div>
-
-        <div class="item-wrap">
-            <div class="list">
-                <div class="content">
-                    <p class="title">文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题</p>
-                    <p class="zi">
-                        链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接
-                    </p>
-                </div>
-                <div class="code">
-                    <img src="__STATIC__/images/t_17.jpg" />
-                </div>
+		<foreach name="$material" item="vs">
+            <div class="item-wrap">
+                <a href="{:U('Material/getDetail', 'atID='.$vs['material_id'])}">
+                    <div class="list" id="getDetail">
+                        <div class="content">
+                            <p class="title">{$vs.title}</p>
+                            <p class="zi">
+                                {$vs.describe}
+                            </p>
+                        </div>
+                        <div class="code">
+                            <if condition="$vs.thumb" >
+                                <img src="{$vs.thumb}" />
+                            <else/>
+                                <img src="__STATIC__/image/not_img.jpg" />
+                            </if>
+                        </div>
+                    </div>
+                </a>
             </div>
-
-            <div class="list">
-                <div class="content">
-                    <p class="title">文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题</p>
-                    <p class="zi">
-                        链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接链接
-                    </p>
-                </div>
-                <div class="code">
-                    <img src="__STATIC__/images/t_17.jpg" />
-                </div>
-            </div>
-        </div>
+		</foreach>
     </div>
 </body>
 

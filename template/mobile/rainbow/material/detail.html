@@ -6,7 +6,7 @@
     <title>素材区</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        html,body,div,p,a {
+        html,body,div,p,a,span {
             margin: 0;
             padding: 0;
         }
@@ -45,8 +45,9 @@
 			margin: 2% 0 0 3%;
 			font-size: .16rem;
 		}
-		.title-wrap .what {
-			margin: 2% 0 0 3%;
+		.title-wrap .what p {
+			margin: 5% 0 0 2%;
+			line-height: 24px;
 			width: 95%;
 			font-size: .16rem;
 			text-indent:25px;
@@ -58,16 +59,13 @@
         img {
 			width: 100%;
 		}
-		.what{
-			font-size: 16px !important;
-		}
     </style>
 </head>
 <body>
     <div id="container">
         <div class="head">
             <a href="javascript:history.back(-1)"></a>
-            <p>分享区</p>
+            <p>阅读区</p>
 		</div>
 			<div class="title-wrap">
 				<div class="title">{$atDetail['title']}</div>
@@ -75,9 +73,9 @@
 					<span>作者：saaaaa</span>&nbsp;
 					<span>{$atDetail['add_time']|date="Y-m-d H:i:s",###}</span>
 				</div>
-			
-				<p class="what">{$atDetail['content']}</p>
-				
+				<div class="what">
+					<p>{$atDetail['content']}</p>
+				</div>
 				
 				
 				<div class="date">

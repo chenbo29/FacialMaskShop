@@ -4,11 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>素材区</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="__STATIC__/js/public/rem.js"></script>
+	<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
     <style>
         html,body,div,p,a,span {
             margin: 0;
             padding: 0;
+		}
+		#container {
+            padding-top: .88rem;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box; 
         }
 		.head {
             width: 100%;
@@ -63,9 +71,15 @@
 </head>
 <body>
     <div id="container">
-        <div class="head">
+        <!-- <div class="head">
             <a href="javascript:history.back(-1)"></a>
             <p>阅读区</p>
+		</div> -->
+		<div class="lb_headWrap topBox_backgroundColor">
+			<p class="lb_headWrap_return" data-num="1" onclick="returnFun()">
+				<img class="lb_headWrap_return_img" src="__STATIC__/images/public_lb/returnImg666_lb.png"/>
+			</p>
+			<span>阅读区</span>
 		</div>
 			<div class="title-wrap">
 				<div class="title">{$atDetail['title']}</div>
@@ -90,7 +104,8 @@
     </div>    
 </body>
 </html>
-<script src="__STATIC__/js/public/rem.js"></script>
+<script src="__STATIC__/js/public/jquery-1.8.3.min.js"></script>
+<script src="__STATIC__/js/public/public_lb.js"></script>
 <script src="__STATIC__/js/qrcode.js"></script>
 <script>
 	var qrcode = new QRCode('QR_Code', { 

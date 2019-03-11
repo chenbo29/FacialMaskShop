@@ -563,6 +563,14 @@ class Promotion extends Base
         if($keywords){
             $where['goods_name|keywords'] = ['like','%'.$keywords.'%'];
         }
+        //排除已经成为对应分销和代理的签到商品不再显示
+        if($sign_user){
+            //先查询已有的签到商品id
+            $sign_goods_ids=db('sign_goods')->where(['sign_user'=>$sign_user])->column('gid');
+            $where['goods_id']=['not in',implode(',',$sign_goods_ids)];
+//            var_dump($sign_goods_ids);die;
+//            $where=1?2:3;
+        }
         $Goods = new Goods();
         $count = $Goods->where($where)->where(function ($query) use ($prom_type, $prom_id) {
             if(in_array($prom_type,[3,6])){

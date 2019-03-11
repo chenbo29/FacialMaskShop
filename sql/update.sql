@@ -33,7 +33,8 @@ CREATE TABLE `tp_team_ladder` (
 
 
 # 2019-03-09 
-ALTER TABLE `tp_team_found` ADD `discount_price` decimal(10,2) DEFAULT '0.00' COMMENT '不免单时团长折扣价' AFTER `price`;
+ALTER TABLE `tp_team_found` ADD `discount_price` decimal(10,2) DEFAULT '0.00' COMMENT '不免单时团长固定价' AFTER `price`;
+ALTER TABLE `tp_team_activity` MODIFY `is_free` decimal(10,2) DEFAULT 0 COMMENT '是否免单：设置0或空按拼团价来计算';
 
 
 

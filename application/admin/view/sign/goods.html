@@ -98,6 +98,9 @@
                         <th align="left" abbr="article_title" axis="col6" class="">
                             <div style="text-align: left; width:50px;" class="" onClick="sort('goods_id');">id</div>
                         </th>
+                        <th align="left" abbr="article_title" axis="col6" class="">
+                            <div style="text-align: left; width:50px;" class="" onClick="sort('sign_user');">所属者</div>
+                        </th>
                         <th align="left" abbr="ac_id" axis="col4" class="">
                             <div style="text-align: left; width: 300px;" class="" onClick="sort('goods_name');">商品名称</div>
                         </th>
@@ -178,7 +181,8 @@
         </div>
         <div class="bDiv" style="height: auto;">
             <!--ajax 返回 -->
-            <div id="flexigrid" cellpadding="0" cellspacing="0" border="0" data-url="{:U('admin/goods/delGoods')}"></div>
+            <div id="flexigrid" cellpadding="0" cellspacing="0" border="0" data-url="{:U('admin/sign/delGoods')}"></div>
+            <!--<div id="flexigrid"></div>-->
         </div>
 
     </div>
@@ -214,6 +218,7 @@
             url: "/index.php?m=Admin&c=sign&a=ajaxSignGoodsList&p=" + page,//+tab,
             data: $('#' + form).serialize(),// 你的formid
             success: function (data) {
+                // console.log(data)
                 $("#flexigrid").html('');
                 $("#flexigrid").append(data);
             }
@@ -263,6 +268,7 @@
         });
 
         layer.closeAll('iframe');
+        location.href = location.href;
     }
 </script>
 </body>

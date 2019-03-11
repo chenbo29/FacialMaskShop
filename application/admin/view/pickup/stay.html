@@ -22,7 +22,7 @@
                 <ul class="tab-base nc-row">
                     <li><a href="{:U('pickup/off')}"><span>核销提货码</span></a></li>
                     <li><a href="{:U('pickup/index')}" <if condition="$Request.param.is_write_off nheq '0'">class="current"</if>><span>全部自提订单</span></a></li>
-                    <li><a href="{:U('pickup/index',['is_write_off'=>0])}" <if condition="$Request.param.is_write_off heq '0'">class="current"</if>><span>待自提订单</span></a></li>
+                    <li><a href="{:U('pickup/stay',['is_write_off'=>0])}" <if condition="$Request.param.is_write_off heq '0'">class="current"</if>><span>待自提订单</span></a></li>
                     <li><a href="{:U('pickup/statistic')}"><span>数据统计</span></a></li>
                 </ul>
             </if>
@@ -146,7 +146,7 @@
                                 <div style="text-align: center; width: 140px;">{$order.order_sn}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 120px;">{$order['order']['add_time']|date='Y-m-d H:i:s',###}</div>
+                                <div style="text-align: center; width: 120px;">{$order.add_time|date='Y-m-d H:i:s',###}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 100px;">{$order.consignee}</div>
@@ -155,10 +155,10 @@
                                 <div style="text-align: center; width: 100px;">{$order.mobile}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 100px;">{$order.shop_name}</div>
+                                <div style="text-align: center; width: 100px;">{$order.pickup_name}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 120px;">{$order.take_time}</div>
+                                <div style="text-align: center; width: 120px;">{$shop_order.take_time|date='Y-m-d H:i:s',###}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 50px;">自提</div>

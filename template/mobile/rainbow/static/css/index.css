@@ -1,9 +1,6 @@
 /* 
   index首页样式:
 */
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +10,6 @@
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: transparent; */
 }
-
 
 ul, li {
     list-style: none;
@@ -59,8 +55,6 @@ img{
     height: .14rem;
 }
 
-
-
 .wrapper{
    background-color: #fff;
    font-family: "Microsoft YaHei";
@@ -102,7 +96,9 @@ img{
     display: flex;
     flex-wrap: nowrap;
     width: 4.48rem;
-    padding:.2rem .52rem .2rem .52rem;
+    margin:.2rem .52rem .2rem .52rem;
+    background-color: #ffffff;
+    border-radius: .5rem .5rem .5rem .5rem;
 }
 .headerInput  .search{
     background: url("../images/t_12.png") no-repeat .2rem;
@@ -110,8 +106,6 @@ img{
     border-right: .01rem solid #cccccc;
     width: .82rem;
     height: .55rem;
-    background-color:#ffffff;
-    border-radius: .5rem 0 0 .5rem;
     line-height: .55rem;
     position: relative;
     padding-right:.1rem;
@@ -131,12 +125,8 @@ img{
     border:0;
     height: .55rem;
     width: 4.07rem;
-    border-radius: 0 .5rem .5rem 0;
-    /* caret-color: transparent;
-    outline: none; */
     padding-left:.1rem;
     font-size:.2rem;
-    background-color:#ffffff;
     line-height: .55rem;
     color:#cdcdcd;
 }
@@ -164,6 +154,7 @@ img{
     height: 3rem;
     background-color: #ecf6ff;
 }
+
 .gongGe .gongGeItem{
     width: 25%;
     height: 1.4rem;
@@ -382,10 +373,9 @@ img{
  .recommend-info  .recommend-text  .recommend-name{
     overflow: hidden;
     font-size:.3rem;
-    padding-left:.1rem;
-    padding-top:.1rem;
     height: .7rem;
     line-height: .35rem;
+    padding:.1rem .1rem 0 .1rem;
  }
  .recommend-info  .recommend-text  .recommend-name>a{
     display: -webkit-box;
@@ -418,25 +408,13 @@ img{
 
 .loading{
     position: absolute;
-    /* top: 50%; */
     left: 50%;
     margin: -.3rem 0 0  -.3rem;
     width: .5rem;
     height: .5rem;
-    border: .1rem solid;
-    border-color: #333 #333 transparent;
-    border-radius: 50%;
     box-sizing: border-box;
-    animation: loading 1s linear infinite;
 }
-@keyframes loading{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
+
 
 .p-zai{
     padding-top:.2rem;

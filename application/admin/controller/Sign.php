@@ -39,12 +39,12 @@ class Sign extends Base {
 
     //签到商品列表
     public function ajaxSignGoodsList(){
-
+//        return 1;
 //        var_dump($_POST);die;
         //先查询签到商品表中商品
         $sign_goods=M('sign_goods')->select();
 //        var_dump($sign_goods);die;
-        $sign_goods_ids=array_column($sign_goods,'id');
+        $sign_goods_ids=array_column($sign_goods,'gid');
         $where = " goods_id in (".implode(',',$sign_goods_ids).")  "; // 搜索条件固定在签到的商品中查
         I('intro')    && $where = "$where and ".I('intro')." = 1" ;
         I('brand_id') && $where = "$where and brand_id = ".I('brand_id') ;
@@ -74,14 +74,22 @@ class Sign extends Base {
 //        var_dump($_POST);die;
         $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
 //        var_dump($order_str);die;
-        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
-        foreach($goodsList as $key=>$value){
-            foreach($sign_goods as $k=>$v){
-                if($value['goods_id'==$v['gid']]){
-                    $goodsList[$key]['sign_user']=$v['sign_user'];
-                }
-            }
-        }
+//        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('sign_goods')->alias('a')->join('goods b','a.gid=b.goods_id')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+//        var_dump($goodsList);die;
+//        echo "`````````````````````";
+//        var_dump($sign_goods);die;
+//        foreach($goodsList as $key=>$value){
+//            foreach($sign_goods as $k=>$v){
+//                if($value['goods_id']==$v['gid']){
+//                    if(!empty($goodsList[$key]['sign_user'])){
+//                        $goodsList[$key]['sign_user']='all';
+//                    }else{
+//                        $goodsList[$key]['sign_user']=$v['sign_user'];
+//                    }
+//                }
+//            }
+//        }
 //        var_dump($goodsList);die;
         $catList = D('goods_category')->select();
         $catList = convert_arr_key($catList, 'id');
@@ -89,18 +97,20 @@ class Sign extends Base {
         $this->assign('goodsList',$goodsList);
         $this->assign('page',$show);// 赋值分页输出
 //        var_dump($catList);die;
-
+//        $this->ajaxReturn($goodsList);
 //        ini_set("display_errors","On");
 //        error_reporting(E_ALL);
+//        var_dump($show);die;
 //        var_dump($goodsList);die;
-        return $this->fetch();
+
+        return $this->fetch('ajaxSignGoodsList');
     }
 
     //将添加的商品入库
     public function ajaxSignGoods(){
         $sign_user=I('sign_user');
         $gid=I('gid');
-        $sign_user=$sign_user==1?'fenxiao':'daili';
+//        $sign_user=$sign_user==1?'fenxiao':'daili';
         $sign_goods_data=array('sign_user'=>$sign_user,'gid'=>$gid);
         $result=db('sign_goods')->save($sign_goods_data);
         if($result){
@@ -109,7 +119,18 @@ class Sign extends Base {
             return $this->ajaxReturn(['status'=>2,'msg'=>'添加失败']);
         }
     }
+    //删除签到商品
+    public function delGoods()
+    {
+        $ids = I('post.ids','');
+//        var_dump($ids);die;
+        empty($ids) &&  $this->ajaxReturn(['status' => -1,'msg' =>"非法操作！",'data'  =>'']);
+        $sign_goods_ids = rtrim($ids,",");
+        // 删除此商品
+        M('sign_goods')->whereIn('id',$sign_goods_ids)->delete();//签到商品
 
+        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/sign/goods")]);
+    }
 
     
 }

@@ -30,6 +30,7 @@ class System extends Base
 		/*配置列表*/
 		$group_list = [
             'shop_info' => '店铺信息',
+            'sign'      => '签到设置',
             'basic'     => '基本设置',
             'sms'       => '短信设置',
             'shopping'  => '购物流程设置',
@@ -513,6 +514,10 @@ exit("请联系智丰网络客服购买高级版支持此功能");
             Db::name('poster')->add($data);
             $this->ajaxReturn(['status'=>1,'msg'=>'添加成功','url'=>U('Admin/System/posterList')]);
         }
+    }
+    //签到设置
+    public function sign(){
+         $this->fetch();
     }
         
     /**

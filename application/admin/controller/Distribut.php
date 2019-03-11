@@ -2,8 +2,6 @@
 
 namespace app\admin\controller;
 
-use app\common\logic\BonusLogic;
-
 use think\Page;
 use think\Db;
 use think\Loader;
@@ -223,40 +221,15 @@ class Distribut extends Base {
      */
     public function rebate_log()
     {
-        $count = Db::name('agent_log')->alias('log')
-                ->join('users', 'users.user_id = log.user_id')
-                ->join('goods', 'goods.goods_id = log.goods_id')
-                ->field('log.*')
-                ->count();
+        $count = M('account_log')->alias('acount')->join('users', 'users.user_id = acount.user_id')
+                                 ->count();
         $page = new Page($count, 10);
-        $log = Db::name('agent_log')->alias('log')
-                ->join('users', 'users.user_id = log.user_id')
-                ->join('goods', 'goods.goods_id = log.goods_id')
-                ->field('log.*, users.nickname, goods.goods_name')
-                ->limit($page->firstRow, $page->listRows)
-                ->order('log.log_id desc')
-                ->select();
+        $log = M('account_log')->alias('acount')->join('users', 'users.user_id = acount.user_id')
+                               ->field('users.nickname, acount.*')->order('log_id DESC')
+                               ->limit($page->firstRow, $page->listRows)->select();
         $this->assign('pager', $page);
         $this->assign('log',$log);
         return $this->fetch();
-    }
-    
-    /**
-     * 分成日志删除
-     */
-    public function log_del()
-    {
-        $id = I('del_id/d');
-        if ($id) {
-            $result = M('agent_log')->where(['log_id' => $id])->delete();
-            if($result){
-                exit(json_encode(1));
-            }else{
-                exit(json_encode(0));
-            }
-        } else {
-            exit(json_encode(0));
-        }
     }
     
     /**
@@ -265,20 +238,9 @@ class Distribut extends Base {
     public function log_detail()
     {
         $logId = I('id');
-        $detail = Db::name('agent_log')->alias('log')
-                ->join('users', 'users.user_id = log.user_id')
-                ->join('goods', 'goods.goods_id = log.goods_id')
-                ->field('log.*, users.nickname, goods.goods_name')
-                ->where('log.log_id', $logId)
-                ->find();
+        $detail = M('account_log')->alias('acount')->join('users', 'users.user_id = acount.user_id')
+                                  ->field('users.nickname, acount.*')->where('acount.log_id', $logId)->find();
         $this->assign('detail', $detail);
         return $this->fetch();
     }
-   
-    public function log()
-    {
-        $tx = new BonusLogic(8,0,3,4);
-        $tx->bonusModel();
-    }
-
 }

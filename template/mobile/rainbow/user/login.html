@@ -1,4 +1,6 @@
 <include file="public/header" title="智丰商城登录"  body=""/>
+
+ <link rel="stylesheet" type="text/css" href="__STATIC__/css/login_zjy/login_zjy.css"/>
 <div class="zjy_login">
 	<div class="zjy_head">
 	<h3>智丰商城登录</h3>
@@ -20,7 +22,7 @@
         <div class="lsu">
             <input class="v-code-input" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码"/>
             <div class="login_yanz">
-            	<p>点击切换验证码</p>
+            	<!--<p>点击切换验证码</p>-->
             	<img class="v-code-pic"  id="verify_code_img" src="{:U('Mobile/User/verify')}" onClick="verify()"/>
             </div>
         </div>

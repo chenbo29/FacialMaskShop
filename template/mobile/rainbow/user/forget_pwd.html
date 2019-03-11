@@ -1,5 +1,21 @@
 <include file="public/header" title="找回密码" body=""/>
-<include file="public/header_nav" title="找回密码" href="javascript:history.back(-1)"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/login_zjy/login_zjy.css"/>
+
+
+<div class="classreturn loginsignup ">
+    <div class="content">
+        <div class="ds-in-bl return">
+            <a id="[back]" <php> if(request()->action() == 'userinfo' && $_GET["action"]==""){ </php>  href="{:U('User/index')}" <php> }else{ </php> href="[href]" <php> } </php> ><img src="__STATIC__/images/return.png" alt="返回"></a>
+        </div>
+        <div class="ds-in-bl search center" >
+            <span>忘记密码</span>
+        </div>
+        <div class="ds-in-bl menu">
+            <a href="javascript:void(0);"><img src="__STATIC__/images/class1.png" alt="菜单"></a>
+        </div>
+    </div>
+</div>
+
 <div class="reset-pwd-steps">
     <img src="__STATIC__/images/pic-reset-psw1.jpg" alt="" />
 </div>

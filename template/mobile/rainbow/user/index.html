@@ -14,16 +14,18 @@
 			<div class="user-head-zp">
 				<div class="user-top-zp">
 					<div class="user-info-zp">
-						<div class="user-avatar-zp">
-							<img src="{$user['head_pic']}"/>
-						</div>
+						<a href="/mobile/User/personal">
+							<div class="user-avatar-zp">
+								<img src="{$user['head_pic']}"/>
+							</div>
+						</a>
 						<p class="user-name-zp">{$user['nickname']}</p>
 						<span class="sign">尊贵会员</span>
 					</div>
-					<div class="sign-wrap-zp">
+					<!-- <div class="sign-wrap-zp">
 						<span class="sign-in-zp"><i></i> 签到</span>
 						<span class="receive-zp">10天签到领取礼品</span>
-					</div>
+					</div> -->
 				</div>
 				<div class="user-down-zp">
 					<ul class="user-down-list">
@@ -220,23 +222,19 @@
 									<p>我的分销</p>
 								</a>
 							</li>
+							<li>
+								<a href="{:U('mobile/User/store')}">
+									<img src="__STATIC__/images/user_zp/zt26@2x.png"/>
+									<p>门店管理</p>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 				
 			</div>
 			
-			<!--遮罩层-->
-			<div class="model">
-				<!--签到成功弹出-->
-				<div class="dialog-sign-zp">
-					<p class="score">总分1342</p>
-					<p class="time">已经连续签到257天</p>
-					<p class="white">今日签到成功</p>
-					<p class="add-score">+10积分</p>
-				</div>
-				
-			</div>
+			
 			
 			<!--底部导航-start-->
     		<include file="public/footer_nav"/>

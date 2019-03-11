@@ -1,5 +1,7 @@
 <include file="public/header" title="性别" body=""/>
-<include file="public/header_nav" title="性别"  href="{:U('Mobile/User/userinfo')}"/>
+<link rel="stylesheet" href="__STATIC__/css/lj_grzl.css" />
+           <div class="reset-pwd-title"><a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>选择性别</div>
+	
 		<div class="loginsingup-input">
             <form action="{:U('Mobile/User/userinfo')}" method="post">
 				<div class="content30">
@@ -14,7 +16,7 @@
                             <input type="hidden" name="sex" id="sex" value="{$user[sex]}" />
 						</ul>
 					</div>
-					<div class="lsu submit">
+					<div class="lsu-submit" style="margin-left: 0.6rem;">
 						<input type="submit" class="z-submits" id="" value="确认" />
 					</div>
 				</div>
@@ -39,6 +41,7 @@
             $(this).parent('li').nextAll(':hidden').val(2)
         })
     })
+      
 </script>
 </body>
 </html>

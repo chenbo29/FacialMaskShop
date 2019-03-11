@@ -88,9 +88,9 @@
   DateMarker.prototype.buildYearSelect = function(){
     var year = '<select class="date-marker-year">',
         lastYear = new Date().getFullYear(),
-        erYear = lastYear-10;
+        erYear = lastYear-4;
         console.log(lastYear,"当前年份");
-        console.log(erYear,"初始年份");
+        console.log(erYear,"初始年份+1年");
     while (lastYear > erYear) {
       year += '<option value="'+lastYear+'">'+lastYear+'</option>';
       lastYear--;

@@ -6,3 +6,4 @@
 .project
 .idea
 /public/upload/goods/thumb/
+/public/upload/head_pic/*

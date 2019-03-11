@@ -138,15 +138,6 @@ class Index extends MobileBase {
 
 
     /**
-     * 分类列表显示
-     */
-    public function categoryList(){
-        return $this->fetch();
-    }
-
-  
-
-    /**
      * 门店列表
      * province,如果有省名，传省名字
      * lng,lat,search_radius，经伟度，查找半径范围内的门店

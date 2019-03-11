@@ -47,6 +47,15 @@ class Auction extends MobileBase
 
         return $arr;
     }
-  
-    
+
+
+	/**
+	 * 条数具体化
+	 */
+	public function tiaoshu()
+    {
+
+        return $this->fetch();
+    }
+
 }

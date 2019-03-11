@@ -59,7 +59,7 @@ return array(
     'shop' => array('name' => '商城', 'child' => array(
         array('name' => '商品', 'child' => array(
             array('name' => '商品列表', 'act' => 'goodsList', 'op' => 'Goods'),
-            array('name' => '淘宝导入', 'act' => 'index', 'op' => 'Import'),
+            // array('name' => '淘宝导入', 'act' => 'index', 'op' => 'Import'),
             array('name' => '商品分类', 'act' => 'categoryList', 'op' => 'Goods'),
             array('name' => '库存管理', 'act' => 'stockList', 'op' => 'Goods'),
             array('name' => '商品模型', 'act' => 'type_list', 'op' => 'Goods'),
@@ -69,7 +69,7 @@ return array(
         )),
         array('name' => '订单', 'child' => array(
             array('name' => '订单列表', 'act' => 'index', 'op' => 'Order'),
-            array('name' => '虚拟订单', 'act' => 'virtual_list', 'op' => 'Order'),
+            // array('name' => '虚拟订单', 'act' => 'virtual_list', 'op' => 'Order'),
             array('name' => '发货单', 'act' => 'delivery_list', 'op' => 'Order'),
             array('name' => '退款单', 'act' => 'refund_order_list', 'op' => 'Order'),
             array('name' => '退换货', 'act' => 'return_list', 'op' => 'Order'),
@@ -79,6 +79,9 @@ return array(
             array('name' => '拼团列表', 'act' => 'team_list', 'op' => 'Team'),
             array('name' => '拼团订单', 'act' => 'order_list', 'op' => 'Team'),
             array('name' => '上门自提', 'act' => 'index', 'op' => 'ShopOrder'),
+        )),
+        array('name' => '门店', 'child' => array(
+            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
         )),
         array('name' => '广告', 'child' => array(
             array('name' => '广告列表', 'act' => 'adList', 'op' => 'Ad'),
@@ -120,14 +123,15 @@ return array(
         )),
     )),
 
-    'distribution' => array('name' => '分销', 'child' => array(
-        array('name' => '分销管理', 'child' => array(
-            array('name' => '分销商品', 'act' => 'goods_list', 'op' => 'Distribut'),
+    'distribution' => array('name' => '奖金模式', 'child' => array(
+        array('name' => '模式管理', 'child' => array(
+            // array('name' => '分销商品', 'act' => 'goods_list', 'op' => 'Distribut'),
             array('name' => '分销商列表', 'act' => 'distributor_list', 'op' => 'Distribut'),
             array('name' => '分销关系', 'act' => 'tree', 'op' => 'Distribut'),
-            array('name' => '分销商等级', 'act' => 'grade_list', 'op' => 'Distribut'),
-            array('name' => '分销设置', 'act' => 'distribut', 'op' => 'System'),
-            array('name' => '分成日志', 'act' => 'rebate_log', 'op' => 'Distribut'),
+            array('name' => '分销商设置', 'act' => 'grade_list', 'op' => 'Distribut'),
+            // array('name' => '代理商设置', 'act' => 'agent_grade_list', 'op' => 'Distribut'),
+            // array('name' => '分销设置', 'act' => 'distribut', 'op' => 'System'),
+            array('name' => '日志', 'act' => 'rebate_log', 'op' => 'Distribut'),
         )),
         array('name' => '微信接入', 'child' => array(
             array('name' => '公众号配置', 'act' => 'index', 'op' => 'Wechat'),
@@ -155,11 +159,11 @@ return array(
         )),
     )),
 
-    'store' => array('name' => '门店', 'child' => array(
-        array('name' => '门店管理', 'child' => array(
-            array('name' => '门店列表', 'act' => 'index', 'op' => 'Shop'),
-        )),
-    )),
+    // 'store' => array('name' => '门店', 'child' => array(
+    //     array('name' => '门店管理', 'child' => array(
+    //         array('name' => '门店列表', 'act' => 'index', 'op' => 'Shop'),
+    //     )),
+    // )),
 
     'data' => array('name' => '数据', 'child' => array(
         array('name' => '统计', 'child' => array(
@@ -171,17 +175,17 @@ return array(
             array('name' => '运营概览', 'act' => 'finance', 'op' => 'Report'),
             array('name' => '平台支出记录', 'act' => 'expense_log', 'op' => 'Report'),
         )),
-        array('name' => 'App', 'child' => array(
-            array('name' => '安卓APP管理', 'act' => 'index', 'op' => 'MobileApp'),
-            array('name' => '苹果APP管理', 'act' => 'ios_audit', 'op' => 'MobileApp'),
-        ))
+        // array('name' => 'App', 'child' => array(
+        //     array('name' => '安卓APP管理', 'act' => 'index', 'op' => 'MobileApp'),
+        //     array('name' => '苹果APP管理', 'act' => 'ios_audit', 'op' => 'MobileApp'),
+        // ))
     )),
 
     'pickup' => array('name' => '线下取货', 'child' => array(
         array('name' => '线下取货', 'child' => array(
             // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
             array('name' => '自提订单', 'act' => 'index', 'op' => 'Pickup'),
-            array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
+            //array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
             // array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
         )),
         // array('name' => '在线核销','child' => array(
@@ -192,7 +196,7 @@ return array(
     'seller' => array('name' => '商家管理', 'child' => array(
         array('name' => '商家管理', 'child' => array(
             array('name' => '商家列表', 'act' => 'seller_list', 'op' => 'SellerManagement'),
-            array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
+            //array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
         ))
     )),
 );

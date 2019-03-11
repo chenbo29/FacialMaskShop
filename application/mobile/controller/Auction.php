@@ -47,7 +47,7 @@ class Auction extends MobileBase
 
         return $arr;
     }
-<<<<<<< HEAD
+
 
 	/**
 	 * 条数具体化
@@ -57,8 +57,5 @@ class Auction extends MobileBase
 
         return $this->fetch();
     }
-=======
-  
-    
->>>>>>> aa16dec4e6c5f625561f6f82cc890f67966c611e
+
 }

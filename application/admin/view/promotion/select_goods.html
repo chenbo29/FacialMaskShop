@@ -16,6 +16,8 @@
             <form class="navbar-form form-inline" id="search-form2" action="{:U('Promotion/search_goods',array('tpl'=>'select_goods'))}" method="get">
                 <input name="prom_id" type="hidden" value="{$Request.param.prom_id}">
                 <input name="prom_type" type="hidden" value="{$Request.param.prom_type}">
+                <!--隐藏一个用于判断是添加了分销还是代理的签到商品-->
+                <input id="sign_user" name="sign_user" type="hidden" value="{$sign_user}">
                 <div class="sDiv">
                     <div class="sDiv2" style="margin-right: 10px;border:none;">
                         <select name="cat_id" id="cat_id">
@@ -187,6 +189,8 @@
     function select_goods()
     {
         var input = $("input[type='radio']:checked");
+        //签到商品的所属者
+        var sign_user=$("#sign_user").val();
         if (input.length == 0) {
             layer.alert('请选择商品', {icon: 2}); //alert('请选择商品');
             return false;
@@ -207,7 +211,8 @@
                 console.log(goodsItem);
             }
         }
-
+        goodsItem.sign_user=sign_user;
+        // console.log(goodsItem);
         window.parent.call_back(goodsItem);
     }
 </script>

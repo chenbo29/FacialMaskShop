@@ -200,7 +200,12 @@
 					<p class="notic"></p>
 				</dd>
 			</dl>
-            <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+            <!--<div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>-->
+			<if condition="$info['is_edit'] eq 0">
+				<div class="bot"><a class="ncap-btn-big">确认提交</a></div>
+				<else/>
+				<div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+			</if>
 
             <!-- <dl class="row">
                 <dt class="tit">手机短信通知</dt>
@@ -232,6 +237,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#start_time').layDate();
+		$('#preview_time').layDate();
     })
     var ajax_return_status = 1; // 标识ajax 请求是否已经回来 可以进行下一次请求
     function verifyForm(){

@@ -12,7 +12,8 @@
 </style>
 <div class="zjy_login">
 	<div class="zjy_head">
-		<h3><a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>智丰商城注册</h3>	
+        <h3></a>智丰商城注册</h3>	
+        <!-- <a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"> -->
 	</div>
 	<!--背景-->
 	<div class="zjy_login_bgs"></div>
@@ -28,31 +29,31 @@
     <form action="" method="post" id="regFrom" >
         <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
         <input type="hidden" name="is_bind" value="{$Request.param.is_bind}">
-        <div class="lsu">
-            <label class="zjy_reg" for="username">账号:</label>
+        <div class=" reg_width">
+            <label class="zjy_reg" for="username">账&nbsp;&nbsp;&nbsp;&nbsp;号:</label>
             <input type="text" name="username" id="username" value="" placeholder="请输入账号"  class="c-form-txt-normal zjt_regIpunt">
             <span id="mobile_phone_notice"></span>
         </div>
-        <div class="lsu">
+        <div class=" reg_width">
             <label class="zjy_reg" for="useriphone">手机号:</label>
             <input type="text" name="username" id="useriphone" value="" placeholder="请输入手机号"  class="c-form-txt-normal zjt_regIpunt">
             <span id="mobile_phone_notice"></span>
         </div>
         <if condition="$regis_sms_enable eq 1">
-            <div class="lsu">
+            <div class="zjy_yanzma_reg">
             	<label class="zjy_reg" for="mobile_code">验证码:</label>         		
                 <input class="zjy_input " type="text" id="mobile_code" value="" name="mobile_code" placeholder="请输入验证码" >
                 <a class="btn-text-message" rel="mobile" onClick="sendcode(this)">获取验证码</a>
             </div>
         </if>
-        <div class="lsu">
-            <label class="zjy_reg" for="password">密码:</label>
+        <div class="reg_width">
+            <label class="zjy_reg" for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
             <input type="password" id="password" value="" maxlength="16" placeholder="请设置6-16位登录密码" class="c-form-txt-normal zjt_regIpunt" onBlur="check_password();">
             <input type="hidden" name="password" value="" />
             <span id="password_notice"></span>
         </div>
-        <div class="lsu">
-            <label class="zjy_reg" for="password2">再输密码:</label>
+        <div class="reg_width">
+            <label class="zjy_reg" style="margin-left:-.6rem;" for="password2">再输密码:</label>
             <input type="password" class="zjt_regIpunt" id="password2" value="" maxlength="16" placeholder="确认密码">
             <input type="hidden" name="password2" value="" />
             <span id="confirm_password_notice"></span>

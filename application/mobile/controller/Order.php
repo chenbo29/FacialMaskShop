@@ -56,6 +56,11 @@ class Order extends MobileBase
     {
     	return $this->fetch();
     }
+    
+    public function receive()
+    {
+    	return $this->fetch();
+    }
 
 	public function guanzhu()
     {

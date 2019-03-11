@@ -48,22 +48,22 @@
             </div>
             <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
             <if condition="$Request.param.statistic neq 1">
-                <form class="navbar-form form-inline" method="post" action="{:U('pickup/index')}">
+                <form class="navbar-form form-inline" method="get" action="{:U('pickup/index')}">
                 <input type="hidden" name="is_write_off" value="{$Request.param.is_write_off}">
                 <div class="sDiv">
-                   <!--  <div class="dyrDiv2">
+                    <div class="dyrDiv2">
                         <span style="width: 30px;font-size: 12px;margin-right: 10px;">下单时间</span>
                     </div>
                     <div class="sDiv2" style="margin-right: 10px;">
-                        <input type="text" size="30" name="add_time" id="add_time_start" value="" placeholder="下单时间" class="qsbox">
+                        <input type="text" size="30" name="add_time_start" id="add_time_start" value="{$add_time_start}" placeholder="起始时间" class="qsbox">
                     </div>
                     <div class="dyrDiv2">
                         <span style="width: 30px;font-size: 12px;">至</span>
                     </div>
                     <div class="sDiv2" style="margin: 0px 10px;">
-                        <input type="text" size="30" name="add_time_end" id="add_time_end" value="" placeholder="截止时间" class="qsbox">
-                    </div> -->
-                    <!-- <div class="dyrDiv2">
+                        <input type="text" size="30" name="add_time_end" id="add_time_end" value="{$add_time_end}" placeholder="截止时间" class="qsbox">
+                    </div>
+                    <div class="dyrDiv2">
                         <span style="width: 30px;font-size: 12px;margin-right: 10px;">自提点</span>
                     </div>
                     <div class="sDiv2">
@@ -73,9 +73,9 @@
                                 <option value="{$shop.shop_id}" <if condition="$Request.param.shop_id eq $shop['shop_id']">selected="selected"</if>>{$shop.shop_name}</option>
                             </volist>
                         </select>
-                    </div> -->
+                    </div>
                     <div class="sDiv2">
-                        <input type="text" size="30" name="order_sn" value="" class="qsbox" placeholder="请输入订单号">
+                        <input type="text" size="30" name="keywords" value="{$Request.param.keywords}" class="qsbox" placeholder="请输入订单号">
                     </div>
                     <div class="sDiv2">
                         <input class="btn" value="搜索" type="submit">
@@ -93,10 +93,10 @@
                             <div style="width: 24px;"><i class="ico-check"></i></div>
                         </th>
                         <th align="left">
-                            <div style="text-align: center; width: 150px;">订单编号</div>
+                            <div style="text-align: center; width: 140px;">订单编号</div>
                         </th>
                         <th align="left">
-                            <div style="text-align: center; width: 150px;">下单时间</div>
+                            <div style="text-align: center; width: 120px;">下单时间</div>
                         </th>
                         <th align="center">
                             <div style="text-align: center; width: 100px;">收货人</div>
@@ -108,22 +108,22 @@
                             <div style="text-align: center; width: 100px;">自提点</div>
                         </th>
                         <th align="center">
-                            <div style="text-align: center; width: 150px;">自提时间</div>
+                            <div style="text-align: center; width: 120px;">自提时间</div>
                         </th>
                         <th align="center">
-                            <div style="text-align: center; width: 80px;">配送方式</div>
+                            <div style="text-align: center; width: 50px;">配送方式</div>
                         </th>
                         <th align="center" >
-                            <div style="text-align: center; width: 80px;">订单状态</div>
+                            <div style="text-align: center; width: 50px;">订单状态</div>
                         </th>
                         <th align="center" >
-                            <div style="text-align: center; width: 80px;">支付状态</div>
+                            <div style="text-align: center; width: 50px;">支付状态</div>
                         </th>
                         <th align="center" >
-                            <div style="text-align: center; width: 80px;">发货状态</div>
+                            <div style="text-align: center; width: 50px;">发货状态</div>
                         </th>
                         <th align="center" >
-                            <div style="text-align: center; width: 80px;">支付方式</div>
+                            <div style="text-align: center; width: 50px;">支付方式</div>
                         </th>
                         <th align="left" class="handle">
                             <div style="text-align: left; width: 150px;">操作</div>
@@ -143,10 +143,10 @@
                                 <div style="width: 24px;"><i class="ico-check"></i></div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 150px;">{$order.order_sn}</div>
+                                <div style="text-align: center; width: 140px;">{$order.order_sn}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 150px;">{$order.add_time|date="Y-m-d H:i:s",###}</div>
+                                <div style="text-align: center; width: 120px;">{$order['order']['add_time']|date='Y-m-d H:i:s',###}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 100px;">{$order.consignee}</div>
@@ -155,29 +155,29 @@
                                 <div style="text-align: center; width: 100px;">{$order.mobile}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 100px;">{$order.pickup_name}</div>
+                                <div style="text-align: center; width: 100px;">{$order['shop']['shop_name']}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 150px;">{$order.take_time|date="Y-m-d H:i:s",###}</div>
+                                <div style="text-align: center; width: 120px;">{$order['take_time']}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 80px;">自提</div>
+                                <div style="text-align: center; width: 50px;">自提</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 80px;">{$Think.config.ORDER_STATUS[$order.order_status]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.ORDER_STATUS[$order.order_status]}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 80px;">{$Think.config.PAY_STATUS[$order.pay_status]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.PAY_STATUS[$order.pay_status]}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 80px;">{$Think.config.SHIPPING_STATUS[$order.shipping_status]}</div>
+                                <div style="text-align: center; width: 50px;">{$Think.config.SHIPPING_STATUS[$order.shipping_status]}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: center; width: 80px;">{$list.pay_name|default='其他方式'}</div>
+                                <div style="text-align: center; width: 50px;">{$list.pay_name|default='其他方式'}</div>
                             </td>
                             <td align="left" class="handle">
                                 <div style="text-align: left; width: 240px; max-width:240px;">
-                                    <a class="btn blue" href="{:U('pickup/detail',['order_id'=>$order['order_id']])}"><i class="fa fa-list-alt"></i>查看详情</a>
+                                    <a class="btn blue" href="{:U('Order/detail',['order_id'=>$order['order_id']])}"><i class="fa fa-list-alt"></i>查看详情</a>
                                     <if condition="$order['order']['shipping_status'] eq 0 && $order['order']['order_status'] neq 3">
                                         <a class="btn orange" onclick="deliverGoods({$order.order_id})"><i class="fa fa-send-o"></i>发货</a>
                                     </if>
@@ -194,7 +194,7 @@
             <div class="iDiv" style="display: none;"></div>
         </div>
         <!--分页位置-->
-        {$show}
+        {$page->show()}
     </div>
 </div>
 <div class="z-ztfh-bg" hidden>

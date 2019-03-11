@@ -2,17 +2,19 @@
 
 namespace app\admin\controller;
 
+use app\common\logic\BonusLogic;
+
 use think\Page;
 use think\Db;
 use think\Loader;
 
 class Distribut extends Base {
 
-    public function goods_list(){
+    // public function goods_list(){
        
      
-        return $this->fetch();
-    }
+    //     return $this->fetch();
+    // }
 
     /**
      * 分销商列表
@@ -88,7 +90,16 @@ class Distribut extends Base {
     
     public function tree()
     {
-      
+        $users = M('users')->where('is_distribut', 1)->field('user_id, first_leader')->select();
+        
+        $result = array_map(function($user){
+            $result = M('users')->where('user_id',$user['first_leader'])->find();
+            return $result;
+        }, $users);
+
+        $this->assign('count',count($result));
+        $this->assign('info',$result);
+        
         return $this->fetch();
     }
     
@@ -110,7 +121,7 @@ class Distribut extends Base {
         }
 
         $this->assign('rate', $distribut['rate']);
-        
+
         return $this->fetch();
     }
 
@@ -120,7 +131,7 @@ class Distribut extends Base {
     **/
     public function agent_grade_list()
     {
-         $Ad = M('user_level');
+        $Ad = M('user_level');
         $p = $this->request->param('p');
         $res = $Ad->order('level_id')->page($p . ',10')->select();
         if ($res) {
@@ -264,6 +275,10 @@ class Distribut extends Base {
         return $this->fetch();
     }
    
-    
+    public function log()
+    {
+        $tx = new BonusLogic(8,0,3,4);
+        $tx->bonusModel();
+    }
 
 }

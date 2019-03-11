@@ -287,7 +287,7 @@ class Uploaderer
 					$logger->LogInfo ( "串为 >" . $signature_base64 );
 					$params ['signature'] = $signature_base64;
 				} else {
-					$logger->LogInfo ( ">>>>>失败<<<<<<<" );
+					$logger->LogInfo ( "失败" );
 				}
 			} else if($params['version']=='5.1.0'){
 				//sha256摘要
@@ -300,7 +300,7 @@ class Uploaderer
 					$logger->LogInfo ( "串为 >" . $signature_base64 );
 					$params ['signature'] = $signature_base64;
 				} else {
-					$logger->LogInfo ( ">>>>>失败<<<<<<<" );
+					$logger->LogInfo ( "失败" );
 				}
 			} else {
 				$logger->LogError ( "wrong version: " + $params['version'] );

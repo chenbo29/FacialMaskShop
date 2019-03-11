@@ -29,6 +29,7 @@ a{
 	position: absolute;
 	bottom: 0;
 	left: 7.3rem;
+	background:#f3fbfe; 
 }
 #verify_code_img{
 	position: relative;

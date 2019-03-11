@@ -5,6 +5,7 @@ body {
 .wrap_signin {
 	width: 7.5rem;
 	height: auto;
+	touch-action: pan-y;
 }
 /*头部 背景色 -左向右渐变*/
 .topBox_backgroundColor {

@@ -123,6 +123,15 @@ class Auction extends MobileBase
         return $this->fetch('auction_detail','','',array('id'=>$auction_id)); //分跳转 和不 跳转
 
     }
-  
-    
+
+
+	/**
+	 * 条数具体化
+	 */
+	public function tiaoshu()
+    {
+
+        return $this->fetch();
+    }
+
 }

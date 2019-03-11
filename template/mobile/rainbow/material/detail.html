@@ -1,3 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>素材区</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,body,div,p,a {
+            margin: 0;
+            padding: 0;
+        }
+		.head {
+            width: 100%;
+            height: .8rem;
+            background: #fff;
+            border-bottom: 1px solid #bbb;
+        }
+        .head p {
+            float: left;
+            margin:0 auto;
+            width: 80%;
+            color: #101010;
+            font-size: .35rem;
+            font-weight: 600;
+            line-height: .8rem;
+            text-align: center;
+        }
+        .head a {
+            margin: 3% 0 0 3%;
+            float: left;
+            display: inline-block;
+            width: 4%;
+            height: .45rem;
+            background: url(__STATIC__/images/return.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+		.title-wrap .title {
+			margin: 3% 0 0 3%;
+			font-size: .35rem;
+			font-weight: 900;
+		}
+		.title-wrap .date {
+			margin: 2% 0 0 3%;
+			font-size: .16rem;
+		}
+		.title-wrap .what {
+			margin: 2% 0 0 3%;
+			width: 95%;
+			font-size: .16rem;
+			text-indent:25px;
+		}
+		.title-wrap .code {
+			margin: 10% auto;
+			width: 50%;
+		}
+        img {
+			width: 100%;
+		}
+		.what{
+			font-size: 16px !important;
+		}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="head">
+            <a href="javascript:history.back(-1)"></a>
+            <p>分享区</p>
+		</div>
+			<div class="title-wrap">
+				<div class="title">{$atDetail['title']}</div>
+				<div class="date">
+					<span>作者：saaaaa</span>&nbsp;
+					<span>{$atDetail['add_time']|date="Y-m-d H:i:s",###}</span>
+				</div>
+			
+				<p class="what">{$atDetail['content']}</p>
+				
+				
+				
+				<div class="date">
+						<span>阅读：<if condition="$vs['click'] gt 0 ">{$vs['click']}<else/>0</if></span>
+						
+					</div>
+				
+				<div class="code" id="QR_Code">
+					<!-- <img src="__STATIC__/images/z-tihuoma.png"/> -->
+				</div>
+			</div>
+    </div>    
+</body>
+</html>
+<script src="__STATIC__/js/public/rem.js"></script>
+<script src="__STATIC__/js/qrcode.js"></script>
+<script>
+	var qrcode = new QRCode('QR_Code', { 
+		text: '{{$url}}', 
+		width: 220, 
+		height: 220, 
+		colorDark : '#000000', 
+		colorLight : '#ffffff', 
+		correctLevel : QRCode.CorrectLevel.H 
+	});
+</script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
  //如果微信分销配置正常, 商品详情分享内容中的"图标"不显示, 则检查域名否配置了https, 如果配置了https,分享图片地址也要https开头

@@ -132,8 +132,7 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!-- <input type="text" name="is_coupon" id="is_coupon" value="{$info.is_coupon}" class="input-txt">
-                    <span class="err" id="err_title"></span> -->
+                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <dl class="row">
@@ -145,8 +144,7 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!-- <input type="text" name="soldout_buy" id="soldout_buy" value="{$info.soldout_buy}" class="input-txt">
-                    <span class="err" id="err_title"></span> -->
+                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <dl class="row">
@@ -158,8 +156,7 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!-- <input type="text" name="public_mark" id="public_mark" value="{$info.public_mark}" class="input-txt">
-                    <span class="err" id="err_title"></span> -->
+                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <!-- <dl class="row">
@@ -197,7 +194,6 @@
                     });
                 } else {
                     layer.msg(data.msg, {icon: 2,time: 1000});
-                    alert(data.result)
                     $.each(data.result, function (index, item) {
                         $('#err_' + index).text(item).show();
                     });

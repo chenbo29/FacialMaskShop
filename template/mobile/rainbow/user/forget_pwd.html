@@ -7,8 +7,8 @@
         <div class="ds-in-bl return">
             <a id="[back]" <php> if(request()->action() == 'userinfo' && $_GET["action"]==""){ </php>  href="{:U('User/index')}" <php> }else{ </php> href="[href]" <php> } </php> ><img src="__STATIC__/images/return.png" alt="返回"></a>
         </div>
-        <div class="ds-in-bl search center" style="padding-top: 0rem !important;">
-            <span>找回密码</span>
+        <div class="ds-in-bl search center" >
+            <span>忘记密码</span>
         </div>
         <div class="ds-in-bl menu">
             <a href="javascript:void(0);"><img src="__STATIC__/images/class1.png" alt="菜单"></a>
@@ -22,11 +22,11 @@
 <div class="loginsingup-input">
     <form  method="post" id="fpForm">
         <div class="reset-pwd-title">账号验证</div>
-        <div class="lsu_psaw">
+        <div class="lsu">
             <span class="ico ico-username"></span>
             <input type="text" name="username" id="username" value="" placeholder="请输入账号"/>
         </div>
-        <div class="">
+        <div class="lsu">
             <span class="ico ico-v-code"></span>
             <input class="v-code-input left" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码"/>
             <img class="v-code-pic" src="/index.php?m=Mobile&c=User&a=verify&type=forget" id="verify_code_img" onclick="verify()">

@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'index' => array('name' => '首页', 'child' => array(
         array('name' => '概览', 'child' => array(
@@ -8,9 +7,9 @@ return array(
     )),
 
     'shop' => array('name' => '商城', 'child' => array(
-        array('name' => '门店', 'child' => array(
+        /*array('name' => '门店', 'child' => array(
             array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
-        )),
+        )),*/
         array('name' => '商品', 'child' => array(
             array('name' => '商品列表', 'act' => 'goodsList', 'op' => 'Goods'),
             // array('name' => '淘宝导入', 'act'=>'index', 'op'=>'Import'),
@@ -53,5 +52,4 @@ return array(
      				array('name'=>'门店管理','act'=>'store','op'=>'Pickup'),
      		)),
      )),*/
-
 );

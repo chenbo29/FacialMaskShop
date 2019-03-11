@@ -1772,4 +1772,10 @@ class User extends MobileBase
         $file && unlink($file);
         exit;
     }
+
+    // 用户自提过商品的门店管理
+    public function store(){
+        return $this->fetch();
+    }
+
 }

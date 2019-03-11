@@ -2,19 +2,12 @@
 
 namespace app\admin\controller;
 
-use app\common\logic\BonusLogic;
-
 use think\Page;
 use think\Db;
 use think\Loader;
+use app\admin\logic\UsersLogic;
 
 class Distribut extends Base {
-
-    // public function goods_list(){
-       
-     
-    //     return $this->fetch();
-    // }
 
     /**
      * 分销商列表
@@ -88,18 +81,17 @@ class Distribut extends Base {
         }
     }
     
+    //关系图
     public function tree()
     {
-        $users = M('users')->where('is_distribut', 1)->field('user_id, first_leader')->select();
-        
-        $result = array_map(function($user){
-            $result = M('users')->where('user_id',$user['first_leader'])->find();
-            return $result;
-        }, $users);
-
-        $this->assign('count',count($result));
-        $this->assign('info',$result);
-        
+        $UsersLogic = new UsersLogic();    
+        $cat_list = $UsersLogic->relation();
+        if($cat_list){
+            $level = array_column($cat_list, 'level');
+            $heightLevel = max($level);
+        }
+        $this->assign('heightLevel',$heightLevel);  
+        $this->assign('cat_list',$cat_list);     
         return $this->fetch();
     }
     
@@ -112,11 +104,17 @@ class Distribut extends Base {
 
         $distribut = M('distribut')->find();
 
+        //是否接收到数据
         if ($data) {
+            //是否已存在数据,是则修改,不是则新增
             if ($distribut) {
-                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
+                $bool = M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
             } else {
-                M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
+                $bool = M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
+            }
+
+            if ($bool !== false) {
+                $distribut['rate'] = $data['rate'];
             }
         }
 
@@ -273,12 +271,6 @@ class Distribut extends Base {
                 ->find();
         $this->assign('detail', $detail);
         return $this->fetch();
-    }
-   
-    public function log()
-    {
-        $tx = new BonusLogic(8,0,3,4);
-        $tx->bonusModel();
     }
 
 }

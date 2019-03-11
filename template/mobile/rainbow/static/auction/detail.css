@@ -216,21 +216,22 @@
 	margin-bottom: .2rem;
 	position: absolute;
 	right: .5rem;
-	margin-top:.07rem;
+	margin-top:-.1rem;
 	background:#C92142;
 	color: white; 
 	display: inline-block;
-	width:1.8rem; 
-	height: .6rem; 
+	width:2.4rem; 
+	height: .7rem; 
 	border-radius: .03rem;
-	font-size: .2rem; 
+	font-size: .1rem; 
 	text-align: center; 
 	border-radius:10%;
 	margin-left:3.2rem;
 	cursor: pointer;
-	
-	
+	padding: .1rem 0;
+
 }
+
 .content{
 	
 	padding-bottom: 1.4rem;

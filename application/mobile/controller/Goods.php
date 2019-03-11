@@ -568,6 +568,7 @@ class Goods extends MobileBase
         }
         $goods_category = M('goods_category')->where('is_show=1')->cache(true)->getField('id,name,parent_id,level'); // 键值分类数组
         $this->assign('goods_list', $goods_list);
+       
         $this->assign('goods_category', $goods_category);
         $this->assign('goods_images', $goods_images);  // 相册图片
         $this->assign('filter_menu', $filter_menu);  // 帅选菜单

@@ -209,9 +209,23 @@
    </div>
    <!--加载中 -->
    <div class="loding">
-    <img src="__STATIC__/images/handpick/loding1.png" alt="" class="loding1">
+    <img src="__STATIC__/images/5-121204193R0-50.gif" alt="" class="loding1">
     <span>正在加载中... ... </span>
    </div>
+   <script>
+       
+        $(function(){
+            var mySwiper = new Swiper ('.swiper-container', {
+    loop: true, 
+    
+  })
+  
+            $(".handpickListImg>ul>li").click(function(event){
+                event.preventDefault();
+                $(this).addClass("active").siblings().removeClass("active")
+            })
+        })
+   </script>
 </div>
 </body>
 </html>

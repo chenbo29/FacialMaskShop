@@ -94,7 +94,7 @@ class AcpService {
 					$logger->LogInfo ( "签名串为 >" . $signature_base64 );
 					$params ['signature'] = $signature_base64;
 				} else {
-					$logger->LogInfo ( ">>>>>签名失败<<<<<<<" );
+					$logger->LogInfo ( "签名失败" );
 				}
 			} else if($params['version']=='5.1.0'){
 				//sha256签名摘要
@@ -107,7 +107,7 @@ class AcpService {
 					$logger->LogInfo ( "签名串为 >" . $signature_base64 );
 					$params ['signature'] = $signature_base64;
 				} else {
-					$logger->LogInfo ( ">>>>>签名失败<<<<<<<" );
+					$logger->LogInfo ( 签名失败 );
 				}
 			} else {
 				$logger->LogError ( "wrong version: " + $params['version'] );
@@ -117,14 +117,14 @@ class AcpService {
 			$logger->LogError ( "signMethod不正确");
 			$result = false;
 		}
-		$logger->LogInfo ( '=====签名报文结束======' );
+		$logger->LogInfo ( '签名报文结束' );
 		return $result;
 	}
 	
 	static function signBySecureKey(&$params, $secureKey) {
 		
 		$logger = LogUtil::getLogger();
-		$logger->LogInfo ( '=====签名报文开始======' );
+		$logger->LogInfo ( '签名报文开始' );
 		
 		if($params['signMethod']=='11') {
 			// 转换成key=val&串
@@ -145,7 +145,7 @@ class AcpService {
 			$logger->LogError ( "signMethod不正确");
 			$result = false;
 		}
-		$logger->LogInfo ( '=====签名报文结束======' );
+		$logger->LogInfo ( '签名报文结束' );
 		return $result;
 	}
 

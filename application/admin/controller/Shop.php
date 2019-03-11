@@ -19,19 +19,45 @@ namespace app\admin\controller;
 use app\common\model\Shopper;
 use think\Loader;
 use think\Db;
+use think\AjaxPage;
 use think\Page;
 
 class Shop extends Base
 {
+    /**
+     * 门店 - 门店管理 - 门店列表
+     */
     public function index()
     {
-        header("Content-type: text/html; charset=utf-8");
-exit("请联系智丰网络客服购买高级版支持此功能");
+        $list = array();
+        $keywords = I('keywords/s');
+        $count = D('shop')->count();
+        $Page  = new AjaxPage($count,20);
+        $show = $Page->show();
+        if (empty($keywords)) {
+            $res = DB::name('shop')->limit($Page->firstRow.','.$Page->listRows)->select();
+        } else {
+            $res = DB::name('shop')->where(['store_name|webid|phone|address|city' => ['like', '%' . $keywords . '%']])->order('store_id')->limit($Page->firstRow.','.$Page->listRows)->select();
+        }
+
+        $region = DB::name('region')->getField('id,name');
+        if ($region && $res) {
+            foreach ($res as $val) {
+                $val['province_city_district'] = $region[$val['province']].' '.$region[$val['city']].' '.$region[$val['district']];
+                $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
+                $list[] = $val;
+            }
+        }
+        //$show = $Page->show();
+        $this->assign('list', $list);
+        $this->assign('page',$show);// 赋值分页输出
+        $province_list = Db::name('region')->where(['parent_id'=>0,'level'=> 1])->cache(true)->select();
+        $this->assign('province_list', $province_list);
+        return $this->fetch();
     }
 
     /**
      * 门店自提点
-     * @return mixed
      */
     public function info()
     {
@@ -57,14 +83,160 @@ exit("请联系智丰网络客服购买高级版支持此功能");
         return $this->fetch();
     }
 
-    public function add(){
-        header("Content-type: text/html; charset=utf-8");
-exit("请联系智丰网络客服购买高级版支持此功能");
+    public function add()
+    {
+        $data = I('post.');
+        if (empty($data['longitude']) && empty($data['latitude'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择地图定位', 'result' => '']);
+        }
+        if (empty($data['shopper_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写门店自提点后台账号', 'result' => '']);
+        }
+        if (empty($data['user_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写会员账号', 'result' => '']);
+        }
+        if (empty($data['password'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写登录密码', 'result' => '']);
+        }
+        if (empty($data['shop_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写自提点名称', 'result' => '']);
+        }
+        if (empty($data['shop_phone'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写联系电话', 'result' => '']);
+        }
+        if (empty($data['work_start_time']) || empty($data['work_end_time'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写营业时间', 'result' => '']);
+        }
+        if (empty($data['province_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择省份/直辖市', 'result' => '']);
+        }
+        if (empty($data['city_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择城市', 'result' => '']);
+        }
+        if (empty($data['district_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择区/县', 'result' => '']);
+        }
+        if (empty($data['shop_address'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写详细地址', 'result' => '']);
+        }
+        if (empty($data['shop_id'])) {
+            unset($data['shop_id']);
+        }
+        if (empty($data['monday'])) {
+            unset($data['monday']);
+        }
+        if (empty($data['tuesday'])) {
+            unset($data['tuesday']);
+        }
+        if (empty($data['wednesday'])) {
+            unset($data['wednesday']);
+        }
+        if (empty($data['thursday'])) {
+            unset($data['thursday']);
+        }
+        if (empty($data['friday'])) {
+            unset($data['friday']);
+        }
+        if (empty($data['saturday'])) {
+            unset($data['saturday']);
+        }
+        if (empty($data['sunday'])) {
+            unset($data['sunday']);
+        }
+        if (empty($data['suppliers_id'])) {
+            unset($data['suppliers_id']);
+        }
+        if (empty($data['shop_images'])) {
+            unset($data['shop_images']);
+        }else{
+            $data['shop_images'] = implode(',',$data['shop_images']);
+        }
+        $data['add_time'] = time();
+        $r = D('shop')->add($data);
+        if ($r) {
+            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Shop/index')]);
+        } else {
+            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
+        }
     }
 
     public function save(){
-        header("Content-type: text/html; charset=utf-8");
-exit("请联系智丰网络客服购买高级版支持此功能");
+        $data = I('post.');
+        if (empty($data['longitude']) && empty($data['latitude'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择地图定位', 'result' => '']);
+        }
+        /*if (empty($data['shopper_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写门店自提点后台账号', 'result' => '']);
+        }*/
+        /*if (empty($data['user_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写会员账号', 'result' => '']);
+        }
+        if (empty($data['password'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写登录密码', 'result' => '']);
+        }*/
+        if (empty($data['shop_name'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写自提点名称', 'result' => '']);
+        }
+        if (empty($data['shop_phone'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写联系电话', 'result' => '']);
+        }
+        if (empty($data['work_start_time']) || empty($data['work_end_time'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写营业时间', 'result' => '']);
+        }
+        if (empty($data['province_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择省份/直辖市', 'result' => '']);
+        }
+        if (empty($data['city_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择城市', 'result' => '']);
+        }
+        if (empty($data['district_id'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请选择区/县', 'result' => '']);
+        }
+        if (empty($data['shop_address'])) {
+            $this->ajaxReturn(['status' => 0, 'msg' => '请填写详细地址', 'result' => '']);
+        }
+        if (empty($data['monday'])) {
+            unset($data['monday']);
+        }
+        if (empty($data['tuesday'])) {
+            unset($data['tuesday']);
+        }
+        if (empty($data['wednesday'])) {
+            unset($data['wednesday']);
+        }
+        if (empty($data['thursday'])) {
+            unset($data['thursday']);
+        }
+        if (empty($data['friday'])) {
+            unset($data['friday']);
+        }
+        if (empty($data['saturday'])) {
+            unset($data['saturday']);
+        }
+        if (empty($data['sunday'])) {
+            unset($data['sunday']);
+        }
+        if (empty($data['suppliers_id'])) {
+            unset($data['suppliers_id']);
+        }
+        if (empty($data['shop_images'])) {
+            unset($data['shop_images']);
+        }else{
+            $data['shop_images'] = implode(',',$data['shop_images']);
+        }
+        if($data['shop_id']){
+            $shop_id = $data['shop_id'];
+            unset($data['shopper_name']);
+            unset($data['user_name']);
+            unset($data['password']);
+            unset($data['shop_id']);
+            $r = D('shop')->where(['shop_id'=> $shop_id])->save($data);
+            if ($r) {
+                $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Shop/index')]);
+            } else {
+                $this->ajaxReturn(['status' => 0, 'msg' => '操作失败', 'result' => '']);
+            }
+        }
     }
 
     /**
@@ -93,5 +265,70 @@ exit("请联系智丰网络客服购买高级版支持此功能");
     {
         $path = input('filename','');
         Db::name('goods_images')->where("image_url",$path)->delete();
+    }
+
+    /**
+     * 商城 - 门店 - 门店管理
+     */
+    public function store_list()
+    {
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店
+     */
+    public function store_info()
+    {
+        $store_id = I('get.store_id/d', 0);
+        if ($store_id) {
+            $info = Db::name('kf_store')->where("store_id", $store_id)->find();
+            $info['password'] = "";
+            $this->assign('info', $info);
+            $city =  M('region')->where(array('parent_id'=>$info['province']))->select();
+            $area =  M('region')->where(array('parent_id'=>$info['city']))->select();
+            $this->assign('city',$city);
+            $this->assign('area',$area);
+        }
+        $act = empty($store_id) ? 'add' : 'edit';
+        $province = M('region')->where(array('parent_id'=>0))->select();
+        $this->assign('province',$province);
+        $this->assign('act', $act);
+        return $this->fetch();
+    }
+
+    /**
+     * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
+     */
+    public function sellerHandle()
+    {
+        $data = I('post.');
+        if (empty($data['province'])) {
+            unset($data['province']);
+        }
+        if (empty($data['city'])) {
+            unset($data['city']);
+        }
+        if (empty($data['district'])) {
+            unset($data['district']);
+        }
+        if ($data['act'] == 'add') {
+            unset($data['store_id']);
+            $data['avatar'] = "";
+            $data['auditing'] = 1;
+            $data['is_delete'] = 1;
+            $data['add_time'] = time();
+            $r = D('kf_store')->add($data);
+        }
+        if ($data['act'] == 'edit') {
+            $r = D('kf_store')->where('store_id', $data['store_id'])->save($data);
+        }
+        if ($data['act'] == 'del' && $data['store_id'] > 1) {
+            $r = D('kf_store')->where('store_id', $data['store_id'])->delete();
+        }
+        if ($r) {
+            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Goods/store_list')]);
+        } else {
+            $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
+        }
     }
 }

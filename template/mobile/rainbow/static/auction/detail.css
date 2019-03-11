@@ -7,35 +7,43 @@
 	
 }
 .detail{
-	
-	margin-top: 80px;
-
+	margin-top:.8rem ;
 	
 }
+#daoend{
+	display: none;
+}
 
+.header{
+	
+	position: relative;
+	
+}
 .starttime{
 	
-	width: 4.3rem;
-	border: 1px solid #E62128;
+	width: 6.6rem;
 	font-size: .3rem;
-	height: 40px;
-	text-align: center;
-	line-height: 40px;
-	color: #E62128;
-	position: relative;
+	height: .8rem;
+	line-height: .8rem;
+	color: white;
+	position: absolute;
 	left: 50%;
 	transform: translate(-50%,0);
+	bottom: 0rem;
+	z-index: 100;
+	background: #C7354C;
+	opacity:0.7;
 	
 }
 .fu{
 	
 	width:6.6rem;
-	height: 2.5rem;
+	height: 4.5rem;
 	position: relative;
 	left: 50%;
 	transform: translate(-50%,0);
-	top: .4rem;
 	overflow: hidden;
+	
 	
 	
 }
@@ -54,16 +62,16 @@
 	font-size:.28rem;
 	position: relative;
 	left: 50%;
-	top: .5rem;
+	top: .2rem;
 	transform: translate(-50%,0);
 	
 }
 
 .jiatou{
 	width: 6.56rem;
-	height: 1.5rem;
+	height: 1rem;
 	position: relative;
-	top: .5rem;
+	top: .2rem;
 	left: 50%;
 	transform: translate(-50%,0);
 	
@@ -97,93 +105,88 @@
 
 .right{
 	
-	width: 4.6rem;
-	height: 1.4rem;
-	border: 1px solid #EEEEEE;
 	position: absolute;
 	font-size: .30rem;
-	text-align: center;
-	line-height: 1.4rem;
+	vertical-align: bottom;
 	bottom: 0rem;
 	right: 0rem;
-	
+
 }
 
-.right img{
-	
-    position: absolute;	
-	top: .3rem;
-	left: .1rem;
-	
-}
 
-.right .span1{
-	
-	 width: 1rem;
-	 height: 1.4rem;
-	 text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-	 position: absolute;	
-	 top: .06rem;
-	 left: 1.1rem;
-	
-}
-.right .span2{
-	
-	 position: absolute;
-	 width: 2.2rem;
-	 height: 1.4rem;	
-	 top: .06rem;
-	 left: 2.3rem;
-	 font-size: .25rem;
-	 text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-	
-}
 .headpicear{
 	
 	width: 100%;
 	position: relative;
-	top:1rem;
-	display: flex;
-	justify-content: space-around;
+	top:.5rem;
 	border-top: 2px solid #EEEEEE;
 	border-bottom: 3px solid #EEEEEE;
-	text-align: center;
+	
+}
+.zongshu{
+	
+	width: 96%;
+	padding: 3% 2%;
+	font-size: .3rem;
+	color: #B0B0B0;
+	display: block;
+	text-decoration: none;
 	
 	
 }
-.headpicear div{
+.zongshu span:nth-child(1){
 	
+	 padding-right:.3rem;
+	 border-right: 1px solid #EEEEEE;
+	 color: black;
+	
+}
+.zongshu span:nth-child(2){
+	
+	margin-left:.3rem ;
+	
+	
+}
+.zongshu span:nth-child(3){
+	
+	padding: 0 6%;
+	float: right;
+	
+}
+.tiaoshu{
+	
+	display: block;
+	color: #818181;
+	
+}
+.tiaoshu li{
+	
+	font-size: .23rem;
+
+}
+.tiaoshu li:nth-child(1){
+	
+	color:#C41C35;
+	
+}
+.tiaoshu li span:nth-child(1){
 	display: inline-block;
-	
-}
-
-.p1{
-	
-	width: 1.3rem;
-	height: .3rem;
-	font-size: .25rem;
-	text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+	width: 1.5rem;
 
 }
-.p2{
+.tiaoshu li span:nth-child(2){
+	display: inline-block;
+	width: 1rem;
+	text-align: center;
 
-	width: 1.3rem;
-	height: .3rem;
-	font-size: .25em;
-	margin-bottom: .3rem;
-	text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-	
-	
-	
 }
+.tiaoshu li span:nth-child(4){
+	display: inline-block;
+	text-align: center;
+	float: right;
+	padding-right:9%;
+}
+
 .rule{
 	
 	text-align: center;
@@ -198,14 +201,13 @@
 	height: .9rem;
 	border-bottom: 2px solid #EEEEEE;
 	position: relative;
-	top: 1rem;
+    top: .7rem; 
 	
 	
 }
 #form{
 	position: absolute;
-	top: -.5rem;
-	
+	top: -.5rem;	
 }
 
 
@@ -214,6 +216,18 @@
 	margin-bottom: .2rem;
 	position: absolute;
 	right: .5rem;
+	margin-top:.07rem;
+	background:#C92142;
+	color: white; 
+	display: inline-block;
+	width:1.8rem; 
+	height: .6rem; 
+	border-radius: .03rem;
+	font-size: .2rem; 
+	text-align: center; 
+	border-radius:10%;
+	margin-left:3.2rem;
+	cursor: pointer;
 	
 	
 }
@@ -271,7 +285,7 @@
 #tobuy{
 	
 	width: 1.5rem;
-	background: #FF5623;
+	background: #C92142;
 	color: white;
 	font-size: .3rem;
 	padding: .2rem 0;
@@ -280,6 +294,7 @@
 	left: 50%;
 	transform: translate(-50%,50%);
 	border-radius: 10%;
+	cursor: pointer;
 
 }
 .bianji{
@@ -361,7 +376,7 @@ li input  {
 .submit{
 	
 	
- background: #FF5722;
+ background: #C92142;
  color: white;
  font-size: .5rem;
  position: fixed;
@@ -370,6 +385,7 @@ li input  {
  height: 1rem;
  text-align: center;
  line-height: 1rem;
+ cursor:pointer;
 
 	
 	
@@ -385,6 +401,7 @@ li input  {
     left: 0;
     display: none;
     background-color: rgba(0, 0, 0, 0.6);
+    z-index: 200;
 	
 }
 #mask3{
@@ -415,6 +432,7 @@ li input  {
 	padding:.2rem 0;
 	border-bottom:.1rem solid #EEEEEE ;
 	
+	
 }
 .paicheng1{
 	font-size: .3rem;
@@ -433,6 +451,7 @@ li input  {
 	left: 50%;
 	transform: translate(-50%,50%);
 	border-radius: 10%;
+	cursor:pointer;
 
 }
 

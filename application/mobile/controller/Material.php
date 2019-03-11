@@ -22,46 +22,99 @@ use think\Page;
 
 class Material extends MobileBase {
 
+    public $user_id = 0;
+    public $user = array();
+
+ /*    public function _initialize()
+    {
+        parent::_initialize();
+        if (session('?user')) {
+            $user = session('user');
+            $user = M('users')->where("user_id", $user['user_id'])->find();
+            session('user', $user);  //覆盖session 中的 user
+            $this->user = $user;
+            $this->user_id = $user['user_id'];
+            $this->assign('user', $user); //存储用户信息
+            $this->assign('user_id', $this->user_id);
+        } else {
+            header("location:" . U('User/login'));
+            exit;
+        }
+        $order_status_coment = array(
+            'WAITPAY' => '待付款 ', //订单查询状态 待支付
+            'WAITSEND' => '待发货', //订单查询状态 待发货
+            'WAITRECEIVE' => '待收货', //订单查询状态 待收货
+            'WAITCCOMMENT' => '待评价', //订单查询状态 待评价
+        );
+        $this->assign('order_status_coment', $order_status_coment);
+    } */
+    
+    /**
+     * 默认获取分享区数据列表
+     * @author C
+     * @time 2019-3
+     */
     public function index(){  
-        // 获取分类渲染到页面
-        $where = " show_in_nav=1";
-        $category = M('material_cat')->field('cat_id, cat_name')->where($where)->order('sort_order')->select();   
+        // 获取素材分类渲染到页面
+        $catWhere = " show_in_nav=1";
+        $category = M('material_cat')->field('cat_id, cat_name')->where($catWhere)->order('sort_order')->select();   
         $this->assign('category', $category);
+
+        $userInfo = session('user'); // 获取用户信息
+        $where = " is_open = 1 and cat_id=9";
+        $count = M('material')->where($where)->count(); // 查询满足需求的总记录数
+        $pagesize = C('PAGESIZE'); // 每页显示数
+        $page = new Page($count, $pagesize); // 分页类
+        $material = M('material')->field('material_id,title,keywords,add_time,describe,thumb')->where($where)->limit($page->firstRow.','.$page->listRows)->select(); // 查询已发布的列表
+        // 循环向数组加入用户信息
+        if($material){
+            foreach ($material as $k => $v) {
+                foreach ($category as $ks => $vs) {
+                    if($v['cat_id']=$vs['cat_id']){
+                        $material[$k]['cat_name'] = $vs['cat_name'];
+                    }
+                }
+                $material[$k]['nickname'] = $userInfo['nickname'];
+                $material[$k]['head_pic'] = $userInfo['head_pic'];
+            }
+        }
+        $this->assign('material', $material);
         return $this->fetch();
+    }
+
+    /**
+    * 内容显示
+    */
+    public function getDetail(){
+        
     }
 
     /**
      * 默认获取分享区数据列表
      * @author C
-     * @time2019-3
+     * @time 2019-3
      */
-    public function share_list(){
-        // $now_time = time();
-        // $where = " start_time <= $now_time and end_time >= $now_time and is_end = 0";
-        // $count = M('prom_goods')->where($where)->count();  // 查询满足要求的总记录数
-        // $pagesize = C('PAGESIZE');  //每页显示数
-        // $Page  = new Page($count,$pagesize); //分页类
-        // $promote = M('prom_goods')->field('id,title,start_time,end_time,prom_img')->where($where)->limit($Page->firstRow.','.$Page->listRows)->select();    //查询活动列表
-        // $this->assign('promote',$promote);
-        // if(I('is_ajax')){
-        //     return $this->fetch('ajax_promote_goods');
-        // }
-        // return $this->fetch();
+   /*  public function share_list(){
 
+        $userInfo = session('user'); // 获取用户信息
         $where = " is_open = 1";
         $count = M('material')->where($where)->count(); // 查询满足需求的总记录数
         $pagesize = C('PAGESIZE'); // 每页显示数
         $page = new Page($count, $pagesize); // 分页类
         $material = M('material')->where($where)->limit($page->firstRow.','.$page->listRows)->select(); // 查询已发布的列表
+        // 循环向数组加入用户信息
+        if($material){
+            foreach ($material as $k => $v) {
+                $material[$k]['nickname'] = $userInfo['nickname'];
+                $material[$k]['head_pic'] = $userInfo['head_pic'];
+            }
+        }
         $this->assign('material', $material);
         // if(I('is_ajax')){
         //     return $this->fetch('ajax_share_list');
         // }
         return $this->fetch('Material/index');
-
-
-
-    }
+    } */
 
 
     

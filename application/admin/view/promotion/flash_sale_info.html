@@ -119,8 +119,6 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!-- <input type="text" name="title" id="title" value="{$info.is_commission}" class="input-txt">
-                    <span class="err" id="err_title"></span> -->
                 </dd>
             </dl>
             <dl class="row">
@@ -132,7 +130,6 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <dl class="row">
@@ -144,7 +141,6 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <dl class="row">
@@ -156,7 +152,6 @@
                         <option value="1" >是</option> 
                         <option value="0" selected>否</option>  
                     </select>
-                    <!--<span class="err" id="err_title"></span> &ndash;&gt;-->
                 </dd>
             </dl>
             <!-- <dl class="row">
@@ -168,7 +163,11 @@
                     <p class="notic">秒杀描述介绍</p>
                 </dd>
             </dl> -->
-            <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+            <if condition="$info['is_edit'] eq 0">
+                <div class="bot"><a class="ncap-btn-big">确认提交</a></div>
+                <else/>
+                <div class="bot"><a onclick="verifyForm()" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+            </if>
         </div>
     </form>
 </div>

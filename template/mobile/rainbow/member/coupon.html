@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="__STATIC__/css/coupon/coupon.css">
     <script src="__STATIC__/js/coupon/jquery-1.8.3.min.js"></script>
     <script src="__STATIC__/js/coupon/rem.js"></script>
-    <script src="__STATIC__/js/coupon/coupon.js" ></script>
+    <!-- <script src="__STATIC__/js/coupon/coupon.js" ></script> -->
 </head>
 <body>
         <div class="copon-box">
@@ -147,22 +147,16 @@
             
            /* 立即使用 弹出二维码卷*/
            
+           
            $(".btn").click(function(){
-               if($(".cover").is(":hidden")){
-                $(".cover").removeClass("hide")
-               }else{
-                $(".cover").addClass("hide")
-               }
+            $(".cover").toggleClass("hide")
            })
-
+           /* 隐藏 二维码卷*/ 
            $(".copon-codeBox").click(function(){
-            if($(".cover").is(":visible")){
-                $(".cover").addClass("hide")
-               }else{
-                $(".cover").removeClass("hide")
-               }
-           })
+            $(".cover").toggleClass("hide")
          })
+        })
+        
         </script>
 </body>
 </html>

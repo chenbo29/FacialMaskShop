@@ -591,6 +591,7 @@ class Goods extends Base {
         M("spec_image")->whereIn('goods_id',$goods_ids)->delete();  //商品规格图片
         M("goods_attr")->whereIn('goods_id',$goods_ids)->delete();  //商品属性
         M("goods_collect")->whereIn('goods_id',$goods_ids)->delete();  //商品收藏
+        M('sign_goods')->whereIn('gid',$goods_ids)->delete();//签到商品
 
         $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/goods/goodsList")]);
     }

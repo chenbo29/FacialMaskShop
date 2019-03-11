@@ -20,7 +20,7 @@
 		  <span title="收起提示" id="explanationZoom" style="display: block;"></span>
 		</div>
 		 <ul>
-			<li>奖金模式佣金分成信息管理</li>
+			<li>奖金模式日志信息管理</li>
 		</ul>
 	</div>
 	
@@ -62,19 +62,13 @@
 							<div style="text-align: center; width: 100px;" class="">用户</div>
 						</th>
 						<th align="center" abbr="article_show" axis="col5" class="">
-							<div style="text-align: center; width: 200px;" class="">商品名称</div>
-						</th>
-                        <th align="center" abbr="article_show" axis="col5" class="">
-                            <div style="text-align: center; width: 150px;" class="">商品价格</div>
-                        </th>
-                        <th align="center" abbr="article_show" axis="col5" class="">
-                            <div style="text-align: center; width: 100px;" class="">商品数量</div>
-                        </th>
-						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 80px;" class="">创建时间</div>
+							<div style="text-align: center; width: 200px;" class="">分成金额</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
-							<div style="text-align: center; width: 200px;" class="">备注</div>
+							<div style="text-align: center; width: 200px;" class="">描述</div>
+						</th>
+						<th align="center" abbr="article_time" axis="col6" class="">
+							<div style="text-align: center; width: 150px;" class="">时间</div>
 						</th>
 						<th align="center" axis="col1" class="handle">
 							<div style="text-align: center; width: 200px;">操作</div>
@@ -103,24 +97,17 @@
 								<div style="text-align: center; width: 100px;">{$vo.nickname}</div>
 							</td>
 							<td align="center" class="">
-								<div style="text-align: center; width: 200px;">{$vo.goods_name}</div>
+								<div style="text-align: center; width: 200px;">{$vo.user_money}</div>
 							</td>
 							<td align="center" class="">
-								<div style="text-align: center; width: 150px;">{$vo.goods_price}</div>
+								<div style="text-align: center; width: 200px;">{$vo.desc}</div>
 							</td>
-                            <td align="center" class="">
-                                <div style="text-align: center; width: 100px;">{$vo.goods_num}</div>
-                            </td>
-                            <td align="center" class="">
-                                <div style="text-align: center; width: 80px;">{$vo.create_time|date="Y-m-d", ###}</div>
-                            </td>
 							<td align="center" class="">
-								<div style="text-align: center; width: 200px;">{$vo.note}</div>
+								<div style="text-align: center; width: 150px;">{$vo.change_time|date="Y-m-d H:i:s", ###}</div>
 							</td>
 							<td align="center" class="handle">
 								<div style="text-align: center; width: 200px; max-width:200px;">
 									<a class="btn blue" href="{:U('Distribut/log_detail',array('id'=>$vo['log_id']))}"><i class="fa fa-search"></i>查看</a>
-									<a class="btn red" href="javascript:void(0)" data-url="{:U('Distribut/log_del')}" data-id="{$vo.log_id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">
@@ -134,7 +121,7 @@
 			<div class="iDiv" style="display: none;"></div>
 		</div>
 		<!--分页位置-->
-		
+			{$pager->show()}
 		 </div>
 </div>
 <script>
@@ -148,34 +135,31 @@
 		$('.fa-refresh').click(function(){
 			location.href = location.href;
 		});
-
-		$('#start_time').layDate();
-		$('#end_time').layDate();
 	});
 
-	function delfun(obj) {
-		// 删除按钮
-		layer.confirm('确认删除？', {
-			btn: ['确定', '取消'] //按钮
-		}, function () {
-			$.ajax({
-				type: 'post',
-				url: $(obj).attr('data-url'),
-				data : {act:'del',del_id:$(obj).attr('data-id')},
-				dataType: 'json',
-				success: function (data) {
-					layer.closeAll();
-					if (data) {
-						$(obj).parent().parent().parent().remove();
-					} else {
-						layer.alert('删除失败', {icon: 2});  //alert('删除失败');
-					}
-				}
-			})
-		}, function () {
-			layer.closeAll();
-		});
-	}
+	// function delfun(obj) {
+	// 	// 删除按钮
+	// 	layer.confirm('确认删除？', {
+	// 		btn: ['确定', '取消'] //按钮
+	// 	}, function () {
+	// 		$.ajax({
+	// 			type: 'post',
+	// 			url: $(obj).attr('data-url'),
+	// 			data : {act:'del',del_id:$(obj).attr('data-id')},
+	// 			dataType: 'json',
+	// 			success: function (data) {
+	// 				layer.closeAll();
+	// 				if (data) {
+	// 					$(obj).parent().parent().parent().remove();
+	// 				} else {
+	// 					layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+	// 				}
+	// 			}
+	// 		})
+	// 	}, function () {
+	// 		layer.closeAll();
+	// 	});
+	// }
 </script>
 </body>
 </html>

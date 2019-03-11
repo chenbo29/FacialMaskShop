@@ -52,6 +52,23 @@
                 	<input id="sign_point" name="sign_point" value="{$config.sign_point}" class="input-txt" type="text" />
                 </dd>
             </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="sign_fenxiao_days">分销员连续签到可得商品天数</label>
+                </dt>
+                <dd class="opt">
+                	<input id="sign_fenxiao_days" name="sign_fenxiao_days" value="{$config.sign_fenxiao_days}" class="input-txt" type="text" />
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="sign_daili_days">代理连续签到可得商品天数</label>
+                </dt>
+                <dd class="opt">
+                	<input id="sign_daili_days" name="sign_daili_days" value="{$config.sign_daili_days}" class="input-txt" type="text" />
+                </dd>
+            </dl>
+
 
             <div class="bot">
                 <input type="hidden" name="inc_type" value="{$inc_type}">
@@ -97,6 +114,18 @@
         $("#store_ico").val(fileurl_tmp);
         $("#storeico_a").attr('href', fileurl_tmp);
         $("#storeico_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+    //选择商品
+    function selectGoods(){
+        var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>1,'prom_id'=>$info[id]))}";
+        layer.open({
+            type: 2,
+            title: '选择商品',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['75%', '75%'],
+            content: url,
+        });
     }
    
 </script>

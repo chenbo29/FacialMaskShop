@@ -59,10 +59,12 @@
     markerHTML +=     		'<p class="month-prev">';
     markerHTML +=       		'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/returnImg666_lb.png"/>';
     markerHTML +=     		'</p>';
+    markerHTML +=   			'<div class="middleBox">';
     /*年份*/
-    markerHTML +=     		this.buildYearSelect();
+    markerHTML +=     			this.buildYearSelect();
     /*月份*/
-    markerHTML +=     		this.buildMonthSelect();
+    markerHTML +=     			this.buildMonthSelect();
+    markerHTML +=   			'</div>';
     markerHTML +=     		'<p class="month-next">';
     markerHTML +=       		'<img class="buttonImg" src="/template/mobile/rainbow/static/images/public_lb/leftImg666.png"/>';
     markerHTML +=     		'</p>';

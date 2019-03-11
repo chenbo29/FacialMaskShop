@@ -57,9 +57,9 @@ class BonusLogic extends Model
 		}else if($good['is_agent'] == 1){
 			$agent = $this->theAgent($this->userId);
 			return true;
-		}else{
+		}else{	
             return false;
-		}	
+        }
 	}
 
 	/**

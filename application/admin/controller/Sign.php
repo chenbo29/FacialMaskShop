@@ -71,8 +71,9 @@ class Sign extends Base {
         }
          */
         $show = $Page->show();
+//        var_dump($_POST);die;
         $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
-//        var_dump($show);die;
+//        var_dump($order_str);die;
         $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
         foreach($goodsList as $key=>$value){
             foreach($sign_goods as $k=>$v){
@@ -89,8 +90,9 @@ class Sign extends Base {
         $this->assign('page',$show);// 赋值分页输出
 //        var_dump($catList);die;
 
-        ini_set("display_errors","On");
-        error_reporting(E_ALL);
+//        ini_set("display_errors","On");
+//        error_reporting(E_ALL);
+//        var_dump($goodsList);die;
         return $this->fetch();
     }
 

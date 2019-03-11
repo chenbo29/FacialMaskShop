@@ -25,22 +25,22 @@ class Material extends MobileBase {
     public $user_id = 0;
     public $user = array();
 
-    public function _initialize()
-    {
-        parent::_initialize();
-        if (session('?user')) {
-            $user = session('user');
-            $user = M('users')->where("user_id", $user['user_id'])->find();
-            session('user', $user);  //覆盖session 中的 user
-            $this->user = $user;
-            $this->user_id = $user['user_id'];
-            $this->assign('user', $user); //存储用户信息
-            $this->assign('user_id', $this->user_id);
-        } else {
-            header("location:" . U('User/login'));
-            exit;
-        }
-    }
+    // public function _initialize()
+    // {
+    //     parent::_initialize();
+    //     if (session('?user')) {
+    //         $user = session('user');
+    //         $user = M('users')->where("user_id", $user['user_id'])->find();
+    //         session('user', $user);  //覆盖session 中的 user
+    //         $this->user = $user;
+    //         $this->user_id = $user['user_id'];
+    //         $this->assign('user', $user); //存储用户信息
+    //         $this->assign('user_id', $this->user_id);
+    //     } else {
+    //         header("location:" . U('User/login'));
+    //         exit;
+    //     }
+    // }
     
     /**
      * 默认获取分享区数据列表
@@ -78,7 +78,6 @@ class Material extends MobileBase {
     * 点击列表显示内容
     */
     public function getDetail(){
-    
         // 获取列表对应ID
         $atID = intval(input('atID'));
         if(!$atID){
@@ -89,17 +88,11 @@ class Material extends MobileBase {
         if(!$atDetail){
             return json(['code'=>'-1', 'msg'=>'获取的内容不存在']);
         }
-        // 获取推广链接生成二维码
-        $url = $this->urlCodes(session('user.user_id'));
+        // 获取当前url
+        $url = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"].'&first_leader='.session('user.user_id');
+        $atDetail['content'] = htmlspecialchars_decode($atDetail['content']);
+        $this->assign('url', $url);
         $this->assign('atDetail', $atDetail);
         return $this->fetch('Material/detail');
     }
-
-    /* 
-    * 生成带uid的个人二维码推广链接
-    */ 
-    public function urlCodes($uid){ 
-		$url = 'http://'.$_SERVER['HTTP_HOST'].'/mobile/User/login?uid='.$uid;
-		return $url;
-	}
 }

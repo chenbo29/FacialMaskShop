@@ -2,33 +2,107 @@
 
 namespace app\admin\controller;
 
+use app\common\logic\BonusLogic;
+
 use think\Page;
 use think\Db;
-
-
-use app\common\logic\BonusLogic;
+use think\Loader;
 
 class Distribut extends Base {
 
-    public function goods_list(){
+    // public function goods_list(){
        
      
+    //     return $this->fetch();
+    // }
+
+    /**
+     * 分销商列表
+     */
+    public function distributor_list()
+    {
+        $count = M('users')->count();
+        $pager = new Page($count, 10);
+        $distributor = M('users')
+                    ->where('is_lock', 0)
+                    ->where('is_distribut', 1)
+                    ->limit($pager->firstRow, $pager->listRows)
+                    ->field('user_id, nickname, level, first_leader, province, mobile, email')
+                    ->select();
+        $this->assign('pager', $pager);
+        $this->assign('distributor', $distributor);
         return $this->fetch();
     }
 
-    public function distributor_list()
+    /**
+     * 分销商删除
+     */
+    public function distributor_del()
     {
-      
+        $id = I('del_id/d');
+        if ($id) {
+            $result = M('users')->where(['user_id' => $id])->update(['is_distribut' => 0]);
+            if($result){
+                exit(json_encode(1));
+            }else{
+                exit(json_encode(0));
+            }
+        } else {
+            exit(json_encode(0));
+        }
+    }
+
+    /**
+     * 代理列表
+     */
+    public function agent_list()
+    {
+        $count = M('users')->count();
+        $pager = new Page($count, 10);
+        $distributor = M('users')
+                    ->where('is_lock', 0)
+                    ->where('is_distribut', 1)
+                    ->limit($pager->firstRow, $pager->listRows)
+                    ->field('user_id, nickname, level, first_leader, province, mobile, email')
+                    ->select();
+        $this->assign('pager', $pager);
+        $this->assign('distributor', $distributor);
         return $this->fetch();
+    }
+
+    /**
+     * 代理删除
+     */
+    public function agent_del()
+    {
+        $id = I('del_id/d');
+        if ($id) {
+            $result = M('users')->where(['user_id' => $id])->update(['is_distribut' => 0]);
+            if($result){
+                exit(json_encode(1));
+            }else{
+                exit(json_encode(0));
+            }
+        } else {
+            exit(json_encode(0));
+        }
     }
     
     public function tree()
     {
-      
+        $users = M('users')->where('is_distribut', 1)->field('user_id, first_leader')->select();
+        
+        $result = array_map(function($user){
+            $result = M('users')->where('user_id',$user['first_leader'])->find();
+            return $result;
+        }, $users);
+
+        $this->assign('count',count($result));
+        $this->assign('info',$result);
+        
         return $this->fetch();
     }
     
-<<<<<<< HEAD
     /**
     * 分销商设置
     **/
@@ -40,14 +114,14 @@ class Distribut extends Base {
 
         if ($data) {
             if ($distribut) {
-                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'update_time'=>time()]);
+                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
             } else {
-                M('distribut')->insert(['rate'=>$data['rate'],'create_time'=>time(),'update_time'=>time()]);
+                M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
             }
         }
 
         $this->assign('rate', $distribut['rate']);
-        
+
         return $this->fetch();
     }
 
@@ -78,24 +152,113 @@ class Distribut extends Base {
      * 代理商等级编辑
      */
     public function level()
-=======
-
-    public function grade_list()
->>>>>>> 8a7c4d4bb4dbb232f75ea2ad3a461d120e94477d
     {
-      
+        $act = I('get.act', 'add');
+        $this->assign('act', $act);
+        $level_id = I('get.level_id');
+        if ($level_id) {
+            $level_info = D('user_level')->where('level_id=' . $level_id)->find();
+            $this->assign('info', $level_info);
+        }
         return $this->fetch();
     }
-    
 
+    /**
+     * 代理商等级添加编辑删除
+     */
+    public function levelHandle()
+    {
+        $data = I('post.');
+        $userLevelValidate = Loader::validate('UserLevel');
+        $return = ['status' => 0, 'msg' => '参数错误', 'result' => ''];//初始化返回信息
+        if ($data['act'] == 'add') {
+            if (!$userLevelValidate->batch()->check($data)) {
+                $return = ['status' => 0, 'msg' => '添加失败', 'result' => $userLevelValidate->getError()];
+            } else {
+                $rateCount = M('user_level')->sum('rate');
+                if (($rateCount+$data['rate']) > 100) {
+                    $return = ['status' => 0, 'msg' => '编辑失败，所有等级佣金比率总和在100内', 'result' => ''];
+                } else {
+                    $r = D('user_level')->add($data);
+                    if ($r !== false) {
+                        $return = ['status' => 1, 'msg' => '添加成功', 'result' => $userLevelValidate->getError()];
+                    } else {
+                        $return = ['status' => 0, 'msg' => '添加失败，数据库未响应', 'result' => ''];
+                    }
+                }
+            }
+        }
+        if ($data['act'] == 'edit') {
+            if (!$userLevelValidate->scene('edit')->batch()->check($data)) {
+                $return = ['status' => 0, 'msg' => '编辑失败', 'result' => $userLevelValidate->getError()];
+            } else {
+                $rateCount = M('user_level')->where('level_id','neq',$data['level_id'])->sum('rate');
+                if (($rateCount+$data['rate']) > 100) {
+                    $return = ['status' => 0, 'msg' => '编辑失败，所有等级佣金比率总和在100内', 'result' => ''];
+                } else {
+                    $r = D('user_level')->where('level_id=' . $data['level_id'])->save($data);
+                    if ($r !== false) {
+                        $data['rate'] = $data['rate'] / 100;
+                        D('users')->where(['level' => $data['level_id']])->save($data);
+                        $return = ['status' => 1, 'msg' => '编辑成功', 'result' => $userLevelValidate->getError()];
+                    } else {
+                        $return = ['status' => 0, 'msg' => '编辑失败，数据库未响应', 'result' => ''];
+                    }
+                }
+            }
+        }
+        if ($data['act'] == 'del') {
+            $r = D('user_level')->where('level_id=' . $data['level_id'])->delete();
+            if ($r !== false) {
+                $return = ['status' => 1, 'msg' => '删除成功', 'result' => ''];
+            } else {
+                $return = ['status' => 0, 'msg' => '删除失败，数据库未响应', 'result' => ''];
+            }
+        }
+        $this->ajaxReturn($return);
+    }
+    
+    /**
+     * 分成日志列表
+     */
     public function rebate_log()
     {
-      
+        $count = Db::name('agent_log')->alias('log')
+                ->join('users', 'users.user_id = log.user_id')
+                ->join('goods', 'goods.goods_id = log.goods_id')
+                ->field('log.*')
+                ->count();
+        $page = new Page($count, 10);
+        $log = Db::name('agent_log')->alias('log')
+                ->join('users', 'users.user_id = log.user_id')
+                ->join('goods', 'goods.goods_id = log.goods_id')
+                ->field('log.*, users.nickname, goods.goods_name')
+                ->limit($page->firstRow, $page->listRows)
+                ->order('log.log_id desc')
+                ->select();
+        $this->assign('pager', $page);
+        $this->assign('log',$log);
         return $this->fetch();
     }
     
+    /**
+     * 分成日志删除
+     */
+    public function log_del()
+    {
+        $id = I('del_id/d');
+        if ($id) {
+            $result = M('agent_log')->where(['log_id' => $id])->delete();
+            if($result){
+                exit(json_encode(1));
+            }else{
+                exit(json_encode(0));
+            }
+        } else {
+            exit(json_encode(0));
+        }
+    }
     
-<<<<<<< HEAD
     /**
      * 分成日志详情
      */
@@ -111,11 +274,11 @@ class Distribut extends Base {
         $this->assign('detail', $detail);
         return $this->fetch();
     }
-
-=======
-    
-    
    
-    
->>>>>>> 8a7c4d4bb4dbb232f75ea2ad3a461d120e94477d
+    public function log()
+    {
+        $tx = new BonusLogic(8,0,3,4);
+        $tx->bonusModel();
+    }
+
 }

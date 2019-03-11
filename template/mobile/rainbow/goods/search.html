@@ -404,6 +404,7 @@
             data:{brand_id:'{$Request.param.brand_id}',id:'{$Request.param.id}',sort:'{$Request.param.sort}',sort_asc:'{$Request.param.sort_asc}',sel:'{$Request.param.sel}',q:$('#q').val(),is_ajax:1,p:page},
             success: function(data)
             {
+               
                 ajax_status = 1;
                 if($.trim(data) == ''){
                     // $('#getmore').hide();

@@ -82,6 +82,10 @@ class User extends MobileBase
         return $this->fetch();
     }
 
+ public function wtf_Goodson(){
+        return $this->fetch();
+    }
+
 
     
     public function wallet(){
@@ -107,6 +111,12 @@ class User extends MobileBase
 
 	public function personal()
     {
+    	
+    	$user_id = session('user.user_id');
+        $user = M('users')->where(['user_id'=>$user_id])->find();
+       
+        $this->assign('user',$user);
+        
         return $this->fetch();
     }
     
@@ -122,6 +132,42 @@ class User extends MobileBase
     
     public function p_details()
     {
+
+    	$userLogic = new UsersLogic();
+    	 if (IS_POST) {
+        	if ($_FILES['head_pic']['tmp_name']) {
+        		$file = $this->request->file('head_pic');
+                $image_upload_limit_size = config('image_upload_limit_size');
+        		$validate = ['size'=>$image_upload_limit_size,'ext'=>'jpg,png,gif,jpeg'];
+        		$dir = UPLOAD_PATH.'head_pic/';
+        		if (!($_exists = file_exists($dir))){
+        			$isMk = mkdir($dir);
+        		}
+        		$parentDir = date('Ymd');
+        		$info = $file->validate($validate)->move($dir, true);
+        		if($info){
+        			$post['head_pic'] = '/'.$dir.$parentDir.'/'.$info->getFilename();
+        		}else{
+        			$this->error($file->getError());//上传错误提示错误信息
+        		}
+        	}
+           
+            if (!$userLogic->update_info($this->user_id, $post))
+                $this->error("保存失败");
+            setcookie('uname',urlencode($post['nickname']),null,'/');
+            $this->redirect(U('User/p_details'));
+            exit;
+        }
+        
+         $this->assign('sex', C('SEX'));
+         
+		$user_id = session('user.user_id');
+        $user = M('users')->where(['user_id'=>$user_id])->find();
+        $user['birthday'] = date('Y-m-d',$user['birthday']);
+
+        $this->assign('user',$user);
+
+
         return $this->fetch();
     }
     
@@ -139,6 +185,11 @@ class User extends MobileBase
         return $this->fetch();
     }
       public function edit_Consignee()
+    {
+        return $this->fetch();
+    }
+    
+     public function myinterest()
     {
         return $this->fetch();
     }
@@ -695,7 +746,7 @@ class User extends MobileBase
             if (!$userLogic->update_info($this->user_id, $post))
                 $this->error("保存失败");
             setcookie('uname',urlencode($post['nickname']),null,'/');
-            $this->success("操作成功",U('User/userinfo'));
+            $this->redirect(U('User/p_details'));
             exit;
         }
         //  获取省份
@@ -1721,4 +1772,10 @@ class User extends MobileBase
         $file && unlink($file);
         exit;
     }
+
+    // 用户自提过商品的门店管理
+    public function store(){
+        return $this->fetch();
+    }
+
 }

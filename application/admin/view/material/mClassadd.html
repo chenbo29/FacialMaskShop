@@ -21,7 +21,7 @@
           <p class="notic"></p>
         </dd>
       </dl>
-      <dl class="row">
+      <!-- <dl class="row">
         <dt class="tit">
           <label for="parent_id">上级分类</label>
         </dt>
@@ -35,7 +35,7 @@
           <span class="err"></span>
           <p class="notic">如果选择上级分类，那么新增的分类则为被选择上级分类的子分类</p>
         </dd>
-      </dl>      
+      </dl> -->      
 		<dl class="row">
         <dt class="tit">
           <label>导航显示</label>
@@ -60,29 +60,29 @@
           <p class="notic"></p>
         </dd>
       </dl>
-	  <dl class="row">
+	  <!-- <dl class="row">
         <dt class="tit">
-          <label for="ac_sort">搜索关键字</label>
+          <label for="ac_sort">分类关键字</label>
         </dt>
         <dd class="opt">
           <input type="text" placeholder="关键字" name="keywords" value="{$cat_info.keywords}" class="input-txt">
           <span class="err"></span>
           <p class="notic"></p>
         </dd>
-      </dl>
+      </dl> -->
 	    <dl class="row">
         <dt class="tit">
-          <label for="ac_sort">搜索描述</label>
+          <label for="ac_sort">分类描述</label>
         </dt>
         <dd class="opt">
-          <input type="text" placeholder="搜索描述" name="cat_desc" value="{$cat_info.cat_desc}" class="input-txt">
+          <input type="text" placeholder="分类描述" name="cat_desc" value="{$cat_info.cat_desc}" class="input-txt">
           <span class="err"></span>
           <p class="notic"></p>
         </dd>
       </dl>            
       <div class="bot"><a href="JavaScript:void(0);" onClick="submitForm()" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
     </div>
-            <input type="hidden" name="act" value="{$act}">
+            <!-- <input type="hidden" name="act" value="{$act}"> -->
             <input type="hidden" name="cat_id" value="{$cat_info.cat_id}">    
   </form>
 </div>
@@ -91,7 +91,7 @@
         $('span.err').hide();
         $.ajax({
             type: "POST",
-            url: "{:U('News/categoryHandle')}",
+            url: "{:U('Material/mClassadd')}",
             data: $('#category_form').serialize(),
             dataType: "json",
             error: function () {
@@ -100,7 +100,7 @@
             success: function (data) {
                 if (data.status === 1) {
                     layer.msg(data.msg, {icon: 1,time: 1000}, function() {
-                        location.href = "{:U('News/categoryList')}";
+                        location.href = "{:U('Material/materialClass')}";
                     });
                 } else if(data.status === 0) {
                     layer.msg(data.msg, {icon: 2,time: 1000});

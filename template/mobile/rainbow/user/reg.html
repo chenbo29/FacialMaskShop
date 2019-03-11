@@ -18,7 +18,7 @@
 	<!--背景-->
 	<div class="zjy_login_bgs"></div>
 	<!--登录成功-->
-	<div class="zjy_login_zhuce">
+	<div class="zjy_login_zhuce" style="display:none;">
 		<p><img class="zjy_login_shanchu" src="__STATIC__/images/zjy_login_shanchu.png"/></p>
 		<p><img  src="__STATIC__/images/zjy_login_gx.png"/></p>
 		<p class="zjy_gxdl">恭喜您，注册成功</p>
@@ -118,7 +118,7 @@
         }
     }
     function countdown(obj) {
-        var s = {$tpshop_config['sms_sms_time_out']|default=60};
+        var s = "{$tpshop_config['sms_sms_time_out']|default=60}";
         //改变按钮状态
         obj.disabled = true;
         callback();
@@ -229,20 +229,16 @@
     
     $(document).ready(function(){
         $(".btn-text-message").on("click",function(){
-            if ($("#username").val() =="") {
-                alert("请输入账号")
-            }else{
-                var num =60;
-                time = setInterval(() => {
+        	var num =60;
+        	time = setInterval(() => {
                    num--;
                    $(".btn-text-message").html("重新发送"+(num))
                    if(num == 0){
-                       num++;
+                   	clearInterval(time)
                      $(".btn-text-message").html("发送验证码")                       
                    }
                }, 1000);
-            
-            }
+ 
         })
         $(".lsu-submit").on("click",function(){
             $(".zjy_login_zhuce").show()

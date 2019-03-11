@@ -27,6 +27,7 @@
           <h3>素材分类列表</h3>
           <h5>(共{$page->totalRows}条记录)</h5>
         </div>
+				<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
       </div>
       <div class="hDiv">
         <div class="hDivBox">
@@ -65,26 +66,26 @@
             </div>
           </div>
          </a> 
+				
         </div>
         <div style="clear:both"></div>
       </div>      
       <div class="bDiv" style="height: auto;">
         <table class="flex-table autoht" cellpadding="0" cellspacing="0" border="0" id="article_cat_table">
           <tbody id="treet1">
-          <foreach name="list" item="vo" key="k" >
-            <tr nctype="0" class="parent_id_{$vo[parent_id]}" data-level="{$vo[level]}"  id="{$vo.level}_{$vo.cat_id}">
+          <volist name="cat_list" id="vo" >
+            <tr nctype="0" class=""  id="{$vo.cat_id}">
               <td class="sign">
                 <div style="text-align: center; width: 24px;"> 
-									<i class="ico-check"></i>
+                	<i class="ico-check"></i>
                 </div>
               </td>
               <td class="handle">
                 <div style="text-align:center;   min-width:150px !important; max-width:inherit !important;">
                   <span class="btn" style="padding-left:<?php echo ($vo[level] * 4); ?>em"><em><i class="fa fa-cog"></i>设置<i class="arrow"></i></em>
                   <ul>
-                     <li><a href="{:U('Material/mClassadd',array('cat_id'=>$vo['cat_id']))}">编辑分类信息</a></li>                  
-	                   
-                     <li><a href="javascript:void(0)" data-url="{:U('Material/delclass')}" data-id="{$vo.cat_id}" onClick="delfun(this)">删除当前分类</a></li>                                   
+                     <li><a href="{:U('Material/mClassadd',array('cat_id'=>$vo['cat_id']))}">编辑分类信息</a></li>
+                     <li><a href="javascript:void(0)" data-url="{:U('Material/del')}" data-id="{$vo.cat_id}" onClick="delfun(this)">删除当前分类</a></li>                                   
                   </ul>
                   </span>
                 </div>
@@ -108,42 +109,45 @@
                 <div>&nbsp;</div>
               </td>
             </tr>
-            </foreach>                    
+            </volist>                    
           </tbody>
         </table>        
       </div>
     </div>
   </form>
-	{$page->show()}
+	<div>{$page->show()}</div>
   <script>
-		
- function delfun(obj) {
-	 layer.confirm('确认删除？', {
-						 btn: ['确定', '取消'] //按钮
-					 }, function () {
-						//alert($(obj).attr('data-url'));return false;
-						 // 确定
-						 $.ajax({
-							 type: 'post',
-							 url : $(obj).attr('data-url'),
-							 data : {act:'del',cat_id:$(obj).attr('data-id')},
-							 dataType: 'json',
-							 success: function (data) {
-								 layer.closeAll();
-								 if (data.status === 1) {
-									 layer.msg('操作成功', {icon: 1});
-									 $(obj).parent().parent().parent().parent().parent().parent().remove();
-									 location.reload();
-								 } else {
-									 layer.msg(data.msg, {icon: 2, time: 2000});
-								 }
-							 }
-						 })
-					 }, function (index) {
-						 layer.close(index);
-					 }
-	 );
- }
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+     function delfun(obj) {
+       layer.confirm('确认删除？', {
+                 btn: ['确定', '取消'] //按钮
+               }, function () {
+                //alert($(obj).attr('data-url'));return false;
+                 // 确定
+                 $.ajax({
+                   type: 'post',
+                   url : $(obj).attr('data-url'),
+                   data : {act:'del',cat_id:$(obj).attr('data-id')},
+                   dataType: 'json',
+                   success: function (data) {
+                     layer.closeAll();
+                     if (data.status === 1) {
+                       layer.msg('操作成功', {icon: 1});
+                       $(obj).parent().parent().parent().parent().parent().parent().remove();
+                       location.reload();
+                     } else {
+                       layer.msg(data.msg, {icon: 2, time: 2000});
+                     }
+                   }
+                 })
+               }, function (index) {
+                 layer.close(index);
+               }
+       );
+     }
   </script>
 </div>
 </body>

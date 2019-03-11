@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'index' => array('name' => '首页', 'child' => array(
         array('name' => '概览', 'child' => array(
@@ -67,6 +66,7 @@ return array(
             array('name' => '品牌列表', 'act' => 'brandList', 'op' => 'Goods'),
             array('name' => '评论列表', 'act' => 'index', 'op' => 'Comment'),
             array('name' => '商品咨询', 'act' => 'ask_list', 'op' => 'Comment'),
+            array('name' => '签到商品', 'act' => 'goods', 'op' => 'Sign'),
         )),
         array('name' => '订单', 'child' => array(
             array('name' => '订单列表', 'act' => 'index', 'op' => 'Order'),
@@ -80,6 +80,9 @@ return array(
             array('name' => '拼团列表', 'act' => 'team_list', 'op' => 'Team'),
             array('name' => '拼团订单', 'act' => 'order_list', 'op' => 'Team'),
             array('name' => '上门自提', 'act' => 'index', 'op' => 'ShopOrder'),
+        )),
+        array('name' => '门店', 'child' => array(
+            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
         )),
         array('name' => '广告', 'child' => array(
             array('name' => '广告列表', 'act' => 'adList', 'op' => 'Ad'),
@@ -121,14 +124,15 @@ return array(
         )),
     )),
 
-    'distribution' => array('name' => '分销', 'child' => array(
-        array('name' => '分销管理', 'child' => array(
-            array('name' => '分销商品', 'act' => 'goods_list', 'op' => 'Distribut'),
+    'distribution' => array('name' => '奖金模式', 'child' => array(
+        array('name' => '模式管理', 'child' => array(
+            // array('name' => '分销商品', 'act' => 'goods_list', 'op' => 'Distribut'),
             array('name' => '分销商列表', 'act' => 'distributor_list', 'op' => 'Distribut'),
             array('name' => '分销关系', 'act' => 'tree', 'op' => 'Distribut'),
-            array('name' => '分销商等级', 'act' => 'grade_list', 'op' => 'Distribut'),
-            array('name' => '分销设置', 'act' => 'distribut', 'op' => 'System'),
-            array('name' => '分成日志', 'act' => 'rebate_log', 'op' => 'Distribut'),
+            array('name' => '分销商设置', 'act' => 'grade_list', 'op' => 'Distribut'),
+            // array('name' => '代理商设置', 'act' => 'agent_grade_list', 'op' => 'Distribut'),
+            // array('name' => '分销设置', 'act' => 'distribut', 'op' => 'System'),
+            array('name' => '日志', 'act' => 'rebate_log', 'op' => 'Distribut'),
         )),
         array('name' => '微信接入', 'child' => array(
             array('name' => '公众号配置', 'act' => 'index', 'op' => 'Wechat'),
@@ -182,7 +186,7 @@ return array(
         array('name' => '线下取货', 'child' => array(
             // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
             array('name' => '自提订单', 'act' => 'index', 'op' => 'Pickup'),
-            array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
+            //array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
             // array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
         )),
         // array('name' => '在线核销','child' => array(
@@ -193,9 +197,7 @@ return array(
     'seller' => array('name' => '商家管理', 'child' => array(
         array('name' => '商家管理', 'child' => array(
             array('name' => '商家列表', 'act' => 'seller_list', 'op' => 'SellerManagement'),
-            array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
+            //array('name' => '商家门店管理', 'act' => 'store_list', 'op' => 'SellerManagement'),
         ))
     )),
-
-
 );

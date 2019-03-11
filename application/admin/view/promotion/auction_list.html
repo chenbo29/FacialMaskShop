@@ -61,8 +61,8 @@
 						<th align="center" abbr="activity_round" axis="col6" class="">
 							<div style="text-align: center; width: 100px;" class="">活动轮次</div>
 						</th>
-						<th align="center" abbr="delay_time" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">延时周期(分钟)</div>
+						<th align="center" abbr="activity_round" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">延时周期</div>
 						</th>
 						<th align="center" abbr="preview_time" axis="col6" class="">
 							<div style="text-align: center; width: 150px;" class="">预展开始时间</div>
@@ -71,7 +71,7 @@
 							<div style="text-align: center; width: 150px;" class="">开始时间</div>
 						</th>
 						<th align="center" abbr="payment_time" axis="col6" class="">
-							<div style="text-align: center; width: 100px;" class="">货到付款时间</div>
+							<div style="text-align: center; width: 100px;" class="">货款支付时间</div>
 						</th>
 						<th align="center" abbr="reserve_price" axis="col6" class="">
 							<div style="text-align: center; width: 100px;" class="">保留价</div>
@@ -80,7 +80,10 @@
 							<div style="text-align: center; width: 50px;" class="">加价幅度</div>
 						</th>
 						<th align="center" abbr="is_send" axis="col6" class="">
-							<div style="text-align: center; width: 50px;" class="">是否交货</div>
+							<div style="text-align: center; width: 50px;" class="">是否发货</div>
+						</th>
+						<th align="center" abbr="auction_status" axis="col6" class="">
+							<div style="text-align: center; width: 50px;" class="">是否上架</div>
 						</th>
 						<th align="left" axis="col1" class="handle">
 							<div style="text-align: center; width: 150px;">操作</div>
@@ -149,6 +152,9 @@
 							</td>
 							<td align="left" class="">
 								<div style="text-align: center; width: 50px;">{$vo.is_send}</div>
+							</td>
+							<td align="left" class="">
+								<div style="text-align: center; width: 50px;">{$vo.auction_status}</div>
 							</td>
 
 							<td align="left" class="handle">

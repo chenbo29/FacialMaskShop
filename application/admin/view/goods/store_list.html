@@ -80,10 +80,13 @@
                             <div style="text-align: left; width: 100px;" class="">Email</div>
                         </th>
                         <th align="center" abbr="article_time" axis="col3" class="">
-                            <div style="text-align: left; width: 100px;" class="">加入时间</div>
+                            <div style="text-align: left; width: 150px;" class="">加入时间</div>
+                        </th>
+                        <th align="center" abbr="article_time" axis="col3" class="">
+                            <div style="text-align: left; width: 150px;" class="">营业时间</div>
                         </th>
                         <th align="center" axis="col1" class="handle">
-                            <div style="text-align: center; width: 150px;">操作</div>
+                            <div style="text-align: center; width: 180px;">操作</div>
                         </th>
                         <th style="width:100%" axis="col7">
                             <div></div>
@@ -103,6 +106,25 @@
                     </a>
                 </div>
             </div>
+            <div class="tDiv2">
+                <div class="fbutton">
+                    <a onclick="send_mail();">
+                        <div class="add" title="设置">
+                            <span><i class="fa fa-send-o"></i>设置</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="tDiv">
+            <div class="tDiv2">
+                <div class="fbutton">
+                    <a href="{:U('Goods/set')}">
+                        <div class="add" title="设置">
+                            <span><i class="fa fa-plus"></i>设置</span>
+                        </div>
+                    </a>
+                </div>
+            </div> -->
             <div style="clear:both"></div>
         </div>
         <div class="bDiv" style="height: auto;">
@@ -156,10 +178,13 @@
                                 <div style="text-align: left; width: 100px;">{$vo.email}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 100px;">{$vo.add_time}</div>
+                                <div style="text-align: left; width: 150px;">{$vo.add_time}</div>
+                            </td>
+                            <td align="left" class="">
+                                <div style="text-align: left; width: 150px;">{$vo.businesshours}</div>
                             </td>
                             <td align="center" class="handle">
-                                <div style="text-align: center; width: 170px; max-width:170px;">
+                                <div style="text-align: center; width: 180px; max-width:180px;">
                                     <a href="{:U('Goods/store_info',array('store_id'=>$vo['store_id']))}"
                                        class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
                                     <if condition="$vo['store_id'] gt 0">
@@ -168,6 +193,8 @@
                                            data-id="{$vo.store_id}"
                                            onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
                                     </if>
+                                    <a href="{:U('Goods/set',array('store_id'=>$vo['store_id']))}"
+                                       class="btn blue"><i class="fa fa-pencil-square-o"></i>设置</a>
                                 </div>
                             </td>
                             <td align="" class="" style="width: 100%;">
@@ -195,6 +222,46 @@
         $('.fa-refresh').click(function () {
             location.href = location.href;
         });
+         // 选择全部
+        $('.hDivBox .sign').click(function(){
+            var sign = $('#flexigrid > table>tbody>tr');
+           if($(this).parent().hasClass('trSelected')){
+               sign.each(function(){
+                   $(this).removeClass('trSelected');
+               });
+               $(this).parent().removeClass('trSelected');
+           }else{
+               sign.each(function(){
+                   $(this).addClass('trSelected');
+               });
+               $(this).parent().addClass('trSelected');
+           }
+        })
+
+         //设置
+        function send_mail()
+        {
+            var obj = $('.trSelected');
+            var url = "{:U('Admin/User/sendMail')}";
+            if(obj.length > 0){
+                var check_val = [];
+                obj.each(function(){
+                    check_val.push($(this).attr('data-id'));
+                });
+                url += "?user_id_array="+check_val;
+                layer.open({
+                    type: 2,
+                    title: '发送邮箱',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['580px', '480px'],
+                    content: url
+                });
+            }else{
+                layer.msg('请选择',{icon:2});
+            }
+        }
+
 
     });
 </script>

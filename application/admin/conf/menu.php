@@ -66,6 +66,7 @@ return array(
             array('name' => '品牌列表', 'act' => 'brandList', 'op' => 'Goods'),
             array('name' => '评论列表', 'act' => 'index', 'op' => 'Comment'),
             array('name' => '商品咨询', 'act' => 'ask_list', 'op' => 'Comment'),
+            array('name' => '签到商品', 'act' => 'goods', 'op' => 'Sign'),
         )),
         array('name' => '订单', 'child' => array(
             array('name' => '订单列表', 'act' => 'index', 'op' => 'Order'),
@@ -126,10 +127,10 @@ return array(
     'distribution' => array('name' => '奖金模式', 'child' => array(
         array('name' => '模式管理', 'child' => array(
             // array('name' => '分销商品', 'act' => 'goods_list', 'op' => 'Distribut'),
-            array('name' => '分销商列表', 'act' => 'distributor_list', 'op' => 'Distribut'),
-            array('name' => '分销关系', 'act' => 'tree', 'op' => 'Distribut'),
+            // array('name' => '分销商列表', 'act' => 'distributor_list', 'op' => 'Distribut'),
+            array('name' => '等级关系', 'act' => 'tree', 'op' => 'Distribut'),
             array('name' => '分销商设置', 'act' => 'grade_list', 'op' => 'Distribut'),
-            // array('name' => '代理商设置', 'act' => 'agent_grade_list', 'op' => 'Distribut'),
+            array('name' => '代理商设置', 'act' => 'agent_grade_list', 'op' => 'Distribut'),
             // array('name' => '分销设置', 'act' => 'distribut', 'op' => 'System'),
             array('name' => '日志', 'act' => 'rebate_log', 'op' => 'Distribut'),
         )),

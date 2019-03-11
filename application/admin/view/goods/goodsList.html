@@ -200,6 +200,7 @@
             url: "/index.php?m=Admin&c=goods&a=ajaxGoodsList&p=" + page,//+tab,
             data: $('#' + form).serialize(),// 你的formid
             success: function (data) {
+              // console.log(data)
                 $("#flexigrid").html('');
                 $("#flexigrid").append(data);
             }

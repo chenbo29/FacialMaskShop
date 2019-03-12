@@ -747,7 +747,7 @@ class Goods extends Base {
     /**
      * 商城 - 门店 - 门店管理
      */
-    public function store_list()
+    /*public function store_list()
     {
         $list = array();
         $keywords = I('keywords/s');
@@ -766,12 +766,12 @@ class Goods extends Base {
         }
         $this->assign('list', $list);
         return $this->fetch();
-    }
+    }*/
 
     /**
      * 商城 - 门店 - 添加商铺门店
      */
-    public function store_info()
+    /*public function store_info()
     {
         $store_id = I('get.store_id/d', 0);
         if ($store_id) {
@@ -788,12 +788,12 @@ class Goods extends Base {
         $this->assign('province',$province);
         $this->assign('act', $act);
         return $this->fetch();
-    }
+    }*/
 
     /**
      * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
      */
-    public function sellerHandle()
+    /*public function sellerHandle()
     {
         $data = I('post.');
         if (empty($data['province'])) {
@@ -824,12 +824,12 @@ class Goods extends Base {
         } else {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
         }
-    }
+    }*/
 
     /**
      * 商城 - 门店 - 设置
      */
-    public function set()
+    /*public function set()
     {
         $store_id = I('get.store_id/d', 0);
         if ($store_id) {
@@ -846,5 +846,5 @@ class Goods extends Base {
         $this->assign('province',$province);
         $this->assign('act', $act);
         return $this->fetch();
-    }
+    }*/
 }

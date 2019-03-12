@@ -4,15 +4,10 @@ namespace app\admin\controller;
 
 use think\Page;
 use think\Db;
-use think\Loader;
+use app\admin\logic\UsersLogic;
+use think\Validate;
 
 class Distribut extends Base {
-
-    // public function goods_list(){
-       
-     
-    //     return $this->fetch();
-    // }
 
     /**
      * 分销商列表
@@ -86,18 +81,17 @@ class Distribut extends Base {
         }
     }
     
+    //关系图
     public function tree()
     {
-        $users = M('users')->where('is_distribut', 1)->field('user_id, first_leader')->select();
-        
-        $result = array_map(function($user){
-            $result = M('users')->where('user_id',$user['first_leader'])->find();
-            return $result;
-        }, $users);
-
-        $this->assign('count',count($result));
-        $this->assign('info',$result);
-        
+        $UsersLogic = new UsersLogic();    
+        $cat_list = $UsersLogic->relation();
+        if($cat_list){
+            $level = array_column($cat_list, 'level');
+            $heightLevel = max($level);
+        }
+        $this->assign('heightLevel',$heightLevel);  
+        $this->assign('cat_list',$cat_list);     
         return $this->fetch();
     }
     
@@ -110,11 +104,17 @@ class Distribut extends Base {
 
         $distribut = M('distribut')->find();
 
+        //是否接收到数据
         if ($data) {
+            //是否已存在数据,是则修改,不是则新增
             if ($distribut) {
-                M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
+                $bool = M('distribut')->where('distribut_id',$distribut['distribut_id'])->update(['rate'=>$data['rate'],'time'=>$data['date'],'update_time'=>time()]);
             } else {
-                M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
+                $bool = M('distribut')->insert(['rate'=>$data['rate'],'time'=>$data['date'],'create_time'=>time(),'update_time'=>time()]);
+            }
+
+            if ($bool !== false) {
+                $distribut['rate'] = $data['rate'];
             }
         }
 
@@ -166,12 +166,37 @@ class Distribut extends Base {
      */
     public function levelHandle()
     {
+
         $data = I('post.');
-        $userLevelValidate = Loader::validate('UserLevel');
+
+        //验证规则
+        $rules = [
+            'level' => 'require|number|unique:user_level,level^level_id',
+            'level_name' => 'require|unique:user_level',
+            'max_money' => 'number',
+            'remaining_money' => 'number',
+            'rate' => 'require|between:0,100',
+        ];
+
+        //错误提示
+        $msg = [
+            'level.require'          => '等级必填',
+            'level.number'           => '等级必须是数字',
+            'level.unique'           => '已存在相同的等级',
+            'level_name.require'     => '名称必填',
+            'level_name.unique'      => '已存在相同等级名称',
+            'max_money.number'       => '最大代理佣金必须是数字',
+            'remaining_money.number' => '代理拥金总和必须是数字',
+            'rate.require'           => '佣金占比必填',
+            'rate.between'           => '佣金占比在0-100之间',
+        ];
+
+        $validate = new Validate($rules,$msg);
+
         $return = ['status' => 0, 'msg' => '参数错误', 'result' => ''];//初始化返回信息
         if ($data['act'] == 'add') {
-            if (!$userLevelValidate->batch()->check($data)) {
-                $return = ['status' => 0, 'msg' => '添加失败', 'result' => $userLevelValidate->getError()];
+            if (!$validate->batch()->check($data)) {
+                $return = ['status' => 0, 'msg' => '添加失败', 'result' => $validate->getError()];
             } else {
                 $rateCount = M('user_level')->sum('rate');
                 if (($rateCount+$data['rate']) > 100) {
@@ -179,7 +204,7 @@ class Distribut extends Base {
                 } else {
                     $r = D('user_level')->add($data);
                     if ($r !== false) {
-                        $return = ['status' => 1, 'msg' => '添加成功', 'result' => $userLevelValidate->getError()];
+                        $return = ['status' => 1, 'msg' => '添加成功', 'result' => $validate->getError()];
                     } else {
                         $return = ['status' => 0, 'msg' => '添加失败，数据库未响应', 'result' => ''];
                     }
@@ -187,8 +212,8 @@ class Distribut extends Base {
             }
         }
         if ($data['act'] == 'edit') {
-            if (!$userLevelValidate->scene('edit')->batch()->check($data)) {
-                $return = ['status' => 0, 'msg' => '编辑失败', 'result' => $userLevelValidate->getError()];
+            if (!$validate->batch()->check($data)) {
+                $return = ['status' => 0, 'msg' => '编辑失败', 'result' => $validate->getError()];
             } else {
                 $rateCount = M('user_level')->where('level_id','neq',$data['level_id'])->sum('rate');
                 if (($rateCount+$data['rate']) > 100) {
@@ -198,7 +223,7 @@ class Distribut extends Base {
                     if ($r !== false) {
                         $data['rate'] = $data['rate'] / 100;
                         D('users')->where(['level' => $data['level_id']])->save($data);
-                        $return = ['status' => 1, 'msg' => '编辑成功', 'result' => $userLevelValidate->getError()];
+                        $return = ['status' => 1, 'msg' => '编辑成功', 'result' => $validate->getError()];
                     } else {
                         $return = ['status' => 0, 'msg' => '编辑失败，数据库未响应', 'result' => ''];
                     }
@@ -239,7 +264,7 @@ class Distribut extends Base {
     {
         $logId = I('id');
         $detail = M('account_log')->alias('acount')->join('users', 'users.user_id = acount.user_id')
-                                  ->field('users.nickname, acount.*')->where('acount.log_id', $logId)->find();
+                  ->field('users.nickname, acount.*')->where('acount.log_id', $logId)->find();
         $this->assign('detail', $detail);
         return $this->fetch();
     }

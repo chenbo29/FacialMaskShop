@@ -12,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>我的优惠卷中心</title>
     <link rel="stylesheet" href="__STATIC__/css/coupon/coupon.css">
-    <script src="__STATIC__/js/coupon/jquery-1.8.3.min.js"></script>
     <script src="__STATIC__/js/coupon/rem.js"></script>
     <!-- <script src="__STATIC__/js/coupon/coupon.js" ></script> -->
 </head>
@@ -128,12 +127,13 @@
 			 <div class="copon-codeBox"></div>
 			    <div class="codeBox"> 
 			        <div class="codeBox-num">卷码:13722222222</div>
-			        <div class="codeBox-img">
-			            <img src="__STATIC__/image/ah.png" alt="卷码" class="codeBox-gg">
+			        <div class="codeBox-img" id="qrcode">
 			        </div>
 			    </div>
 			</div>
         </div>
+        <script src="__STATIC__/js/coupon/jquery-1.8.3.min.js"></script>
+        <script src="__STATIC__/js/qrcode.js"></script>
         <script type="text/javascript">
         $(function(){
             /* tabar 导航操作*/
@@ -156,6 +156,22 @@
             $(".cover").toggleClass("hide")
          })
         })
+
+        $(function(){
+            new QRCode(document.getElementById("qrcode"), "www.baidu.com");  
+            var qrcode = new QRCode("test", {
+            text: "www.baidu.com",
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+});
+// qrcode.clear(); 
+// qrcode.makeCode(""); 
+
+        })
+
         
         </script>
 </body>

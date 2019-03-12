@@ -42,7 +42,7 @@
             <div class="lsu">
             	<label class="zjy_reg" for="mobile_code">验证码:</label>         		
                 <input class="zjy_input " type="text" id="mobile_code" value="" name="mobile_code" placeholder="请输入验证码" >
-                <a class="btn-text-message" rel="mobile" onClick="sendcode(this)">获取验证码</a>
+                <a class="btn-text-message" id="text-message" rel="mobile" onClick="sendcode(this)">获取验证码</a>
             </div>
         </if>
         <div class="lsu">
@@ -60,7 +60,7 @@
         <div class="zjy_Loginfoos">      	
             <p class="recept">
             	<input class="zjy_cheock" type="checkbox" name="" id="" value="" />
-            	<span>我已经阅读并同意</span>
+            	<span style="display:inline-block;vertical-align:text-top;">我已经阅读并同意</span>
             	<a href="{:U('Mobile/Article/agreement',['doc_code'=>'agreement'])}">《服务协议》</a>
             </p>
         </div>
@@ -236,7 +236,7 @@
                    num--;
                    $(".btn-text-message").html("重新发送"+(num))
                    if(num == 0){
-                       num++;
+                       clearInterval(time);
                      $(".btn-text-message").html("发送验证码")                       
                    }
                }, 1000);
@@ -250,11 +250,16 @@
         $(".zjy_login_bgs").on("click",function(){
             $(this).hide()
             $(".zjy_login_zhuce").hide()
-
         })
         $(".zjy_login_shanchu").on("click",function(){
             $(".zjy_login_zhuce").hide()
             $(".zjy_login_bgs").hide()
+        })
+        $(".zjy_djdl").on("click",function(){
+            alert("登录成功");
+            $(".zjy_login_zhuce").hide()
+            $(".zjy_login_bgs").hide()
+
         })
     })
 </script>

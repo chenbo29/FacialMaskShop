@@ -88,6 +88,19 @@ a{
 	z-index: 555;
 	display: none;
 }
+.lsuxg{
+	margin: 1rem 0;
+}
+.lsuxg input{
+	height: 1.6rem;
+    font-size: .554667rem;
+    color: #333;
+    border: 1px solid #666;
+    border-radius: 9px;
+    outline: none;
+    text-align: left;
+    width: 100%;
+}
 .third-login-list img{
 	margin: 0 .5rem;
 	width: 1.2rem;
@@ -188,6 +201,33 @@ a{
 	width: 40%;
 	margin-left: 2rem;
 	text-indent: 0 !important;
+}
+.loginsingup-input .lsu98 input{
+	height: 1.6rem;
+	font-size:.554667rem;
+	color:#333;
+	border: 1px solid #666;
+	border-radius: 9px;
+	outline: none;
+	text-align: left;
+	width: 100%;
+	text-indent:.5rem;
+}
+.v-identity .v-cont-wrap>input {
+	float:left;
+	width:50%;
+	height:1.6rem;
+	line-height:.981333rem;
+	font-size:.512rem;
+	border: 1px solid #999;
+	outline: none;
+	padding-left: 0.1rem;
+	border-radius: 9px;
+}
+.v-identity .v-cont-wrap {
+	width:100%;
+	height:1.6rem;
+	margin-bottom: 2rem;
 }
 .loginsingup-input .lsunoe {
 	position: relative;

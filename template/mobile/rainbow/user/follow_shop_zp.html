@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title>店铺关注</title>
+	    <link rel="stylesheet" type="text/css" href="__STATIC__/css/reset.css"/>
+	    <link rel="stylesheet" type="text/css" href="__STATIC__/css/swiper.min.css"/>
+	    <link rel="stylesheet" type="text/css" href="__STATIC__/css/user_zp/follow_zp.css"/>
+	   
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="follow-wrap-zp">
+				<!--头部-->
+				<div class="header-zp">
+					<div class="inner">
+						<a href="javascript:history.back()"><span class="return"><img src="__STATIC__/images/follow_zp/return-zp.png" /></span></a>
+						<h3>商品关注</h3>
+						<span class="menu-btn"><img src="__STATIC__/images/follow_zp/nav-icon-zp.png" /></span>
+					</div>
+				</div>
+				<!--导航切换-->
+				<div class="tab-nav-zp">
+					<ul>
+						<li><a href="{:U('mobile/User/follow_good_zp')}">商品</a></li>
+						<li class="active"><a href="{:U('mobile/User/follow_shop_zp')}">店铺</a></li>
+					</ul>
+				</div>
+			
+				<div class="tab-main-zp">
+					<!--店铺-->
+					<div class="tab-cont-zp">
+						<div class="follow-msg-zp">
+							<div class="follow-num">您关注了 <span>4</span> 个店铺</div>
+							<div class="edit-btn" id="shoplist-edit">编辑</div>
+						</div>
+						<div class="shop-list-zp">
+							<ul>
+								<li>
+									<label class="fav-select">
+										<input type="checkbox" />
+									</label>
+									<div class="shop-item">
+										<div class="shop-logo">
+											<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo01.jpg" /></a>
+										</div>
+										<div class="shop-info">
+											<h3 class="shop-name">微诺娜</h3>
+											<p>
+												<span>有券</span>
+												<span>促销</span>
+											</p>
+										</div>
+										<div class="enter">
+											<a href="###">进入店铺&gt;</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="fav-select">
+										<input type="checkbox" />
+									</label>
+									<div class="shop-item">
+										<div class="shop-logo">
+											<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo02.jpg" /></a>
+										</div>
+										<div class="shop-info">
+											<h3 class="shop-name">小米官方旗舰店</h3>
+											<p>
+												<span>降价</span>
+												<span>促销</span>
+												<span>有券</span>
+											</p>
+										</div>
+										<div class="enter">
+											<a href="###">进入店铺&gt;</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="fav-select">
+										<input type="checkbox" />
+									</label>
+									<div class="shop-item">
+										<div class="shop-logo">
+											<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo03.jpg" /></a>
+										</div>
+										<div class="shop-info">
+											<h3 class="shop-name">微诺娜</h3>
+											<p>
+												<span>有券</span>
+												<span>促销</span>
+											</p>
+										</div>
+										<div class="enter">
+											<a href="###">进入店铺&gt;</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="fav-select">
+										<input type="checkbox" />
+									</label>
+									<div class="shop-item">
+										<div class="shop-logo">
+											<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo04.jpg" /></a>
+										</div>
+										<div class="shop-info">
+											<h3 class="shop-name">微诺娜</h3>
+											<p>
+												<span>有券</span>
+												<span>促销</span>
+											</p>
+										</div>
+										<div class="enter">
+											<a href="###">进入店铺&gt;</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+						<!--猜你喜欢的店铺-->
+						<div class="guesslike-wrap-zp">
+							<div class="title">
+								<h3>猜您喜欢的店铺</h3>
+							</div>
+							<div class="guesslike-shop">
+								<ul>
+									<li class="shop-item">
+										<div class="shop-wrap">
+											<div class="shop-logo">
+												<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo-thumb01.png" /></a>
+											</div>
+											<div class="shop-info">
+												<h3 class="shop-name">UH化妆品官方店</h3>
+												<p class="fans">250万粉丝</p>
+												<p>
+													<span>有券</span>
+													<span>降价</span>
+												</p>
+											</div>
+											<div class="enter">
+												<a href="###">进入店铺</a>
+											</div>
+										</div>
+										<div class="shop-item-list swiper-container">
+											<ul class="swiper-wrapper">
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img02.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img03.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img03.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+											</ul>
+										</div>
+									</li>
+									<li class="shop-item">
+										<div class="shop-wrap">
+											<div class="shop-logo">
+												<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo-thumb02.png" /></a>
+											</div>
+											<div class="shop-info">
+												<h3 class="shop-name">UH化妆品官方店</h3>
+												<p class="fans">250万粉丝</p>
+												<p>
+													<span>有券</span>
+													<span>降价</span>
+												</p>
+											</div>
+											<div class="enter">
+												<a href="###">进入店铺</a>
+											</div>
+										</div>
+										<div class="shop-item-list swiper-container">
+											<ul class="swiper-wrapper">
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img02.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img03.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+											</ul>
+										</div>
+									</li>
+									<li class="shop-item">
+										<div class="shop-wrap">
+											<div class="shop-logo">
+												<a href="###"><img src="__STATIC__/images/follow_zp/shop-logo-thumb03.png" /></a>
+											</div>
+											<div class="shop-info">
+												<h3 class="shop-name">UH化妆品官方店</h3>
+												<p class="fans">250万粉丝</p>
+												<p>
+													<span>有券</span>
+													<span>降价</span>
+												</p>
+											</div>
+											<div class="enter not-enter">
+												<a href="###">关注店铺</a>
+											</div>
+										</div>
+										<div class="shop-item-list swiper-container">
+											<ul class="swiper-wrapper">
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img01.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img02.jpg" /></a></li>
+												<li class="swiper-slide"><a href="###"><img src="__STATIC__/images/follow_zp/shop-product-img03.jpg" /></a></li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!--loading加载-->
+							<div class="loading-wrap-zp">
+								<img src="__STATIC__/images/follow_zp/loading-icon-zp.png"  />
+								<p>正在加载...</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+				<!--蒙层-->
+				<div class="model">
+					
+					<!--取消关注弹窗-->
+					<div class="dialog-unfollow">
+						<p>确认要取消关注么？</p>
+						<p class="btns">
+							<a href="javascript:void()" class="confirm-btn">取消关注</a>
+							<a href="javascript:void()" class="cancel-btn">再想想</a>
+						</p>
+					</div>
+				</div>
+				
+				<div class="fav-fixbar">
+			        <label class="fav-select" >
+						<input type="checkbox" id="selectAllBtn-shop" /> 全选
+					</label>
+			        <a href="javascript:void(0);" class="unfollow" id="multiCancle-shop">取消关注</a>
+			   </div>
+			</div>
+		</div>
+
+	 	<script src="__STATIC__/js/public/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/js/public/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="__STATIC__/js/follow_zp/follow_zp.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			//商品图片展示手势效果
+			var swiper = new Swiper('.shop-item-list', {
+		        pagination: '.swiper-pagination',
+		        slidesPerView: 3,
+		        paginationClickable: true,
+		        spaceBetween: 30
+			});
+		</script>
+	</body>
+</html>

@@ -63,29 +63,29 @@
                     <thead>
                     <tr>
                         <th abbr="article_title" axis="col3" class="" align="left">
-                            <div style="text-align: left; width: 40px;" class=""><input type="checkbox"
+                            <div style="text-align: left; width: 30px;" class=""><input type="checkbox"
                                                                                         class="checkAll"></div>
                         </th>
                         <th abbr="ac_id" axis="col4" class="" align="left">
                             <div style="text-align: center; width: 50px;" class="">ID</div>
                         </th>
                         <th abbr="article_time" axis="col6" class="" align="left">
-                            <div style="text-align: left; width: 100px;" class="">昵称</div>
+                            <div style="text-align: left; width: 150px;" class="">昵称</div>
                         </th>
                         <th abbr="ac_id" axis="col4" class="" align="left">
                             <div style="text-align: center; width: 80px;" class="">手机号</div>
                         </th>
                         <th abbr="article_show" axis="col5" class="" align="center">
-                            <div style="text-align: center; width: 80px;" class="">省份</div>
+                            <div style="text-align: center; width: 70px;" class="">省份</div>
                         </th>
                         <th abbr="article_show" axis="col5" class="" align="center">
-                            <div style="text-align: center; width: 80px;" class="">市区</div>
+                            <div style="text-align: center; width: 70px;" class="">市区</div>
                         </th>
                         <th abbr="article_show" axis="col5" class="" align="center">
-                            <div style="text-align: center; width: 80px;" class="">区/县</div>
+                            <div style="text-align: center; width: 70px;" class="">区/县</div>
                         </th>
                         <th abbr="article_show" axis="col5" class="" align="center">
-                            <div style="text-align: center; width: 80px;" class="">是否为分销商</div>
+                            <div style="text-align: center; width: 70px;" class="">是否为分销商</div>
                         </th>
                         <!--<th axis="col1" class=""  align="center">
                             <div style="text-align: center; width: 80px;">操作</div>
@@ -105,7 +105,7 @@
                     <volist name="usersList" id="list">
                         <tr <if condition='$list.prom_id gt 0'>hidden</if> >
                             <td class="" align="left">
-                                <div style="text-align: left; width: 40px;">
+                                <div style="text-align: left; width: 30px;">
                                     <input class="checkItem" type="checkbox" name="user_id[]" value="{$list.user_id}"
                                            data-img="{$list.user_id|goods_thum_images=160,160}"
                                            data-name="{$list.nickname}" data-mobile="{$list.mobile}"/>
@@ -115,22 +115,26 @@
                                 <div style="text-align: center; width: 50px;">{$list.user_id}</div>
                             </td>
                             <td class="" align="left">
-                                <div style="text-align: left; width: 100px;">{$list.nickname}</div>
+                                <div style="text-align: left; width: 150px;">{$list.nickname}</div>
                             </td>
                             <td class="" align="left">
                                 <div style="text-align: center; width: 80px;">{$list.mobile}</div>
                             </td>
                             <td class="" align="left">
-                                <div style="text-align: center; width: 80px;">{$list.province}</div>
+                                <div style="text-align: center; width: 70px;">{$list.province}</div>
                             </td>
                             <td class="" align="left">
-                                <div style="text-align: center; width: 80px;">{$list.city}</div>
+                                <div style="text-align: center; width: 70px;">{$list.city}</div>
                             </td>
                             <td class="" align="left">
-                                <div style="text-align: center; width: 80px;">{$list.district}</div>
+                                <div style="text-align: center; width: 70px;">{$list.district}</div>
                             </td>
                             <td class="" align="left">
-                                <div style="text-align: center; width: 80px;">{$list.is_distribut}</div>
+                                <div style="text-align: center; width: 70px;">
+                                    <if condition="$list.is_distribut eq 1">
+                                    <i color="#0fff0f">是</i> <else/><i color="#ff0000">否</i>
+                                    </if>
+                                </div>
                             </td>
                             <td class="" style="width: 100%;" align="">
                                 <div>&nbsp;</div>

@@ -30,13 +30,16 @@ ul{
     background-color: #ffffff;
 }
 
-.lsw-header{
-    height: .75rem;
+.lsw-header {
+    height: 1rem;
     width: 100%;
     display: flex;
-    justify-content:space-between;
-    margin-top:.3rem;
+    justify-content: space-between;
+    /* margin-top: .3rem; */
+    /* padding-top: .3rem; */
     position: relative;
+    z-index: 100;
+    background: #ffff;
 }
 
 .lsw_headerBox .lsw_leftImg{
@@ -58,12 +61,16 @@ ul{
     margin:.15rem 0 0 .28rem;
 }
 
-.lsw-Inputimg{
+.lsw-leftImg{
+    padding-top: .1rem;
+}
+.lsw-Inputimg {
     width: 5.23rem;
     height: .75rem;
     display: flex;
-	flex-wrap:nowrap;
-	margin-left: -0.45rem;
+    flex-wrap: nowrap;
+    margin-left: -0.45rem;
+    padding-top: .1rem;
 }
 
  .searchimg{
@@ -94,18 +101,17 @@ ul{
       line-height: .75rem;
       padding-right: .3rem;
   }
-  .lsw-searchText .listorimg{
-	background: url(../../images/listo.png);
+  .lsw-searchText .listorimg {
+    background: url(../../images/listo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-size: 1.2rem;
     width: 0.5333rem;
     height: .85333rem;
     top: .55467rem;
-    margin-left: -rem;
-    margin-top: -0.48rem;
+    margin-top: -0.36rem;
     margin-left: -0.55rem;
-  }
+}
   .lsw-searchText i{
 	position: absolute;
     background-image: url(../../images/dg.png);
@@ -132,76 +138,71 @@ ul.nav{
 	line-height: .76rem;
 } 
 ul.nav li {
-	/* display:inline-block;
-	padding:0 20px;
-	height:60px; 
-	line-height:60px;
-	color:#F2F2F2; 
-	font-family:"\5FAE\8F6F\96C5\9ED1"; 
-	font-size:16px;
-	text-align: center; */
 	font-size:.3rem;
-	color:#484848;
+	/* color:#484848; */
 	position: relative;
 } 
 ul.nav .red a{
 	color:RED
 }
-ul.nav li  .multipleimg{
-	position: absolute;
-    background-image: url(../../images/dg.png);
-    background-repeat: no-repeat;
-    background-size: 70%;
-    width: .34133rem;
-    height: .192rem;
-	top: .33rem;
-	margin-left: .1rem;
-}
-ul.nav li a .icon3 {
+ul.nav li .multipleimg {
     position: absolute;
-    background-image: url(../../images/search/xias.png);
+    background-image: url(../../images/xia.png);
     background-repeat: no-repeat;
-    top: .32rem;
-    background-size: 90%;
-    width: .5133rem;
-    height: .22rem;
-    top: .3rem;
-    /* margin-left: .08rem; */
-    background-position-y: -.1rem;
+    background-size: 53%;
+    width: .5rem;
+    height: .3rem;
+    top: .29rem;
+    margin-left: .1rem;
 }
 
-/* .nav-item a .icon1{
-    display: none;
-}*/
-
-ul.nav  a .tariff {
-    position: absolute;
-    background-image: url(../../images/search/shang.png);
-    background-repeat: no-repeat;
-    background-size: 54%;
-    width: .5133rem;
-    height: .22rem;
-    top: .15rem;
-    margin-left: .02rem;
-}
-
-
-/* ul.nav   .red a .tariff{
-	position: absolute;
-    background-image: url(../../images/search/shang.png);
-    background-repeat: no-repeat;
-    background-size: 70%;
-    width: .5133rem;
-    height: .22rem;
-	top: .25rem;
-	margin-left: .04rem;
+/* ul.nav li.multiple{
+    color:red
 } */
+
+
+
+
+ul.nav a .tariff {
+    position: absolute;
+    background-image: url(../../images/shangxia.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    width: .5133rem;
+    height: .5rem;
+    top: .18rem;
+    
+}
+
+
+
+ul.nav a .bpr2 {
+    position: absolute;
+    background-image: url(../../images/shang.png);
+    background-repeat: no-repeat;
+    background-size: 53%;
+    width: .5rem;
+    height: .3rem;
+    top: .12rem;
+    margin-left: .1rem;
+}
+
+ul.nav a .bpr1{
+    position: absolute;
+    background-image: url(../../images/xia.png);
+    background-repeat: no-repeat;
+    background-size: 53%;
+    width: .5rem;
+    height: .3rem;
+    top: .38rem;
+    margin-left: .1rem;
+}
 
  .filter{
 	position: absolute;
-    background-image: url(../../images/xx.png);
+    background-image: url(../../images/saixuan.png);
     background-repeat: no-repeat;
-    background-size: 70%;
+    background-size: 80%;
     width: .45133rem;
     height: .45rem;
 	top: .24rem;
@@ -548,11 +549,7 @@ ul.nav  a .tariff {
     padding: 0 .3rem;
 }
 
-/* .popcover ul li .ch_dg {
-    padding-left: .512rem;
-    color: #f23030;
-    border-color: #f23030;
-} */
+
 .popcover ul li span {
     display: block;
     height: 100%;
@@ -624,4 +621,15 @@ input {
     color: inherit;
     font: inherit;
     margin: 0;
+}
+
+.fil_all_comm ul .red {
+    color: #f23030;
+}
+
+.fil_all_comm ul li a {
+    display: block;
+}
+.red {
+    color: #e23435;
 }

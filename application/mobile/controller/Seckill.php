@@ -28,13 +28,22 @@ class Seckill extends MobileBase
         return $this->fetch();
     }
 
+    public function submit()
+    {
+
+        $time = "2019,3,12";
+        $this->assign('time',$time);
+
+
+        return $this->fetch();
+    }
     /**
      * 秒杀 提交 订单
      */
     public function submit_order()
     {
        
-        $time = "2019,3,8";
+        $time = "2019,3,11";
         $this->assign('time',$time);
 
 

@@ -16,6 +16,20 @@
 .fr{
 	float: right;
 }
+.zjy_head{
+	width: 100%;
+	line-height: 5rem;
+	text-align: center;
+}
+.zjy_head h3{
+	font-size: 1rem;
+	font-weight: normal;
+}
+.zjy_head h3 a{
+	position: relative;
+	left: -80px;
+	top: 7px;
+}
 a{
 	color: #666;
 	text-decoration: none;

@@ -215,7 +215,7 @@ ul.nav a .bpr1{
  }
 
  .pro{
-	margin:.16rem .36rem 0 .36rem;
+	margin:0rem .36rem 0 .36rem;
  }
 
  .pro-box{
@@ -294,7 +294,7 @@ margin-top:.2rem;
   .max-pro-box{
 	width: 47.3%;
     height: 5.18rem;
-    /* margin-top: .27rem; */
+    margin-top: .27rem;
 	display: block;
 	background: #fafafa;
 	border-radius: 0.15rem;
@@ -655,3 +655,25 @@ input {
   font-size:12px;
 }
 
+/* 加载中样式 */
+.loading-box{
+    position: relative;
+    bottom:0%;
+    text-align: center;
+ }
+
+.loading{
+    position: absolute;
+    left: 50%;
+    margin: -.3rem 0 0  -.3rem;
+    width: .5rem;
+    height: .5rem;
+    box-sizing: border-box;
+}
+
+
+.p-zai{
+    padding-top:.2rem;
+    color:#333;
+    font-size:.3rem;
+}

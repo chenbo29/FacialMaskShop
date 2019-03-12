@@ -150,10 +150,16 @@ class Pickup extends Base {
 		$res = $Pickup->order('id desc')->select();
   		$this->assign('res',$res);
 
-		
-		
 		return $this->fetch();
 	}
+
+    public function index1(){
+        $Pickup =  M('shop'); 
+        $res = $Pickup->order('shop_id')->select();
+        $this->assign('list',$res);
+
+        return $this->fetch();
+    }
 }
 
 // 	public function place(){

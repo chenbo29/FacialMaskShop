@@ -37,14 +37,14 @@
 
         <ul class="nav"> 
                 <li class="nav-item multiple ">
-                    综合
+                    <span class="lb <if condition="(I('sort') eq 'is_new' or  I('sort') eq 'comment_count')" style="color:#e73339 !important">red</if>">综合</span>
                     <i class="multipleimg"></i>
                </li> 
                 <li class="nav-item  <if condition="I('sort') eq 'sales_sum'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'sales_sum')),''));?>">
-                    销量
+                    <span class="dq">销量</span>
                 </a></li> 
                 <li class="nav-item  <if condition="I('sort') eq 'shop_price'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'shop_price','sort_asc'=>$sort_asc)),''));?>">
-                    价格
+                    <span class=>价格</span>
                     <i class="tariff <if condition="I('sort_asc') eq 'asc'">bpr2</if>  <if condition="I('sort_asc') eq 'desc'"> bpr1 </if>"></i>
                 </a></li>  
                 <li class="nav-item <if condition="I('sort') eq 'is_new'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'is_new')),''));?>">
@@ -56,7 +56,7 @@
                 </a></li> 
             </ul> 
         <!-- 商品列表 -->
-        <div class="pro">
+        <div class="pro clearfix">
 
         <empty name="goods_list">
                 <p class="goods_title" id="goods_title" style="line-height: 2rem;text-align: center;margin-top: 0.2rem; font-size:0.2rem">抱歉暂时没有相关结果，换个筛选条件试试吧</p>
@@ -104,9 +104,6 @@
                   <li >
                         <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'')),''));?>" class="<if condition="(I('sort') eq '')">on red</if>" >综合</a>
                   </li>
-                  <li >
-                        <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'is_new')),''));?>" class="<if condition="(I('sort') eq 'is_new')">on red</if>">新品</a>
-                   </li>
                   <li >
                         <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'comment_count')),''));?>" class="<if condition="I('sort') eq 'comment_count'">on red</if>">评价</a>
                   </li>
@@ -235,9 +232,10 @@
             $(".multiple").click(function(){
                 console.log($(this))
                if($(this).hasClass("multiple")){
-                   $(".fil_all_comm").show()
+                   $(".fil_all_comm").show().addClass("zindex")
+                   $(".lsw-header").addClass("zindex")
                    $(".mask-filter-div").show()
-                
+                   
                }else{
                    $(".fil_all_comm").hide()
                    $(".mask-filter-div").hide()  
@@ -364,8 +362,8 @@
     }
 
     //筛选菜单栏切换效果
-    var lb = $(' .multiple')
-    var fil = $('.fil_all_comm');
+    var lb = $(' .lb')//排序按钮综合
+    var fil = $('.fil_all_comm');//综合筛选弹框
     var cs = $('.classreturn,.search_list_dump');
     var son = $('.search_list_dump .jg').siblings();
     $(function(){
@@ -375,14 +373,14 @@
         if(!$(this).hasClass('lb')){
             fil.hide();
             // undercover();
-            cs.removeClass('pore');
+            cs.removeClass('zindex');
         }
         if(!$(this).hasClass('jg')){
             son.removeClass('bpr1');
             son.removeClass('bpr2');
         }
     });
-    // lb.html($('.on').html()+ `<i class='multipleimg'></i>`);
+    lb.html($('.on').html());
 
             //############   点击多选确定按钮      ############
     // t 为类型  是品牌 还是 规格 还是 属性

@@ -87,26 +87,31 @@ a{
 	margin: .8rem 0;
 }
 .reg_width input{
-	width: 80%;
+	width: 79%;
 	line-height: 1.5rem;
 	border: 1px solid #666;
 	border-radius: 9px;
 	text-align: left;
+	font-size:.5rem; 
+	text-indent: .2rem;
 }
 .zjy_yanzma_reg #mobile_code{
 	width: 40%;
 	line-height: 1.5rem;
 	border-radius: 9px;
 	border:1px solid #666;
+	font-size: .5rem;
+	text-indent: .2rem;
 }
 .zjy_yanzma_reg .btn-text-message{
-	width: 39%;
+	width: 37%;
 	background: #646464;
 	color: #fff;
 	text-align: center;
-	line-height: 1.5rem;
+	line-height: 1.6rem;
 	display: inline-block;
 	border-radius: 9px;
+	vertical-align: middle;
 }
 .lsu_psaw {
 	width: 100%;
@@ -118,6 +123,7 @@ a{
 .lsu_psaw input{
 	border: none;
 	outline: none;
+	font-size: .5rem;
 }
 .recept .zjy_cheock{
 	display: inline-block;

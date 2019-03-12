@@ -1231,19 +1231,8 @@ footer .flool3 p {
 	overflow:hidden;
 }
 
-.zjy_head{
-	width: 100%;
-	line-height: 5rem;
-	text-align: center;
-}
-.zjy_head h3{
-	font-size: 1rem;
-	font-weight: normal;
-}
-.zjy_head h3 a{
-	position: relative;
-	left: -80px;
-}
+
+
 .loginsingup-input {
 	background-color:#fff;
 	padding:0 1.92rem;
@@ -1260,29 +1249,15 @@ footer .flool3 p {
 	width: 100%;
 	text-align: center;
 }
-.loginsingup-input .zjy_Loginfoos .recept{
-	padding-left: 20%;
-	vertical-align: middle;
-	
-}
-.loginsingup-input .zjy_Loginfoos .recept span{
-	vertical-align: top;
-}
-.loginsingup-input .zjy_Loginfoos .recept .zjy_cheock{
-	display: inline-block;
-	width: .5rem;
-	height: .5rem;
-}
+
+
+
 .loginsingup-input .lsu .zjy_reg{
 	position: absolute;
 	left: -.6rem;
 	top: .6rem;
 }
-.loginsingup-input .lsu  .zjt_regIpunt{
-	width: 80% !important;
-	margin-left:2rem ;
-	text-indent: 6px !important;
-}
+
 .text_indent{
 	text-indent: 6px !important;
 }
@@ -1296,16 +1271,7 @@ footer .flool3 p {
 	border-radius: 9px;
 
 }
-.loginsingup-input .lsu .zjy_input{
-	text-align: left;
-	width: 40%;
-	margin-left: -3rem;
-	text-indent: 0 !important;
-}
-.v-code-input{
-	margin-left: -1.8rem;
-	text-indent: 2px !important;
-}
+
 .left{
 	position: relative;
     left:0 !important;
@@ -1321,52 +1287,22 @@ footer .flool3 p {
 	width: 100%;
 	text-align: center;
 }
-.loginsingup-input .zjy_Loginfoos .recept{
-	padding-left: 20%;
-	vertical-align: middle;
-	
-}
-.loginsingup-input .zjy_Loginfoos .recept span{
-	vertical-align: top;
-}
-.loginsingup-input .zjy_Loginfoos .recept .zjy_cheock{
-	display: inline-block;
-	width: .5rem;
-	height: .5rem;
-}
+
 .loginsingup-input .lsu .zjy_reg{
 	position: absolute;
 	left: -.6rem;
 	top: .6rem;
 }
-.loginsingup-input .lsu  .zjt_regIpunt{
-	width: 80% !important;
-	margin-left:2rem ;
-	text-indent: 6px !important;
-}
 .text_indent{
 	text-indent: 6px !important;
 }
-.loginsingup-input .lsu  input {
-	width:100%;
-	height: 1.6rem;
-	font-size:.554667rem;
-	color:#333;
-	border: 1px solid #666;
-	border-radius: 9px;
-  outline: none;
-  
-}
-.loginsingup-input .lsu .zjy_input{
+
+/* .loginsingup-input .lsu .zjy_input{
 	text-align: left;
 	width: 40%;
 	margin-left: -3rem;
 	text-indent: 0 !important;
-}
-/*.v-code-input{
-	margin-left: -1.8rem;
-	text-indent: 2px !important;
-}*/
+} */
 .left{
 	position: relative;
     left:0 !important;
@@ -1415,11 +1351,7 @@ footer .flool3 p {
 .loginsingup-input .ico-email {
 	background-position:0 -5.11999rem;
 }
-.loginsingup-input .lsu .v-code-input {
-	width:50%;
-	position: relative;
-	left:-2.15rem ;
-}
+
 .loginsingup-input .lsu-recharge>span,.loginsingup-input .lsu-v-code>span {
 	float:left;
 	width:3.2rem;
@@ -1528,24 +1460,6 @@ input:-ms-input-placeholder {
 	height:.853333rem;
 }
 
-
-.loginsingup-input .v-code-pic {
-	/*float:right;*/
-	width:4.266667rem;
-	height:.853333rem;
-}
-.loginsingup-input .btn-text-message {
-	display: inline-block;
-	width: 30%;
-	font-size:.512rem;
-	color:#fff;
-	background-color:#646464 ;
-	border-radius:9px;
-	position: absolute;
-    right: .3rem;
-    height: 100%;
-    line-height: 1.6rem;
-}
 .loginsingup-input .lsu-submit {
 	padding:.853333rem 0;
 }

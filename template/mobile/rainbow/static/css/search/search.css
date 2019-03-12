@@ -2,6 +2,10 @@
 	search搜索列表样式
 */
 
+body{
+    background-color: #ffffff;
+    width: 100%;
+}
 
 * {
     margin: 0;
@@ -431,7 +435,7 @@ margin-top:.2rem;
     height: .34133rem;
     position: absolute;
     right: .64rem;
-    top: .25rem;
+    top: .35rem;
 }
  /**/
 
@@ -484,7 +488,6 @@ margin-top:.2rem;
 
 .classreturn .content {
     width: 100%;
-    background: #fff;
     z-index: 99;
     margin: 0;
 }

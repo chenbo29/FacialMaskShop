@@ -8,11 +8,10 @@
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/iconfont.css"/>
     <link rel="stylesheet" href="__STATIC__/css/search/search.css?v=1">
     <!-- <script src="__STATIC__/js/style.js" type="text/javascript" charset="utf-8"></script> -->
-    <script src="__STATIC__/js/mobile-util.js" type="text/javascript" charset="utf-8"></script>
-    <script src="__PUBLIC__/js/global.js"></script>
+   
     <script src="__STATIC__/js/public/rem.js" type="text/javascript" meta charset="UTF-8"></script>
-    <script src="__STATIC__/js/layer.js"  type="text/javascript" ></script>
-    <script src="__STATIC__/js/swipeSlide.min.js" type="text/javascript" charset="utf-8"></script>
+   
+    <!-- <script src="__STATIC__/js/swipeSlide.min.js" type="text/javascript" charset="utf-8"></script> -->
     <link rel="shortcut icon" type="image/x-icon" href="{$tpshop_config.shop_info_store_ico|default='/public/static/images/logo/storeico_default.png'}" media="screen"/>
 </head>
 <body >
@@ -37,7 +36,7 @@
 
         <ul class="nav"> 
                 <li class="nav-item multiple ">
-                    <span class="lb <if condition="(I('sort') eq 'is_new' or  I('sort') eq 'comment_count')" style="color:#e73339 !important">red</if>">综合</span>
+                    <span class="lb <if condition="(I('sort') eq '' or  I('sort') eq 'comment_count')" style="color:#e73339 !important">red</if>">综合</span>
                     <i class="multipleimg"></i>
                </li> 
                 <li class="nav-item  <if condition="I('sort') eq 'sales_sum'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'sales_sum')),''));?>">
@@ -156,11 +155,11 @@
     
            
             <!--一级筛选条件-e-->
-            <div class="list-se-all ma-to-20 one-related">
+            <!-- <div class="list-se-all ma-to-20 one-related"> -->
                     <!--品牌-s-->
                     <!--品牌-e-->
                     <!--价格-s-->
-                    <div class="myorder p" onclick="filterprice()">
+                    <!-- <div class="myorder p" onclick="filterprice()">
                         <div class="content30">
                             <a href="javascript:void(0)">
                                 <div class="order">
@@ -173,10 +172,10 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                      <!--价格-e-->
-                    <input type="hidden" id="key" value="">
-                </div>
+                    <!-- <input type="hidden" id="key" value="">
+                </div> -->
       
         </div>
 
@@ -184,6 +183,9 @@
      <div class="mask-filter-div"></div>
 </body>
 <script src="__STATIC__/js/jquery-1.8.3.min.js"></script>
+<script src="__STATIC__/js/layer.js"  type="text/javascript" ></script>
+<script src="__STATIC__/js/mobile-util.js" type="text/javascript" charset="utf-8"></script>
+<script src="__PUBLIC__/js/global.js"></script>
 <script>
     $(document).ready(function(){  
     $(".main").unbind("scroll").bind("scroll", function(e){  
@@ -230,7 +232,6 @@
             })
             // 综合下拉框 
             $(".multiple").click(function(){
-                console.log($(this))
                if($(this).hasClass("multiple")){
                    $(".fil_all_comm").show().addClass("zindex")
                    $(".lsw-header").addClass("zindex")
@@ -255,7 +256,6 @@
         $('.screen_wi').animate({width: '0', opacity: 'show'}, 'normal',function(){
             $('.screen_wi').hide();
             $(".mask-filter-div").hide()
-           console.log($(".mask-filter-div"))
              })
         })
         
@@ -367,19 +367,19 @@
     var cs = $('.classreturn,.search_list_dump');
     var son = $('.search_list_dump .jg').siblings();
     $(function(){
-    $('.storenav ul li span').click(function(){
-        console.log($('.storenav'))
-        $(this).parent().parent().addClass('red').siblings('li').removeClass('red')
-        if(!$(this).hasClass('lb')){
-            fil.hide();
-            // undercover();
-            cs.removeClass('zindex');
-        }
-        if(!$(this).hasClass('jg')){
-            son.removeClass('bpr1');
-            son.removeClass('bpr2');
-        }
-    });
+    // $('.nav  li span').click(function(){
+    //     console.log( $(this).parent().addClass('red').siblings('li').children("span"))
+    //     $(this).parent().addClass('red').siblings('li').children("span").removeClass('red')
+    //     if(!$(this).hasClass('lb')){
+    //         fil.hide();
+    //         // undercover();
+    //         cs.removeClass('zindex');
+    //     }
+    //     if(!$(this).hasClass('jg')){
+    //         son.removeClass('bpr1');
+    //         son.removeClass('bpr2');
+    //     }
+    // });
     lb.html($('.on').html());
 
             //############   点击多选确定按钮      ############
@@ -427,5 +427,6 @@
         }
     );
         })
+     
 </script>
 </html>

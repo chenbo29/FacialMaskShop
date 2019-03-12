@@ -1,0 +1,167 @@
+<include file="public/layout"/>
+<!--<script type="text/javascript" src="//api.map.baidu.com/api?ak=iR2qhnXd5vrFI9wUuIRG9AWGIqykVNok&v=2.0"></script>-->
+<link href="__PUBLIC__/static/css/timePicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/static/js/jquery-1.9.1-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/js/jquery-timepicker.js"></script>
+<style>
+    .select-business-map {
+        width: 485px;
+        height: 270px;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer"
+     style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i
+                class="fa fa-arrow-circle-o-left"></i></a>
+            <div class="subject">
+                <h3>核销员管理 - 编辑核销员</h3>
+                <h5>网站系统核销员管理</h5>
+            </div>
+        </div>
+    </div>
+    <form class="form-horizontal" id="handleForm">
+        <input name="shopper_id" type="hidden" value="{$shop['shopper_id']}"/>
+        <div class="ncap-form-default">
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>选择核销员</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="user_id" value="{$shop.user_id}" maxlength="16" class="input-txt">
+                    <a class="ncap-btn" onclick="selectwrite_off_clerk_user()">
+                        选择核销员
+                    </a>
+                    <span class="err" id="err_shopper_name"></span>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>核销员姓名</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="user_name" value="{$shop.user_name}" class="input-txt"
+                           placeholder="核销员姓名">
+                    <p class="notic">核销员姓名</p>
+                    <span class="err" id="err_user_name"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>选择门店</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="shop_id" value="{$shop.shop_id}" maxlength="16" class="input-txt" placeholder="选择门店">
+                    <p class="notic">选择门店</p>
+                    <span class="err" id="err_shop_id"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label><em>*</em>状态</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="status" value="{$shop.status}" class="input-txt">
+                    <span class="err" id="err_status"></span>
+                </dd>
+            </dl>
+            <div class="bot"><a class="ncap-btn-big ncap-btn-green" id="submit">确认提交</a></div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(document).on("click", '#submit', function (e) {
+            $('#submit').attr('disabled', true);
+            verifyForm();
+        })
+    });
+
+    //选择核销员
+    function selectwrite_off_clerk_user(){
+        /*if(type==1){
+            var title='分销选择商品';
+            var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>1,'prom_id'=>0,'sign_user'=>'fenxiao'))}";
+        }else{
+            var title='代理选择商品';
+            var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>1,'prom_id'=>0,'sign_user'=>'daili'))}";
+        }*/
+        var title='选择核销员';
+        var url = "{:U('Shop/search_user')}";
+        layer.open({
+            type: 2,
+            title: title,
+            shadeClose: true,
+            shade: 0.2,
+            area: ['75%', '75%'],
+            content: url,
+        });
+    }
+
+    function verifyForm() {
+        $('span.err').hide();
+        var shop_id = $("input[name='shop_id']").val();
+        var url = "{:U('Shop/add')}";
+        if (shop_id > 0) {
+            url = "{:U('Shop/save')}";
+        }
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $('#handleForm').serialize(),
+            async: false,
+            dataType: "json",
+            error: function () {
+                layer.alert("服务器繁忙, 请联系管理员!");
+            },
+            success: function (data) {
+                if (data.status == 1) {
+                    layer.msg(data.msg, {icon: 1, time: 2000}, function () {
+                        location.href = "{:U('Shop/index')}";
+                    });
+                } else {
+                    $('#submit').attr('disabled', false);
+                    $.each(data.result, function (index, item) {
+                        $('span.err').show();
+                        var id = index.replace('[]', '');
+                        $('#err_' + id).text(item);
+                    });
+                    layer.msg(data.msg, {icon: 2, time: 3000});
+                }
+            }
+        });
+    }
+
+
+    $(document).ready(function (e) {
+        var shop_id = $("input[name='shop_id']").val();
+        if (shop_id > 0) {
+            $("input[name='shopper_name']").attr('disabled', 'disabled');
+        }
+        $('.z-week').find('.z-week-list').each(function (i, o) {
+            var day = $(this).find('input').val();
+            if (day == 1) {
+                $(this).addClass('week-list-bg');
+            } else {
+                $(this).removeClass('week-list-bg');
+            }
+        })
+        $(".time-picker").hunterTimePicker();
+        $(".z-week-list").click(function () {
+            if ($(this).hasClass('week-list-bg')) {
+                $(this).find("input").val(0);
+                $(this).removeClass('week-list-bg')
+            } else {
+                $(this).find("input").val(1);
+                $(this).addClass('week-list-bg')
+            }
+        })
+    });
+</script>
+</body>
+</html>

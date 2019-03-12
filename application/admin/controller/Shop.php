@@ -57,7 +57,7 @@ class Shop extends Base
     }
 
     /**
-     * 门店自提点
+     * 门店 - 门店管理 - 门店列表 - 添加界面
      */
     public function info()
     {
@@ -83,6 +83,9 @@ class Shop extends Base
         return $this->fetch();
     }
 
+    /**
+     * 门店 - 门店管理 - 门店列表 - 添加功能处理方法
+     */
     public function add()
     {
         $data = I('post.');
@@ -160,6 +163,9 @@ class Shop extends Base
         }
     }
 
+    /**
+     * 门店 - 门店管理 - 门店列表 - 编辑功能处理方法
+     */
     public function save(){
         $data = I('post.');
         if (empty($data['longitude']) && empty($data['latitude'])) {
@@ -268,16 +274,19 @@ class Shop extends Base
     }
 
     /**
-     * 商城 - 门店 - 门店管理
+     * 门店 - 门店管理 - 核销员列表
      */
-    public function store_list()
+    public function write_off_clerk_list()
     {
+        $res = DB::name('shopper')->select();
+        $this->assign('list', $res);
+        return $this->fetch();
     }
 
     /**
-     * 商城 - 门店 - 添加商铺门店
+     * 门店 - 门店管理 - 核销员列表 - 添加新核销员
      */
-    public function store_info()
+    public function write_off_clerk_info()
     {
         $store_id = I('get.store_id/d', 0);
         if ($store_id) {
@@ -330,5 +339,11 @@ class Shop extends Base
         } else {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
         }
+    }
+
+    public function search_user(){
+        $usersList = Db::name('users')->select();
+        $this->assign('usersList', $usersList);
+        return $this->fetch();
     }
 }

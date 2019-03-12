@@ -182,6 +182,7 @@ return array(
     'pickup' => array('name' => '门店', 'child' => array(
         array('name' => '门店管理', 'child' => array(
             array('name' => '门店列表', 'act' => 'index', 'op' => 'shop'),
+            array('name' => '核销员列表', 'act' => 'write_off_clerk_list', 'op' => 'shop'),
         )),
         array('name' => '线下取货', 'child' => array(
             // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),

@@ -632,10 +632,12 @@ class Promotion extends Base
         $count = $FlashSale->where($condition)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-//        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
-        $prom_list = DB::name("flash_sale")
-        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
-        ->limit($Page->firstRow.','.$Page->listRows)->select();
+        $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows);
+        $prom_list = $prom_list -> join('tp_goods','tp_flash_sale.goods_id=tp_goods.goods_id','left')->select();
+
+//        $prom_list = DB::name("flash_sale")
+//        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
+//        ->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
@@ -791,9 +793,11 @@ class Promotion extends Base
         $Page = new Page($count, 10);
         $show = $Page->show();
 
-        $prom_list = DB::name("auction")
-            ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
-            ->limit($Page->firstRow.','.$Page->listRows)->select();
+        $prom_list = $Auction->append(['send_status'],['putaway_status'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows);
+        $prom_list = $prom_list->join('tp_goods','tp_auction.goods_id=tp_goods.goods_id','left')->select();
+//        $prom_list = DB::name("auction")
+//            ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
+//            ->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出

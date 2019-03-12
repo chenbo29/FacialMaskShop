@@ -74,17 +74,22 @@ class Sign extends Base {
 //        var_dump($_POST);die;
         $order_str = "`{$_POST['orderby1']}` {$_POST['orderby2']}";
 //        var_dump($order_str);die;
-        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
-//        var_dump($goodsList);
+//        $goodsList = M('Goods')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $goodsList = M('sign_goods')->alias('a')->join('goods b','a.gid=b.goods_id')->where($where)->order($order_str)->limit($Page->firstRow.','.$Page->listRows)->select();
+//        var_dump($goodsList);die;
 //        echo "`````````````````````";
 //        var_dump($sign_goods);die;
-        foreach($goodsList as $key=>$value){
-            foreach($sign_goods as $k=>$v){
-                if($value['goods_id']==$v['gid']){
-                    $goodsList[$key]['sign_user']=$v['sign_user'];
-                }
-            }
-        }
+//        foreach($goodsList as $key=>$value){
+//            foreach($sign_goods as $k=>$v){
+//                if($value['goods_id']==$v['gid']){
+//                    if(!empty($goodsList[$key]['sign_user'])){
+//                        $goodsList[$key]['sign_user']='all';
+//                    }else{
+//                        $goodsList[$key]['sign_user']=$v['sign_user'];
+//                    }
+//                }
+//            }
+//        }
 //        var_dump($goodsList);die;
         $catList = D('goods_category')->select();
         $catList = convert_arr_key($catList, 'id');
@@ -114,7 +119,18 @@ class Sign extends Base {
             return $this->ajaxReturn(['status'=>2,'msg'=>'添加失败']);
         }
     }
+    //删除签到商品
+    public function delGoods()
+    {
+        $ids = I('post.ids','');
+//        var_dump($ids);die;
+        empty($ids) &&  $this->ajaxReturn(['status' => -1,'msg' =>"非法操作！",'data'  =>'']);
+        $sign_goods_ids = rtrim($ids,",");
+        // 删除此商品
+        M('sign_goods')->whereIn('id',$sign_goods_ids)->delete();//签到商品
 
+        $this->ajaxReturn(['status' => 1,'msg' => '操作成功','url'=>U("Admin/sign/goods")]);
+    }
 
     
 }

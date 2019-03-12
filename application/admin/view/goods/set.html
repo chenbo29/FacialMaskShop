@@ -1,4 +1,5 @@
 <include file="public/layout"/>
+<script src="__ROOT__/public/static/js/layer/laydate/laydate.js"></script>
 <body style="background-color: #FFF; overflow: auto;">
 <div id="toolTipLayer"
      style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
@@ -9,8 +10,8 @@
         <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i
                 class="fa fa-arrow-circle-o-left"></i></a>
             <div class="subject">
-                <h3>商家 - 编辑门店资料</h3>
-                <h5>网站系统门店资料</h5>
+                <h3>商家 - 设置门店状态</h3>
+                <h5>网站系统门店状态</h5>
             </div>
         </div>
     </div>
@@ -19,7 +20,7 @@
         <input type="hidden" name="store_id" value="{$info.store_id}">
         <!--<input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>-->
         <div class="ncap-form-default">
-            <dl class="row">
+            <!-- <dl class="row">
                 <dt class="tit">
                     <label for="store_name"><em>*</em>门店名称</label>
                 </dt>
@@ -109,8 +110,8 @@
                     <span class="err" id="err_email"></span>
                     <p class="notic">Email</p>
                 </dd>
-            </dl>
-            <!-- <dl class="row">
+            </dl> -->
+            <dl class="row">
                 <dt class="tit">
                     <label for="is_delete"><em>*</em>门店营业状态</label>
                 </dt>
@@ -120,54 +121,80 @@
                     <span class="err" id="err_webid"></span>
                     <p class="notic">门店营业状态</p>
                 </dd>
+            </dl>
+            <!-- <dl class="row">
+                <dt class="tit">
+                    <label for="businesshours"><em>*</em>门店营业时间</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" name="businesshours" maxlength="18" value="" id="businesshours"
+                           class="input-txt">
+                    <span class="err" id="err_webid"></span>
+                    <p class="notic">门店营业时间</p>
+                </dd>
             </dl> -->
+            <dl class="row">
+                <dt class="tit">
+                  <label for="articleForm">营业时间</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" class="input-txt" id="businesshours" name="businesshours"  value="{$vo.businesshours|date="Y-m-d H:i:s",###}">        
+                    <span class="add-on input-group-addon">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    </span> 
+                  <span class="err"></span>
+                </dd>
+            </dl>
             <div class="bot"><a href="JavaScript:void(0);" onclick="adsubmit();" class="ncap-btn-big ncap-btn-green"
                                 id="submitBtn">确认提交</a></div>
         </div>
     </form>
 </div>
 <script type="text/javascript">
+    $(function () {
+        $('#businesshours').layDate(); 
+    });
     // 判断输入框是否为空
     function adsubmit() {
         $('.err').show();
-        var store_name = $('#store_name').val();
-        var webid = $('#webid').val();
-        var phone = $('#phone').val();
-        var contact = $('#contact').val();
-        var province = $('#province').val();
-        var city = $('#city').val();
-        var district = $('#district').val();
-        var address = $('#address').val();
-        var email = $('#email').val();
-        //var act = $('#act').val();
-        if(!store_name){
-            layer.msg('门店名称不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!webid){
-            layer.msg('门店网址不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!phone){
-            layer.msg('门店电话不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!contact){
-            layer.msg('门店联系人不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!province && !city && !district){
-            layer.msg('请选择门店所在地区', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!address){
-            layer.msg('门店详细地址不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
-        if(!email){
-            layer.msg('商家email不能为空！', {icon: 2, time: 1000});
-            return false;
-        }
+        // var store_name = $('#store_name').val();
+        // var webid = $('#webid').val();
+        // var phone = $('#phone').val();
+        // var contact = $('#contact').val();
+        // var province = $('#province').val();
+        // var city = $('#city').val();
+        // var district = $('#district').val();
+        // var address = $('#address').val();
+        // var email = $('#email').val();
+        // //var act = $('#act').val();
+        // if(!store_name){
+        //     layer.msg('门店名称不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!webid){
+        //     layer.msg('门店网址不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!phone){
+        //     layer.msg('门店电话不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!contact){
+        //     layer.msg('门店联系人不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!province && !city && !district){
+        //     layer.msg('请选择门店所在地区', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!address){
+        //     layer.msg('门店详细地址不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
+        // if(!email){
+        //     layer.msg('商家email不能为空！', {icon: 2, time: 1000});
+        //     return false;
+        // }
         /*if ((password.length < 6 || password.length > 18) && act == 'add') {
             layer.msg('密码长度应该在6-18位！', {icon: 2, time: 1000});//alert('少年，密码不能为空！');
             return false;

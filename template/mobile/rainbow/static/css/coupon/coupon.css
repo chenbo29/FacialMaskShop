@@ -298,7 +298,7 @@ a{
     padding: .75rem 0rem  .75rem 0rem;
 	margin:0 auto;
 }
- .codeBox .codeBox-img .codeBox-gg{
-    width: 3.13rem;
-    height: 3.18rem;
+ .codeBox .codeBox-img>img{
+   height: 100%;
+   width: 100%;
 }

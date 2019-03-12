@@ -37,18 +37,17 @@
 
         <ul class="nav"> 
                 <li class="nav-item multiple ">
-                    综合
+                    <span class="lb <if condition="(I('sort') eq 'is_new' or  I('sort') eq 'comment_count')" style="color:#e73339 !important">red</if>">综合</span>
                     <i class="multipleimg"></i>
                </li> 
                 <li class="nav-item  <if condition="I('sort') eq 'sales_sum'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'sales_sum')),''));?>">
-                    销量
+                    <span class="dq">销量</span>
                 </a></li> 
                 <li class="nav-item  <if condition="I('sort') eq 'shop_price'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'shop_price','sort_asc'=>$sort_asc)),''));?>">
-                    价格
-                    <i class=" <if condition="I('sort_asc') eq 'asc'">tariff</if>  <if condition="I('sort_asc') eq 'desc'"> bb </if>"></i>
-                    <i class="icon  <if condition="I('sort_asc') eq 'asc'">bb</if>  <if condition="I('sort_asc') eq 'desc'"> icon3 </if>"></i> 
+                    <span class=>价格</span>
+                    <i class="tariff <if condition="I('sort_asc') eq 'asc'">bpr2</if>  <if condition="I('sort_asc') eq 'desc'"> bpr1 </if>"></i>
                 </a></li>  
-                <li class="nav-item <if condition="I('sort') eq 'sales_sum'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'sales_sum')),''));?>">
+                <li class="nav-item <if condition="I('sort') eq 'is_new'">red</if>"><a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'is_new')),''));?>">
                     新品
                 </a></li> 
                 <li class="nav-item"><a href="#" class="sx">
@@ -57,7 +56,7 @@
                 </a></li> 
             </ul> 
         <!-- 商品列表 -->
-        <div class="pro">
+        <div class="pro clearfix">
 
         <empty name="goods_list">
                 <p class="goods_title" id="goods_title" style="line-height: 2rem;text-align: center;margin-top: 0.2rem; font-size:0.2rem">抱歉暂时没有相关结果，换个筛选条件试试吧</p>
@@ -94,34 +93,6 @@
             </foreach>
             <!--商品-e-->
         </empty>
-           
-            <!-- 一行两个 -->
-            <!-- <div class="max-pro-box" style="display:none;">
-                    <div class="max-itemImg">
-                       <a href="">
-                           <img src="__STATIC__/images/goods_user.png" alt="">
-                       </a>
-                    </div>
-                    <div class="max-itemMsg">
-                        <div class="max-deletes">
-                            <a href="{:U('Mobile/Goods/goodsInfo',array('id'=>$vo[goods_id]))}" class="max-item">
-                               <span class="max-similar-product-text fl">女式花瓣肩连衣裙2019春季新款纱网拼接高腰连衣裙</span>
-                           </a>
-                              </div>
-                             <div class="max-prices">
-                              <p class="max-sc_pri fl"><span>￥</span><b>399.00元</b></p>
-                             </div>
-                                   <a href="" class="max-moda">
-                                       <span>MODA专营店<img src="/template/mobile/rainbow/static/images/Back@2x.png"></span>
-                                   </a>
-                             <p class="max-weight">
-                               <span class="max-proli-eva">90%好评</span>
-                               <span>销量:10万</span>
-                               <span class="max-proli-eva">已付款:4200+</span>
-
-                            </p>
-                    </div>
-            </div> --> 
         </div>
 
     
@@ -133,9 +104,6 @@
                   <li >
                         <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'')),''));?>" class="<if condition="(I('sort') eq '')">on red</if>" >综合</a>
                   </li>
-                  <li >
-                        <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'is_new')),''));?>" class="<if condition="(I('sort') eq 'is_new')">on red</if>">新品</a>
-                   </li>
                   <li >
                         <a href="<?php echo urldecode(U('Mobile/Goods/search',array_merge($filter_param,array('sort'=>'comment_count')),''));?>" class="<if condition="I('sort') eq 'comment_count'">on red</if>">评价</a>
                   </li>
@@ -213,7 +181,7 @@
         </div>
 
         <!--筛选-e-->
-     <div class="mask-filter-div" style="display: none;"></div>
+     <div class="mask-filter-div"></div>
 </body>
 <script src="__STATIC__/js/jquery-1.8.3.min.js"></script>
 <script>
@@ -264,19 +232,17 @@
             $(".multiple").click(function(){
                 console.log($(this))
                if($(this).hasClass("multiple")){
-                   $(".fil_all_comm").show()
+                   $(".fil_all_comm").show().addClass("zindex")
+                   $(".lsw-header").addClass("zindex")
                    $(".mask-filter-div").show()
-                
+                   
                }else{
                    $(".fil_all_comm").hide()
                    $(".mask-filter-div").hide()  
                }
             })
-            $(".mask-filter-div").click(function(){
-                $(".fil_all_comm").hide()
-                $(".mask-filter-div").hide()
-            })
-            
+           
+           
     //显示隐藏筛选弹窗
     $('.nav-item .sx').click(function(){
         $('body').css('position','relative');
@@ -286,12 +252,13 @@
         });
 
         $(".ds-in-bl").click(function(){
-            $('body').css('');
         $('.screen_wi').animate({width: '0', opacity: 'show'}, 'normal',function(){
             $('.screen_wi').hide();
             $(".mask-filter-div").hide()
+           console.log($(".mask-filter-div"))
              })
         })
+        
 
         $(".popcover>ul>li>span").click(function(){
             $(this).addClass("ch_dg")
@@ -333,8 +300,6 @@
                 location.href= "/index.php?m=Mobile&c=Goods&a=search"+url;
             }
         })
-<<<<<<< HEAD
-=======
         //返回按钮
         $('.seac_retu').click(function(){
             //判断当前二级筛选状态
@@ -351,7 +316,7 @@
                 $('.suce_ok').removeClass('two');
             }else{
                 $('.screen_wi').animate({width: '0', opacity: 'hide'}, 'normal',function(){
-                    undercover();
+                    // undercover();
                     $('.screen_wi').hide();
                 });
             }
@@ -397,24 +362,25 @@
     }
 
     //筛选菜单栏切换效果
-    var lb = $('.search_list_dump .lb')
-    var fil = $('.fil_all_comm');
+    var lb = $(' .lb')//排序按钮综合
+    var fil = $('.fil_all_comm');//综合筛选弹框
     var cs = $('.classreturn,.search_list_dump');
     var son = $('.search_list_dump .jg').siblings();
     $(function(){
     $('.storenav ul li span').click(function(){
+        console.log($('.storenav'))
         $(this).parent().parent().addClass('red').siblings('li').removeClass('red')
         if(!$(this).hasClass('lb')){
             fil.hide();
-            undercover();
-            cs.removeClass('pore');
+            // undercover();
+            cs.removeClass('zindex');
         }
         if(!$(this).hasClass('jg')){
             son.removeClass('bpr1');
             son.removeClass('bpr2');
         }
     });
->>>>>>> a08e12e8c53ffa187919f6679cef6aa9553d27bb
+    lb.html($('.on').html());
 
             //############   点击多选确定按钮      ############
     // t 为类型  是品牌 还是 规格 还是 属性
@@ -460,5 +426,6 @@
             }
         }
     );
+        })
 </script>
 </html>

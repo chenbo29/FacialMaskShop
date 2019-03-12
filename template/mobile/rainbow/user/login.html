@@ -3,23 +3,26 @@
  <link rel="stylesheet" type="text/css" href="__STATIC__/css/login_zjy/login_zjy.css"/>
 <div class="zjy_login">
 	<div class="zjy_head">
-	<h3>智丰商城登录</h3>
+	<h3>
+        <a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>
+        智丰商城登录
+    </h3>
 </div>
 
 	<div class="loginsingup-input">
     <!--登录表单-s-->
     <form  id="loginform" method="post"  >
         <input type="hidden" name="referurl" id="referurl" value="{$referurl}">
-        <div class="lsu">
+        <div class="lsunoe">
             <span class="ico ico-username"></span>
             <input type="text" name="username" id="username" value=""  placeholder="请输入账号或手机号"/>
         </div>
-        <div class="lsu">
+        <div class="lsunoe">
             <span class="ico ico-password"></span>
             <input type="password" name="password" id="password" value="" placeholder="请输入密码"/>
         </div>
         <notempty name="first_login">
-        <div class="lsu">
+        <div class="lsunoe">
             <input class="v-code-input" type="text" name="verify_code" id="verify_code" value="" placeholder="请输入验证码"/>
             <div class="login_yanz">
             	<!--<p>点击切换验证码</p>-->

@@ -88,7 +88,6 @@
                          </p>
                  </div>
              </div>
-
             </foreach>
             <!--商品-e-->
         </empty>
@@ -181,6 +180,10 @@
 
         <!--筛选-e-->
      <div class="mask-filter-div"></div>
+     <div class="loading-box" style="display:none;">
+         <img src="__STATIC__/images/handpick/loding.gif" alt="" class='loading' >
+         <p class="p-zai">加载中...</p>
+    </div>
 </body>
 <script src="__STATIC__/js/jquery-1.8.3.min.js"></script>
 <script src="__STATIC__/js/layer.js"  type="text/javascript" ></script>
@@ -354,8 +357,12 @@
                 ajax_status = 1;
                 if($.trim(data) == ''){
                     // $('#getmore').hide();
+                    $('.loading-box').show();
+                    console.log($.trim(data))
                 }else{
-                    $("#goods_list").append(data);
+                    console.log($.trim(data))
+                    $(".pro").append(data);
+                    $('.loading-box').hide();
                 }
             }
         });

@@ -422,6 +422,7 @@
     var son = $('.search_list_dump .jg').siblings();
     $(function(){
     $('.storenav ul li span').click(function(){
+        
         $(this).parent().parent().addClass('red').siblings('li').removeClass('red')
         if(!$(this).hasClass('lb')){
             fil.hide();
@@ -444,6 +445,7 @@
     });
 
     lb.html($('.on').html());
+    console.log(lb.html())
 
 
      //显示隐藏筛选弹窗

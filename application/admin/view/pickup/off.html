@@ -14,7 +14,7 @@
             <ul class="tab-base nc-row">
                 <li><a class="current" href="{:U('pickup/off')}"><span>核销提货码</span></a></li>
                 <li><a href="{:U('pickup/index')}"><span>全部自提订单</span></a></li>
-                <li><a href="{:U('pickup/index',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
+                <li><a href="{:U('pickup/stay',['is_write_off'=>0])}"><span>待自提订单</span></a></li>
                 <li><a href="{:U('pickup/statistic')}"><span>数据统计</span></a></li>
             </ul>
         </div>
@@ -52,7 +52,7 @@
                         <i></i>
                     </div>
                     <div class="keyboard-icon-cont">{$shop_order_wait_off_num}个订单待自提</div>
-                    <div class="keyboard-icon-btn"><a href="{:U('pickup/index',['is_write_off'=>0])}">查看</a></div>
+                    <div class="keyboard-icon-btn"><a href="{:U('pickup/stay',['is_write_off'=>0])}">查看</a></div>
                 </div>
                 <div class="bottom">
 
@@ -69,7 +69,7 @@
         $(document).on("click", '#submit', function (e) {
             $.ajax({
                 type: "POST",
-                url: "{:U('ShopOrder/writeOff')}",
+                url: "{:U('Pickup/writeOff')}",
                 dataType: 'json',
                 data: {shop_order_id: $("input[name='shop_order_id']").val()},
                 success: function (data) {

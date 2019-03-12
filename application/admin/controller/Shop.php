@@ -43,7 +43,9 @@ class Shop extends Base
         $region = DB::name('region')->getField('id,name');
         if ($region && $res) {
             foreach ($res as $val) {
-                $val['province_city_district'] = $region[$val['province']].' '.$region[$val['city']].' '.$region[$val['district']];
+                $val['province'] = $region[$val['province_id']];
+                $val['city'] = $region[$val['city_id']];
+                $val['district'] = $region[$val['district_id']];
                 $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
                 $list[] = $val;
             }
@@ -278,64 +280,81 @@ class Shop extends Base
      */
     public function write_off_clerk_list()
     {
+        $list = [];
+        //$lists = [];
         $res = DB::name('shopper')->select();
-        $this->assign('list', $res);
+        //if(!empty($res)){
+         //$users =    DB::name('users')->getField('user_id,nickname');
+         $shop =    DB::name('shop')->getField('shop_id,shop_name');
+        //}
+        /*if ($users && $res) {
+            foreach ($res as $val) {
+                $val['nickname'] = $users[$val['user_id']];
+                $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
+                $list[] = $val;
+            }
+        }*/
+        if ($shop && $res) {
+            foreach ($res as $val) {
+                $val['shop_name'] = $shop[$val['shop_id']];
+                $val['add_time'] = date('Y-m-d H:i:s', $val['add_time']);
+                $list[] = $val;
+            }
+        }
+
+        $this->assign('list', $list);
         return $this->fetch();
     }
 
     /**
-     * 门店 - 门店管理 - 核销员列表 - 添加新核销员
+     * 门店 - 门店管理 - 核销员列表 - 门店绑定核销员
      */
     public function write_off_clerk_info()
     {
-        $store_id = I('get.store_id/d', 0);
-        if ($store_id) {
-            $info = Db::name('kf_store')->where("store_id", $store_id)->find();
-            $info['password'] = "";
-            $this->assign('info', $info);
-            $city =  M('region')->where(array('parent_id'=>$info['province']))->select();
+        $shopper_id = I('get.shopper_id/d', 0);
+
+        print_r($shopper_id);
+        if ($shopper_id) {
+            $info = Db::name('shopper')->where("shopper_id", $shopper_id)->find();
+
+            $shop = Db::name('shop')->where("shop_id", $info['shop_id'])->find();
+            $users = Db::name('users')->where("user_id", $info['user_id'])->find();
+            $info['nickname'] = $users['nickname'];
+            $info['shop_name'] = $shop['shop_name'];
+
+
+
+            $this->assign('shop', $info);
+            /*$city =  M('region')->where(array('parent_id'=>$info['province']))->select();
             $area =  M('region')->where(array('parent_id'=>$info['city']))->select();
             $this->assign('city',$city);
-            $this->assign('area',$area);
+            $this->assign('area',$area);*/
         }
-        $act = empty($store_id) ? 'add' : 'edit';
-        $province = M('region')->where(array('parent_id'=>0))->select();
-        $this->assign('province',$province);
-        $this->assign('act', $act);
+        //$act = empty($store_id) ? 'add' : 'edit';
+        //$province = M('region')->where(array('parent_id'=>0))->select();
+        //$this->assign('province',$province);
+        //$this->assign('act', $act);
         return $this->fetch();
     }
 
     /**
-     * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
+     * 门店 - 门店管理 - 核销员列表 - 门店绑定核销员数据处理
      */
-    public function sellerHandle()
+    public function shopHandle()
     {
         $data = I('post.');
-        if (empty($data['province'])) {
-            unset($data['province']);
-        }
-        if (empty($data['city'])) {
-            unset($data['city']);
-        }
-        if (empty($data['district'])) {
-            unset($data['district']);
-        }
-        if ($data['act'] == 'add') {
-            unset($data['store_id']);
-            $data['avatar'] = "";
-            $data['auditing'] = 1;
-            $data['is_delete'] = 1;
+        $shopper_id = $data['shopper_id'];
+        unset($data['nickname']);
+        unset($data['shop_name']);
+        if(empty($shopper_id)){
+            unset($data['shopper_id']);
             $data['add_time'] = time();
-            $r = D('kf_store')->add($data);
-        }
-        if ($data['act'] == 'edit') {
-            $r = D('kf_store')->where('store_id', $data['store_id'])->save($data);
-        }
-        if ($data['act'] == 'del' && $data['store_id'] > 1) {
-            $r = D('kf_store')->where('store_id', $data['store_id'])->delete();
+            $r = D('shopper')->add($data);
+        }else{
+            $r = D('shopper')->where('shopper_id', $data['shopper_id'])->save($data);
         }
         if ($r) {
-            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Goods/store_list')]);
+            $this->ajaxReturn(['status' => 1, 'msg' => '操作成功', 'url' => U('Admin/Shop/write_off_clerk_list')]);
         } else {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
         }
@@ -344,6 +363,12 @@ class Shop extends Base
     public function search_user(){
         $usersList = Db::name('users')->select();
         $this->assign('usersList', $usersList);
+        return $this->fetch();
+    }
+
+    public function search_shop(){
+        $shopList = Db::name('shop')->select();
+        $this->assign('shopList', $shopList);
         return $this->fetch();
     }
 }

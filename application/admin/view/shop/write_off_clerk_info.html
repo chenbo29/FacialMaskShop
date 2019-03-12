@@ -32,11 +32,12 @@
                     <label><em>*</em>选择核销员</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="user_id" value="{$shop.user_id}" maxlength="16" class="input-txt">
+                    <input type="hidden" id="user_id" name="user_id" value="{$shop.user_id}" maxlength="16" class="input-txt">
+                    <input type="text" id="nickname" name="nickname" value="{$shop.nickname}" maxlength="16" class="input-txt">
                     <a class="ncap-btn" onclick="selectwrite_off_clerk_user()">
                         选择核销员
                     </a>
-                    <span class="err" id="err_shopper_name"></span>
+                    <span class="err" id="err_user_id"></span>
                 </dd>
             </dl>
 
@@ -45,9 +46,7 @@
                     <label><em>*</em>核销员姓名</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="user_name" value="{$shop.user_name}" class="input-txt"
-                           placeholder="核销员姓名">
-                    <p class="notic">核销员姓名</p>
+                    <input type="text" name="user_name" value="{$shop.user_name}" class="input-txt" placeholder="核销员姓名">
                     <span class="err" id="err_user_name"></span>
                 </dd>
             </dl>
@@ -56,8 +55,11 @@
                     <label><em>*</em>选择门店</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="shop_id" value="{$shop.shop_id}" maxlength="16" class="input-txt" placeholder="选择门店">
-                    <p class="notic">选择门店</p>
+                    <input type="hidden" id="shop_id" name="shop_id" value="{$shop.shop_id}" maxlength="16" class="input-txt">
+                    <input type="text" id="shop_name" name="shop_name" value="{$shop.shop_name}" maxlength="16" class="input-txt">
+                    <a class="ncap-btn" onclick="selectwrite_off_clerk_shop()">
+                        选择门店
+                    </a>
                     <span class="err" id="err_shop_id"></span>
                 </dd>
             </dl>
@@ -66,8 +68,14 @@
                     <label><em>*</em>状态</label>
                 </dt>
                 <dd class="opt">
-                    <input type="text" name="status" value="{$shop.status}" class="input-txt">
-                    <span class="err" id="err_status"></span>
+                    <div class="onoff">
+                        <label for="goods_category1" class="cb-enable <if condition="$shop[status] eq 1">selected</if>">是</label>
+                        <label for="goods_category0" class="cb-disable <if condition="$shop[status] eq 0">selected</if>">否</label>
+                        <input id="goods_category1" name="status" value="1" type="radio" <if condition="$shop[status] eq 1"> checked="checked"</if>>
+                        <input id="goods_category0" name="status" value="0" type="radio" <if condition="$shop[status] eq 0"> checked="checked"</if>>
+                    </div>
+                    <!--<input type="text" name="status" value="{$shop.status}" class="input-txt">
+                    <span class="err" id="err_status"></span>-->
                 </dd>
             </dl>
             <div class="bot"><a class="ncap-btn-big ncap-btn-green" id="submit">确认提交</a></div>
@@ -84,13 +92,6 @@
 
     //选择核销员
     function selectwrite_off_clerk_user(){
-        /*if(type==1){
-            var title='分销选择商品';
-            var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>1,'prom_id'=>0,'sign_user'=>'fenxiao'))}";
-        }else{
-            var title='代理选择商品';
-            var url = "{:U('Promotion/search_goods',array('tpl'=>'select_goods','prom_type'=>1,'prom_id'=>0,'sign_user'=>'daili'))}";
-        }*/
         var title='选择核销员';
         var url = "{:U('Shop/search_user')}";
         layer.open({
@@ -98,18 +99,32 @@
             title: title,
             shadeClose: true,
             shade: 0.2,
-            area: ['50%', '75%'],
+            area: ['61%', '75%'],
+            content: url,
+        });
+    }
+
+    //选择门店
+    function selectwrite_off_clerk_shop(){
+        var title='选择门店';
+        var url = "{:U('Shop/search_shop')}";
+        layer.open({
+            type: 2,
+            title: title,
+            shadeClose: true,
+            shade: 0.2,
+            area: ['61%', '75%'],
             content: url,
         });
     }
 
     function verifyForm() {
         $('span.err').hide();
-        var shop_id = $("input[name='shop_id']").val();
-        var url = "{:U('Shop/add')}";
-        if (shop_id > 0) {
+        //var shop_id = $("input[name='shop_id']").val();
+        var url = "{:U('Shop/shopHandle')}";
+        /*if (shop_id > 0) {
             url = "{:U('Shop/save')}";
-        }
+        }*/
         $.ajax({
             type: "POST",
             url: url,
@@ -122,7 +137,7 @@
             success: function (data) {
                 if (data.status == 1) {
                     layer.msg(data.msg, {icon: 1, time: 2000}, function () {
-                        location.href = "{:U('Shop/index')}";
+                        location.href = "{:U('Shop/write_off_clerk_list')}";
                     });
                 } else {
                     $('#submit').attr('disabled', false);
@@ -137,31 +152,16 @@
         });
     }
 
-
-    $(document).ready(function (e) {
-        var shop_id = $("input[name='shop_id']").val();
-        if (shop_id > 0) {
-            $("input[name='shopper_name']").attr('disabled', 'disabled');
+    //处理选择之后的核销员|门店
+    function call_back(Item){
+        if(Item.length >0){
+            for(var key in Item[0]){
+                document.getElementById(key).value = Item[0][key];
+            }
         }
-        $('.z-week').find('.z-week-list').each(function (i, o) {
-            var day = $(this).find('input').val();
-            if (day == 1) {
-                $(this).addClass('week-list-bg');
-            } else {
-                $(this).removeClass('week-list-bg');
-            }
-        })
-        $(".time-picker").hunterTimePicker();
-        $(".z-week-list").click(function () {
-            if ($(this).hasClass('week-list-bg')) {
-                $(this).find("input").val(0);
-                $(this).removeClass('week-list-bg')
-            } else {
-                $(this).find("input").val(1);
-                $(this).addClass('week-list-bg')
-            }
-        })
-    });
+        layer.closeAll('iframe');
+    }
+
 </script>
 </body>
 </html>

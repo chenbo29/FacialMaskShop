@@ -113,26 +113,26 @@
 								<div style="width: 24px;"><i class="ico-check"></i></div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 50px;">{$shop.shop_id}</div>
+								<div style="text-align: center; width: 50px;">{$shop.shopper_id}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: left; width: 100px;">{$shop.shop_name|getSubstr=0,20}</div>
+								<div style="text-align: left; width: 100px;">{$shop.shop_name}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$shop['area_list'][0]['name']}</div>
+								<div style="text-align: center; width: 100px;">{$shop['user_name']}</div>
 							</td>
 							<td align="left" class="">
-								<div style="text-align: center; width: 100px;">{$shop['area_list'][1]['name']}</div>
+								<div style="text-align: center; width: 100px;">{$shop['add_time']}</div>
 							</td>
 							<td align="left" class="handle">
 								<div style="text-align: left; width: 240px; max-width:240px;">
-									<if condition="$shop['shop_status'] eq 1">
-										<span style="padding: 1px 6px;margin: 0 5px 0 0;" class="yes" onClick="changeTableVal('shop','shop_id','{$shop.shop_id}','shop_status',this,'开启','关闭')" ><i class="fa fa-check-circle"></i>开启</span>
+									<if condition="$shop['status'] eq 1">
+										<span style="padding: 1px 6px;margin: 0 5px 0 0;" class="yes" onClick="changeTableVal('shop','shopper_id','{$shop.shopper_id}','status',this,'开启','关闭')" ><i class="fa fa-check-circle"></i>开启</span>
 										<else />
-										<span style="padding: 1px 6px;margin: 0 5px 0 0;" class="no" onClick="changeTableVal('shop','shop_id','{$shop.shop_id}','shop_status',this,'开启','关闭')" ><i class="fa fa-ban"></i>关闭</span>
+										<span style="padding: 1px 6px;margin: 0 5px 0 0;" class="no" onClick="changeTableVal('shop','shopper_id','{$shop.shopper_id}','status',this,'开启','关闭')" ><i class="fa fa-ban"></i>关闭</span>
 									</if>
-									<a class="btn blue" href="{:U('Shop/info',array('shop_id'=>$shop['shop_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-									<a class="btn red" data-url="{:U('Shop/delete')}" data-id="{$shop.shop_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+									<a class="btn blue" href="{:U('Shop/write_off_clerk_info',array('shopper_id'=>$shop['shopper_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+									<!--<a class="btn red" data-url="{:U('Shop/delete')}" data-id="{$shop.shopper_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>-->
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">

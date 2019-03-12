@@ -9,8 +9,8 @@
         padding: 15px 0
     }
 </style>
-<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
-<div class="page" style="padding: 0px 1% 0 1%;">
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;width:600px">
+<div class="page" style="width:600px;padding: 0px 1% 0 1%;">
     <!-- 操作说明 -->
     <div class="flexigrid">
         <div class="mDiv">
@@ -103,12 +103,11 @@
                 <table>
                     <tbody id="goos_table">
                     <volist name="usersList" id="list">
-                        <tr <if condition='$list.prom_id gt 0'>hidden</if> >
+                        <tr>
                             <td class="" align="left">
                                 <div style="text-align: left; width: 30px;">
                                     <input class="checkItem" type="checkbox" name="user_id[]" value="{$list.user_id}"
-                                           data-img="{$list.user_id|goods_thum_images=160,160}"
-                                           data-name="{$list.nickname}" data-mobile="{$list.mobile}"/>
+                                           data-name="{$list.nickname}"/>
                                 </div>
                             </td>
                             <td class="" align="left">
@@ -132,7 +131,9 @@
                             <td class="" align="left">
                                 <div style="text-align: center; width: 70px;">
                                     <if condition="$list.is_distribut eq 1">
-                                    <i color="#0fff0f">是</i> <else/><i color="#ff0000">否</i>
+                                        <i style="color:#0fff0f">是</i>
+                                        <else/>
+                                        <i style="color:#ff0000">否</i>
                                     </if>
                                 </div>
                             </td>
@@ -158,14 +159,14 @@
     $('.fa-refresh').click(function () {
         location.href = location.href;
     });
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $("input[type='radio']:checked").each(function (i, o) {
             var goods_id = $(this).data('id');
             $('#spec_goods_id_' + goods_id).show();
         })
-    });
+    });*/
     //规格按钮点击事件
-    $(function () {
+    /*$(function () {
         $(document).on("click", '.specBtn', function (e) {
             if ($(this).hasClass('ncap-btn-green')) {
                 $(this).css("color", "#777").removeClass('ncap-btn-green');
@@ -173,9 +174,9 @@
                 $(this).css("color", "#FFF").addClass('ncap-btn-green');
             }
         })
-    })
+    })*/
     //全选选中事件
-    $(function () {
+    /*$(function () {
         $(document).on("click", '.checkAll', function (e) {
             if ($(this).is(':checked')) {
                 $('.checkItem').each(function (i, o) {
@@ -197,9 +198,9 @@
                 $('.specBtn').css("color", "#777").removeClass('ncap-btn-green');
             }
         })
-    })
+    })*/
     //复选框选中事件
-    $(function () {
+    /*$(function () {
         $(document).on("click", '.checkItem', function (e) {
             var goods_id = $(this).val();
             if ($(this).is(':checked')) {
@@ -208,80 +209,88 @@
                 spec_goods_hide(goods_id);
             }
         })
-    })
+    })*/
 
-    function spec_goods_show(goods_id) {
+    /*function spec_goods_show(goods_id) {
         var nospec = $('input[name=nospec]').val();
         if (nospec != 1) {
             $('#spec_goods_id_' + goods_id).show();
         }
-    }
+    }*/
 
-    function spec_goods_hide(goods_id) {
+    /*function spec_goods_hide(goods_id) {
         $('#spec_goods_id_' + goods_id).hide();
-    }
+    }*/
 
-    //商品对象
-    function GoodsItem(goods_id, goods_name, store_count, goods_price, cost_price, goods_image, spec) {
-        this.goods_id = goods_id;
-        this.goods_name = goods_name;
-        this.store_count = store_count;
+    //核销员对象
+    function UserItem(user_id, nickname) {
+        this.user_id = user_id;
+        this.nickname = nickname;
+        /*this.store_count = store_count;
         this.goods_price = goods_price;
         this.cost_price = cost_price;
         this.goods_image = goods_image;
-        this.spec = spec;
+        this.spec = spec;*/
     }
 
     //商品对象
-    function GoodsSpecItem(item_id, key_name, store_count, price, cost_price, spec_img) {
+    /*function GoodsSpecItem(item_id, key_name, store_count, price, cost_price, spec_img) {
         this.item_id = item_id;
         this.key_name = key_name;
         this.store_count = store_count;
         this.price = price;
         this.cost_price = cost_price;
         this.spec_img = spec_img;
-    }
+    }*/
 
     function selectwrite_off_clerk_user() {
         var inputs = $("input[class='checkItem']:checked");
         if (inputs.length == 0) {
-            layer.alert('请选择商品', {icon: 2}); //alert('请选择商品');
+            layer.alert('请选择核销员', {icon: 2}); //alert('请选择商品');
             return false;
         }
-        var goodsArr = new Array();
+        //console.log(inputs);
+        var userArr = new Array();
         inputs.each(function (i, o) {
-            var goods_id = $(o).val();
-            var spec = $('#spec_goods_id_' + goods_id);
+            //console.log(i);
+            //console.log(o);
+            var user_id = $(o).val();
+            var spec = $('#spec_user_id_' + user_id);
+            //console.log(spec);
             if (spec.length == 0) {
-                var goodsItem = new GoodsItem(goods_id, $(o).data('name'), $(o).data('count'), $(o).data('price'), $(o).data('cost-price'), $(o).data('img'), null);
-                goodsArr.push(goodsItem);
-            } else {
-                var spec_a = spec.find('.ncap-btn-green');
-                var nospec = $('input[name=nospec]').val();
-                if (spec_a.length == 0 && nospec != 1) {
-                    layer.alert($(o).data('name') + ',请选择要参与活动的商品规格', {icon: 2});
-                    return false;
-                } else {
-                    var goodsSpecItemArr = new Array();
-                    spec_a.each(function (index, item) {
-                        var spec_img = $(item).data('spec-img');
-                        if (spec_img == '') {
-                            spec_img = $(o).data('img');
-                        }
-                        var goodsSpecItem = new GoodsSpecItem($(item).data('item-id'), $(item).data('key-name'), $(item).data('store-count'), $(item).data('price'), $(item).data('cost-price'), spec_img);
-                        goodsSpecItemArr.push(goodsSpecItem);
-                    })
-                    goodsItem = new GoodsItem(goods_id, $(o).data('name'), $(o).data('count'), $(o).data('price'), $(o).data('cost-price'), $(o).data('img'), goodsSpecItemArr);
-                    goodsArr.push(goodsItem);
-                }
+                //console.log(1);
+                var userItem = new UserItem(user_id, $(o).data('name'));
+                //console.log(userItem);
+                userArr.push(userItem);
             }
-        })
-        if (goodsArr.length == 0) {
+            /*else {
+                           console.log(2);
+                           var spec_a = spec.find('.ncap-btn-green');
+                           var nospec = $('input[name=nospec]').val();
+                           if (spec_a.length == 0 && nospec != 1) {
+                               layer.alert($(o).data('name') + ',请选择要参与活动的商品规格', {icon: 2});
+                               return false;
+                           } else {
+                               var userSpecItemArr = new Array();
+                               spec_a.each(function (index, item) {
+                                   var spec_img = $(item).data('spec-img');
+                                   if (spec_img == '') {
+                                       spec_img = $(o).data('img');
+                                   }
+                                   var userSpecItem = new UserSpecItem($(item).data('item-id'), $(item).data('key-name'), $(item).data('store-count'), $(item).data('price'), $(item).data('cost-price'), spec_img);
+                                   userSpecItemArr.push(userSpecItem);
+                               });
+                               goodsItem = new GoodsItem(goods_id, $(o).data('name'), $(o).data('count'), $(o).data('price'), $(o).data('cost-price'), $(o).data('img'), goodsSpecItemArr);
+                               userArr.push(goodsItem);
+                           }
+                       }*/
+        });
+        if (userArr.length == 0) {
             layer.alert('请至少选择一个商品');
             return false;
         }
-
-        window.parent.call_back(goodsArr);
+        //console.log(userArr);
+        window.parent.call_back(userArr);
     }
 </script>
 </body>

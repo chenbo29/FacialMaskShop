@@ -40,6 +40,9 @@ class Groupbuy extends MobileBase
     public function detail()
     {
         $data = I('get.');
+        $goodsModel = new Goods();
+        $goods = $goodsModel::get($data['goods_id']);
+
         $teamAct = new TeamActivity();
         $team = $teamAct->where('deleted',0)->where('team_id',$data['team_id'])
             ->alias('t')
@@ -67,6 +70,7 @@ class Groupbuy extends MobileBase
         }
 
 
+        $this->assign('goods', $goods);
         $this->assign('team', $team);
         $this->assign('goodsImg', $gImg);
         $this->assign('comList', $info);

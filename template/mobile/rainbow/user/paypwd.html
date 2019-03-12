@@ -1,33 +1,15 @@
 <include file="public/header" title="设置支付密码" body=""/>
-<link rel="stylesheet" href="__STATIC__/css/lj_grzl.css" />
-<style>
-    /*.fetchcode{
-        background-color: #ec5151;
-        border-radius: 0.128rem;
-        color: white;
-        padding: 0.55467rem 0.21333rem;
-        vertical-align: middle;
-        font-size: 0.59733rem;
-    }
-    #fetchcode{
-        background:#898995;
-        border-radius: 0.128rem;
-        color: white;
-        padding: 0.55467rem 0.21333rem;
-        vertical-align: middle;
-        font-size: 0.59733rem;
-    }*/
-</style>
+<!-- <link rel="stylesheet" href="__STATIC__/css/lj_grzl.css" /> -->
+
 <if condition="$step eq 1">
     <div class="loginsingup-input">
         <form method="post" >
             <div class="reset-pwd-title lj_top"><a href="javascript:history.back(-1);"><img src="__STATIC__/images/return.png" alt="返回"></a>短信修改支付密码</div>
-            <div class="lsu">
+            <div class="lsu98">
                 <span class="ico ico-telephone"></span>
                 <input type="text" name="mobile" id="tel" value="{$user.mobile}" disabled placeholder="请输入您的手机号" onBlur="checkMobilePhone(this.value);"/>
             </div>
             <div class="v-identity m-t-40">
-                <span class="v-til">验证码 :</span>
                 <div class="v-cont-wrap">
                     <input class="lj_cont_input" type="text" name="mobile_code" id="tpcode" value="" placeholder="请输入验证码">
                     <a  class="m_phone" href="javascript:void(0);" rel="mobile" id="fcode" onclick="sendcode(this)">获取验证码</a>
@@ -49,11 +31,11 @@
                     <input type="password" name="old_password" id="old_password"  placeholder="请输入原密码"/>
                 </div>
             </if>
-            <div class="lsu">
+            <div class="lsu98">
                 <span class="ico ico-password"></span>
                 <input type="password" name="new_password" id="new_password"  placeholder="请输入新密码"/>
             </div>
-            <div class="lsu">
+            <div class="lsu98">
                 <span class="ico ico-password"></span>
                 <input type="password" name="confirm_password" id="confirm_password"  placeholder="再次输入新密码" />
             </div>

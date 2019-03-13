@@ -333,10 +333,11 @@ img{
 
 .recommend-box .recommend-title .p-title{
     font-size:.6rem;
-    background: linear-gradient(to right, #e9109a,#660a90);
+    background-image: linear-gradient(to right, #e9109a,#660a90);
     -webkit-background-clip: text;
-     color: transparent;
+    -webkit-text-fill-color: transparent;
 }
+
 .recommend-list {
     padding:0 .19rem 0 .19rem;
 }

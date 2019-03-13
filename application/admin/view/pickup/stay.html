@@ -48,10 +48,10 @@
             </div>
             <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
             <if condition="$Request.param.statistic neq 1">
-                <form class="navbar-form form-inline" method="get" action="{:U('pickup/stay')}">
+                <form class="navbar-form form-inline" method="post" action="{:U('pickup/stay')}">
                 <input type="hidden" name="is_write_off" value="{$Request.param.is_write_off}">
                 <div class="sDiv">
-                    <div class="dyrDiv2">
+                    <!-- <div class="dyrDiv2">
                         <span style="width: 30px;font-size: 12px;margin-right: 10px;">下单时间</span>
                     </div>
                     <div class="sDiv2" style="margin-right: 10px;">
@@ -73,9 +73,9 @@
                                 <option value="{$shop.shop_id}" <if condition="$Request.param.shop_id eq $shop['shop_id']">selected="selected"</if>>{$shop.shop_name}</option>
                             </volist>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="sDiv2">
-                        <input type="text" size="30" name="keywords" value="{$Request.param.keywords}" class="qsbox" placeholder="请输入订单号">
+                        <input type="text" size="30" name="order_sn" value="" class="qsbox" placeholder="请输入订单号">
                     </div>
                     <div class="sDiv2">
                         <input class="btn" value="搜索" type="submit">

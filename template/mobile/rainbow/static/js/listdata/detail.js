@@ -40,8 +40,8 @@ $(document).ready(function(){
 		$('.wrapL').eq(0).css({'overflow':''})
 	})
 
-	/*点击拼单-拼单弹框 */
-	$('.pellListTermBut').on('click',function(){
+	/*点击查看更多-拼单弹框 */
+	$('#view_more').on('click',function(){
 		$('.assembleAlertWrap').show();
 		$('.wrapL').eq(0).css({'overflow':'hidden'})
 	})
@@ -57,13 +57,14 @@ $(document).ready(function(){
 		$('.choiceStyleWrap').show();
 		$('.wrapL').eq(0).css({'overflow':'hidden'})
 	})
+
+    /*点击拼单（弹框里的） */
+    $('.purchaseWrapMiddle,#now_purchase').on('click',function(){
+        $('.choiceStyleWrap').show();
+        $('.wrapL').eq(0).css({'overflow':'hidden'})
+    })
 	
-	/*确定按钮*/
-	$('.chooseConfirmL').on('click',function(){
-		$('.choiceStyleWrap').hide();
-		$('.wrapL').eq(0).css({'overflow':''});
-		console.log('购买件数:',count);
-	})
+
 	
 	/*add number*/
 	$('.commNumberL .commNumberAdd').on('click',function(){
@@ -93,3 +94,20 @@ $(document).ready(function(){
 	})
 	
 })
+
+// 读取 cookie
+function getCookie(c_name)
+{
+    if (document.cookie.length>0)
+    {
+        c_start = document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1)
+        {
+            c_start=c_start + c_name.length+1
+            c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        }
+    }
+    return "";
+}

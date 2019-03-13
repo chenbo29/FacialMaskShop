@@ -747,7 +747,7 @@ class Goods extends Base {
     /**
      * 商城 - 门店 - 门店管理
      */
-    public function store_list()
+    /*public function store_list()
     {
         $list = array();
         $keywords = I('keywords/s');
@@ -766,12 +766,12 @@ class Goods extends Base {
         }
         $this->assign('list', $list);
         return $this->fetch();
-    }
+    }*/
 
     /**
      * 商城 - 门店 - 添加商铺门店
      */
-    public function store_info()
+    /*public function store_info()
     {
         $store_id = I('get.store_id/d', 0);
         if ($store_id) {
@@ -788,12 +788,12 @@ class Goods extends Base {
         $this->assign('province',$province);
         $this->assign('act', $act);
         return $this->fetch();
-    }
+    }*/
 
     /**
      * 商城 - 门店 - 添加商铺门店信息处理(商家审核)
      */
-    public function sellerHandle()
+    /*public function sellerHandle()
     {
         $data = I('post.');
         if (empty($data['province'])) {
@@ -824,5 +824,27 @@ class Goods extends Base {
         } else {
             $this->ajaxReturn(['status' => -1, 'msg' => '操作失败']);
         }
-    }
+    }*/
+
+    /**
+     * 商城 - 门店 - 设置
+     */
+    /*public function set()
+    {
+        $store_id = I('get.store_id/d', 0);
+        if ($store_id) {
+            $info = Db::name('kf_store')->where("store_id", $store_id)->find();
+            $info['password'] = "";
+            $this->assign('info', $info);
+            $city =  M('region')->where(array('parent_id'=>$info['province']))->select();
+            $area =  M('region')->where(array('parent_id'=>$info['city']))->select();
+            $this->assign('city',$city);
+            $this->assign('area',$area);
+        }
+        $act = empty($store_id) ? 'add' : 'edit';
+        $province = M('region')->where(array('parent_id'=>0))->select();
+        $this->assign('province',$province);
+        $this->assign('act', $act);
+        return $this->fetch();
+    }*/
 }

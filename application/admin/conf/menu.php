@@ -81,9 +81,6 @@ return array(
             array('name' => '拼团订单', 'act' => 'order_list', 'op' => 'Team'),
             array('name' => '上门自提', 'act' => 'index', 'op' => 'ShopOrder'),
         )),
-        array('name' => '门店', 'child' => array(
-            array('name' => '门店管理', 'act' => 'store_list', 'op' => 'Goods'),
-        )),
         array('name' => '广告', 'child' => array(
             array('name' => '广告列表', 'act' => 'adList', 'op' => 'Ad'),
             array('name' => '广告位置', 'act' => 'positionList', 'op' => 'Ad'),
@@ -182,12 +179,16 @@ return array(
         // ))
     )),
 
-    'pickup' => array('name' => '线下取货', 'child' => array(
+    'pickup' => array('name' => '门店', 'child' => array(
+        array('name' => '门店管理', 'child' => array(
+            array('name' => '门店列表', 'act' => 'index', 'op' => 'shop'),
+            array('name' => '核销员列表', 'act' => 'write_off_clerk_list', 'op' => 'shop'),
+        )),
         array('name' => '线下取货', 'child' => array(
             // array('name' => '取货列表', 'act'=>'pickup_list', 'op'=>'Pickup'),
             array('name' => '自提订单', 'act' => 'index', 'op' => 'Pickup'),
             //array('name' => '门店管理', 'act' => 'store', 'op' => 'Pickup'),
-            // array('name'=>'自提点','act'=>'place','op'=>'Pickup'),
+            // array('name'=>'自提点','act'=>'index1','op'=>'Pickup'),
         )),
         // array('name' => '在线核销','child' => array(
         // 		array('name' => '取货码核销', 'act'=>'verification', 'op'=>'Pickup'),

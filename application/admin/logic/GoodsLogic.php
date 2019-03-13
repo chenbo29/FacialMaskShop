@@ -45,6 +45,7 @@ class GoodsLogic extends Model
                     if($value['level'] == 1)
                         $this->get_cat_tree($value['id']);                                
                 }
+                
                 return $goods_category2;               
     }
     

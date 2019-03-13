@@ -1,10 +1,8 @@
 /* 全局的内外边距 字体 */
-*{margin: 0;padding: 0;
-    
-}
+*{margin: 0;padding: 0;}
    .difel__tt{overflow: hidden;}
 /* 箭头图片大小 */
-.sj__tt{ height: 50%;width: 90%;}
+.sj__tt{ height: 50%;width: 100%;}
 /* 手机图片大小 */
 .jjtu__tt{position: absolute;top: 15px;left: 15px;}
 /* iPhone字体大小和左边距 */
@@ -12,10 +10,10 @@
  /* 秒杀：边框，颜色，宽高，外边距 */
 .miao__ty{border: 1px solid red;width: .6rem;height: 0.3rem;font-size: 0.2rem;color: red;padding: .1rem .2rem .2rem ;margin-left: .2rem}
 /* 距离秒杀：浮动，外边高度和右边宽度，边框颜色，宽高 */
-.bao{float: right;margin-top: -1.1rem;margin-right: 0.3rem;border: 1px solid red;width: 2.3rem;color: red;height: 0.95rem;}
+.bao__ty{float: right;margin-top: -1.1rem;margin-right: 0.3rem;border: 1px solid red;width: 2.3rem;color: red;height: 0.95rem;}
 
 /* 立即购买 大小背景色颜色居中宽高内外边距 */
-    #wit__ty{width: 100%;background-color: orangered;color: white;text-align: center;font-size: 0.4rem;height: 0.8rem;margin-top: 0.5rem;padding-top: 0.2rem;}
+    #wit__ty{width: 100%;background-color: orangered;color: white;text-align: center;font-size: 0.4rem;height: 0.6rem;padding: .1rem;margin-top: -.1rem}
     /* 时间的边距和大小 */
     .shijian__tt{padding-top: 0.1rem; font-size: 0.2rem;width: 2.7rem;padding-left: .2rem}
     .shijian__tt span{padding-right: 0 .4rem;}
@@ -32,6 +30,5 @@
     .xiaoliang__ty{font-size: 0.25rem;color:#7C7C7E;}
     .kucun__ty{font-size: 0.25rem;color:#7C7C7E;margin-left: 0.2rem;}
     /* 已抢光 宽高背景色颜色居中大小内外边距 */
-    #xianshiyiqianguan__ty{width: 100%;background-color:darkgray;color: white;text-align: center;font-size: 0.4rem;height: 0.8rem;margin-top: 0.5rem;padding-top: 0.2rem;display: none;}
-    /* 浏览器兼容性 */
+    #xianshiyiqianguan__ty{width: 100%;background-color:darkgray;color: white;text-align: center;font-size: 0.4rem;height: 0.6rem;display: none;padding: .1rem;margin-top: -.1rem}
    

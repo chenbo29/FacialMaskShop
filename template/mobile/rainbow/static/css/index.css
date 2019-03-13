@@ -168,7 +168,7 @@ img{
     padding-top:.19rem;
 }
 .gongGe .gongGeItem>a .gongGeItemTit{
-    font-size:.2rem;
+    font-size:12px;
     text-align: center;
     margin-top:.05rem;
 }
@@ -320,7 +320,7 @@ img{
 /* 为你推荐 */
 .recommend-box{
   background-color: #ededed;
-  margin-top:.16rem;
+  padding-top:.16rem;
   padding-bottom: .20rem;
 }
 
@@ -331,11 +331,14 @@ img{
     line-height: 1.11rem;
 }
 
-.recommend-box .recommend-title .p-title{
-    font-size:.6rem;
+.recommend-box .recommend-title .p-title img{
+    /* font-size:.6rem;
     background-image: linear-gradient(to right, #e9109a,#660a90);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent; */
+    padding:.29rem 0 .29rem 0;
+    height: .56rem;
+    width: 3.84rem;
 }
 
 .recommend-list {
@@ -379,11 +382,22 @@ img{
     padding:.1rem .1rem 0 .1rem;
  }
  .recommend-info  .recommend-text  .recommend-name>a{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     overflow: hidden;
+    position:relative;
+    height: .7rem;
+    display: block;
+    color:#444444;
  }
+ .recommend-info .recommend-text .recommend-name > a::after {
+    content: '...';
+    text-align: right;
+    position: absolute;
+    bottom: -.19rem;
+    right: 0;
+    width: 23%;
+    height: 1.8em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
  
  .recommend-pic{
      display: flex;
@@ -394,10 +408,12 @@ img{
  .recommend-pic .pic-red{
      color: #fe0000;
      padding-left:.1rem;
+     font-weight: 600;
  }
  .recommend-pic .evaluation{
      padding-right:.3rem;
      font-size: .2rem;
+     color:#4b4b4b;
  }
 
  /* 加载中样式 */

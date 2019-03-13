@@ -240,18 +240,17 @@ img{
 }
 
 .nweListBox .nweListBox-item .goods-info .goods-msg{
-    font-size:.1rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    font-size:.2rem;
+    white-space:nowrap;
+	text-overflow: ellipsis;
     overflow: hidden;
 }
+
  
 .nweListBox-item .goods-info .goods-price{
     color:#f80505;
     font-size:12px;
     text-align: center;
-    /* padding-top:.1rem; */
 }
 
 /* 看世界 */

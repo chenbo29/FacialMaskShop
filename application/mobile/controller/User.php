@@ -77,14 +77,37 @@ class User extends MobileBase
         return $this->fetch();
     }
 
-    //zp
+    /*
+     * 公益基金账户
+     */
     public function welfare_zp(){
         return $this->fetch();
     }
-
- public function wtf_Goodson(){
+    
+    /*
+     * 商品关注
+     */
+    public function follow_good_zp(){
         return $this->fetch();
     }
+	
+	/*
+     * 店铺关注
+     */
+    public function follow_shop_zp(){
+        return $this->fetch();
+    }
+
+<<<<<<< HEAD
+    public function wtf_Goodson(){
+=======
+ 	public function wtf_Goodson(){
+>>>>>>> 89f6034053c851dd8095336db12d9f110531383f
+        return $this->fetch();
+    }
+    
+    
+    //
 
 
     

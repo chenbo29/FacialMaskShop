@@ -29,12 +29,6 @@ class Auction extends MobileBase
         }
     }
 
-    public function detail()
-    {
-       
-        return $this->fetch();
-    }
-
      /**
      * 竞拍
      */
@@ -44,12 +38,6 @@ class Auction extends MobileBase
         return $this->fetch();
     }
 
-//    public function index()
-//    {
-//        $commodity = M('Auction')->order('preview_time asc')->select();
-//        $this->assign('commodity', $commodity);
-//        return $this->fetch();
-//    }
 
 
     /**

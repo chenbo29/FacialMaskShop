@@ -15,13 +15,14 @@ namespace app\mobile\controller;
 use app\common\logic\GoodsLogic;
 use app\common\model\FlashSale;
 use app\common\model\GroupBuy;
+use app\common\model\Auction;
 use app\common\model\PreSell;
 use think\Db;
 use think\Page;
 use app\common\logic\ActivityLogic;
 
 class Activity extends MobileBase {
-    public function index(){      
+    public function index(){
         return $this->fetch();
     }
 
@@ -132,7 +133,7 @@ class Activity extends MobileBase {
         // $prom_list = DB::name("flash_sale")
         // ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
         // ->limit($Page->firstRow.','.$Page->listRows)->select();
-        dump($time_space);
+        // dump($time_space);
         $this->assign('time_space', $time_space);
         // $this->assign('prom_list',$prom_list);
         return $this->fetch();
@@ -194,6 +195,7 @@ class Activity extends MobileBase {
         $this->assign('auction_goods',$auction_goods);
         return $this->fetch();
     }
+
 
 
     public function coupon_list()

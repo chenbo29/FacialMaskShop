@@ -16,6 +16,7 @@
 namespace app\common\logic;
 
 use app\common\model\Coupon;
+use app\common\util\TpshopException;
 use think\Model;
 use think\Db;
 
@@ -50,10 +51,9 @@ class AuctionLogic extends Model
      * @param type $page_index
      * @param type $page_size
      */
-    public function getHighPrice($auction_id,$limit = 1)
+    public function getHighPrice($auction_id,$limit = '')
     {
         $where['auction_id'] = $auction_id;
-
         $query = M('AuctionPrice')
             ->where($where)
             ->order('offer_price desc')
@@ -71,17 +71,44 @@ class AuctionLogic extends Model
      */
     public function addAuctionOffer($uid,$auction_id,$money)
     {
-        $data=[
-            'user_id'      => $uid,
-            'offer_price'   => $money,
-            'offer_time'   => time(),
-            'auction_id'  => $auction_id,
-        ];
-        $query = M('AuctionPrice')
-            ->add($data);
+
+        try{
+            $data=[
+                'user_id'      => $uid,
+                'offer_price'  => $money,
+                'offer_time'   => time(),
+                'auction_id'  => $auction_id,
+            ];
+            $id = M('AuctionPrice')
+                ->add($data);
+
+            $map['auction_id']  = ['=', $auction_id];
+            $map['id']  = ['<>', $id];
+            M('AuctionPrice')->where($map)->save(['is_out'=>1]);
+        } catch (TpshopException $t) {
+            $error = $t->getErrorArr();
+            $this->ajaxReturn($error);
+        }
+
+    }
+
+
+    /**
+     * 添加竞拍延时
+     * @param type $sort_type
+     * @param type $page_index
+     * @param type $page_size
+     */
+    public function addDelayTime($id,$time)
+    {
+
+        $query = M('Auction')->where('id',$id)->setInc('delay_time',$time);
 
         return $query;
     }
+
+
+
 
     /**
      * 团购列表

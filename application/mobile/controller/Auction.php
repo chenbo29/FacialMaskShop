@@ -108,29 +108,29 @@ class Auction extends MobileBase
         $auctionLogic = new AuctionLogic();
         $isBond = $auctionLogic->getUserIsBond($this->user_id, $auction_id);
         if(empty($isBond)){
-            $this->error('未交保证金', U('Mobile/Payment/payBond',array('goods_id'=>$auction_id)));
+            $this->ajaxReturn(['status' => 0, 'msg' => '未交保证金', 'jump' => U('Mobile/Payment/payBond',array('goods_id'=>$auction_id))]);
         }
         $high = $auctionLogic->getHighPrice($auction_id);
         // 活动是否已开始
         if ( time() < $auction['start_time']){
-            $this->error('本轮活动还没开始！', U('Mobile/Activity/auction_list'));
+            $this->ajaxReturn(['status' => 0, 'msg' => '本轮活动还没开始', 'result' => '']);
         }
         // 当前时间是否已结束
         if ( time() > $auction['end_time']+($auction['delay_num']*$auction['delay_time'])){
-            $this->error('本轮活动已结束！', U('Mobile/Activity/auction_list'));
+            $this->ajaxReturn(['status' => 0, 'msg' => '本轮活动已结束', 'result' => '']);
         }
 
         if (empty($high)){
             $auctionLogic->addAuctionOffer($this->user_id, $auction_id, $price);
         } else {
             if($this->user_id == $high[0]['user_id']){
-                $this->error('您已经是目前最高出价者了');
+                $this->ajaxReturn(['status' => 0, 'msg' => '您已经是目前最高出价者了', 'result' => '']);
             }
             if($price <= $high[0]['offer_price']){
-                $this->error('您的出价低于别人');
+                $this->ajaxReturn(['status' => 0, 'msg' => '您的出价低于别人', 'result' => '']);
             }
             if ($price < ($high[0]['offer_price']+$auction['increase_price'])){
-                $this->error('加价幅度'.$auction['increase_price']);
+                $this->ajaxReturn(['status' => 0, 'msg' => '加价幅度'.$auction['increase_price'], 'result' => '']);
             }
             // 结束时间小于延时时间的话就添加延时次数
             if($auction['end_time']-time() < $auction['delay_time']*60){
@@ -138,7 +138,9 @@ class Auction extends MobileBase
             }
             $auctionLogic->addAuctionOffer($this->user_id, $auction_id, $price);
         }
-        return $this->fetch('auction_detail', ['id'=>$auction_id,'item_id'=>$item]);
+
+        return $this->ajaxReturn(['status' => 1, 'msg' => '出价成功', 'result' => '']);
+//        return $this->fetch('auction_detail', ['id'=>$auction_id,'item_id'=>$item]);
 //        return $this->success('出价成功',U('auction_detail',array('id'=>$auction_id, 'item_id'=>$item))); //分跳转 和不 跳转
 
     }

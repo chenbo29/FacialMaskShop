@@ -150,6 +150,11 @@ class Auction extends MobileBase
 	public function tiaoshu()
     {
 
+        $goods_id = I("get.id/d");
+        $auctionLogic = new AuctionLogic();
+        $bondUser = $auctionLogic->getHighPrice($goods_id);
+
+        $this->assign('bondUser', $bondUser);
         return $this->fetch();
     }
 

@@ -134,19 +134,6 @@ ul{
     margin-left: 0.45rem;
 }
 
-/* 
-.layermbox .layermchild{
-    min-width: 0rem; 
-}
-.layermanim  .layermcont {
-    padding: .1rem 0.1rem;
-    text-align: center;
-    background-color: #000;
-    font-size: 0.4rem ;
-    line-height: 1.024rem;
-    border-radius: 0.1875rem;
-    box-shadow: 0 0 0.5rem rgba(0,0,0,.1);
-} */
 .layermanim .layermcont{
     padding: .1rem 0.1rem;
     color: #f2f2f2;

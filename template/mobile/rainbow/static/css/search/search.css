@@ -21,8 +21,6 @@ a{
     text-decoration: none;
     color: black;
     display:block;
-    /* float: left;
-    font-size: 0.2rem; */
 }
 
 ul{
@@ -41,6 +39,7 @@ ul{
     justify-content: space-between;
     position: relative;
     background: #ffff;
+    padding-bottom: .12rem;
 }
 
  .zindex{
@@ -112,7 +111,7 @@ ul{
     background-size: cover;
     background-size: 1.2rem;
     width: 0.5333rem;
-    height: .85333rem;
+    height: .588rem;
     top: .55467rem;
     margin-top: -0.36rem;
     margin-left: -0.55rem;
@@ -132,8 +131,7 @@ ul.nav{
 	height:.76rem; 
 	background:#F2F2F2;
 	margin:0 auto;
-	margin-top:.12rem;
-	padding: 0 .25rem 0 .25rem;
+	padding: 0rem .25rem 0 .25rem;
 } 
 .nav .nav-item{
 	width:20%;
@@ -144,7 +142,6 @@ ul.nav{
 } 
 ul.nav li {
 	font-size:.3rem;
-	/* color:#484848; */
 	position: relative;
 } 
 ul.nav .red a{
@@ -161,9 +158,7 @@ ul.nav li .multipleimg {
     margin-left: .1rem;
 }
 
-/* ul.nav li.multiple{
-    color:red
-} */
+
 
 
 
@@ -215,7 +210,7 @@ ul.nav a .bpr1{
  }
 
  .pro{
-	margin:0rem .36rem 0 .36rem;
+	padding:0rem .36rem .36rem .36rem;
  }
 
  .pro-box{
@@ -240,11 +235,13 @@ ul.nav a .bpr1{
  .itemMsg{
 	 position: relative;
      width:67%;
-	 height:2rem;
 	 margin-left:0.3rem;
  }
  .item{
-	font-size: 0.2rem;
+    font-size: 0.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
  }
  .similar{
 	font-size: 0.25rem;
@@ -254,7 +251,6 @@ ul.nav a .bpr1{
  .sc_pri {
 	height: 0.35rem;
     font-size: 0.3rem;
-    /* margin-left: 0.25rem; */
     margin-top: 0.1rem;
     color: red;
  }
@@ -268,32 +264,31 @@ ul.nav a .bpr1{
     width: 0.12rem;
  }
  .weight{
-	margin-top: 0.1rem;
     color: #4d4d4d;
-	font-size: .1rem;
+	font-size: .2rem;
 	white-space:nowrap;
-	position: absolute;
-	bottom: 0;
  }
  .weight span{
-	 margin-right: 0.25rem;
+     margin-right: 0.25rem;
+     
  }
-  .prices,.moda,.weight{
-    /* height: 23%; */
+.prices,.moda,.weight{
 margin-top:.2rem;
   }
   .deletes{
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-	overflow: hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
   }
+
+
 
 
   
   .max-pro-box{
 	width: 47.3%;
-    height: 5.18rem;
+    /* height: 5.18rem; */
     margin-top: .27rem;
 	display: block;
 	background: #fafafa;
@@ -306,8 +301,8 @@ margin-top:.2rem;
 }
 
 .max-itemImg{
-    /* width: 3.07rem; */
-    height: 2.97rem;
+    padding-bottom: .1rem;
+    /* height: 2.97rem; */
     padding: 0.08rem;
 }
 .max-pro-box  .max-itemImg a{
@@ -321,7 +316,6 @@ margin-top:.2rem;
 .max-itemMsg{
 	position: relative;
 	width:3.17rem;
-	height:2.23rem;
 	word-wrap: break-word;
 	padding: 0.1rem;
 	margin-top: -0.1rem;
@@ -352,10 +346,8 @@ margin-top:.2rem;
 }
 .max-weight{
 	color: #4d4d4d;
-	font-size: 0.058rem;
+	font-size: 0.1rem;
 	white-space:nowrap;
-	/* position: absolute;
-	bottom: 0; */
 	margin-top: 0.25rem;
 	width: 2.77rem;
 	height: 0.27rem;
@@ -363,11 +355,10 @@ margin-top:.2rem;
     overflow: hidden;
 }
 .max-weight span{
-	margin-right: 0.25rem;
+    margin-right: 0.25rem;
+    font-size: 0.2rem;
 }
- /* .max-prices,.max-moda,.max-weight{
-   height: 23%;
- } */
+
  .max-deletes{
    display: -webkit-box;
    /* -webkit-box-orient: vertical;
@@ -393,7 +384,7 @@ margin-top:.2rem;
     background-size: cover;
     background-size: 1.2rem;
     width: 0.5333rem;
-    height: .85333rem;
+    height: .588rem;
     top: .65rem;
     background-position-x: 95%;
     margin-top: -0.48rem;

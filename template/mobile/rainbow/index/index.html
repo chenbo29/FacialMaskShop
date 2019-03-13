@@ -165,7 +165,10 @@
 		<!-- 为你推荐 -->
 		<div class="recommend-box">
 			<div class="recommend-title">
-				<p class="p-title">为 / 你 / 推 / 荐</p>
+				<p class="p-title">
+					<!-- 为 / 你 / 推 / 荐 -->
+					<img src="__STATIC__/images/t_16.png" alt="">
+				</p>
 			</div>
 			<div class="recommend-list clearfix">
 
@@ -188,9 +191,6 @@
 						</div>
 					</div>
 				</foreach>
-
-			
-
 			</div>
 		</div>
 			 <div class="loading-box" style="display:none;">
@@ -273,7 +273,7 @@
 			* */
 			$(function(){
 				 $(".headerInput").click(function(){
-								$(window).attr('location',` /mobile/Goods/ajaxSearch`);
+								$(window).attr('location',"/mobile/Goods/ajaxSearch");
 				 })
 				 $(document).keydown(function (event) {
         if (event.keyCode == 13) {

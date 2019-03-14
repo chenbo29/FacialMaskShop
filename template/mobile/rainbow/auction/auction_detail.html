@@ -15,12 +15,14 @@
 
 <body>
 
-	<div class="detail">
+<div class="detail">
+
+	<div class="header">
 
 		<div class="timerbg starttime" id="starttime">
-			<div id="daoend" style="display: none;">本次活动已结束</div>
+			<div id="daoend">本次活动已结束</div>
 			<div id="dao">
-				<strong id="RemainD"></strong>天<strong id="RemainH"></strong>时<strong id="RemainM"></strong>分<strong
+					<strong id="RemainD"></strong>天<strong id="RemainH"></strong>时<strong id="RemainM"></strong>分<strong
 					id="RemainS"></strong>秒<strong id="RemainI"></strong>
 			</div>
 		</div>
@@ -28,141 +30,217 @@
 		<div class="fu">
 			<img src="{$goods[goods_id]|goods_thum_images=400,400}" class="img" />
 		</div>
-		
-		<p class="desc">{$goods.goods_name}</p>
+
+	</div>
 
 
-		<div class="jiatou">
-			<div class="priceear">
-				<p class="price">￥{$goods['start_price']}</p><span>起拍</span>
-			</div>
-			<div class="right">
-				<foreach name="bondUser" item="vo1" length="1" >
-					<img src="__STATIC__/auction/lovely.jpg" style="width: .8rem; border-radius: 50%" />
-					<span class="span1">张三</span><span class="span2">当前最高￥{$vo1.offer_price}</span>
-				</foreach>
-			</div>
+	<p class="desc">{$goods.goods_name}</p>
 
+
+	<div class="jiatou">
+		<div class="priceear">
+			<if condition="$bondUser[0] eq ''"><p class="price">￥{$goods['start_price']}</p><span>起拍价</span><else/><p class="price">￥{$bondUser[0]['offer_price']}</p><span>当前价</span></if>
+			<if condition="$goods['is_end'] eq 1"><p class="price">￥{$goods['transaction_price']}</p><span>落槌价</span></if>
+		</div>
+		<div class="right">
+			<span>报名</span><span>{$goods['buy_num']}</span>人
 		</div>
 
+	</div>
 
 
 
-		<div class="headpicear">
 
-			<foreach name="bondUser" item="vo" >
-				<div>
-					<img src="__STATIC__/auction/lovely.jpg" style="width: 40px; border-radius: 50%" />
-					<p class="p1">李四</p>
-					<p class="p2">出价￥{$vo.offer_price}</p>
-				</div>
+	<div class="headpicear">
+
+		<a class="zongshu" href="{:U('Mobile/Auction/tiaoshu',array('id'=>$goods.id))}">
+			<span>拍卖纪录</span><span>{$bondCount}</span>条<span>></span>
+		</a>
+		<ul class="tiaoshu">
+			<foreach name="bondUser" item="vo" length="3">
+				<li>
+					<span>L4933</span>
+					<span><if condition="$vo.is_out eq 0">领先<else />出局</if></span>
+					<span>{$vo.offer_time|date="m.d H:i:s",###}</span><span>￥{$vo.offer_price}</span>
+				</li>
 			</foreach>
+		</ul>
 
-		</div>
+	</div>
+	<!--宝贝详情-->
+	<div class="baobei">
 
-   <!--onClick="javascript:this.form.amount.value--;"-->
-		<div class="number">
-
-			<form id="form" style="margin-left: .5rem; display: inline-block">
-				<input type=button value="-" 
-					style="background: #FFFFFF; border-radius: 50%;width:.5rem;border: 1px solid black;outline: none;" id="jian">
-				<input type=text name=amount value=1
-					style="width: .4rem; border: none;text-align: center;outline: none;" id="mmer">
-				<input type=button value="+" onClick="javascript:this.form.amount.value++;"
-					style="background:#FFFFFF; color: white;width: .5rem;border-radius: 50%;border: 1px solid black;color: black;outline: none;" id="jia">
-			</form>
-			<div id="myprice" style="margin-top:.07rem;background:#FB5926 ;color: white; display: inline-block;width:1.2rem; height: .8rem; border-radius: .03rem;font-size: .25rem; text-align: center; line-height: .8rem;border-radius:20%;margin-left:3.2rem;">
-					<if condition="$goods['isBond'] eq 0">参与竞拍（保证金￥{$goods['deposit']}）<else />确认出价</if>
+		<p>
+			<div class="pleft">
+				<span>保证金</span><span>￥{$goods.deposit}</span>
 			</div>
-		</div>
-
-		<div style="margin-top: 1.3rem;" class="content">
-
-			<h1 class="rule">竞拍规则</h1>
-			<p>1.集满福袋的人才可以参与竞拍</p>
-			<p>2.竞拍时间30分钟，价高者得</p>
-			<p>3.竞拍成功需要在24小时内支付，如不支付购买，奖品取消，并且取消已获取的的福袋</p>
-			<p>4.对于恶意抬价，活动方有奇效该用户以后参与活动</p>
-
-		</div>
-	</div>
-	</div>
-
-	<div id="mask">
-		<div class="tanchuk">
-			<p class="paicheng">竞拍成功</p>
-			<p class="paicheng1">恭喜你拍到产品，请在24小时付款</p>
-			<p id="tobuy">付款购买</p>
-		</div>
-	</div>
-	<div id="mask2">
-
-
-		<div class="bianji">
-
-			<ul>
-
-				<li>
-
-					<span>地址：</span>
-					<input placeholder="请输入收货地址" />
-					<span class="fuhao">></span>
-
-				</li>
-				<li>
-					<span>配送</span>
-					<input placeholder="第三方快递" />
-					<span class="fuhao">></span>
-				</li>
-				<li>
-					<span>优惠卷</span>
-					<input placeholder="暂无可用" />
-					<span class="fuhao">></span>
-				</li>
-				<li>
-					<span>红包</span>
-					<input placeholder="暂无可用" />
-					<span class="fuhao">></span>
-				</li>
-
-				<li>
-					<span>应付总额</span>
-					<input placeholder="￥16.00" />
-					<span class="fuhao">></span>
-
-				</li>
-			</ul>
-
-			<div class="xieyi">
-				<input type="checkbox" class="inputbiao" />
-				<span class="text">本人同意并且接受以下协议</span>
-				<span style="margin-left: 1.3rem;" class="zongshu">￥16.00</span>
+			<div class="pright">
+				<span>起拍价</span><span>￥{$goods.start_price}</span>
 			</div>
+		</p>
+
+		<p>
+			<div class="pleft">
+				<span>延时周期</span><span>{$goods.delay_time}分/次</span>
+			</div>
+			<div class="pright">
+				<span>加价幅度</span><span>￥{$goods.increase_price}</span>
+			</div>
+		</p>
+		<p>
+			<div class="pleft">
+				<span>开拍时间</span><span>{$goods.start_time|date="m月d日 H:i",###}</span>
+			</div>
+			<div class="pright">
+				<span>结束时间</span><span>{$goods.end_time|date="m月d日 H:i",###}</span>
+			</div>
+		</p>
+		<p>
+			<div class="pleft">
+				<span>保留价</span><span>有</span>
+			</div>
+			<div class="pright">
+				<span>预支付时间</span><span>{$goods.payment_time}小时内</span>
+			</div>
+		</p>
 
 
-		</div>
+	</div>
 
-		<div class="submit">
-			提交订单
+
+	<!--onClick="javascript:this.form.amount.value--;"-->
+	<div class="number">
+		<form id="form" style="margin-left: .5rem; display: inline-block">
+			<input type=button value="-"
+				   style="background: #FFFFFF; border-radius: 50%;width:.3rem;border: 1px solid black;outline: none;" id="jian">
+			<input type=text name=amount value=1
+				   style="width: .8rem; text-align: center;outline: none;" id="mmer">
+			<input type=button value="+" onClick="javascript:this.form.amount.value++;"
+				   style="background:#FFFFFF; color: white;width: .3rem;border-radius: 50%;border: 1px solid black;color: black;outline: none;" id="jia">
+		</form>
+		<div id="myprice">
+
+			<if condition="$goods['isBond'] eq 0">
+				<div class="ccc">
+					<p>立即参拍</p>
+					<p>保证金(￥2000)</p>
+				</div>
+			<elseif condition="time() gt $goods.end_time" />
+				<p>活动已结束</p>
+			<else />
+				<p>确认出价</p>
+			</if>
+
+
 		</div>
 	</div>
 
-	<div id="mask3">
-		<div class="tanchuk">
-			<p class="paicheng">竞拍失败</p>
-			<p class="paicheng1">抱歉，竞拍失败，下次继续努力</p>
-			<p id="tobuy1">完成</p>
+	<div style="margin-top:.4rem;" class="content">
+
+		<h1 class="rule">竞拍规则</h1>
+		<p>1.集满福袋的人才可以参与竞拍</p>
+		<p>2.竞拍时间30分钟，价高者得</p>
+		<p>3.竞拍成功需要在24小时内支付，如不支付购买，奖品取消，并且取消已获取的的福袋</p>
+		<p>4.对于恶意抬价，活动方有奇效该用户以后参与活动</p>
+
+	</div>
+</div>
+</div>
+
+<div id="mask">
+	<div class="tanchuk">
+		<p class="paicheng">竞拍成功</p>
+		<p class="paicheng1">恭喜你拍到产品，请在24小时付款</p>
+		<p id="tobuy">付款购买</p>
+	</div>
+</div>
+<div id="mask2">
+
+	<div class="bianji">
+
+		<ul>
+
+			<li>
+				<span>地址：</span>
+				<input placeholder="请输入收货地址" />
+				<span class="fuhao">></span>
+			</li>
+			<li>
+				<span>配送</span>
+				<input placeholder="第三方快递" />
+				<span class="fuhao">></span>
+			</li>
+			<li>
+				<span>优惠卷</span>
+				<input placeholder="暂无可用" />
+				<span class="fuhao">></span>
+			</li>
+			<li>
+				<span>红包</span>
+				<input placeholder="暂无可用" />
+				<span class="fuhao">></span>
+			</li>
+
+			<li>
+				<span>应付总额</span>
+				<input placeholder="￥16.00" />
+				<span class="fuhao">></span>
+			</li>
+		</ul>
+
+		<div class="xieyi">
+			<input type="checkbox" class="inputbiao" />
+			<span class="text">本人同意并且接受以下协议</span>
+			<span  class="zongshu1">￥16.00</span>
 		</div>
+
+
 	</div>
 
-	<script>
-		//定义方法  
-		$(document).ready(function () {
-			//定义参数 显示出GetRTime()方法 1000毫秒以后启动  
-			var timer_rt = window.setInterval("GetRTime({$goods.end_time})", 100);
-		});
+	<div class="submit">
+		提交订单
+	</div>
+</div>
 
-	</script>
+<div id="mask3">
+	<div class="tanchuk">
+		<p class="paicheng">竞拍失败</p>
+		<p class="paicheng1">抱歉，竞拍失败，下次继续努力</p>
+		<p id="tobuy1">完成</p>
+	</div>
+</div>
+
+<script>
+	//定义方法
+	$(document).ready(function () {
+
+		<if condition="$goods.start_time lt time()">
+			//定义参数 显示出GetRTime()方法 1000毫秒以后启动
+			var timer_rt = window.setInterval("GetRTime({$goods.end_time+$goods.delay_num*$goods.delay_time})", 100);
+		<else/>
+			$('#dao').html('活动未开始');
+		</if>
+	});
+
+	var step={$goods.increase_price};
+	document.getElementById("jian").onclick=function(){
+
+		$("#mmer").val($("#mmer").val()*1-step);
+		if($("#mmer").val()*1<0){
+
+			$("#mmer").val(0);
+
+		}
+
+	};
+	document.getElementById("jia").onclick=function(){
+
+		$("#mmer").val($("#mmer").val()*1+step);
+
+	};
+
+
+</script>
 
 </body>
 

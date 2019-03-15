@@ -15,6 +15,7 @@
 
 namespace app\common\logic;
 
+use app\common\model\Auction;
 use app\common\model\Coupon;
 use app\common\util\TpshopException;
 use think\Model;
@@ -25,7 +26,18 @@ use think\Db;
  */
 class AuctionLogic extends Model
 {
-    
+    /**
+     * 包含一个商品模型
+     * @param $goods_id
+     */
+    public function setAuctionModel($auction_id)
+    {
+        if ($auction_id > 0) {
+            $auctionModel = new Auction();
+            $this->auction = $auctionModel::get($auction_id);
+        }
+    }
+
     /**
      * 用户是否有交保证金
      * @param type $sort_type
@@ -78,13 +90,14 @@ class AuctionLogic extends Model
                 'offer_price'  => $money,
                 'offer_time'   => time(),
                 'auction_id'  => $auction_id,
+                'is_out'  => 1,
             ];
             $id = M('AuctionPrice')
                 ->add($data);
 
             $map['auction_id']  = ['=', $auction_id];
             $map['id']  = ['<>', $id];
-            M('AuctionPrice')->where($map)->save(['is_out'=>1]);
+            M('AuctionPrice')->where($map)->save(['is_out'=>0]);
         } catch (TpshopException $t) {
             $error = $t->getErrorArr();
             $this->ajaxReturn($error);
@@ -99,15 +112,37 @@ class AuctionLogic extends Model
      * @param type $page_index
      * @param type $page_size
      */
-    public function addDelayTime($id,$time)
+    public function addDelayTime($id)
     {
 
-        $query = M('Auction')->where('id',$id)->setInc('delay_time',$time);
+        $query = M('Auction')->where('id',$id)->setInc('delay_num');
 
         return $query;
     }
 
+    /*
+     * 活动结束统计获奖者
+     */
+    public function winnersUser()
+    {
 
+        if (empty($this->auction)) {
+            return $data = ['status' => 0, 'msg' => '竞拍商品不存在', 'result' => ''];
+        }
+
+        if($this->auction['is_end'] == 1){
+            return $data = ['status' => 0, 'msg' => '活动已结束', 'result' => ''];
+        }
+
+        $price = $this->getHighPrice($this->auction['id'],1);
+        Db::name('Auction')->where('id', $this->auction['id'])->save(['is_end' => 1, 'transaction_price' => $price[0]['offer_price']]);
+        Db::name('AuctionPrice')->where(['auction_id' => $this->auction['id'], 'is_out' => 1])->save(['is_out' => 2]);
+
+    }
+
+    public function cartAuction(){
+
+    }
 
 
     /**

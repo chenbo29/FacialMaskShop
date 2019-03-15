@@ -35,37 +35,41 @@
 			//定义参数 获得毫秒钟
 			var nI = Math.floor(nMS/100)%10;
 			//如果秒钟大于0
-	        if (nMS < 0){
+	        if (nMS <= 0){
 	        	 //获得天数隐藏  
 	            $("#dao").hide();
 	            //获得活动截止时间展开  
-	            $("#daoend").show();
-	           document.getElementById("myprice").onclick=function(){
-		       $('#mask').hide();
-		       $('#mask2').hide();
-		       $("#mask3").show()
-		
-	         };
-	            
-	            
-	            
-	            
+				$("#daoend").show();
+				$("#offer").html('活动已结束');
+
 	        //否则  
 	        }else{  
 	           //天数展开  
 	           $("#dao").show();
 	           //活动截止时间隐藏  
 	           $("#daoend").hide();
-	           //显示天数  
-	           $("#RemainD").text(nD);
-	           //显示小时  
-	           $("#RemainH").text(nH);
-	           //显示分钟  
-	           $("#RemainM").text(nM);
-	           //显示秒钟  
-	           $("#RemainS").text(nS);
+
+	           //显示天数
+				if(nD == 0){
+					$("#RemainD").hide();
+				}else{
+					$("#RemainD").find('i').text(nD);
+				}
+
+	           //显示小时
+				if(nH == 0){
+					$("#RemainH").hide();
+				}else{
+					$("#RemainH").find('i').text(nH);
+				}
+
+	           //显示分钟
+				$("#RemainM").find('i').text(nM);
+
+	           //显示秒钟
+				$("#RemainS").find('i').text(nS);
 				//显示毫秒钟
-				$("#RemainI").text(nI);
+				$("#RemainI").find('i').text(nI);
 
 
 			}

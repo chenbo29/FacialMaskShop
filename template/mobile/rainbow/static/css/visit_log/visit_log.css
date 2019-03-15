@@ -16,7 +16,10 @@ button, input, select, textarea { font-size:100%; }
 table { border-collapse:collapse; border-spacing:0; }
 body{background: #f4f4f4;}
 .rog{
-    background: #e93f45
+    background: #e93f45 !important;
+}
+.bor{
+    border: .02rem solid #e93f45 !important;
 }
 .header{
     width: 100%;
@@ -69,7 +72,7 @@ body{background: #f4f4f4;}
 .record_info{
     width: 100%;
     background: #fff;
-    border-radius: .1rem;
+    border-radius: .3rem;
     box-sizing: border-box;
 }
 .record_content{

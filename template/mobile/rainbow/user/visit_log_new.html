@@ -31,6 +31,7 @@
                     2019.03.07  15:15:15
             </div>
             <div class="record_info">
+                <!-- 列表项-s -->
                 <div class="record_content">
                     <div class="check" style="display: none;">
                         <i></i>
@@ -56,9 +57,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="record_info">
-                    <div class="record_content">
+                <!-- 列表项-e -->
+                <!-- 列表项-s -->
+                <div class="record_content">
                         <div class="check" style="display: none;">
                             <i></i>
                         </div>
@@ -83,62 +84,62 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="record_info">
-                        <div class="record_content">
-                            <div class="check" style="display: none;">
-                                <i></i>
+                    <!-- 列表项-e -->
+                    <!-- 列表项-s -->
+                <div class="record_content">
+                        <div class="check" style="display: none;">
+                            <i></i>
+                        </div>
+                        <div class="record_content_l">
+                            <img src="__STATIC__/images/t_22.jpg">
+                        </div>
+                        <div class="record_content_r">
+                            <div class="record_content_title">
+                                防盗锁放松对放松放松放松放松放松放松非反思反思非法所得似懂非懂分似懂非懂放松防盗锁反对放松封锁对方似懂非懂
                             </div>
-                            <div class="record_content_l">
-                                <img src="__STATIC__/images/t_22.jpg">
+                            <div class="record_content_price">
+                                ￥<span>666.00</span>
                             </div>
-                            <div class="record_content_r">
-                                <div class="record_content_title">
-                                    防盗锁放松对放松放松放松放松放松放松非反思反思非法所得似懂非懂分似懂非懂放松防盗锁反对放松封锁对方似懂非懂
+                            <div class="record_content_info">
+                                <div class="content_info_l">
+                                    <p>已购买<span>1</span></p>
+                                    <p>已评价<span>1</span></p>
                                 </div>
-                                <div class="record_content_price">
-                                    ￥<span>666.00</span>
-                                </div>
-                                <div class="record_content_info">
-                                    <div class="content_info_l">
-                                        <p>已购买<span>1</span></p>
-                                        <p>已评价<span>1</span></p>
-                                    </div>
-                                    <div class="content_info_r">
-                                        购买
-                                    </div>
+                                <div class="content_info_r">
+                                    购买
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="record_info">
-                            <div class="record_content">
-                                <div class="check" style="display: none;">
-                                    <i></i>
+                    <!-- 列表项-e -->
+                    <!-- 列表项-s -->
+                <div class="record_content">
+                        <div class="check" style="display: none;">
+                            <i></i>
+                        </div>
+                        <div class="record_content_l">
+                            <img src="__STATIC__/images/t_22.jpg">
+                        </div>
+                        <div class="record_content_r">
+                            <div class="record_content_title">
+                                防盗锁放松对放松放松放松放松放松放松非反思反思非法所得似懂非懂分似懂非懂放松防盗锁反对放松封锁对方似懂非懂
+                            </div>
+                            <div class="record_content_price">
+                                ￥<span>666.00</span>
+                            </div>
+                            <div class="record_content_info">
+                                <div class="content_info_l">
+                                    <p>已购买<span>1</span></p>
+                                    <p>已评价<span>1</span></p>
                                 </div>
-                                <div class="record_content_l">
-                                    <img src="__STATIC__/images/t_22.jpg">
-                                </div>
-                                <div class="record_content_r">
-                                    <div class="record_content_title">
-                                        防盗锁放松对放松放松放松放松放松放松非反思反思非法所得似懂非懂分似懂非懂放松防盗锁反对放松封锁对方似懂非懂
-                                    </div>
-                                    <div class="record_content_price">
-                                        ￥<span>666.00</span>
-                                    </div>
-                                    <div class="record_content_info">
-                                        <div class="content_info_l">
-                                            <p>已购买<span>1</span></p>
-                                            <p>已评价<span>1</span></p>
-                                        </div>
-                                        <div class="content_info_r">
-                                            购买
-                                        </div>
-                                    </div>
+                                <div class="content_info_r">
+                                    购买
                                 </div>
                             </div>
                         </div>
-        </div>
+                    </div>
+                    <!-- 列表项-e -->
+            </div>
     </div>
     <!-- 记录内容-e -->
     <!-- 底部操作栏-s -->
@@ -156,44 +157,43 @@
     <!-- 底部操作栏-e -->
 </body>
 <script>
+    // 返回上一步
+    $(".header_l img").click(function(){
+            history.go(-1)
+        })
     //编辑
     function editalone(){
         $('.header_r div').html($('.header_r div').html()=='编辑'?"完成":"编辑")
         $('.record_content .check').toggle();
         $('.btn_nav').toggle();
         $.each($('.check'),function(i,val){
-            $(this).css("border",".02rem solid #838383")
+            $(this).removeClass("bor")
             $(this).children().removeClass("rog")
-            $(this).children().css("background","transparent")
         })
     }
     $('.check').click(function(){
         if(!$(this).children().hasClass("rog")){
-            $(this).css("border",".02rem solid #e93f45")
+            $(this).addClass("bor")
             $(this).children().addClass("rog")
-            $(this).children().css("background","#e93f45")
         }else{
-            $(this).css("border",".02rem solid #838383")
+            $(this).removeClass("bor")
             $(this).children().removeClass("rog")
-            $(this).children().css("background","transparent")
         }
-        
     })
     //全选
     $('.all').click(function(){
         if($(this).children().hasClass("rog")){
             $.each($('.check'),function(i,val){
-            $(this).css("border",".02rem solid #e93f45")
-            $(this).children().addClass("rog")
-            $(this).children().css("background","#e93f45")
+                $(this).addClass("bor")
+                $(this).children().addClass("rog")
             })
         }else{
             $.each($('.check'),function(i,val){
-            $(this).css("border",".02rem solid #838383")
-            $(this).children().removeClass("rog")
-            $(this).children().css("background","transparent")
+                $(this).removeClass("bor")
+                $(this).children().removeClass("rog")
             })
         }
     })
+
 </script>
 </html>

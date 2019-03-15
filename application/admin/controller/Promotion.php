@@ -635,10 +635,6 @@ class Promotion extends Base
         $prom_list = $FlashSale->append(['status_desc'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows);
         $prom_list = $prom_list -> join('tp_goods','tp_flash_sale.goods_id=tp_goods.goods_id','left')->select();
 
-//        $prom_list = DB::name("flash_sale")
-//        ->join("tp_goods",'tp_flash_sale.goods_id=tp_goods.goods_id','left')
-//        ->limit($Page->firstRow.','.$Page->listRows)->select();
-
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
         $this->assign('pager', $Page);
@@ -726,20 +722,11 @@ class Promotion extends Base
             $info['start_time'] = date("Y-m-d H:i:s", $info['start_time']);
             $info['end_time'] = date("Y-m-d H:i:s", $info['end_time']);
         }
-        // $info['start_time_h'] = 0;
-        // $now_time = strtotime(date('Y-m-d'));
-        // $info['start_time'] = $now_time;
-        // $info['is_edit'] = 1;
-        // if ($id > 0) {
-        //     $FlashSale = new FlashSale();
-        //     $info = $FlashSale->with('specGoodsPrice,goods')->find($id);
-        //     $info['start_time_h'] = date('H',$info['start_time']);
-        // }
+
         $this->assign('min_date', date('Y-m-d'));
         $this->assign('info', $info);
         return $this->fetch();
     }
-	
 
     public function flash_sale_del()
     {
@@ -760,11 +747,10 @@ class Promotion extends Base
                 Db::name('goods')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
             }
             M('flash_sale')->where(['id' => $id])->delete();
-            // 删除抢购消息
+            // 删除秒杀消息
             $messageFactory = new MessageFactory();
             $messageLogic = $messageFactory->makeModule(['category' => 1]);
             $messageLogic->deletedMessage($id, 1);
-
 
             exit(json_encode(1));
         } else {
@@ -795,9 +781,6 @@ class Promotion extends Base
 
         $prom_list = $Auction->append(['send_status'],['putaway_status'])->where($condition)->order("id desc")->limit($Page->firstRow . ',' . $Page->listRows);
         $prom_list = $prom_list->join('tp_goods','tp_auction.goods_id=tp_goods.goods_id','left')->select();
-//        $prom_list = DB::name("auction")
-//            ->join("tp_goods",'tp_auction.goods_id=tp_goods.goods_id','left')
-//            ->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign('prom_list', $prom_list);
         $this->assign('page', $show);// 赋值分页输出
@@ -873,14 +856,15 @@ class Promotion extends Base
 
         return $this->fetch();
     }
+
     public function auction_list_del()
     {
         $id = I('del_id/d');
         if ($id) {
-            $spec_goods = Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->find();
+            $spec_goods = Db::name('spec_goods_price')->where(['prom_type' => 8, 'prom_id' => $id])->find();
             //有活动商品规格
             if($spec_goods){
-                Db::name('spec_goods_price')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
+                Db::name('spec_goods_price')->where(['prom_type' => 8, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
                 //商品下的规格是否都没有活动
                 $goods_spec_num = Db::name('spec_goods_price')->where(['prom_type' => 1, 'goods_id' => $spec_goods['goods_id']])->find();
                 if(empty($goods_spec_num)){
@@ -889,7 +873,7 @@ class Promotion extends Base
                 }
             }else{
                 //没有商品规格
-                Db::name('goods')->where(['prom_type' => 1, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
+                Db::name('goods')->where(['prom_type' => 8, 'prom_id' => $id])->save(array('prom_id' => 0, 'prom_type' => 0));
             }
             M('auction')->where(['id' => $id])->delete();
             // 删除抢购消息

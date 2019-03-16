@@ -98,11 +98,9 @@ class User extends MobileBase
         return $this->fetch();
     }
 
-<<<<<<< HEAD
+
  	public function wtf_Goodson(){
-=======
-    public function wtf_Goodson(){
->>>>>>> baeda95a0945146b327abca4e77e4b2143884c77
+
         return $this->fetch();
     }
     

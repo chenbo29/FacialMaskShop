@@ -9,9 +9,9 @@
 		<title>签到</title>
 		<script src="__STATIC__/js/public/rem.js" ></script>
 		<link rel="stylesheet" href="__STATIC__/css/sign/index.css"/>
-		<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css" />
+		<link rel="stylesheet" href="__STATIC__/css/public_lb/public.css?v=1552295270" />
 		<!--日历 css-->
-    	<link rel="stylesheet" href="__STATIC__/css/sign/date.css?v=1552290326" media="screen" title="no title" charset="utf-8">
+    	<link rel="stylesheet" href="__STATIC__/css/sign/date.css?v=1552295270" media="screen" title="no title" charset="utf-8">
 		
 	</head>
 	<body>
@@ -40,8 +40,8 @@
 					<!--<p class="integralL">总积分:<span>0</span>积分</p>-->
 					<!--连续、积累签到-->
 					<p class="recordBox">
-						累积签到:&nbsp;<span class="dayNum">0</span>天<br />
-						已连续签到:&nbsp;<span class="continuityNum">0<!--天数--></span>天</p>
+						已连续签到:&nbsp;<span class="continuityNum">0</span>天<br />
+						积累签到:&nbsp;<span class="dayNum">0<!--天数--></span>天</p>
 				</div>
 				<!--日历 wrap-->
 				<div class="calendarWrapL">
@@ -195,6 +195,7 @@
 //							signObj['signNumVal'] = data['add_point'];
 //							$('.add-score').find('span').html(signObj['signNumVal']);
 //							console.log('签到积分',signObj['signNumVal']);
+							/*签到规则*/
 							$('.rule_box span').html(data['note']);
 							
 						}else {

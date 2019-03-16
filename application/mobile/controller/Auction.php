@@ -29,6 +29,12 @@ class Auction extends MobileBase
         }
     }
 
+    public function detail()
+    {
+       
+        return $this->fetch();
+    }
+
      /**
      * 竞拍
      */
